@@ -1,0 +1,226 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1456,
+    "push_compact_steps": 5222,
+    "signature_(1, 2)": 1456,
+    "push_episodes": 2000,
+    "collect_success": 1843,
+    "collect_compact_steps": 11773,
+    "signature_(1, 3)": 1843,
+    "collect_episodes": 2000
+  },
+  "discovered_signatures": [
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ]
+  ],
+  "required_planes": {
+    "(1, 2)": [
+      2
+    ],
+    "(1, 3)": [
+      3
+    ]
+  },
+  "factor_digest": "a465373e2850d74f09a5e75bc2aa9750d3af3c3d59455852b31a760e15bc51f3",
+  "suite": {
+    "worlds": 36,
+    "families": {
+      "push": 12,
+      "collect": 12,
+      "combined": 12
+    },
+    "shortest_distances": [
+      5,
+      4,
+      2,
+      2,
+      3,
+      2,
+      3,
+      3,
+      3,
+      4,
+      2,
+      2,
+      5,
+      6,
+      6,
+      6,
+      3,
+      3,
+      2,
+      2,
+      6,
+      8,
+      5,
+      6,
+      5,
+      5,
+      7,
+      7,
+      4,
+      9,
+      9,
+      12,
+      8,
+      7,
+      7,
+      7
+    ],
+    "combined_generation_attempts": 192
+  },
+  "conditions_by_step_budget": {
+    "32": {
+      "auto": {
+        "episodes": 2304,
+        "successes": 1761,
+        "push_episodes": 768,
+        "push_successes": 713,
+        "collect_episodes": 768,
+        "collect_successes": 733,
+        "combined_episodes": 768,
+        "combined_successes": 315
+      },
+      "oracle": {
+        "episodes": 2304,
+        "successes": 1761,
+        "push_episodes": 768,
+        "push_successes": 713,
+        "collect_episodes": 768,
+        "collect_successes": 733,
+        "combined_episodes": 768,
+        "combined_successes": 315
+      },
+      "all": {
+        "episodes": 2304,
+        "successes": 1767,
+        "push_episodes": 768,
+        "push_successes": 723,
+        "collect_episodes": 768,
+        "collect_successes": 729,
+        "combined_episodes": 768,
+        "combined_successes": 315
+      },
+      "shared": {
+        "episodes": 2304,
+        "successes": 1625,
+        "push_episodes": 768,
+        "push_successes": 711,
+        "collect_episodes": 768,
+        "collect_successes": 731,
+        "combined_episodes": 768,
+        "combined_successes": 183
+      },
+      "permuted": {
+        "episodes": 2304,
+        "successes": 1184,
+        "push_episodes": 768,
+        "push_successes": 502,
+        "collect_episodes": 768,
+        "collect_successes": 367,
+        "combined_episodes": 768,
+        "combined_successes": 315
+      },
+      "uniform": {
+        "episodes": 2304,
+        "successes": 940,
+        "push_episodes": 768,
+        "push_successes": 488,
+        "collect_episodes": 768,
+        "collect_successes": 356,
+        "combined_episodes": 768,
+        "combined_successes": 96
+      }
+    },
+    "160": {
+      "auto": {
+        "episodes": 2304,
+        "successes": 2098,
+        "push_episodes": 768,
+        "push_successes": 768,
+        "collect_episodes": 768,
+        "collect_successes": 768,
+        "combined_episodes": 768,
+        "combined_successes": 562
+      },
+      "oracle": {
+        "episodes": 2304,
+        "successes": 2098,
+        "push_episodes": 768,
+        "push_successes": 768,
+        "collect_episodes": 768,
+        "collect_successes": 768,
+        "combined_episodes": 768,
+        "combined_successes": 562
+      },
+      "all": {
+        "episodes": 2304,
+        "successes": 2098,
+        "push_episodes": 768,
+        "push_successes": 768,
+        "collect_episodes": 768,
+        "collect_successes": 768,
+        "combined_episodes": 768,
+        "combined_successes": 562
+      },
+      "shared": {
+        "episodes": 2304,
+        "successes": 2052,
+        "push_episodes": 768,
+        "push_successes": 768,
+        "collect_episodes": 768,
+        "collect_successes": 768,
+        "combined_episodes": 768,
+        "combined_successes": 516
+      },
+      "permuted": {
+        "episodes": 2304,
+        "successes": 2049,
+        "push_episodes": 768,
+        "push_successes": 755,
+        "collect_episodes": 768,
+        "collect_successes": 732,
+        "combined_episodes": 768,
+        "combined_successes": 562
+      },
+      "uniform": {
+        "episodes": 2304,
+        "successes": 1910,
+        "push_episodes": 768,
+        "push_successes": 756,
+        "collect_episodes": 768,
+        "collect_successes": 733,
+        "combined_episodes": 768,
+        "combined_successes": 421
+      }
+    }
+  },
+  "worlds_with_success_trace": {
+    "32": {
+      "auto": 36,
+      "oracle": 36,
+      "all": 36,
+      "shared": 34,
+      "permuted": 36,
+      "uniform": 33
+    },
+    "160": {
+      "auto": 36,
+      "oracle": 36,
+      "all": 36,
+      "shared": 36,
+      "permuted": 36,
+      "uniform": 36
+    }
+  },
+  "evaluation_writes": 0,
+  "seconds": 42.93542262498522,
+  "boundary": "Development synthetic evidence. The co-change factorization and raw-presence routing receive no task name; equal probability multiplication, raw channels, task generators, binary success events, and limits remain supplied."
+}

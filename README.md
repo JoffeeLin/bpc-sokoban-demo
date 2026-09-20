@@ -1,5 +1,27 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.10 breakthrough: anonymous factor discovery without task names
+
+One BPC learner now separates successful experience by the raw bit planes that
+co-change on the terminal transition. It removes the plane shared by all
+discovered factors, then activates factors from the remaining raw-plane
+presence—without receiving `push`, `collect`, or another task-family label.
+
+On 48 frozen, non-overlapping worlds and two new action seeds, automatic routing
+matched a task-name oracle on all **342,139** routing decisions and completed
+**4,284/6,144** 32-step episodes. Permuting the discovered raw-plane bindings
+fell to **2,749/6,144**; the shared mixed-trace cube completed **3,962/6,144**.
+See [`V10_AUTOFACTOR_RESULT.md`](V10_AUTOFACTOR_RESULT.md) and the
+[`machine-readable result`](artifacts/v10autofactor/result.json).
+
+![Frozen v0.10 result](artifacts/v10autofactor/poster_v10_autofactor.png)
+
+Always activating both factors was slightly higher at `4,302/6,144`. The
+supported advance is removal of task labels from factor discovery/routing, not
+a routing performance gain. Equal probability multiplication and terminal
+success events remain supplied; this is not autonomous operator invention or
+AGI.
+
 ## v0.9 breakthrough: direct task composition without joint training
 
 Two independent BPC policies learn from `2,000` push-only and `2,000`

@@ -1,0 +1,487 @@
+{
+  "format": "bpc-autofactor-v10-holdout",
+  "seed": 102010,
+  "combined_generation_attempts": 421,
+  "worlds": [
+    {
+      "family": "push",
+      "h": 6,
+      "w": 6,
+      "walls": 68208171647,
+      "agent": 14,
+      "objects": 8192,
+      "marks": 0,
+      "shortest": 3
+    },
+    {
+      "family": "push",
+      "h": 7,
+      "w": 7,
+      "walls": 560802875630847,
+      "agent": 19,
+      "objects": 137438955520,
+      "marks": 0,
+      "shortest": 6
+    },
+    {
+      "family": "push",
+      "h": 6,
+      "w": 6,
+      "walls": 68208695423,
+      "agent": 7,
+      "objects": 512,
+      "marks": 0,
+      "shortest": 2
+    },
+    {
+      "family": "push",
+      "h": 7,
+      "w": 7,
+      "walls": 560802909151487,
+      "agent": 40,
+      "objects": 2048,
+      "marks": 0,
+      "shortest": 5
+    },
+    {
+      "family": "push",
+      "h": 7,
+      "w": 7,
+      "walls": 560802875597055,
+      "agent": 38,
+      "objects": 41943296,
+      "marks": 0,
+      "shortest": 3
+    },
+    {
+      "family": "push",
+      "h": 6,
+      "w": 6,
+      "walls": 68208171135,
+      "agent": 15,
+      "objects": 34079232,
+      "marks": 0,
+      "shortest": 3
+    },
+    {
+      "family": "push",
+      "h": 6,
+      "w": 6,
+      "walls": 68209219711,
+      "agent": 8,
+      "objects": 4195328,
+      "marks": 0,
+      "shortest": 4
+    },
+    {
+      "family": "push",
+      "h": 7,
+      "w": 7,
+      "walls": 560940314550783,
+      "agent": 18,
+      "objects": 67112960,
+      "marks": 0,
+      "shortest": 2
+    },
+    {
+      "family": "push",
+      "h": 7,
+      "w": 7,
+      "walls": 560940314583295,
+      "agent": 29,
+      "objects": 8589936640,
+      "marks": 0,
+      "shortest": 6
+    },
+    {
+      "family": "push",
+      "h": 6,
+      "w": 6,
+      "walls": 68208203903,
+      "agent": 28,
+      "objects": 512,
+      "marks": 0,
+      "shortest": 4
+    },
+    {
+      "family": "push",
+      "h": 7,
+      "w": 7,
+      "walls": 560802896568575,
+      "agent": 40,
+      "objects": 2147483648,
+      "marks": 0,
+      "shortest": 3
+    },
+    {
+      "family": "push",
+      "h": 6,
+      "w": 6,
+      "walls": 68275279999,
+      "agent": 10,
+      "objects": 4194304,
+      "marks": 0,
+      "shortest": 2
+    },
+    {
+      "family": "push",
+      "h": 6,
+      "w": 6,
+      "walls": 68208171135,
+      "agent": 28,
+      "objects": 67117056,
+      "marks": 0,
+      "shortest": 2
+    },
+    {
+      "family": "push",
+      "h": 6,
+      "w": 6,
+      "walls": 68208171135,
+      "agent": 21,
+      "objects": 34078976,
+      "marks": 0,
+      "shortest": 3
+    },
+    {
+      "family": "push",
+      "h": 7,
+      "w": 7,
+      "walls": 560803446022399,
+      "agent": 10,
+      "objects": 137443180544,
+      "marks": 0,
+      "shortest": 5
+    },
+    {
+      "family": "push",
+      "h": 5,
+      "w": 5,
+      "walls": 33080895,
+      "agent": 6,
+      "objects": 69632,
+      "marks": 0,
+      "shortest": 2
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68208171135,
+      "agent": 7,
+      "objects": 0,
+      "marks": 565248,
+      "shortest": 5
+    },
+    {
+      "family": "collect",
+      "h": 7,
+      "w": 7,
+      "walls": 561077761892607,
+      "agent": 24,
+      "objects": 0,
+      "marks": 68753096704,
+      "shortest": 8
+    },
+    {
+      "family": "collect",
+      "h": 7,
+      "w": 7,
+      "walls": 560802875629823,
+      "agent": 23,
+      "objects": 0,
+      "marks": 2147483648,
+      "shortest": 2
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68212365439,
+      "agent": 20,
+      "objects": 0,
+      "marks": 32768,
+      "shortest": 2
+    },
+    {
+      "family": "collect",
+      "h": 5,
+      "w": 5,
+      "walls": 33080895,
+      "agent": 12,
+      "objects": 0,
+      "marks": 327680,
+      "shortest": 4
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68208171135,
+      "agent": 20,
+      "objects": 0,
+      "marks": 65536,
+      "shortest": 3
+    },
+    {
+      "family": "collect",
+      "h": 7,
+      "w": 7,
+      "walls": 560802880315647,
+      "agent": 33,
+      "objects": 0,
+      "marks": 768,
+      "shortest": 7
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68208203903,
+      "agent": 7,
+      "objects": 0,
+      "marks": 17664,
+      "shortest": 5
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68208236671,
+      "agent": 15,
+      "objects": 0,
+      "marks": 135790592,
+      "shortest": 5
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68210268287,
+      "agent": 15,
+      "objects": 0,
+      "marks": 524288,
+      "shortest": 3
+    },
+    {
+      "family": "collect",
+      "h": 5,
+      "w": 5,
+      "walls": 33080895,
+      "agent": 13,
+      "objects": 0,
+      "marks": 69696,
+      "shortest": 5
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68208172159,
+      "agent": 28,
+      "objects": 0,
+      "marks": 4194432,
+      "shortest": 6
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68209219711,
+      "agent": 27,
+      "objects": 0,
+      "marks": 557056,
+      "shortest": 5
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68208171135,
+      "agent": 7,
+      "objects": 0,
+      "marks": 139460608,
+      "shortest": 7
+    },
+    {
+      "family": "collect",
+      "h": 7,
+      "w": 7,
+      "walls": 560802875597055,
+      "agent": 17,
+      "objects": 0,
+      "marks": 1073745920,
+      "shortest": 9
+    },
+    {
+      "family": "collect",
+      "h": 6,
+      "w": 6,
+      "walls": 68208236671,
+      "agent": 19,
+      "objects": 0,
+      "marks": 135266560,
+      "shortest": 7
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 560805593538815,
+      "agent": 32,
+      "objects": 146028888064,
+      "marks": 274877972480,
+      "shortest": 6
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 561902454465791,
+      "agent": 31,
+      "objects": 4299161600,
+      "marks": 8589934592,
+      "shortest": 4
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 561353743033087,
+      "agent": 40,
+      "objects": 8589934592,
+      "marks": 2684354560,
+      "shortest": 7
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 560948929913087,
+      "agent": 17,
+      "objects": 67141632,
+      "marks": 274877907200,
+      "shortest": 9
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 561352632099839,
+      "agent": 12,
+      "objects": 1099511629824,
+      "marks": 67108864,
+      "shortest": 4
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 560880788992767,
+      "agent": 15,
+      "objects": 2147745792,
+      "marks": 524288,
+      "shortest": 6
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 560880185991423,
+      "agent": 11,
+      "objects": 4194304,
+      "marks": 33554432,
+      "shortest": 8
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 561082619158783,
+      "agent": 12,
+      "objects": 2048,
+      "marks": 32768,
+      "shortest": 5
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 560803970673407,
+      "agent": 36,
+      "objects": 137438953472,
+      "marks": 1101659111424,
+      "shortest": 6
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 560805028061439,
+      "agent": 12,
+      "objects": 1024,
+      "marks": 4294967296,
+      "shortest": 6
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 560942554314495,
+      "agent": 38,
+      "objects": 262144,
+      "marks": 536870912,
+      "shortest": 9
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 562109158548735,
+      "agent": 22,
+      "objects": 65536,
+      "marks": 4294967296,
+      "shortest": 6
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 561082669233663,
+      "agent": 30,
+      "objects": 65536,
+      "marks": 68719607808,
+      "shortest": 7
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 561698946703615,
+      "agent": 26,
+      "objects": 524288,
+      "marks": 262656,
+      "shortest": 5
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 561903503041279,
+      "agent": 36,
+      "objects": 274945015808,
+      "marks": 525312,
+      "shortest": 10
+    },
+    {
+      "family": "combined",
+      "h": 7,
+      "w": 7,
+      "walls": 561355852641535,
+      "agent": 29,
+      "objects": 4299161600,
+      "marks": 8623489024,
+      "shortest": 6
+    }
+  ]
+}
