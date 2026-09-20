@@ -21,6 +21,8 @@ and evaluation performed zero learned-state writes. See
 
 **[Watch all 10 first-success traces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v3.0.0/bpc_sokoban_v7_10_unseen_levels.mp4)**
 
+**[View the published video on X](https://x.com/JoffeeLin/status/2101668685396230408)**
+
 ## What the model sees
 
 - Raw `9×9×6` binary voxels derived from the visible board.

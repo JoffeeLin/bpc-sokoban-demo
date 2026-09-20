@@ -58,6 +58,9 @@ The published video uses the first successful episode from each fixed 256-run
 evaluation block. It does not search outside the pre-registered run for nicer
 traces.
 
+- GitHub release: `https://github.com/JoffeeLin/bpc-sokoban-demo/releases/tag/v3.0.0`
+- X video: `https://x.com/JoffeeLin/status/2101668685396230408`
+
 ## Boundary
 
 Supported: limited same-distribution cross-layout transfer by a non-neural,
