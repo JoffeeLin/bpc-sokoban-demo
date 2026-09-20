@@ -1,0 +1,526 @@
+{
+  "format": "bpc-channel-binding-v13-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can a frozen non-neural BPC policy use unlabeled probabilistic transition fingerprints to recover unseen raw-channel permutations under calibration-distribution shift and preserve direct control on disjoint unseen worlds?",
+  "config": {
+    "train_seed": 121010,
+    "reference_seed": 132010,
+    "target_seeds": [
+      132110,
+      132111,
+      132112,
+      132113
+    ],
+    "calibration_steps": 32,
+    "reference_worlds_per_family": 100,
+    "holdout_seed": 132510,
+    "worlds_per_family": 12,
+    "eval_seeds": [
+      132610,
+      132710
+    ],
+    "episodes_per_map": 24,
+    "step_budget": 64,
+    "random_binding_seed": 132810,
+    "permutations": [
+      [
+        1,
+        3,
+        5,
+        0,
+        2,
+        4
+      ],
+      [
+        5,
+        2,
+        0,
+        4,
+        1,
+        3
+      ],
+      [
+        2,
+        4,
+        1,
+        5,
+        3,
+        0
+      ],
+      [
+        3,
+        0,
+        4,
+        1,
+        5,
+        2
+      ]
+    ],
+    "target_mixtures": [
+      {
+        "push": 210,
+        "collect": 45,
+        "open": 45
+      },
+      {
+        "push": 45,
+        "collect": 210,
+        "open": 45
+      },
+      {
+        "push": 45,
+        "collect": 45,
+        "open": 210
+      },
+      {
+        "push": 100,
+        "collect": 100,
+        "open": 100
+      }
+    ]
+  },
+  "expected_training_events": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "expected_factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "reference_digest": "69b027cab8f2693db327d8c7479a68ea6526aca6ed46ccb70a464579891ec0c5",
+  "expected_calibration": [
+    {
+      "target_digest": "2498128ae23f06db56e6c7e361f0cfdd0d0296d951e833b2295d1faeb7c75b60",
+      "oracle": [
+        3,
+        0,
+        4,
+        1,
+        5,
+        2
+      ],
+      "bindings": {
+        "transition": {
+          "mapping": [
+            3,
+            0,
+            4,
+            1,
+            5,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 1856.4275507107668,
+          "second": [
+            3,
+            0,
+            4,
+            2,
+            5,
+            1
+          ],
+          "mode": "transition"
+        },
+        "full": {
+          "mapping": [
+            3,
+            0,
+            4,
+            1,
+            5,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 2782.2080133303534,
+          "second": [
+            3,
+            0,
+            4,
+            2,
+            5,
+            1
+          ],
+          "mode": "full"
+        },
+        "static": {
+          "mapping": [
+            3,
+            0,
+            4,
+            1,
+            5,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 1883.5228378655156,
+          "second": [
+            3,
+            0,
+            4,
+            2,
+            5,
+            1
+          ],
+          "mode": "static"
+        },
+        "count": {
+          "mapping": [
+            3,
+            0,
+            4,
+            1,
+            5,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 957.7423752460309,
+          "second": [
+            3,
+            0,
+            4,
+            2,
+            5,
+            1
+          ],
+          "mode": "count"
+        }
+      }
+    },
+    {
+      "target_digest": "44423579d45801e03f8200cd5325cf171445c76d9f49f4100a9324bf25dffa86",
+      "oracle": [
+        2,
+        4,
+        1,
+        5,
+        3,
+        0
+      ],
+      "bindings": {
+        "transition": {
+          "mapping": [
+            2,
+            4,
+            1,
+            5,
+            3,
+            0
+          ],
+          "posterior": 1.0,
+          "log_margin": 1255.153229228512,
+          "second": [
+            2,
+            4,
+            0,
+            5,
+            3,
+            1
+          ],
+          "mode": "transition"
+        },
+        "full": {
+          "mapping": [
+            2,
+            4,
+            1,
+            5,
+            3,
+            0
+          ],
+          "posterior": 1.0,
+          "log_margin": 1370.727735224471,
+          "second": [
+            2,
+            4,
+            5,
+            1,
+            3,
+            0
+          ],
+          "mode": "full"
+        },
+        "static": {
+          "mapping": [
+            2,
+            4,
+            5,
+            0,
+            3,
+            1
+          ],
+          "posterior": 1.0,
+          "log_margin": 59.35321348707657,
+          "second": [
+            2,
+            4,
+            5,
+            1,
+            3,
+            0
+          ],
+          "mode": "static"
+        },
+        "count": {
+          "mapping": [
+            2,
+            4,
+            1,
+            0,
+            3,
+            5
+          ],
+          "posterior": 1.0,
+          "log_margin": 275.5588064389376,
+          "second": [
+            2,
+            4,
+            1,
+            5,
+            3,
+            0
+          ],
+          "mode": "count"
+        }
+      }
+    },
+    {
+      "target_digest": "6a6195e42678d4a25b0b9a3d809de4f925a7101ddd51bd12b7683df5d25eb11d",
+      "oracle": [
+        5,
+        2,
+        0,
+        4,
+        1,
+        3
+      ],
+      "bindings": {
+        "transition": {
+          "mapping": [
+            5,
+            2,
+            0,
+            4,
+            1,
+            3
+          ],
+          "posterior": 1.0,
+          "log_margin": 893.4026061394834,
+          "second": [
+            5,
+            2,
+            4,
+            0,
+            1,
+            3
+          ],
+          "mode": "transition"
+        },
+        "full": {
+          "mapping": [
+            5,
+            2,
+            3,
+            4,
+            1,
+            0
+          ],
+          "posterior": 1.0,
+          "log_margin": 296.24559922574554,
+          "second": [
+            5,
+            2,
+            0,
+            4,
+            1,
+            3
+          ],
+          "mode": "full"
+        },
+        "static": {
+          "mapping": [
+            5,
+            2,
+            3,
+            4,
+            1,
+            0
+          ],
+          "posterior": 1.0,
+          "log_margin": 332.26339468581136,
+          "second": [
+            5,
+            2,
+            3,
+            0,
+            1,
+            4
+          ],
+          "mode": "static"
+        },
+        "count": {
+          "mapping": [
+            5,
+            2,
+            3,
+            0,
+            1,
+            4
+          ],
+          "posterior": 1.0,
+          "log_margin": 175.10248958175362,
+          "second": [
+            5,
+            2,
+            3,
+            4,
+            1,
+            0
+          ],
+          "mode": "count"
+        }
+      }
+    },
+    {
+      "target_digest": "7b8a5dc4f38ddfee4ab53750491d89d4b4756367138a4fe5f0aa6c0954fa6c50",
+      "oracle": [
+        1,
+        3,
+        5,
+        0,
+        2,
+        4
+      ],
+      "bindings": {
+        "transition": {
+          "mapping": [
+            1,
+            3,
+            5,
+            0,
+            2,
+            4
+          ],
+          "posterior": 1.0,
+          "log_margin": 2280.0406366802927,
+          "second": [
+            1,
+            3,
+            5,
+            4,
+            2,
+            0
+          ],
+          "mode": "transition"
+        },
+        "full": {
+          "mapping": [
+            1,
+            3,
+            5,
+            0,
+            2,
+            4
+          ],
+          "posterior": 1.0,
+          "log_margin": 2876.2411149150576,
+          "second": [
+            1,
+            3,
+            5,
+            4,
+            2,
+            0
+          ],
+          "mode": "full"
+        },
+        "static": {
+          "mapping": [
+            1,
+            3,
+            5,
+            0,
+            2,
+            4
+          ],
+          "posterior": 1.0,
+          "log_margin": 1045.5955022376147,
+          "second": [
+            1,
+            3,
+            5,
+            4,
+            2,
+            0
+          ],
+          "mode": "static"
+        },
+        "count": {
+          "mapping": [
+            1,
+            3,
+            5,
+            0,
+            2,
+            4
+          ],
+          "posterior": 1.0,
+          "log_margin": 449.3950240027043,
+          "second": [
+            1,
+            3,
+            5,
+            4,
+            2,
+            0
+          ],
+          "mode": "count"
+        }
+      }
+    }
+  ],
+  "holdout_sha256": "165bb72e5f8151e5d0c907f4da4aac18c0e9392a8db2b8aa3d005e966f3a9eb2",
+  "adoption_thresholds": {
+    "minimum_binding_log_margin": 100.0,
+    "joint_rate": 0.45,
+    "identity_joint_margin": 0.35,
+    "random_joint_margin": 0.25,
+    "static_joint_margin": 0.08,
+    "count_joint_margin": 0.08
+  },
+  "controls": [
+    "oracle inverse channel permutation over the same frozen field policy",
+    "identity/no binding",
+    "static occupancy plus spatial likelihood without transitions",
+    "occupancy-count likelihood only",
+    "fixed random bindings",
+    "four unseen derangements",
+    "three shifted and one balanced unlabeled calibration distributions",
+    "two independent action seeds",
+    "zero policy/model writes",
+    "disjoint training, calibration, and holdout initial worlds"
+  ],
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "role": "development direction routing only; absent from calibration inference, policy training, frozen evaluation, and runtime"
+  },
+  "source_sha256": {
+    "bpc_channel_binding_v13.py": "fc62e7ead0fba8d9882b17ea0fda04c8ca6b20441ef8bb879d5472353fb0d88b",
+    "bpc_three_factor_v12.py": "e7a07fbc0756fc2af8bc100cf9963e472a539d5cf9dc0348a7a3ef085bc7ff8e",
+    "bpc_evidence_field_v11.py": "8794d9a22f80242f0a59298d36592fb2300ea89ae22cc3460a43a60d3750253b",
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "bpc_direct_composition_v09.py": "6d15f3e2cb59c42d097860f2e463cfb7f46f54b7eb98b6a9963d421748a8ac3c",
+    "general_bpc_v7.py": "d37040bd087e0bbf135a491ab319411f7dd10d823038734327af1136467f05f8",
+    "experiment_v5.py": "0f883f7f0aa6d3a37299322e8214776c9179516b7be632094cd18c629231e493",
+    "experiment_v13_channel_binding_frozen.py": "dc30eba1f91bd9500a4c82d74803fe46a065212d8b8c1903bd619bea8807c2c9",
+    "freeze_v13_channel_binding.py": "c8f0418418db28e7c86454a3fa5bd4afe696958076654de8ebac6ea575a27b34"
+  },
+  "failure_policy": "Retain failures. Do not replace permutations, calibration streams, holdout worlds, seeds, frozen sources, or thresholds after execution.",
+  "boundary": "Developer-frozen synthetic sensor-interface transfer. The six raw channels, balanced reference sampler, target mixture schedules, interaction budget, transition likelihood family, generators, and terminal events remain supplied. No neural network, planner, search, task name, joint-task policy training, or evaluation learning is used."
+}

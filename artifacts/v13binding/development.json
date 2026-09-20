@@ -1,0 +1,593 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "reference_calibration": {
+    "worlds": 300,
+    "transitions": 9600,
+    "initial_overlap_with_training": 0
+  },
+  "target_calibration": {
+    "interfaces": 3,
+    "worlds_each": 300,
+    "transitions_each": 9600,
+    "mixtures": [
+      {
+        "push": 200,
+        "collect": 50,
+        "open": 50
+      },
+      {
+        "push": 50,
+        "collect": 200,
+        "open": 50
+      },
+      {
+        "push": 50,
+        "collect": 50,
+        "open": 200
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "observed_to_canonical": [
+        4,
+        0,
+        5,
+        2,
+        1,
+        3
+      ],
+      "target_mix": {
+        "push": 200,
+        "collect": 50,
+        "open": 50
+      },
+      "oracle_canonical_to_observed": [
+        1,
+        4,
+        3,
+        5,
+        0,
+        2
+      ],
+      "by_mode": {
+        "transition": {
+          "mapping": [
+            1,
+            4,
+            3,
+            5,
+            0,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 1723.3142308723181,
+          "second": [
+            1,
+            4,
+            3,
+            2,
+            0,
+            5
+          ],
+          "mode": "transition"
+        },
+        "full": {
+          "mapping": [
+            1,
+            4,
+            3,
+            5,
+            0,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 2617.678018683917,
+          "second": [
+            1,
+            4,
+            3,
+            2,
+            0,
+            5
+          ],
+          "mode": "full"
+        },
+        "static": {
+          "mapping": [
+            1,
+            4,
+            3,
+            5,
+            0,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 1865.9254311155528,
+          "second": [
+            1,
+            4,
+            3,
+            2,
+            0,
+            5
+          ],
+          "mode": "static"
+        },
+        "count": {
+          "mapping": [
+            1,
+            4,
+            3,
+            5,
+            0,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 971.5616433040195,
+          "second": [
+            1,
+            4,
+            3,
+            2,
+            0,
+            5
+          ],
+          "mode": "count"
+        }
+      },
+      "random_mapping": [
+        1,
+        4,
+        3,
+        2,
+        0,
+        5
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "identity": 28,
+        "static": 32,
+        "count": 32,
+        "random": 31
+      }
+    },
+    {
+      "observed_to_canonical": [
+        2,
+        5,
+        1,
+        4,
+        3,
+        0
+      ],
+      "target_mix": {
+        "push": 50,
+        "collect": 200,
+        "open": 50
+      },
+      "oracle_canonical_to_observed": [
+        5,
+        2,
+        0,
+        4,
+        3,
+        1
+      ],
+      "by_mode": {
+        "transition": {
+          "mapping": [
+            5,
+            2,
+            0,
+            4,
+            3,
+            1
+          ],
+          "posterior": 1.0,
+          "log_margin": 1222.4580879671848,
+          "second": [
+            5,
+            2,
+            1,
+            4,
+            3,
+            0
+          ],
+          "mode": "transition"
+        },
+        "full": {
+          "mapping": [
+            5,
+            2,
+            0,
+            4,
+            3,
+            1
+          ],
+          "posterior": 1.0,
+          "log_margin": 579.6051075034193,
+          "second": [
+            5,
+            2,
+            0,
+            1,
+            3,
+            4
+          ],
+          "mode": "full"
+        },
+        "static": {
+          "mapping": [
+            5,
+            2,
+            4,
+            1,
+            3,
+            0
+          ],
+          "posterior": 1.0,
+          "log_margin": 172.949696509575,
+          "second": [
+            5,
+            2,
+            0,
+            1,
+            3,
+            4
+          ],
+          "mode": "static"
+        },
+        "count": {
+          "mapping": [
+            5,
+            2,
+            0,
+            1,
+            3,
+            4
+          ],
+          "posterior": 1.0,
+          "log_margin": 662.1742937606105,
+          "second": [
+            5,
+            2,
+            0,
+            4,
+            3,
+            1
+          ],
+          "mode": "count"
+        }
+      },
+      "random_mapping": [
+        1,
+        0,
+        5,
+        4,
+        3,
+        2
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "identity": 31,
+        "static": 32,
+        "count": 31,
+        "random": 30
+      }
+    },
+    {
+      "observed_to_canonical": [
+        3,
+        2,
+        4,
+        1,
+        5,
+        0
+      ],
+      "target_mix": {
+        "push": 50,
+        "collect": 50,
+        "open": 200
+      },
+      "oracle_canonical_to_observed": [
+        5,
+        3,
+        1,
+        0,
+        2,
+        4
+      ],
+      "by_mode": {
+        "transition": {
+          "mapping": [
+            5,
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "posterior": 1.0,
+          "log_margin": 1383.6016637498979,
+          "second": [
+            5,
+            3,
+            0,
+            1,
+            2,
+            4
+          ],
+          "mode": "transition"
+        },
+        "full": {
+          "mapping": [
+            5,
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "posterior": 1.0,
+          "log_margin": 460.5868743220344,
+          "second": [
+            5,
+            3,
+            4,
+            0,
+            2,
+            1
+          ],
+          "mode": "full"
+        },
+        "static": {
+          "mapping": [
+            5,
+            3,
+            4,
+            0,
+            2,
+            1
+          ],
+          "posterior": 1.0,
+          "log_margin": 675.9092978263507,
+          "second": [
+            5,
+            3,
+            4,
+            1,
+            2,
+            0
+          ],
+          "mode": "static"
+        },
+        "count": {
+          "mapping": [
+            5,
+            3,
+            4,
+            0,
+            2,
+            1
+          ],
+          "posterior": 1.0,
+          "log_margin": 90.4444871089654,
+          "second": [
+            5,
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "mode": "count"
+        }
+      },
+      "random_mapping": [
+        0,
+        5,
+        4,
+        2,
+        1,
+        3
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "identity": 22,
+        "static": 32,
+        "count": 32,
+        "random": 31
+      }
+    }
+  ],
+  "suite": {
+    "worlds": 32,
+    "families": {
+      "push": 8,
+      "collect": 8,
+      "open": 8,
+      "joint": 8
+    },
+    "attempts": {
+      "push": 23,
+      "collect": 14,
+      "open": 11,
+      "joint": 9
+    },
+    "initial_overlap_with_all_prior": 0
+  },
+  "conditions": {
+    "0": {
+      "learned": {
+        "episodes": 1536,
+        "successes": 1372,
+        "push_successes": 332,
+        "collect_successes": 381,
+        "open_successes": 374,
+        "joint_successes": 285
+      },
+      "oracle": {
+        "episodes": 1536,
+        "successes": 1372,
+        "push_successes": 332,
+        "collect_successes": 381,
+        "open_successes": 374,
+        "joint_successes": 285
+      },
+      "identity": {
+        "episodes": 1536,
+        "successes": 757,
+        "push_successes": 283,
+        "collect_successes": 173,
+        "open_successes": 289,
+        "joint_successes": 12
+      },
+      "static": {
+        "episodes": 1536,
+        "successes": 1372,
+        "push_successes": 332,
+        "collect_successes": 381,
+        "open_successes": 374,
+        "joint_successes": 285
+      },
+      "count": {
+        "episodes": 1536,
+        "successes": 1372,
+        "push_successes": 332,
+        "collect_successes": 381,
+        "open_successes": 374,
+        "joint_successes": 285
+      },
+      "random": {
+        "episodes": 1536,
+        "successes": 974,
+        "push_successes": 355,
+        "collect_successes": 267,
+        "open_successes": 266,
+        "joint_successes": 86
+      }
+    },
+    "1": {
+      "learned": {
+        "episodes": 1536,
+        "successes": 1373,
+        "push_successes": 330,
+        "collect_successes": 381,
+        "open_successes": 375,
+        "joint_successes": 287
+      },
+      "oracle": {
+        "episodes": 1536,
+        "successes": 1373,
+        "push_successes": 330,
+        "collect_successes": 381,
+        "open_successes": 375,
+        "joint_successes": 287
+      },
+      "identity": {
+        "episodes": 1536,
+        "successes": 888,
+        "push_successes": 283,
+        "collect_successes": 281,
+        "open_successes": 276,
+        "joint_successes": 48
+      },
+      "static": {
+        "episodes": 1536,
+        "successes": 1045,
+        "push_successes": 305,
+        "collect_successes": 373,
+        "open_successes": 266,
+        "joint_successes": 101
+      },
+      "count": {
+        "episodes": 1536,
+        "successes": 974,
+        "push_successes": 352,
+        "collect_successes": 268,
+        "open_successes": 266,
+        "joint_successes": 88
+      },
+      "random": {
+        "episodes": 1536,
+        "successes": 941,
+        "push_successes": 274,
+        "collect_successes": 280,
+        "open_successes": 355,
+        "joint_successes": 32
+      }
+    },
+    "2": {
+      "learned": {
+        "episodes": 1536,
+        "successes": 1373,
+        "push_successes": 330,
+        "collect_successes": 382,
+        "open_successes": 375,
+        "joint_successes": 286
+      },
+      "oracle": {
+        "episodes": 1536,
+        "successes": 1373,
+        "push_successes": 330,
+        "collect_successes": 382,
+        "open_successes": 375,
+        "joint_successes": 286
+      },
+      "identity": {
+        "episodes": 1536,
+        "successes": 694,
+        "push_successes": 149,
+        "collect_successes": 261,
+        "open_successes": 284,
+        "joint_successes": 0
+      },
+      "static": {
+        "episodes": 1536,
+        "successes": 1164,
+        "push_successes": 277,
+        "collect_successes": 382,
+        "open_successes": 267,
+        "joint_successes": 238
+      },
+      "count": {
+        "episodes": 1536,
+        "successes": 1164,
+        "push_successes": 277,
+        "collect_successes": 382,
+        "open_successes": 267,
+        "joint_successes": 238
+      },
+      "random": {
+        "episodes": 1536,
+        "successes": 1000,
+        "push_successes": 334,
+        "collect_successes": 267,
+        "open_successes": 276,
+        "joint_successes": 123
+      }
+    }
+  },
+  "evaluation_writes": 0,
+  "seconds": 76.69086800003424,
+  "boundary": "Development synthetic evidence. Reference and target calibration use unlabeled random transitions from disjoint worlds but a supplied balanced generator mixture. The BPC policy gets no task name and performs no runtime planner/search."
+}

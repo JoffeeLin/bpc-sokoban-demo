@@ -1,5 +1,29 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.13 breakthrough: anonymous sensor-interface binding
+
+The frozen v0.12 direct controller no longer requires its six raw input planes
+to arrive in the training order. A non-neural probability binder observes
+unlabeled random transitions, evaluates all `6!` one-to-one assignments, and
+canonicalizes an unseen sensor order before the unchanged policy acts.
+
+Four channel derangements were frozen before execution. Three calibration
+streams also changed the mechanism mixture from balanced to `70/15/15`. The
+transition binder recovered **4/4 exact mappings** and matched the oracle on
+every interface, seed, and task. On 2,304 joint episodes it completed
+**1,884 (81.8%)**, versus 1,529 for static statistics, 1,489 for count-only,
+369 for random bindings, and 288 with no binding. All 12 gates passed with zero
+evaluation writes. See [`V13_CHANNEL_BINDING_RESULT.md`](V13_CHANNEL_BINDING_RESULT.md)
+and the [`machine-readable result`](artifacts/v13binding/result.json).
+
+![Frozen v0.13 result](artifacts/v13binding/poster_v13_channel_binding.png)
+
+**[Watch 12 frozen traces across four unseen sensor interfaces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v13.0.0/bpc_channel_binding_v13_12_unseen_worlds.mp4)**
+
+This is bounded synthetic sensor-interface transfer. The channel count,
+calibration sampler, transition likelihood family, generators, and terminal
+events remain supplied; it is not arbitrary grounding or AGI.
+
 ## v0.12 breakthrough: three learned factors recombine directly
 
 One non-neural BPC learner now discovers three anonymous terminal raw-change
