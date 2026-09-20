@@ -18,6 +18,8 @@ See [`V10_AUTOFACTOR_RESULT.md`](V10_AUTOFACTOR_RESULT.md) and the
 
 **[Watch 12 frozen task-name-free traces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v10.0.0/bpc_autofactor_v10_12_unseen_worlds.mp4)**
 
+**[View the v0.10 result and video on X](https://x.com/JoffeeLin/status/2101720963033497708)**
+
 Always activating both factors was slightly higher at `4,302/6,144`. The
 supported advance is removal of task labels from factor discovery/routing, not
 a routing performance gain. Equal probability multiplication and terminal

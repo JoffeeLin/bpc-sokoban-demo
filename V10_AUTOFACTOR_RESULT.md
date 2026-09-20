@@ -55,6 +55,8 @@ not enter model training, inference, or evaluation.
   `5a5058c777d24f7c7bde33b8096deec0e655c5bfcba8fe354b69e77e73331efa`
 - GitHub release:
   <https://github.com/JoffeeLin/bpc-sokoban-demo/releases/tag/v10.0.0>
+- X post and video:
+  <https://x.com/JoffeeLin/status/2101720963033497708>
 
 ## Boundary
 
