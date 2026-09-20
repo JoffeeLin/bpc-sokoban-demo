@@ -1,5 +1,30 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.14 breakthrough: joint sensor and actuator binding
+
+The frozen direct controller can now recover simultaneous unseen permutations
+on both sides of its interface. From unlabeled random transitions, one
+probability binder canonicalizes six anonymous sensor planes and a second maps
+the policy's four canonical probability outputs to anonymous actuator slots.
+The policy itself is unchanged and uses no runtime planner or search.
+
+Four sensor derangements and four actuator derangements were frozen before
+execution. All eight exact assignments were recovered under three shifted and
+one balanced calibration distribution. Across 2,304 joint episodes, learned
+binding matched the oracle at **1,509 (65.5%)**, versus 79 with only the sensor
+binding, 297 with only the actuator binding, 222 with no binding, and 144 with
+fixed random bindings. All 13 gates passed with zero evaluation writes. See
+[`V14_JOINT_BINDING_RESULT.md`](V14_JOINT_BINDING_RESULT.md) and the
+[`machine-readable result`](artifacts/v14joint/result.json).
+
+![Frozen v0.14 result](artifacts/v14joint/poster_v14_joint_binding.png)
+
+**[Watch 12 frozen traces across four dual-permuted interfaces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v14.0.0/bpc_joint_binding_v14_12_unseen_worlds.mp4)**
+
+This is bounded synthetic bidirectional-interface transfer. Cardinalities,
+coordinate grid, calibration samplers, likelihood families, generators, and
+terminal events remain supplied; it is not arbitrary grounding or AGI.
+
 ## v0.13 breakthrough: anonymous sensor-interface binding
 
 The frozen v0.12 direct controller no longer requires its six raw input planes

@@ -1,0 +1,485 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "reference": {
+    "worlds": 300,
+    "transitions": 9600,
+    "interface_digest": "e38e41096b96149013d11bd00f4f21346ba03e5ccc0209dd66c485da39b88aba",
+    "action_digest": "9ff17705c7f6e969678e1761a0d00b90950772db1ee5bdd0ad300afcc72199c8"
+  },
+  "bindings": [
+    {
+      "sensor_observed_to_canonical": [
+        5,
+        3,
+        0,
+        4,
+        1,
+        2
+      ],
+      "actuator_observed_to_canonical": [
+        2,
+        0,
+        3,
+        1
+      ],
+      "target_mix": {
+        "push": 200,
+        "collect": 50,
+        "open": 50
+      },
+      "channel_oracle": [
+        2,
+        4,
+        5,
+        1,
+        3,
+        0
+      ],
+      "channel_learned": {
+        "mapping": [
+          2,
+          4,
+          5,
+          1,
+          3,
+          0
+        ],
+        "posterior": 1.0,
+        "log_margin": 1404.8810989151825,
+        "second": [
+          2,
+          4,
+          5,
+          0,
+          3,
+          1
+        ],
+        "mode": "transition"
+      },
+      "action_oracle": [
+        1,
+        3,
+        0,
+        2
+      ],
+      "action_learned": {
+        "mapping": [
+          1,
+          3,
+          0,
+          2
+        ],
+        "posterior": 1.0,
+        "log_margin": 23689.90228716965,
+        "second": [
+          1,
+          3,
+          2,
+          0
+        ]
+      },
+      "target_interface_digest": "be979930dafa5c2c74773d4d1a629a265a02a43d4cfc841e1759af8d06b89926",
+      "target_action_digest": "7dec98c7f25d2a3936daee5a8c28e61df54dbbd08ff870ac47266ac50de5ddb3",
+      "random_channels": [
+        4,
+        0,
+        3,
+        2,
+        5,
+        1
+      ],
+      "random_actions": [
+        2,
+        3,
+        0,
+        1
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "sensor_only": 25,
+        "action_only": 27,
+        "identity": 29,
+        "random": 29
+      }
+    },
+    {
+      "sensor_observed_to_canonical": [
+        2,
+        0,
+        5,
+        1,
+        3,
+        4
+      ],
+      "actuator_observed_to_canonical": [
+        1,
+        3,
+        0,
+        2
+      ],
+      "target_mix": {
+        "push": 50,
+        "collect": 200,
+        "open": 50
+      },
+      "channel_oracle": [
+        1,
+        3,
+        0,
+        4,
+        5,
+        2
+      ],
+      "channel_learned": {
+        "mapping": [
+          1,
+          3,
+          0,
+          4,
+          5,
+          2
+        ],
+        "posterior": 1.0,
+        "log_margin": 1134.2694554730551,
+        "second": [
+          1,
+          3,
+          2,
+          4,
+          5,
+          0
+        ],
+        "mode": "transition"
+      },
+      "action_oracle": [
+        2,
+        0,
+        3,
+        1
+      ],
+      "action_learned": {
+        "mapping": [
+          2,
+          0,
+          3,
+          1
+        ],
+        "posterior": 1.0,
+        "log_margin": 24848.853360818797,
+        "second": [
+          3,
+          0,
+          2,
+          1
+        ]
+      },
+      "target_interface_digest": "82c242139e100cf9e2536b8f80411a8723aa572081639d0edd60b35458fdce13",
+      "target_action_digest": "b8223b49b3ab6f0f90d43e863ec5477e035ae197bd2fbf6b73a002d733a24fec",
+      "random_channels": [
+        0,
+        1,
+        4,
+        3,
+        5,
+        2
+      ],
+      "random_actions": [
+        3,
+        0,
+        1,
+        2
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "sensor_only": 24,
+        "action_only": 31,
+        "identity": 31,
+        "random": 32
+      }
+    },
+    {
+      "sensor_observed_to_canonical": [
+        4,
+        2,
+        1,
+        5,
+        0,
+        3
+      ],
+      "actuator_observed_to_canonical": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "target_mix": {
+        "push": 50,
+        "collect": 50,
+        "open": 200
+      },
+      "channel_oracle": [
+        4,
+        2,
+        1,
+        5,
+        0,
+        3
+      ],
+      "channel_learned": {
+        "mapping": [
+          4,
+          2,
+          1,
+          5,
+          0,
+          3
+        ],
+        "posterior": 1.0,
+        "log_margin": 1148.5202609550324,
+        "second": [
+          4,
+          2,
+          5,
+          1,
+          0,
+          3
+        ],
+        "mode": "transition"
+      },
+      "action_oracle": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "action_learned": {
+        "mapping": [
+          3,
+          2,
+          1,
+          0
+        ],
+        "posterior": 1.0,
+        "log_margin": 23297.94938898881,
+        "second": [
+          3,
+          2,
+          0,
+          1
+        ]
+      },
+      "target_interface_digest": "ec7de9f9df45dcfd83547da138278ef683caa3252358e6eb5397c4c045c43676",
+      "target_action_digest": "ec35644907f8fa4c70e7e489d573aba760b92af168c4a0f60699647824e244d0",
+      "random_channels": [
+        2,
+        0,
+        5,
+        4,
+        1,
+        3
+      ],
+      "random_actions": [
+        1,
+        3,
+        0,
+        2
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "sensor_only": 27,
+        "action_only": 26,
+        "identity": 27,
+        "random": 31
+      }
+    }
+  ],
+  "suite": {
+    "worlds": 32,
+    "families": {
+      "push": 8,
+      "collect": 8,
+      "open": 8,
+      "joint": 8
+    },
+    "attempts": {
+      "push": 13,
+      "collect": 14,
+      "open": 12,
+      "joint": 8
+    },
+    "initial_overlap_with_all_prior": 0
+  },
+  "conditions": {
+    "0": {
+      "learned": {
+        "episodes": 1536,
+        "successes": 1366,
+        "push_successes": 353,
+        "collect_successes": 383,
+        "open_successes": 364,
+        "joint_successes": 266
+      },
+      "oracle": {
+        "episodes": 1536,
+        "successes": 1366,
+        "push_successes": 353,
+        "collect_successes": 383,
+        "open_successes": 364,
+        "joint_successes": 266
+      },
+      "sensor_only": {
+        "episodes": 1536,
+        "successes": 420,
+        "push_successes": 178,
+        "collect_successes": 55,
+        "open_successes": 185,
+        "joint_successes": 2
+      },
+      "action_only": {
+        "episodes": 1536,
+        "successes": 770,
+        "push_successes": 198,
+        "collect_successes": 281,
+        "open_successes": 283,
+        "joint_successes": 8
+      },
+      "identity": {
+        "episodes": 1536,
+        "successes": 846,
+        "push_successes": 274,
+        "collect_successes": 257,
+        "open_successes": 272,
+        "joint_successes": 43
+      },
+      "random": {
+        "episodes": 1536,
+        "successes": 839,
+        "push_successes": 268,
+        "collect_successes": 273,
+        "open_successes": 268,
+        "joint_successes": 30
+      }
+    },
+    "1": {
+      "learned": {
+        "episodes": 1536,
+        "successes": 1376,
+        "push_successes": 346,
+        "collect_successes": 384,
+        "open_successes": 368,
+        "joint_successes": 278
+      },
+      "oracle": {
+        "episodes": 1536,
+        "successes": 1376,
+        "push_successes": 346,
+        "collect_successes": 384,
+        "open_successes": 368,
+        "joint_successes": 278
+      },
+      "sensor_only": {
+        "episodes": 1536,
+        "successes": 396,
+        "push_successes": 185,
+        "collect_successes": 37,
+        "open_successes": 174,
+        "joint_successes": 0
+      },
+      "action_only": {
+        "episodes": 1536,
+        "successes": 806,
+        "push_successes": 266,
+        "collect_successes": 275,
+        "open_successes": 225,
+        "joint_successes": 40
+      },
+      "identity": {
+        "episodes": 1536,
+        "successes": 837,
+        "push_successes": 240,
+        "collect_successes": 268,
+        "open_successes": 295,
+        "joint_successes": 34
+      },
+      "random": {
+        "episodes": 1536,
+        "successes": 827,
+        "push_successes": 256,
+        "collect_successes": 278,
+        "open_successes": 258,
+        "joint_successes": 35
+      }
+    },
+    "2": {
+      "learned": {
+        "episodes": 1536,
+        "successes": 1359,
+        "push_successes": 357,
+        "collect_successes": 384,
+        "open_successes": 368,
+        "joint_successes": 250
+      },
+      "oracle": {
+        "episodes": 1536,
+        "successes": 1359,
+        "push_successes": 357,
+        "collect_successes": 384,
+        "open_successes": 368,
+        "joint_successes": 250
+      },
+      "sensor_only": {
+        "episodes": 1536,
+        "successes": 652,
+        "push_successes": 248,
+        "collect_successes": 168,
+        "open_successes": 217,
+        "joint_successes": 19
+      },
+      "action_only": {
+        "episodes": 1536,
+        "successes": 590,
+        "push_successes": 63,
+        "collect_successes": 254,
+        "open_successes": 265,
+        "joint_successes": 8
+      },
+      "identity": {
+        "episodes": 1536,
+        "successes": 748,
+        "push_successes": 219,
+        "collect_successes": 272,
+        "open_successes": 235,
+        "joint_successes": 22
+      },
+      "random": {
+        "episodes": 1536,
+        "successes": 786,
+        "push_successes": 238,
+        "collect_successes": 259,
+        "open_successes": 259,
+        "joint_successes": 30
+      }
+    }
+  },
+  "evaluation_writes": 0,
+  "seconds": 82.16522399999667,
+  "boundary": "Development synthetic interface transfer. Calibration worlds, family mixture, action budget, six sensor planes, and four actuator slots are supplied. Binders receive no entity, task, direction, or success labels; direct evaluation uses no search or writes."
+}
