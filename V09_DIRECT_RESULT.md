@@ -62,6 +62,8 @@ planner route; it did not enter model training, inference, or evaluation.
   `d5720204698b46f5494e97063bb9f834e1ec403e0a910d1247ee1010a572d6d6`
 - Video SHA-256:
   `4df22717c55a9436776e18053eb818e0287e7dedd2ba00c39a35148f695cdbfd`
+- GitHub release:
+  <https://github.com/JoffeeLin/bpc-sokoban-demo/releases/tag/v9.0.0>
 
 The holdout, source hashes, training digests, action seeds, step budgets,
 controls, thresholds, failure policy, and zero-write gate were frozen before
