@@ -1,0 +1,1050 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "chosen_label": "strongest next development mechanism",
+    "confidence": 0.78,
+    "role": "candidate routing only; absent from support inference, policy training, evaluation, and runtime"
+  },
+  "reference": {
+    "worlds": 300,
+    "transitions": 9600,
+    "interface_digest": "d66937aa3613d9eec0cb3f9d53286cb0542bb90bf3d3d7860b233ebf0169c348",
+    "action_digest": "327fec2cf23e60f5eebfd173b07a1d267df38e984888a62a8c81624e57736a9e",
+    "support": [
+      [],
+      [
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4,
+        5
+      ]
+    ]
+  },
+  "bindings": [
+    {
+      "sensor_routes": [
+        4,
+        null,
+        0,
+        2,
+        5,
+        null,
+        3,
+        1
+      ],
+      "actuator_routes": [
+        null,
+        3,
+        1,
+        0,
+        null,
+        2
+      ],
+      "channel_oracle": [
+        2,
+        7,
+        3,
+        6,
+        0,
+        4
+      ],
+      "channel_learned": {
+        "mapping": [
+          2,
+          7,
+          3,
+          6,
+          0,
+          4
+        ],
+        "posterior": 1.0,
+        "log_margin": 20121.82342561969,
+        "second": [
+          2,
+          7,
+          6,
+          3,
+          0,
+          4
+        ],
+        "compatible": 4,
+        "per_stream": [
+          {
+            "mapping": [
+              2,
+              7,
+              3,
+              6,
+              0,
+              4
+            ],
+            "log_margin": 5471.735592412042
+          },
+          {
+            "mapping": [
+              2,
+              7,
+              3,
+              6,
+              0,
+              4
+            ],
+            "log_margin": 5693.569312251442
+          },
+          {
+            "mapping": [
+              2,
+              7,
+              3,
+              6,
+              0,
+              4
+            ],
+            "log_margin": 2425.1093509373313
+          },
+          {
+            "mapping": [
+              2,
+              7,
+              3,
+              6,
+              0,
+              4
+            ],
+            "log_margin": 5065.639910475977
+          }
+        ]
+      },
+      "action_oracle": [
+        3,
+        2,
+        5,
+        1
+      ],
+      "action_learned": {
+        "mapping": [
+          3,
+          2,
+          5,
+          1
+        ],
+        "posterior": 1.0,
+        "log_margin": 63490.57865996778,
+        "second": [
+          3,
+          5,
+          2,
+          1
+        ],
+        "candidate_slots": [
+          1,
+          2,
+          3,
+          5
+        ]
+      },
+      "regimes": [
+        {
+          "interface_digest": "617449cf946eea58e24c3429f03b654fe816afe53dcf62934a1fb020458b4c6c",
+          "support": [
+            [],
+            [
+              1,
+              7
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              1,
+              3,
+              7
+            ],
+            [
+              1,
+              5,
+              6,
+              7
+            ],
+            [
+              0,
+              1,
+              4,
+              5,
+              7
+            ]
+          ]
+        },
+        {
+          "interface_digest": "10a6246b72cf18eefc6784da5976e85a149b28a3d8225d0629d4de8d00229fd9",
+          "support": [
+            [],
+            [
+              1,
+              7
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              1,
+              3,
+              7
+            ],
+            [
+              1,
+              5,
+              6,
+              7
+            ],
+            [
+              0,
+              1,
+              4,
+              5,
+              7
+            ]
+          ]
+        },
+        {
+          "interface_digest": "fc96d9b878b30512615767ece01d00564b8e47b2ab667a474195f654a09632fc",
+          "support": [
+            [],
+            [
+              1,
+              7
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              1,
+              3,
+              7
+            ],
+            [
+              1,
+              5,
+              6,
+              7
+            ],
+            [
+              0,
+              1,
+              4,
+              5,
+              7
+            ]
+          ]
+        },
+        {
+          "interface_digest": "eb258bd7ae410c614f2706a20c89bfed9e481c97370448eb45721212487ec087",
+          "support": [
+            [],
+            [
+              1,
+              7
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              1,
+              3,
+              7
+            ],
+            [
+              1,
+              5,
+              6,
+              7
+            ],
+            [
+              0,
+              1,
+              4,
+              5,
+              7
+            ]
+          ]
+        }
+      ],
+      "target_action_digest": "d95fb1f99def6adc17323f5dbdbbc165e78c4a8b0708c60e980f6de6e06c0886",
+      "random_channels": [
+        6,
+        5,
+        7,
+        1,
+        3,
+        2
+      ],
+      "random_actions": [
+        1,
+        4,
+        5,
+        2
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "sensor_only": 12,
+        "action_only": 30,
+        "identity": 13,
+        "random": 12
+      }
+    },
+    {
+      "sensor_routes": [
+        null,
+        2,
+        4,
+        1,
+        3,
+        5,
+        null,
+        0
+      ],
+      "actuator_routes": [
+        0,
+        null,
+        2,
+        null,
+        1,
+        3
+      ],
+      "channel_oracle": [
+        7,
+        3,
+        1,
+        4,
+        2,
+        5
+      ],
+      "channel_learned": {
+        "mapping": [
+          7,
+          3,
+          1,
+          4,
+          2,
+          5
+        ],
+        "posterior": 1.0,
+        "log_margin": 20578.180505006516,
+        "second": [
+          7,
+          3,
+          4,
+          1,
+          2,
+          5
+        ],
+        "compatible": 4,
+        "per_stream": [
+          {
+            "mapping": [
+              7,
+              3,
+              1,
+              4,
+              2,
+              5
+            ],
+            "log_margin": 5446.618682835717
+          },
+          {
+            "mapping": [
+              7,
+              3,
+              1,
+              4,
+              2,
+              5
+            ],
+            "log_margin": 4886.972293984276
+          },
+          {
+            "mapping": [
+              7,
+              3,
+              1,
+              4,
+              2,
+              5
+            ],
+            "log_margin": 2496.8502407254564
+          },
+          {
+            "mapping": [
+              7,
+              3,
+              1,
+              4,
+              2,
+              5
+            ],
+            "log_margin": 5414.092578327363
+          }
+        ]
+      },
+      "action_oracle": [
+        0,
+        4,
+        2,
+        5
+      ],
+      "action_learned": {
+        "mapping": [
+          0,
+          4,
+          2,
+          5
+        ],
+        "posterior": 1.0,
+        "log_margin": 63460.363248186666,
+        "second": [
+          0,
+          4,
+          5,
+          2
+        ],
+        "candidate_slots": [
+          0,
+          2,
+          4,
+          5
+        ]
+      },
+      "regimes": [
+        {
+          "interface_digest": "ac5171930db43514d929363abcbd976a1994e47832626a2f8f6706627f28e698",
+          "support": [
+            [],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              0,
+              1,
+              3
+            ],
+            [
+              0,
+              3,
+              4,
+              6
+            ],
+            [
+              0,
+              2,
+              3,
+              5,
+              6
+            ]
+          ]
+        },
+        {
+          "interface_digest": "4109964e04eed7a924be9dd5796cffa9b67fb8a873bfc9c84b0f51b8480d7b6a",
+          "support": [
+            [],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              0,
+              1,
+              3
+            ],
+            [
+              0,
+              3,
+              4,
+              6
+            ],
+            [
+              0,
+              2,
+              3,
+              5,
+              6
+            ]
+          ]
+        },
+        {
+          "interface_digest": "f54e28841f5ff709e116c31ae869ae7440e021e7a9f67c680b65e44e6af451dd",
+          "support": [
+            [],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              0,
+              1,
+              3
+            ],
+            [
+              0,
+              3,
+              4,
+              6
+            ],
+            [
+              0,
+              2,
+              3,
+              5,
+              6
+            ]
+          ]
+        },
+        {
+          "interface_digest": "9812d74a1b1a83a62b1d5df8a896ffd4160949fa31b695475a0088aac09df9dc",
+          "support": [
+            [],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              0,
+              1,
+              3
+            ],
+            [
+              0,
+              3,
+              4,
+              6
+            ],
+            [
+              0,
+              2,
+              3,
+              5,
+              6
+            ]
+          ]
+        }
+      ],
+      "target_action_digest": "8a6aa419bf6e1b845971213de87f6e62a65b032d8340cc9df414a0e39018c50c",
+      "random_channels": [
+        0,
+        7,
+        2,
+        6,
+        1,
+        5
+      ],
+      "random_actions": [
+        5,
+        3,
+        0,
+        1
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "sensor_only": 5,
+        "action_only": 30,
+        "identity": 5,
+        "random": 5
+      }
+    },
+    {
+      "sensor_routes": [
+        5,
+        3,
+        null,
+        0,
+        1,
+        null,
+        2,
+        4
+      ],
+      "actuator_routes": [
+        1,
+        3,
+        null,
+        2,
+        0,
+        null
+      ],
+      "channel_oracle": [
+        3,
+        4,
+        6,
+        1,
+        7,
+        0
+      ],
+      "channel_learned": {
+        "mapping": [
+          3,
+          4,
+          6,
+          1,
+          7,
+          0
+        ],
+        "posterior": 1.0,
+        "log_margin": 19326.700500309933,
+        "second": [
+          3,
+          4,
+          1,
+          6,
+          7,
+          0
+        ],
+        "compatible": 4,
+        "per_stream": [
+          {
+            "mapping": [
+              3,
+              4,
+              6,
+              1,
+              7,
+              0
+            ],
+            "log_margin": 5390.040467660845
+          },
+          {
+            "mapping": [
+              3,
+              4,
+              6,
+              1,
+              7,
+              0
+            ],
+            "log_margin": 5409.851255245216
+          },
+          {
+            "mapping": [
+              3,
+              4,
+              6,
+              1,
+              7,
+              0
+            ],
+            "log_margin": 2217.6566244801506
+          },
+          {
+            "mapping": [
+              3,
+              4,
+              6,
+              1,
+              7,
+              0
+            ],
+            "log_margin": 4506.219140878064
+          }
+        ]
+      },
+      "action_oracle": [
+        4,
+        0,
+        3,
+        1
+      ],
+      "action_learned": {
+        "mapping": [
+          4,
+          0,
+          3,
+          1
+        ],
+        "posterior": 1.0,
+        "log_margin": 64257.30399492909,
+        "second": [
+          4,
+          3,
+          0,
+          1
+        ],
+        "candidate_slots": [
+          0,
+          1,
+          3,
+          4
+        ]
+      },
+      "regimes": [
+        {
+          "interface_digest": "d28ed3914502f71529afcd414d2d376a1c490c70b89c966ac69ca59520a5e08c",
+          "support": [
+            [],
+            [
+              2,
+              4
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              2,
+              4,
+              6
+            ],
+            [
+              1,
+              2,
+              4,
+              5
+            ],
+            [
+              0,
+              2,
+              4,
+              5,
+              7
+            ]
+          ]
+        },
+        {
+          "interface_digest": "d5dee357eb48826edbac4e542d7916d610ea477b0054b6f194018a486a879c35",
+          "support": [
+            [],
+            [
+              2,
+              4
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              2,
+              4,
+              6
+            ],
+            [
+              1,
+              2,
+              4,
+              5
+            ],
+            [
+              0,
+              2,
+              4,
+              5,
+              7
+            ]
+          ]
+        },
+        {
+          "interface_digest": "492e3ef59b4ec65a3b24d6dd57137e61f989defe92c37a0228c6aba9d97c838d",
+          "support": [
+            [],
+            [
+              2,
+              4
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              2,
+              4,
+              6
+            ],
+            [
+              1,
+              2,
+              4,
+              5
+            ],
+            [
+              0,
+              2,
+              4,
+              5,
+              7
+            ]
+          ]
+        },
+        {
+          "interface_digest": "7be47fec8391c58f9e5dee9895b83710c99b8b3fc005698c46dabdfa23607adf",
+          "support": [
+            [],
+            [
+              2,
+              4
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              2,
+              4,
+              6
+            ],
+            [
+              1,
+              2,
+              4,
+              5
+            ],
+            [
+              0,
+              2,
+              4,
+              5,
+              7
+            ]
+          ]
+        }
+      ],
+      "target_action_digest": "591cf1486c97739ac1e3f28180adc0d7c1d8413ccc0ff3c2795445bededb6a6a",
+      "random_channels": [
+        3,
+        4,
+        2,
+        6,
+        7,
+        1
+      ],
+      "random_actions": [
+        2,
+        4,
+        3,
+        5
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "sensor_only": 11,
+        "action_only": 31,
+        "identity": 11,
+        "random": 5
+      }
+    }
+  ],
+  "suite": {
+    "worlds": 32,
+    "families": {
+      "push": 8,
+      "collect": 8,
+      "open": 8,
+      "joint": 8
+    },
+    "attempts": {
+      "push": 19,
+      "collect": 12,
+      "open": 8,
+      "joint": 11
+    },
+    "initial_overlap_with_all_prior": 0
+  },
+  "conditions": {
+    "0": {
+      "learned": {
+        "episodes": 768,
+        "successes": 668,
+        "push_successes": 189,
+        "collect_successes": 191,
+        "open_successes": 179,
+        "joint_successes": 109
+      },
+      "oracle": {
+        "episodes": 768,
+        "successes": 668,
+        "push_successes": 189,
+        "collect_successes": 191,
+        "open_successes": 179,
+        "joint_successes": 109
+      },
+      "sensor_only": {
+        "episodes": 768,
+        "successes": 165,
+        "push_successes": 73,
+        "collect_successes": 6,
+        "open_successes": 73,
+        "joint_successes": 13
+      },
+      "action_only": {
+        "episodes": 768,
+        "successes": 356,
+        "push_successes": 153,
+        "collect_successes": 71,
+        "open_successes": 115,
+        "joint_successes": 17
+      },
+      "identity": {
+        "episodes": 768,
+        "successes": 176,
+        "push_successes": 78,
+        "collect_successes": 9,
+        "open_successes": 76,
+        "joint_successes": 13
+      },
+      "random": {
+        "episodes": 768,
+        "successes": 82,
+        "push_successes": 42,
+        "collect_successes": 7,
+        "open_successes": 33,
+        "joint_successes": 0
+      }
+    },
+    "1": {
+      "learned": {
+        "episodes": 768,
+        "successes": 658,
+        "push_successes": 192,
+        "collect_successes": 191,
+        "open_successes": 173,
+        "joint_successes": 102
+      },
+      "oracle": {
+        "episodes": 768,
+        "successes": 658,
+        "push_successes": 192,
+        "collect_successes": 191,
+        "open_successes": 173,
+        "joint_successes": 102
+      },
+      "sensor_only": {
+        "episodes": 768,
+        "successes": 85,
+        "push_successes": 23,
+        "collect_successes": 0,
+        "open_successes": 62,
+        "joint_successes": 0
+      },
+      "action_only": {
+        "episodes": 768,
+        "successes": 474,
+        "push_successes": 168,
+        "collect_successes": 140,
+        "open_successes": 156,
+        "joint_successes": 10
+      },
+      "identity": {
+        "episodes": 768,
+        "successes": 67,
+        "push_successes": 20,
+        "collect_successes": 0,
+        "open_successes": 47,
+        "joint_successes": 0
+      },
+      "random": {
+        "episodes": 768,
+        "successes": 92,
+        "push_successes": 44,
+        "collect_successes": 0,
+        "open_successes": 48,
+        "joint_successes": 0
+      }
+    },
+    "2": {
+      "learned": {
+        "episodes": 768,
+        "successes": 669,
+        "push_successes": 188,
+        "collect_successes": 190,
+        "open_successes": 180,
+        "joint_successes": 111
+      },
+      "oracle": {
+        "episodes": 768,
+        "successes": 669,
+        "push_successes": 188,
+        "collect_successes": 190,
+        "open_successes": 180,
+        "joint_successes": 111
+      },
+      "sensor_only": {
+        "episodes": 768,
+        "successes": 66,
+        "push_successes": 37,
+        "collect_successes": 4,
+        "open_successes": 25,
+        "joint_successes": 0
+      },
+      "action_only": {
+        "episodes": 768,
+        "successes": 495,
+        "push_successes": 181,
+        "collect_successes": 143,
+        "open_successes": 149,
+        "joint_successes": 22
+      },
+      "identity": {
+        "episodes": 768,
+        "successes": 78,
+        "push_successes": 34,
+        "collect_successes": 5,
+        "open_successes": 39,
+        "joint_successes": 0
+      },
+      "random": {
+        "episodes": 768,
+        "successes": 73,
+        "push_successes": 23,
+        "collect_successes": 0,
+        "open_successes": 50,
+        "joint_successes": 0
+      }
+    }
+  },
+  "evaluation_writes": 0,
+  "seconds": 96.02470579202054,
+  "boundary": "Development synthetic composite-interface transfer. Four separately sampled unlabeled calibration regimes, canonical/observed cardinalities, displaced-XOR nuisance synthesis, null action slots, samplers, generators, and terminal events are supplied. The binder receives no regime, task, entity, direction, success, or reward names; evaluation uses no search or writes."
+}

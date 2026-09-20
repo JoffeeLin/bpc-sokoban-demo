@@ -1,5 +1,33 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.16 breakthrough: composite-distractor rejection
+
+The frozen non-neural controller now recovers its canonical six-sensor/four-
+action interface when two extra sensor planes are causally composed,
+displaced-XOR distractors—not merely random nuisance planes. Empirical
+transition-support invariance reduces each `8P6 = 20,160` sensor assignment
+space to four compatible bases; probabilities across four separately sampled
+unlabeled regimes select the correct one. The unchanged policy then acts
+directly, with no runtime planner or search.
+
+Four new composite interfaces were frozen before holdout execution. All exact
+sensor and actuator mappings were recovered, and all 16 individual calibration
+streams independently chose the oracle sensor basis. Across 2,304 joint
+episodes, learned binding matched the oracle at **1,844 (80.0%)**, versus 169
+with only sensor binding, 435 with only actuator binding, 161 with identity
+binding, and 125 with fixed random binding. All 16 gates passed with zero
+evaluation writes. See [`V16_COMPOSITE_BINDING_RESULT.md`](V16_COMPOSITE_BINDING_RESULT.md)
+and the [`machine-readable result`](artifacts/v16composite/result.json).
+
+![Frozen v0.16 result](artifacts/v16composite/poster_v16_composite_binding.png)
+
+**[Watch 12 frozen traces across four unseen composite interfaces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v16.0.0/bpc_composite_binding_v16_12_unseen_worlds.mp4)**
+
+This resolves the specific displaced-XOR failure retained by v0.15, not
+arbitrary grounding. The composite formula, four calibration regimes,
+transition-support rule, likelihood family, generators, and terminal events
+remain supplied; this is bounded synthetic evidence, not AGI.
+
 ## v0.15 breakthrough: canonical sub-interface discovery
 
 The frozen direct controller can now locate its canonical six-sensor/four-action

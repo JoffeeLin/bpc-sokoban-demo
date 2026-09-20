@@ -1,0 +1,1684 @@
+{
+  "format": "bpc-composite-binding-v16",
+  "evidence_level": "developer-frozen held-out synthetic composite-interface transfer; not third-party blind",
+  "question": "Can a frozen non-neural BPC policy identify its canonical six-sensor/four-action interface inside simultaneous unseen eight-channel/six-slot interfaces whose two nuisance planes are displaced XOR compositions of canonical mechanisms, using transition-support invariance and probabilities across four separately sampled unlabeled calibration regimes?",
+  "training": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "calibration": {
+    "reference_interface_digest": "a328186958d907abd834d0bb713d4ba87bd8b35f0ee8892e27027b1fa91ff492",
+    "reference_support": [
+      [],
+      [
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4,
+        5
+      ]
+    ],
+    "reference_action_digest": "c284fbfc5817f3ce7988217147d71a1b85f4ea4af8d4510f58eed0f79416363b",
+    "interfaces": [
+      {
+        "sensor_routes": [
+          2,
+          null,
+          5,
+          1,
+          4,
+          0,
+          null,
+          3
+        ],
+        "actuator_routes": [
+          2,
+          0,
+          null,
+          1,
+          null,
+          3
+        ],
+        "regimes": [
+          {
+            "interface_digest": "37d97d2074a2491b6528e6f2bd594f374582cde5f6e7f8670a3ab5126bd1c167",
+            "support": [
+              [],
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                0,
+                1,
+                3
+              ],
+              [
+                1,
+                3,
+                6,
+                7
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                6
+              ]
+            ]
+          },
+          {
+            "interface_digest": "90329ad5cbbb94203644ee756ab4eeb3292cf4d9acc5f30809f779f7591c9cb9",
+            "support": [
+              [],
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                0,
+                1,
+                3
+              ],
+              [
+                1,
+                3,
+                6,
+                7
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                6
+              ]
+            ]
+          },
+          {
+            "interface_digest": "39a337e49bfa5bbd46e578a202a6424b9e8d0b2482135a5cc1d040ae3ed8454b",
+            "support": [
+              [],
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                0,
+                1,
+                3
+              ],
+              [
+                1,
+                3,
+                6,
+                7
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                6
+              ]
+            ]
+          },
+          {
+            "interface_digest": "9fcb8c7aae4d17f8f511e3677d4f3875687733f387137124b9c3768105c4b1d3",
+            "support": [
+              [],
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                0,
+                1,
+                3
+              ],
+              [
+                1,
+                3,
+                6,
+                7
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                6
+              ]
+            ]
+          }
+        ],
+        "channel_oracle": [
+          5,
+          3,
+          0,
+          7,
+          4,
+          2
+        ],
+        "channel_binding": {
+          "mapping": [
+            5,
+            3,
+            0,
+            7,
+            4,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 19590.702061172167,
+          "second": [
+            5,
+            3,
+            7,
+            0,
+            4,
+            2
+          ],
+          "compatible": 4,
+          "per_stream": [
+            {
+              "mapping": [
+                5,
+                3,
+                0,
+                7,
+                4,
+                2
+              ],
+              "log_margin": 5358.883695565426
+            },
+            {
+              "mapping": [
+                5,
+                3,
+                0,
+                7,
+                4,
+                2
+              ],
+              "log_margin": 5025.014715474572
+            },
+            {
+              "mapping": [
+                5,
+                3,
+                0,
+                7,
+                4,
+                2
+              ],
+              "log_margin": 1707.7320078518242
+            },
+            {
+              "mapping": [
+                5,
+                3,
+                0,
+                7,
+                4,
+                2
+              ],
+              "log_margin": 5123.079676532136
+            }
+          ]
+        },
+        "action_oracle": [
+          1,
+          3,
+          0,
+          5
+        ],
+        "action_binding": {
+          "mapping": [
+            1,
+            3,
+            0,
+            5
+          ],
+          "posterior": 1.0,
+          "log_margin": 63546.673173112955,
+          "second": [
+            0,
+            3,
+            1,
+            5
+          ],
+          "candidate_slots": [
+            0,
+            1,
+            3,
+            5
+          ]
+        },
+        "random_channels": [
+          4,
+          0,
+          6,
+          1,
+          5,
+          3
+        ],
+        "random_actions": [
+          3,
+          0,
+          1,
+          4
+        ]
+      },
+      {
+        "sensor_routes": [
+          null,
+          0,
+          3,
+          5,
+          1,
+          null,
+          4,
+          2
+        ],
+        "actuator_routes": [
+          null,
+          3,
+          0,
+          2,
+          1,
+          null
+        ],
+        "regimes": [
+          {
+            "interface_digest": "84c7ad1ae94ea39d1b340e8f6d03a84bf2f53a49721b8c01c49eb07ab179e577",
+            "support": [
+              [],
+              [
+                0,
+                4
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                0,
+                4,
+                7
+              ],
+              [
+                0,
+                2,
+                4,
+                5
+              ],
+              [
+                0,
+                3,
+                4,
+                5,
+                6
+              ]
+            ]
+          },
+          {
+            "interface_digest": "609590164ea6a1b9547498069b6e75982d193ec9f06f5e6a96f2cc842f0c6ea9",
+            "support": [
+              [],
+              [
+                0,
+                4
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                0,
+                4,
+                7
+              ],
+              [
+                0,
+                2,
+                4,
+                5
+              ],
+              [
+                0,
+                3,
+                4,
+                5,
+                6
+              ]
+            ]
+          },
+          {
+            "interface_digest": "a265982a4a8617569a04f15279802254d2789918c686bc7c8263a1e468dca033",
+            "support": [
+              [],
+              [
+                0,
+                4
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                0,
+                4,
+                7
+              ],
+              [
+                0,
+                2,
+                4,
+                5
+              ],
+              [
+                0,
+                3,
+                4,
+                5,
+                6
+              ]
+            ]
+          },
+          {
+            "interface_digest": "8d3db50dced0ad6d51457c8e4c1878406c1d1a23cad52ce98bb6140321dedec3",
+            "support": [
+              [],
+              [
+                0,
+                4
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                0,
+                4,
+                7
+              ],
+              [
+                0,
+                2,
+                4,
+                5
+              ],
+              [
+                0,
+                3,
+                4,
+                5,
+                6
+              ]
+            ]
+          }
+        ],
+        "channel_oracle": [
+          1,
+          4,
+          7,
+          2,
+          6,
+          3
+        ],
+        "channel_binding": {
+          "mapping": [
+            1,
+            4,
+            7,
+            2,
+            6,
+            3
+          ],
+          "posterior": 1.0,
+          "log_margin": 18420.626073879685,
+          "second": [
+            1,
+            4,
+            2,
+            7,
+            6,
+            3
+          ],
+          "compatible": 4,
+          "per_stream": [
+            {
+              "mapping": [
+                1,
+                4,
+                7,
+                2,
+                6,
+                3
+              ],
+              "log_margin": 4621.549056085998
+            },
+            {
+              "mapping": [
+                1,
+                4,
+                7,
+                2,
+                6,
+                3
+              ],
+              "log_margin": 5274.704080557611
+            },
+            {
+              "mapping": [
+                1,
+                4,
+                7,
+                2,
+                6,
+                3
+              ],
+              "log_margin": 2165.5523522015137
+            },
+            {
+              "mapping": [
+                1,
+                4,
+                7,
+                2,
+                6,
+                3
+              ],
+              "log_margin": 4321.329534106451
+            }
+          ]
+        },
+        "action_oracle": [
+          2,
+          4,
+          3,
+          1
+        ],
+        "action_binding": {
+          "mapping": [
+            2,
+            4,
+            3,
+            1
+          ],
+          "posterior": 1.0,
+          "log_margin": 64104.222914687016,
+          "second": [
+            3,
+            4,
+            2,
+            1
+          ],
+          "candidate_slots": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "random_channels": [
+          5,
+          3,
+          0,
+          1,
+          6,
+          4
+        ],
+        "random_actions": [
+          5,
+          2,
+          4,
+          0
+        ]
+      },
+      {
+        "sensor_routes": [
+          4,
+          1,
+          null,
+          2,
+          0,
+          3,
+          5,
+          null
+        ],
+        "actuator_routes": [
+          1,
+          null,
+          2,
+          3,
+          null,
+          0
+        ],
+        "regimes": [
+          {
+            "interface_digest": "2313f7e19941bb11338da1598e7dca77f400daeda12d2354b6e4c5adad4858c2",
+            "support": [
+              [],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                2,
+                5,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                6,
+                7
+              ]
+            ]
+          },
+          {
+            "interface_digest": "8cda6b6e09d569f369cf74a3b9a605dbf31224f0aa5a082cafb5946a1311d019",
+            "support": [
+              [],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                2,
+                5,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                6,
+                7
+              ]
+            ]
+          },
+          {
+            "interface_digest": "eb2145f192e19a24417c0227d9d422ee79603ea2eaa0555cf558fa2a6e9daba5",
+            "support": [
+              [],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                2,
+                5,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                6,
+                7
+              ]
+            ]
+          },
+          {
+            "interface_digest": "5a48c507f80d2a4d721f3cd37cfb71617a60bcb6d99dc0f66a5f4ea5ef39c068",
+            "support": [
+              [],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                2,
+                5,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                6,
+                7
+              ]
+            ]
+          }
+        ],
+        "channel_oracle": [
+          4,
+          1,
+          3,
+          5,
+          0,
+          6
+        ],
+        "channel_binding": {
+          "mapping": [
+            4,
+            1,
+            3,
+            5,
+            0,
+            6
+          ],
+          "posterior": 1.0,
+          "log_margin": 19923.5300188713,
+          "second": [
+            4,
+            1,
+            5,
+            3,
+            0,
+            6
+          ],
+          "compatible": 4,
+          "per_stream": [
+            {
+              "mapping": [
+                4,
+                1,
+                3,
+                5,
+                0,
+                6
+              ],
+              "log_margin": 5405.472913671161
+            },
+            {
+              "mapping": [
+                4,
+                1,
+                3,
+                5,
+                0,
+                6
+              ],
+              "log_margin": 6036.266961197769
+            },
+            {
+              "mapping": [
+                4,
+                1,
+                3,
+                5,
+                0,
+                6
+              ],
+              "log_margin": 2468.4484483687847
+            },
+            {
+              "mapping": [
+                4,
+                1,
+                3,
+                5,
+                0,
+                6
+              ],
+              "log_margin": 4724.830467157859
+            }
+          ]
+        },
+        "action_oracle": [
+          5,
+          0,
+          2,
+          3
+        ],
+        "action_binding": {
+          "mapping": [
+            5,
+            0,
+            2,
+            3
+          ],
+          "posterior": 1.0,
+          "log_margin": 64674.75792403099,
+          "second": [
+            2,
+            0,
+            5,
+            3
+          ],
+          "candidate_slots": [
+            0,
+            2,
+            3,
+            5
+          ]
+        },
+        "random_channels": [
+          7,
+          0,
+          3,
+          2,
+          1,
+          6
+        ],
+        "random_actions": [
+          4,
+          5,
+          2,
+          1
+        ]
+      },
+      {
+        "sensor_routes": [
+          3,
+          5,
+          2,
+          null,
+          null,
+          4,
+          0,
+          1
+        ],
+        "actuator_routes": [
+          3,
+          1,
+          null,
+          null,
+          2,
+          0
+        ],
+        "regimes": [
+          {
+            "interface_digest": "23bac106f0980c753ea6319e0e40dabcec0603c7e479cc4bbf59736cd0080d48",
+            "support": [
+              [],
+              [
+                2,
+                7
+              ],
+              [
+                3,
+                7
+              ],
+              [
+                2,
+                3,
+                7
+              ],
+              [
+                0,
+                3,
+                4,
+                7
+              ],
+              [
+                1,
+                3,
+                4,
+                5,
+                7
+              ]
+            ]
+          },
+          {
+            "interface_digest": "a9518816e1f8e4b2e6f853fc43f7d3abff0d80358c53fce086881003542340d8",
+            "support": [
+              [],
+              [
+                2,
+                7
+              ],
+              [
+                3,
+                7
+              ],
+              [
+                2,
+                3,
+                7
+              ],
+              [
+                0,
+                3,
+                4,
+                7
+              ],
+              [
+                1,
+                3,
+                4,
+                5,
+                7
+              ]
+            ]
+          },
+          {
+            "interface_digest": "42418e26644c7cbc77d6f38d4ce3b6887b799283b65f409a4f9a81fd84e8832e",
+            "support": [
+              [],
+              [
+                2,
+                7
+              ],
+              [
+                3,
+                7
+              ],
+              [
+                2,
+                3,
+                7
+              ],
+              [
+                0,
+                3,
+                4,
+                7
+              ],
+              [
+                1,
+                3,
+                4,
+                5,
+                7
+              ]
+            ]
+          },
+          {
+            "interface_digest": "9fefe8116e126c8205cceaa0f243a4a30840bed3f6aa490abc2419cd75c2e164",
+            "support": [
+              [],
+              [
+                2,
+                7
+              ],
+              [
+                3,
+                7
+              ],
+              [
+                2,
+                3,
+                7
+              ],
+              [
+                0,
+                3,
+                4,
+                7
+              ],
+              [
+                1,
+                3,
+                4,
+                5,
+                7
+              ]
+            ]
+          }
+        ],
+        "channel_oracle": [
+          6,
+          7,
+          2,
+          0,
+          5,
+          1
+        ],
+        "channel_binding": {
+          "mapping": [
+            6,
+            7,
+            2,
+            0,
+            5,
+            1
+          ],
+          "posterior": 1.0,
+          "log_margin": 19021.116524538083,
+          "second": [
+            6,
+            7,
+            0,
+            2,
+            5,
+            1
+          ],
+          "compatible": 4,
+          "per_stream": [
+            {
+              "mapping": [
+                6,
+                7,
+                2,
+                0,
+                5,
+                1
+              ],
+              "log_margin": 4730.650352244935
+            },
+            {
+              "mapping": [
+                6,
+                7,
+                2,
+                0,
+                5,
+                1
+              ],
+              "log_margin": 4242.384396522502
+            },
+            {
+              "mapping": [
+                6,
+                7,
+                2,
+                0,
+                5,
+                1
+              ],
+              "log_margin": 2050.8555982007674
+            },
+            {
+              "mapping": [
+                6,
+                7,
+                2,
+                0,
+                5,
+                1
+              ],
+              "log_margin": 4917.565108271221
+            }
+          ]
+        },
+        "action_oracle": [
+          5,
+          1,
+          4,
+          0
+        ],
+        "action_binding": {
+          "mapping": [
+            5,
+            1,
+            4,
+            0
+          ],
+          "posterior": 1.0,
+          "log_margin": 65345.38562939843,
+          "second": [
+            5,
+            0,
+            4,
+            1
+          ],
+          "candidate_slots": [
+            0,
+            1,
+            4,
+            5
+          ]
+        },
+        "random_channels": [
+          3,
+          4,
+          2,
+          7,
+          6,
+          0
+        ],
+        "random_actions": [
+          5,
+          1,
+          2,
+          0
+        ]
+      }
+    ]
+  },
+  "holdout": {
+    "worlds": 48,
+    "families": {
+      "push": 12,
+      "collect": 12,
+      "open": 12,
+      "joint": 12
+    },
+    "initial_overlap_with_all_prior": 0
+  },
+  "conditions": {
+    "0": {
+      "162610": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1055,
+          "push_successes": 272,
+          "collect_successes": 283,
+          "open_successes": 265,
+          "joint_successes": 235
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1055,
+          "push_successes": 272,
+          "collect_successes": 283,
+          "open_successes": 265,
+          "joint_successes": 235
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 155,
+          "push_successes": 90,
+          "collect_successes": 19,
+          "open_successes": 46,
+          "joint_successes": 0
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 632,
+          "push_successes": 189,
+          "collect_successes": 178,
+          "open_successes": 217,
+          "joint_successes": 48
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 193,
+          "push_successes": 97,
+          "collect_successes": 51,
+          "open_successes": 45,
+          "joint_successes": 0
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 190,
+          "push_successes": 90,
+          "collect_successes": 45,
+          "open_successes": 55,
+          "joint_successes": 0
+        }
+      },
+      "162710": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1051,
+          "push_successes": 276,
+          "collect_successes": 277,
+          "open_successes": 269,
+          "joint_successes": 229
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1051,
+          "push_successes": 276,
+          "collect_successes": 277,
+          "open_successes": 269,
+          "joint_successes": 229
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 171,
+          "push_successes": 94,
+          "collect_successes": 27,
+          "open_successes": 50,
+          "joint_successes": 0
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 625,
+          "push_successes": 203,
+          "collect_successes": 165,
+          "open_successes": 209,
+          "joint_successes": 48
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 198,
+          "push_successes": 102,
+          "collect_successes": 49,
+          "open_successes": 47,
+          "joint_successes": 0
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 186,
+          "push_successes": 88,
+          "collect_successes": 44,
+          "open_successes": 54,
+          "joint_successes": 0
+        }
+      }
+    },
+    "1": {
+      "162610": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1058,
+          "push_successes": 276,
+          "collect_successes": 281,
+          "open_successes": 270,
+          "joint_successes": 231
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1058,
+          "push_successes": 276,
+          "collect_successes": 281,
+          "open_successes": 270,
+          "joint_successes": 231
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 213,
+          "push_successes": 40,
+          "collect_successes": 65,
+          "open_successes": 106,
+          "joint_successes": 2
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 643,
+          "push_successes": 221,
+          "collect_successes": 172,
+          "open_successes": 196,
+          "joint_successes": 54
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 289,
+          "push_successes": 50,
+          "collect_successes": 110,
+          "open_successes": 113,
+          "joint_successes": 16
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 78,
+          "push_successes": 0,
+          "collect_successes": 24,
+          "open_successes": 54,
+          "joint_successes": 0
+        }
+      },
+      "162710": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1055,
+          "push_successes": 278,
+          "collect_successes": 285,
+          "open_successes": 274,
+          "joint_successes": 218
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1055,
+          "push_successes": 278,
+          "collect_successes": 285,
+          "open_successes": 274,
+          "joint_successes": 218
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 215,
+          "push_successes": 37,
+          "collect_successes": 71,
+          "open_successes": 104,
+          "joint_successes": 3
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 668,
+          "push_successes": 218,
+          "collect_successes": 180,
+          "open_successes": 214,
+          "joint_successes": 56
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 275,
+          "push_successes": 40,
+          "collect_successes": 109,
+          "open_successes": 111,
+          "joint_successes": 15
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 79,
+          "push_successes": 0,
+          "collect_successes": 24,
+          "open_successes": 55,
+          "joint_successes": 0
+        }
+      }
+    },
+    "2": {
+      "162610": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1063,
+          "push_successes": 273,
+          "collect_successes": 282,
+          "open_successes": 269,
+          "joint_successes": 239
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1063,
+          "push_successes": 273,
+          "collect_successes": 282,
+          "open_successes": 269,
+          "joint_successes": 239
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 353,
+          "push_successes": 156,
+          "collect_successes": 25,
+          "open_successes": 120,
+          "joint_successes": 52
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 734,
+          "push_successes": 242,
+          "collect_successes": 186,
+          "open_successes": 225,
+          "joint_successes": 81
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 298,
+          "push_successes": 151,
+          "collect_successes": 13,
+          "open_successes": 111,
+          "joint_successes": 23
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 126,
+          "push_successes": 45,
+          "collect_successes": 41,
+          "open_successes": 40,
+          "joint_successes": 0
+        }
+      },
+      "162710": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1061,
+          "push_successes": 273,
+          "collect_successes": 284,
+          "open_successes": 270,
+          "joint_successes": 234
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1061,
+          "push_successes": 273,
+          "collect_successes": 284,
+          "open_successes": 270,
+          "joint_successes": 234
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 357,
+          "push_successes": 155,
+          "collect_successes": 22,
+          "open_successes": 124,
+          "joint_successes": 56
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 722,
+          "push_successes": 255,
+          "collect_successes": 184,
+          "open_successes": 225,
+          "joint_successes": 58
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 304,
+          "push_successes": 155,
+          "collect_successes": 10,
+          "open_successes": 111,
+          "joint_successes": 28
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 116,
+          "push_successes": 36,
+          "collect_successes": 44,
+          "open_successes": 36,
+          "joint_successes": 0
+        }
+      }
+    },
+    "3": {
+      "162610": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1065,
+          "push_successes": 279,
+          "collect_successes": 284,
+          "open_successes": 269,
+          "joint_successes": 233
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1065,
+          "push_successes": 279,
+          "collect_successes": 284,
+          "open_successes": 269,
+          "joint_successes": 233
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 166,
+          "push_successes": 41,
+          "collect_successes": 5,
+          "open_successes": 90,
+          "joint_successes": 30
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 589,
+          "push_successes": 203,
+          "collect_successes": 167,
+          "open_successes": 175,
+          "joint_successes": 44
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 151,
+          "push_successes": 31,
+          "collect_successes": 6,
+          "open_successes": 76,
+          "joint_successes": 38
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 369,
+          "push_successes": 91,
+          "collect_successes": 80,
+          "open_successes": 141,
+          "joint_successes": 57
+        }
+      },
+      "162710": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1056,
+          "push_successes": 279,
+          "collect_successes": 285,
+          "open_successes": 267,
+          "joint_successes": 225
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1056,
+          "push_successes": 279,
+          "collect_successes": 285,
+          "open_successes": 267,
+          "joint_successes": 225
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 167,
+          "push_successes": 48,
+          "collect_successes": 5,
+          "open_successes": 88,
+          "joint_successes": 26
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 576,
+          "push_successes": 205,
+          "collect_successes": 157,
+          "open_successes": 168,
+          "joint_successes": 46
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 144,
+          "push_successes": 27,
+          "collect_successes": 2,
+          "open_successes": 74,
+          "joint_successes": 41
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 384,
+          "push_successes": 97,
+          "collect_successes": 78,
+          "open_successes": 141,
+          "joint_successes": 68
+        }
+      }
+    }
+  },
+  "worlds_with_success_trace": {
+    "0": {
+      "162610": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 13,
+        "action_only": 48,
+        "identity": 14,
+        "random": 14
+      },
+      "162710": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 14,
+        "action_only": 47,
+        "identity": 14,
+        "random": 13
+      }
+    },
+    "1": {
+      "162610": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 22,
+        "action_only": 48,
+        "identity": 24,
+        "random": 4
+      },
+      "162710": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 20,
+        "action_only": 48,
+        "identity": 24,
+        "random": 4
+      }
+    },
+    "2": {
+      "162610": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 23,
+        "action_only": 48,
+        "identity": 21,
+        "random": 10
+      },
+      "162710": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 22,
+        "action_only": 47,
+        "identity": 22,
+        "random": 10
+      }
+    },
+    "3": {
+      "162610": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 13,
+        "action_only": 46,
+        "identity": 13,
+        "random": 29
+      },
+      "162710": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 13,
+        "action_only": 46,
+        "identity": 12,
+        "random": 29
+      }
+    }
+  },
+  "aggregate": {
+    "episodes_per_condition": 9216,
+    "joint_episodes": 2304,
+    "learned_total": 8464,
+    "oracle_total": 8464,
+    "sensor_only_total": 1797,
+    "action_only_total": 5189,
+    "identity_total": 1852,
+    "random_total": 1528,
+    "learned_joint": 1844,
+    "oracle_joint": 1844,
+    "sensor_only_joint": 169,
+    "action_only_joint": 435,
+    "identity_joint": 161,
+    "random_joint": 125
+  },
+  "source_scan": {
+    "push": true,
+    "collect": true,
+    "open": true,
+    "family": true,
+    "goal": true,
+    "reward": true,
+    "score": true,
+    "loss": true,
+    "gradient": true,
+    "torch": true,
+    "tensorflow": true,
+    "sklearn": true,
+    "search": true,
+    "shortest": true,
+    "north": true,
+    "south": true,
+    "east": true,
+    "west": true,
+    "up": true,
+    "down": true,
+    "left": true,
+    "right": true
+  },
+  "model_writes_during_evaluation": 0,
+  "gate": {
+    "four_unseen_composite_sensor_subsets_recovered": true,
+    "all_sixteen_unlabeled_streams_agree_with_oracle": true,
+    "exactly_four_support_compatible_bases_per_interface": true,
+    "combined_sensor_log_margin_at_least_10000": true,
+    "each_stream_sensor_log_margin_at_least_1000": true,
+    "four_unseen_actuator_subsets_recovered": true,
+    "all_permanent_zero_effect_slots_rejected": true,
+    "holdout_initials_disjoint_from_training_and_calibration": true,
+    "learned_matches_oracle_every_condition": true,
+    "learned_joint_rate_at_least_45pct": true,
+    "both_subsets_beat_sensor_only_by_45pp": true,
+    "both_subsets_beat_action_only_by_40pp": true,
+    "both_subsets_beat_identity_by_45pp": true,
+    "both_subsets_beat_random_by_45pp": true,
+    "anonymous_support_probability_source": true,
+    "frozen_policy_and_model_writes_zero": true
+  },
+  "adopted": true,
+  "seconds": 196.4124934579595,
+  "protocol_sha256": "221dae0a8d5804a3f6b0112f1f9cab477aea5ebd02653c1d797fa7ec63669bb1",
+  "holdout_sha256": "84d976fc6e438236e4d0d8e15796dd8e3ff619a1eba5c2057872b2818c44a268",
+  "source_sha256": {
+    "bpc_composite_binding_v16.py": "f4835340871bee46f692a891880fc5f282cb7d706058575870e8d2746956bd70",
+    "bpc_open_interface_v15.py": "51798c150c56f79a7d8a34fedf131ca848a537db745d5cc164e3cc645829ad0d",
+    "bpc_three_factor_v12.py": "e7a07fbc0756fc2af8bc100cf9963e472a539d5cf9dc0348a7a3ef085bc7ff8e",
+    "bpc_evidence_field_v11.py": "8794d9a22f80242f0a59298d36592fb2300ea89ae22cc3460a43a60d3750253b",
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "bpc_direct_composition_v09.py": "6d15f3e2cb59c42d097860f2e463cfb7f46f54b7eb98b6a9963d421748a8ac3c",
+    "general_bpc_v7.py": "d37040bd087e0bbf135a491ab319411f7dd10d823038734327af1136467f05f8",
+    "experiment_v5.py": "0f883f7f0aa6d3a37299322e8214776c9179516b7be632094cd18c629231e493",
+    "experiment_v16_composite_frozen.py": "b0bbfaaad5674ec79120d5b20f603f9283b312fdaa2d94958915bfefd6b38eb2",
+    "freeze_v16_composite.py": "9a7da637d7ceea27de0d6cc1958f2940d4e421dc2d7ff9c477bc4d5300aea7a6"
+  },
+  "supported_claim": "A frozen non-neural BPC controller identified its canonical six-sensor/four-action interface inside four simultaneous unseen eight-channel/six-slot interfaces with displaced-XOR composite sensor distractors and null action slots. Empirical transition-support invariance reduced each sensor assignment space from 20,160 to four compatible bases; probabilities across four separately sampled unlabeled regimes selected the oracle basis and preserved oracle direct control on disjoint unseen worlds.",
+  "boundary": "Developer-frozen synthetic composite-interface transfer. Four separately sampled unlabeled calibration regimes, canonical/observed cardinalities, displaced-XOR nuisance synthesis, null action slots, coordinate grid, samplers, mixture schedules, interaction budget, probability families, generators, and terminal events remain supplied. The binder receives no regime, task, entity, direction, success, or reward names; no neural network, planner, search, joint-task policy training, or evaluation learning is used."
+}
