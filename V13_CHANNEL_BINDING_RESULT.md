@@ -56,6 +56,7 @@ It is absent from calibration inference, BPC training, evaluation, and runtime.
 - Holdout SHA-256: `165bb72e5f8151e5d0c907f4da4aac18c0e9392a8db2b8aa3d005e966f3a9eb2`
 - Video SHA-256: `a01f611d7e18aeef52a88dfd05f48b7cbc697bdbaa456ee347ce73d5680a738f`
 - GitHub release: <https://github.com/JoffeeLin/bpc-sokoban-demo/releases/tag/v13.0.0>
+- X video post: <https://x.com/JoffeeLin/status/2101735002530808037>
 
 ## Boundary
 

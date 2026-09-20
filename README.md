@@ -20,6 +20,8 @@ and the [`machine-readable result`](artifacts/v13binding/result.json).
 
 **[Watch 12 frozen traces across four unseen sensor interfaces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v13.0.0/bpc_channel_binding_v13_12_unseen_worlds.mp4)**
 
+**[View the v0.13 result and video on X](https://x.com/JoffeeLin/status/2101735002530808037)**
+
 This is bounded synthetic sensor-interface transfer. The channel count,
 calibration sampler, transition likelihood family, generators, and terminal
 events remain supplied; it is not arbitrary grounding or AGI.
