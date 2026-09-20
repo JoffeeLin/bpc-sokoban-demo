@@ -22,6 +22,8 @@ under true physics, and evaluation performed zero model writes. See
 
 **[Watch all eight frozen holdout replays](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v5.0.0/bpc_reversible_equivalence_v05_8_unseen.mp4)**
 
+**[View the v0.5 video on X](https://x.com/JoffeeLin/status/2101683972887707777)**
+
 The remaining action-displacement interface, macro push-candidate enumeration,
 terminal seeding, and backward wave are still supplied. This is a second hybrid
 mechanism advance—not direct policy control, autonomous solver discovery,

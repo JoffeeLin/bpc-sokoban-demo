@@ -79,3 +79,4 @@ tasks, or is AGI.
 
 - GitHub release: `https://github.com/JoffeeLin/bpc-sokoban-demo/releases/tag/v5.0.0`
 - Video asset: `https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v5.0.0/bpc_reversible_equivalence_v05_8_unseen.mp4`
+- X video: `https://x.com/JoffeeLin/status/2101683972887707777`
