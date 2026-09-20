@@ -1,0 +1,58 @@
+[
+  {
+    "id": "V6H1",
+    "boxes": 1,
+    "shortest_actions": 8,
+    "reference_states": 157,
+    "map": "#######\n#@    #\n#   $ #\n#     #\n#  .  #\n#   # #\n#######"
+  },
+  {
+    "id": "V6H2",
+    "boxes": 2,
+    "shortest_actions": 18,
+    "reference_states": 10040,
+    "map": "########\n#     .#\n#      #\n# #    #\n# @$ # #\n#   $  #\n#  .  ##\n########"
+  },
+  {
+    "id": "V6H3",
+    "boxes": 3,
+    "shortest_actions": 22,
+    "reference_states": 70670,
+    "map": "#########\n#       #\n#      $#\n# $ . $.#\n#       #\n#       #\n#  .    #\n#      @#\n#########"
+  },
+  {
+    "id": "V6H4",
+    "boxes": 4,
+    "shortest_actions": 17,
+    "reference_states": 163078,
+    "map": "#########\n#  #   ##\n#       #\n#. $ $  #\n#  .$   #\n#   #  .#\n# # .$  #\n#    @  #\n#########"
+  },
+  {
+    "id": "V6H5",
+    "boxes": 1,
+    "shortest_actions": 7,
+    "reference_states": 114,
+    "map": "#######\n# @   #\n#   # #\n##.$  #\n#     #\n# #   #\n#######"
+  },
+  {
+    "id": "V6H6",
+    "boxes": 2,
+    "shortest_actions": 17,
+    "reference_states": 2066,
+    "map": "########\n#     ##\n#  # $ #\n# @    #\n#.     #\n#$     #\n#     .#\n########"
+  },
+  {
+    "id": "V6H7",
+    "boxes": 3,
+    "shortest_actions": 21,
+    "reference_states": 116808,
+    "map": "#########\n#       #\n#      .#\n#  $ .  #\n#  $    #\n#    @ $#\n#      .#\n#   #   #\n#########"
+  },
+  {
+    "id": "V6H8",
+    "boxes": 4,
+    "shortest_actions": 20,
+    "reference_states": 221778,
+    "map": "#########\n#   .# .#\n#    $  #\n# .     #\n# #     #\n#  $    #\n#  $    #\n# @ $.# #\n#########"
+  }
+]

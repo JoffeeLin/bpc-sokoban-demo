@@ -1,4 +1,30 @@
-# GeneralBPC: Learned World + Learned Reversible Equivalence
+# GeneralBPC: Learned World + Relations + Macro Geometry
+
+## v0.6.1 breakthrough: supplied macro geometry removed
+
+v0.6 learns anonymous push-delta templates from random interaction and uses
+them instead of hand-written box-behind/player-behind geometry. Its macro
+solver contains no supplied `ACTIONS`, `action ^ 1`, or `moved()` call.
+
+| Frozen condition | Push-template audit | New maps |
+|---|---:|---:|
+| Learned anonymous geometry | **1,443 / 1,443** | **8 / 8** |
+| Rotate templates, same experience | **0 / 1,443** | **0 / 8** |
+
+All solutions replayed under true physics, both new four-box maps passed, and
+evaluation performed zero model writes. The original v0.6 runner failed on a
+tuple/list serialization assertion before touching the holdout; that failure
+is preserved, and v0.6.1 changes only canonical JSON comparison. See
+[V061_RESULT.md](V061_RESULT.md) and the machine-readable
+[v0.6.1 result](artifacts/v061/result.json).
+
+![Frozen v0.6 result](artifacts/v061/poster_v06.png)
+
+**[Watch all eight frozen holdout replays](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v6.0.0/bpc_learned_geometry_v06_8_unseen.mp4)**
+
+The remaining local action-relative addressing, terminal seeding,
+equivalence-class choice, and backward wave are supplied. This is another
+hybrid mechanism advance—not cross-task general intelligence or AGI.
 
 ## v0.5 breakthrough: supplied reachability removed
 
@@ -118,11 +144,13 @@ is not part of the adopted controller.
 
 The `classifier.dev` skill first triaged 18 de-identified summaries of earlier
 BPC mechanisms, then classified 12 candidate replacements for v0.4's supplied
-reachability routine. It selected exact learned forward/inverse round trips as
-the closest implementable BPC mechanism. Its response named `jev-1.13.0`; no
-classifier output, remote model, or API call enters BPC training, evaluation,
-or runtime. Candidate ranking guided development only; the committed frozen
-test, causal control, and deterministic rerun provide the evidence.
+reachability routine and 16 candidates for the next scaffold. It selected
+exact learned forward/inverse round trips for v0.5 and ranked learned macro
+push deltas as a high-leverage implementable v0.6 experiment. Its response
+named `jev-1.13.0`; no classifier output, remote model, or API call enters BPC
+training, evaluation, or runtime. Candidate ranking guided development only;
+the committed frozen tests, causal controls, and deterministic reruns provide
+the evidence.
 
 ## Task-agnostic kernel
 
@@ -145,9 +173,9 @@ Requirements: Python 3.11+, Pillow 12, and `ffmpeg` on `PATH`.
 
 ```bash
 python3 -m pip install -r requirements.txt
-python3 test_reversible_wave_v05.py
-python3 experiment_v05_frozen.py
-python3 render_v05.py
+python3 test_learned_geometry_v06.py
+python3 experiment_v061_frozen.py
+python3 render_v06.py
 ```
 
 The committed protocol and holdout refuse silent source changes by verifying

@@ -1,0 +1,391 @@
+{
+  "format": "bpc-learned-geometry-v061",
+  "evidence_level": "developer-frozen local holdout; not third-party blind",
+  "predecessor_failure": "Container-type assertion before audit or holdout; v0.6.1 changes only JSON normalization.",
+  "training_experience": {
+    "blocked": 80197,
+    "box_change": 4209,
+    "move": 155594
+  },
+  "training_manifest": {
+    "episodes": 3000,
+    "steps_per_episode": 80,
+    "unique_levels": 2857,
+    "levels_sha256": "48a78844f2475bcc29289d6ad19062710f9df459dba5255552efb6d6f3d015c2"
+  },
+  "model_sha256": "4b6ce7815dc350acd03e2362511004c66fc536acaea62f1645ac717ddfce8070",
+  "inverse": [
+    1,
+    0,
+    3,
+    2
+  ],
+  "inverse_evidence": [
+    [
+      0,
+      5806,
+      0,
+      0
+    ],
+    [
+      5810,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      5738
+    ],
+    [
+      0,
+      0,
+      5661,
+      0
+    ]
+  ],
+  "templates": [
+    [
+      [
+        -1,
+        0
+      ],
+      [
+        -2,
+        0
+      ],
+      [
+        -1,
+        0
+      ]
+    ],
+    [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    [
+      [
+        0,
+        -1
+      ],
+      [
+        0,
+        -2
+      ],
+      [
+        0,
+        -1
+      ]
+    ],
+    [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  ],
+  "template_evidence": [
+    [
+      {
+        "template": [
+          [
+            -1,
+            0
+          ],
+          [
+            -2,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "count": 986
+      }
+    ],
+    [
+      {
+        "template": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "count": 1053
+      }
+    ],
+    [
+      {
+        "template": [
+          [
+            0,
+            -1
+          ],
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        "count": 1060
+      }
+    ],
+    [
+      {
+        "template": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "count": 1021
+      }
+    ]
+  ],
+  "template_training_pushes": 4120,
+  "template_audit": {
+    "learned": {
+      "pushes": 1443,
+      "exact": 1443
+    },
+    "rotated": {
+      "pushes": 1443,
+      "exact": 0
+    }
+  },
+  "holdout": {
+    "maps": 8,
+    "boxes": [
+      1,
+      2,
+      3,
+      4,
+      1,
+      2,
+      3,
+      4
+    ],
+    "shortest_action_distances": [
+      8,
+      18,
+      22,
+      17,
+      7,
+      17,
+      21,
+      20
+    ]
+  },
+  "conditions": {
+    "primary": {
+      "V6H1": {
+        "solved": true,
+        "complete": false,
+        "states": 8,
+        "push_phase": 3,
+        "actions": 10,
+        "sequence": "RRRRDLULDD",
+        "seconds": 0.006915749981999397,
+        "replay_solved": true
+      },
+      "V6H2": {
+        "solved": true,
+        "complete": false,
+        "states": 227,
+        "push_phase": 8,
+        "actions": 26,
+        "sequence": "RDDRRULULURRLDDRRUUULLLDDD",
+        "seconds": 0.16163183300523087,
+        "replay_solved": true
+      },
+      "V6H3": {
+        "solved": true,
+        "complete": false,
+        "states": 2111,
+        "push_phase": 7,
+        "actions": 34,
+        "sequence": "LLLLLLUUUURURDRRDRRULUURDLDLULLDDD",
+        "seconds": 3.6214377080323175,
+        "replay_solved": true
+      },
+      "V6H4": {
+        "solved": true,
+        "complete": false,
+        "states": 6716,
+        "push_phase": 8,
+        "actions": 31,
+        "sequence": "RUUUUULLDLLRRRRURDLLDLRRURDLDDL",
+        "seconds": 11.100036833027843,
+        "replay_solved": true
+      },
+      "V6H5": {
+        "solved": true,
+        "complete": false,
+        "states": 3,
+        "push_phase": 1,
+        "actions": 7,
+        "sequence": "RRRDDLL",
+        "seconds": 0.004576625011395663,
+        "replay_solved": true
+      },
+      "V6H6": {
+        "solved": true,
+        "complete": false,
+        "states": 187,
+        "push_phase": 6,
+        "actions": 28,
+        "sequence": "RRUURDLDRURDDLLLLDDLURRRRURD",
+        "seconds": 0.23995995795121416,
+        "replay_solved": true
+      },
+      "V6H7": {
+        "solved": true,
+        "complete": false,
+        "states": 2042,
+        "push_phase": 9,
+        "actions": 26,
+        "sequence": "LLLUURRRRDRULLLLLDRRDRURRD",
+        "seconds": 3.6343259580316953,
+        "replay_solved": true
+      },
+      "V6H8": {
+        "solved": true,
+        "complete": false,
+        "states": 42768,
+        "push_phase": 13,
+        "actions": 54,
+        "sequence": "LUUUURRRURRDRULLLLLLDDDRRURRDDLUUUULDDDLDDRUUURULDDDDR",
+        "seconds": 63.003584999998566,
+        "replay_solved": true
+      }
+    },
+    "rotated_geometry": {
+      "V6H1": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.002404875005595386,
+        "replay_solved": false
+      },
+      "V6H2": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.003091166028752923,
+        "replay_solved": false
+      },
+      "V6H3": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.004500958020798862,
+        "replay_solved": false
+      },
+      "V6H4": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.004060667008161545,
+        "replay_solved": false
+      },
+      "V6H5": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.0019764580065384507,
+        "replay_solved": false
+      },
+      "V6H6": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.0031190410372801125,
+        "replay_solved": false
+      },
+      "V6H7": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.004834457999095321,
+        "replay_solved": false
+      },
+      "V6H8": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.004513708990998566,
+        "replay_solved": false
+      }
+    }
+  },
+  "source_scan": {
+    "supplied_ACTIONS": true,
+    "xor_inverse": true,
+    "supplied_moved": true
+  },
+  "gate": {
+    "push_templates_uniquely_discovered": true,
+    "learned_template_audit_exact": true,
+    "rotated_template_audit_zero": true,
+    "all_new_holdouts_solved": true,
+    "all_solutions_replay": true,
+    "all_unseen_four_box_maps_solved": true,
+    "beats_rotated_geometry_by_75pp": true,
+    "no_handwritten_macro_action_geometry": true,
+    "frozen_model_writes_zero": true
+  },
+  "adopted": true,
+  "frozen_model_writes": 0,
+  "seconds": 83.08738545799861,
+  "protocol_sha256": "ac2c1ef77aa81267414f2d06d08f05ffe9b3e25c132ddc34ebf295ec442aa023",
+  "source_sha256": {
+    "bpc_learned_wave_v04.py": "700ee8e1a6810b9491a214fbe378b0c2362c188adfab726f1cd5fbdff01f62ed",
+    "bpc_reversible_wave_v05.py": "e550fb84e9491bfefd5b929cfd0b0a8e83f9daa5512de8cafe190de4e810c806",
+    "bpc_learned_geometry_v06.py": "10c0bd4f556d13bb12570703c403bff254e72569f57dd201544c1767e9ffca3b",
+    "experiment_v06_frozen.py": "6d691221052c51b537e22b101683f2bb7ec26f8741b65a42e31deacbc595eebe",
+    "experiment_v061_frozen.py": "78c7d023080a742732a3a9d75f05c62f2219422544326586965dd7b14a0eab59",
+    "freeze_v061.py": "de4bf9da76373e83b5da30de282bb22434ea24ed636fcd246accf108bf8015cd"
+  },
+  "supported_claim": "Anonymous push-delta templates learned from random interaction replace supplied macro predecessor geometry inside the fixed learned-world reversible wave on new layouts.",
+  "boundary": "Not direct control, cross-task transfer, or AGI. Local action-relative addressing, terminal seeding, equivalence-class choice, and backward propagation remain supplied."
+}

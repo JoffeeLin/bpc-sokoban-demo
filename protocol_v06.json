@@ -1,0 +1,223 @@
+{
+  "format": "bpc-learned-geometry-v06-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can anonymous local delta templates learned only from random interaction replace supplied macro box-behind and player-behind geometry on new layouts?",
+  "config": {
+    "world_seed": 40404,
+    "world_episodes": 3000,
+    "world_steps": 80,
+    "inverse_seed": 50505,
+    "inverse_episodes": 600,
+    "inverse_steps": 60,
+    "template_seed": 60606,
+    "template_episodes": 3000,
+    "template_steps": 80,
+    "audit_seed": 66006,
+    "audit_episodes": 1000,
+    "audit_steps": 80,
+    "holdout_count": 8,
+    "holdout_seed": 66006,
+    "state_limit": 5000000
+  },
+  "expected_model_sha256": "4b6ce7815dc350acd03e2362511004c66fc536acaea62f1645ac717ddfce8070",
+  "expected_training_manifest": {
+    "episodes": 3000,
+    "steps_per_episode": 80,
+    "unique_levels": 2857,
+    "levels_sha256": "48a78844f2475bcc29289d6ad19062710f9df459dba5255552efb6d6f3d015c2"
+  },
+  "expected_inverse": [
+    1,
+    0,
+    3,
+    2
+  ],
+  "expected_inverse_evidence": [
+    [
+      0,
+      5806,
+      0,
+      0
+    ],
+    [
+      5810,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      5738
+    ],
+    [
+      0,
+      0,
+      5661,
+      0
+    ]
+  ],
+  "expected_templates": [
+    [
+      [
+        -1,
+        0
+      ],
+      [
+        -2,
+        0
+      ],
+      [
+        -1,
+        0
+      ]
+    ],
+    [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    [
+      [
+        0,
+        -1
+      ],
+      [
+        0,
+        -2
+      ],
+      [
+        0,
+        -1
+      ]
+    ],
+    [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  ],
+  "expected_template_evidence": [
+    [
+      {
+        "template": [
+          [
+            -1,
+            0
+          ],
+          [
+            -2,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "count": 986
+      }
+    ],
+    [
+      {
+        "template": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "count": 1053
+      }
+    ],
+    [
+      {
+        "template": [
+          [
+            0,
+            -1
+          ],
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        "count": 1060
+      }
+    ],
+    [
+      {
+        "template": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "count": 1021
+      }
+    ]
+  ],
+  "expected_template_training_pushes": 4120,
+  "holdout_sha256": "26add850a8a923317bc8d097ea95dbf034fc1d304bf3c1508c6fcdd97dc089c0",
+  "adoption_thresholds": {
+    "template_min_support": 900,
+    "template_audit_rate": 1.0,
+    "rotated_template_max_audit_rate": 0.0,
+    "solve_margin": 0.75
+  },
+  "controls": [
+    "rotate the learned templates across action identities with identical experience and world model",
+    "source scan forbids hard-coded action vectors, action xor inverse, and moved() in the v0.6 macro solver"
+  ],
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "role": "development candidate routing only; absent from training evaluation and runtime"
+  },
+  "source_sha256": {
+    "bpc_learned_wave_v04.py": "700ee8e1a6810b9491a214fbe378b0c2362c188adfab726f1cd5fbdff01f62ed",
+    "bpc_reversible_wave_v05.py": "e550fb84e9491bfefd5b929cfd0b0a8e83f9daa5512de8cafe190de4e810c806",
+    "bpc_learned_geometry_v06.py": "10c0bd4f556d13bb12570703c403bff254e72569f57dd201544c1767e9ffca3b",
+    "v04_maps.py": "be0ba58041c760f4c2f7e48d24fb3da046c88c907c1f20c2c2bfd24a5dda9fe3",
+    "experiment_v06_frozen.py": "6d691221052c51b537e22b101683f2bb7ec26f8741b65a42e31deacbc595eebe",
+    "freeze_v06.py": "2d11975382b0ec392c2101e5913aa0203846f52a1703d77fdf40631587137fba"
+  },
+  "failure_policy": "Retain every miss; do not replace maps, alter seeds, change code, or lower gates after execution.",
+  "boundary": "Developer-frozen mechanism evidence. Local action-relative addressing, terminal seeding, equivalence-class choice, and backward propagation remain supplied."
+}

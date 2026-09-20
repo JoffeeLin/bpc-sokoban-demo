@@ -1,0 +1,9 @@
+{
+  "format": "bpc-learned-geometry-v06-execution-failure",
+  "protocol_sha256": "bee35c85d01f8b3154497a176958c6749a7e1995f4ac5f4e122fb26aa45672f2",
+  "stage": "frozen_artifact_reconstruction_before_audit_or_holdout",
+  "exception": "AssertionError: tuple-valued template evidence compared directly with its JSON list representation",
+  "holdout_executed": false,
+  "result_produced": false,
+  "resolution": "Retain v0.6 unchanged. Freeze v0.6.1 with canonical JSON normalization only; reuse the still-unexecuted holdout and every original gate."
+}
