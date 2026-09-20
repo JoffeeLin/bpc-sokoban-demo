@@ -32,12 +32,20 @@ TRAIN_EPISODES = 12_000
 EVAL_EPISODES = 32
 SEED = 20_260_920
 
-BASE_PLAYER, BASE_BOX, BASE_GOAL = (4, 5), (4, 4), (6, 2)
-BASE_WALLS = {
-    (3, 1), (3, 2), (7, 2), (7, 3), (1, 4),
-    (2, 4), (4, 6), (5, 6), (6, 6), (2, 7),
-}
-EXTRAS = ((), ((1, 7),), ((7, 7),), ((1, 1),), ((1, 2),))
+# Ten independently generated, solver-validated layouts. They are frozen here
+# as literal inputs; no transform pairs or generated variants enter evaluation.
+LEVEL_MAPS = (
+    ("#########", "## #    #", "# #  #G #", "##P    ##", "#   #   #", "# #  B ##", "#       #", "# #    ##", "#########"),
+    ("#########", "# #  #  #", "#    #  #", "##      #", "#  #    #", "# ##    #", "# #     #", "#   BGP##", "#########"),
+    ("#########", "#  ##   #", "#       #", "##B # # #", "#      ##", "#    #  #", "# P     #", "# G  #  #", "#########"),
+    ("#########", "#     ###", "#  B#   #", "# #     #", "#  G P# #", "#   ## ##", "#  #    #", "# ##    #", "#########"),
+    ("#########", "#    #  #", "###     #", "#    G# #", "# B  ## #", "#  P#   #", "#      ##", "##     ##", "#########"),
+    ("#########", "###    P#", "# ## G  #", "#    B  #", "#   #   #", "##  ##  #", "# # #   #", "#     # #", "#########"),
+    ("#########", "# #  #  #", "#  ##   #", "##     ##", "#   # # #", "# P    ##", "# # B   #", "#  #  G #", "#########"),
+    ("#########", "#   #   #", "#  #    #", "###     #", "#### P# #", "#    B# #", "##      #", "#      G#", "#########"),
+    ("#########", "#   # ###", "## ##   #", "#   ### #", "## P    #", "# #   # #", "##G  B  #", "#     # #", "#########"),
+    ("#########", "# ## #  #", "# # #   #", "#  G   ##", "#  #    #", "#       #", "#  B  P##", "##      #", "#########"),
+)
 COLORS = {
     "wall": (31, 52, 80), "floor": (12, 27, 48), "goal": (255, 200, 87),
     "box": (255, 107, 122), "player": (69, 217, 230), "box_goal": (92, 225, 161),
@@ -45,18 +53,19 @@ COLORS = {
 OBS_CACHE: dict[tuple[int, tuple[int, int], tuple[int, int]], bytes] = {}
 
 
-def mirror_cell(cell: tuple[int, int]) -> tuple[int, int]:
-    return SIZE - 1 - cell[0], cell[1]
-
-
 class World:
     """Game physics only; no route, planner, labels, or coordinates are exposed to BPC."""
 
     def __init__(self, level: int):
         self.level = level
-        transform = mirror_cell if level % 2 else lambda p: p
-        self.player_start, self.box_start, self.goal = map(transform, (BASE_PLAYER, BASE_BOX, BASE_GOAL))
-        self.walls = {transform(p) for p in BASE_WALLS | set(EXTRAS[level // 2])}
+        self.walls, self.player_start, self.box_start, self.goal = set(), None, None, None
+        for y, row in enumerate(LEVEL_MAPS[level]):
+            for x, value in enumerate(row):
+                if value == "#": self.walls.add((x, y))
+                elif value == "P": self.player_start = (x, y)
+                elif value == "B": self.box_start = (x, y)
+                elif value == "G": self.goal = (x, y)
+        assert self.player_start and self.box_start and self.goal
         self.reset()
 
     def reset(self) -> None:
@@ -124,20 +133,9 @@ class World:
 
 
 @lru_cache(maxsize=None)
-def reflect_bits(bits: bytes) -> bytes:
-    stride = 6
-    out = bytearray(len(bits))
-    for y in range(SIZE):
-        for x in range(SIZE):
-            dst, src = (y * SIZE + x) * stride, (y * SIZE + SIZE - 1 - x) * stride
-            out[dst:dst + stride] = bits[src:src + stride]
-    return bytes(out)
-
-
-@lru_cache(maxsize=None)
 def canonical(bits: bytes) -> tuple[bytes, bool]:
-    reflected = reflect_bits(bits)
-    return (reflected, True) if reflected < bits else (bits, False)
+    # Identity only: no mirror/rotation shortcut is available to the model.
+    return bits, False
 
 
 def canonical_action(action: int, reflected: bool) -> int:
@@ -232,13 +230,15 @@ def train() -> dict:
     frozen = evaluate(model, tuple(range(10)))
     zero = evaluate(BPC(7), tuple(range(10)))
     assert before == model.writes, "frozen evaluation wrote to memory"
-    assert all(frozen[level] == EVAL_EPISODES for level in range(10)), frozen
     assert all(zero[level] == 0 for level in range(10)), zero
+    trained_pass = all(frozen[level] == EVAL_EPISODES for level in TRAIN_LEVELS)
+    unseen_passes = sum(frozen[level] == EVAL_EPISODES for level in TEST_LEVELS)
+    adopted = trained_pass and unseen_passes == len(TEST_LEVELS)
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     with MODEL_PATH.open("wb") as file:
         pickle.dump(model, file, protocol=5)
     result = {
-        "format": "bpc-sokoban-python-cross-level-v1", "development_only": True,
+        "format": "bpc-sokoban-python-diverse-cross-level-v2", "development_only": True,
         "blind_result": False, "agi_claim": False,
         "input": "9x9 RGB high-2-bit raw binary (486 bits)",
         "model": "one shared sparse BPC probability cube", "train_levels": [1, 3, 5, 7, 9],
@@ -247,9 +247,10 @@ def train() -> dict:
         "frozen_successes": {str(k + 1): v for k, v in frozen.items()},
         "zero_control_successes": {str(k + 1): v for k, v in zero.items()},
         "frozen_persistent_writes": model.writes - before, "memory_cells": len(model.counts),
-        "model_sha256": model.digest(),
-        "prior": "predeclared horizontal-reflection equivariance over raw pixels and LEFT/RIGHT actions",
-        "boundary": "held-out mirrored-layout transfer under built-in reflection equivariance; not arbitrary unseen-maze generalization or AGI",
+        "model_sha256": model.digest(), "trained_levels_passed": trained_pass,
+        "unseen_levels_passed": unseen_passes, "adopted": adopted,
+        "prior": "identity raw-frame query only; no mirror/rotation mapping and no planner",
+        "boundary": "five independently generated held-out layouts; failure is retained; no AGI claim",
     }
     RESULT_PATH.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2))
@@ -318,12 +319,15 @@ def render(world: World, action: int | None, values: list[float], condition: str
     text(d, (661, 470), action_text, 20, gold, True)
     text(d, (661, 512), "ONE SHARED MODEL · FROZEN WRITES = 0", 16, green, True)
     cards = ((18, 602, 310, 672), (324, 602, 616, 672), (630, 602, 950, 672), (964, 602, 1262, 672))
+    unseen_total = sum(result["frozen_successes"][str(level)] for level in (2, 4, 6, 8, 10))
+    zero_total = sum(result["zero_control_successes"].values())
     labels = (("TRAINED LEVELS", "1 · 3 · 5 · 7 · 9"), ("UNSEEN LEVELS", "2 · 4 · 6 · 8 · 10"),
-              ("UNSEEN FROZEN EVAL", "160 / 160"), ("ZERO CONTROL / WRITES", "0 / 320     ·     0"))
+              ("UNSEEN FROZEN EVAL", f"{unseen_total} / 160"), ("ZERO CONTROL / WRITES", f"{zero_total} / 320     ·     0"))
     for box, (label, value) in zip(cards, labels):
         d.rounded_rectangle(box, 10, fill=(13, 25, 44), outline=(34, 54, 83), width=1)
         text(d, (box[0] + 14, box[1] + 8), label, 12, muted)
-        text(d, (box[0] + 14, box[1] + 31), value, 18, green if "EVAL" in label or "WRITES" in label else ink, True)
+        metric_color = red if label == "UNSEEN FROZEN EVAL" and unseen_total < 160 else green if "EVAL" in label or "WRITES" in label else ink
+        text(d, (box[0] + 14, box[1] + 31), value, 18, metric_color, True)
     text(d, (18, 688), status, 13, green if world.success else red)
     return img
 
@@ -332,7 +336,7 @@ def record() -> None:
     model = load_model()
     result = json.loads(RESULT_PATH.read_text(encoding="utf-8"))
     before = model.writes
-    fps, step_frames, hold_frames = 30, 8, 14
+    fps, step_frames, hold_frames = 30, 3, 10
     process = subprocess.Popen([
         "ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
         "-s", "1280x720", "-r", str(fps), "-i", "-", "-an", "-c:v", "libx264",
@@ -344,7 +348,7 @@ def record() -> None:
         model.reset_episode()
         condition = "TRAINED FROZEN" if level in TRAIN_LEVELS else "UNSEEN FROZEN"
         values, _ = model.predict(world.observation())
-        first = render(world, None, values, condition, "BOUNDARY: mirror-equivariant held-out transfer; not arbitrary maze generalization or AGI.", result)
+        first = render(world, None, values, condition, "BOUNDARY: independent held-out layouts; pure direct policy; no planner or AGI claim.", result)
         for _ in range(hold_frames):
             process.stdin.write(first.tobytes())
         while not world.terminal:
@@ -353,13 +357,13 @@ def record() -> None:
             event = world.step(action)
             model.observe(before_frame, action, event["changed"], event["terminal"], event["success"], False)
             values, _ = model.predict(world.observation())
-            frame = render(world, action, values, condition, "BOUNDARY: mirror-equivariant held-out transfer; not arbitrary maze generalization or AGI.", result)
+            frame = render(world, action, values, condition, "BOUNDARY: independent held-out layouts; pure direct policy; no planner or AGI claim.", result)
             for _ in range(step_frames):
                 process.stdin.write(frame.tobytes())
-        assert world.success
-        poster = render(world, action, values, condition,
-                        "10 / 10 COMPLETE · HELD-OUT MIRROR LEVELS PASSED · FROZEN WRITES = 0" if level == 9 else "LEVEL COMPLETE · NEXT LEVEL",
-                        result)
+        final_status = "LEVEL COMPLETE · NEXT LEVEL" if world.success else "LEVEL FAILED · DEADLOCK OR STEP LIMIT · FROZEN WRITES = 0"
+        if level == 9:
+            final_status = "DIVERSE UNSEEN RESULT: 0 / 160 · NOT ADOPTED · FROZEN WRITES = 0"
+        poster = render(world, action, values, condition, final_status, result)
         for _ in range(hold_frames if level < 9 else fps * 2):
             process.stdin.write(poster.tobytes())
     process.stdin.close()
@@ -379,8 +383,8 @@ def main() -> None:
         model, result = load_model(), json.loads(RESULT_PATH.read_text())
         before = model.writes
         frozen = evaluate(model, tuple(range(10)))
-        assert all(v == EVAL_EPISODES for v in frozen.values()) and before == model.writes
-        print("BPC_TEST_PASS", frozen, "writes=0", result["model_sha256"])
+        assert before == model.writes
+        print("BPC_TEST_RESULT", frozen, "writes=0", "adopted=", result["adopted"], result["model_sha256"])
     if args.command in ("record", "all"):
         record()
 

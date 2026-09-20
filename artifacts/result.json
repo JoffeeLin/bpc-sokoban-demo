@@ -1,5 +1,5 @@
 {
-  "format": "bpc-sokoban-python-cross-level-v1",
+  "format": "bpc-sokoban-python-diverse-cross-level-v2",
   "development_only": true,
   "blind_result": false,
   "agi_claim": false,
@@ -21,23 +21,23 @@
   ],
   "train_episodes_per_level": 12000,
   "train_successes": {
-    "1": 95,
-    "3": 113,
-    "5": 109,
-    "7": 114,
-    "9": 107
+    "1": 89,
+    "3": 52,
+    "5": 233,
+    "7": 191,
+    "9": 65
   },
   "frozen_successes": {
     "1": 32,
-    "2": 32,
+    "2": 0,
     "3": 32,
-    "4": 32,
+    "4": 0,
     "5": 32,
-    "6": 32,
+    "6": 0,
     "7": 32,
-    "8": 32,
+    "8": 0,
     "9": 32,
-    "10": 32
+    "10": 0
   },
   "zero_control_successes": {
     "1": 0,
@@ -52,8 +52,11 @@
     "10": 0
   },
   "frozen_persistent_writes": 0,
-  "memory_cells": 14082,
-  "model_sha256": "3b971bb0b4ece794f6fde41dee308155459fafcb2eed630328d538acc528e4cf",
-  "prior": "predeclared horizontal-reflection equivariance over raw pixels and LEFT/RIGHT actions",
-  "boundary": "held-out mirrored-layout transfer under built-in reflection equivariance; not arbitrary unseen-maze generalization or AGI"
+  "memory_cells": 9359,
+  "model_sha256": "a7474cd43823448af87f6dc977ede856c46ca9f53f8af33a4002b11b46592cd2",
+  "trained_levels_passed": true,
+  "unseen_levels_passed": 0,
+  "adopted": false,
+  "prior": "identity raw-frame query only; no mirror/rotation mapping and no planner",
+  "boundary": "five independently generated held-out layouts; failure is retained; no AGI claim"
 }
