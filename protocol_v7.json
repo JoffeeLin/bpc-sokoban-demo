@@ -1,0 +1,57 @@
+{
+  "format": "general-bpc-sokoban-v7-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can one relation-count BPC trained on other layouts directly control ten unseen Sokoban layouts above fixed causal controls?",
+  "config": {
+    "training_map_count": 40,
+    "training_map_seed": 77031,
+    "training_action_seed": 7000007,
+    "uniform_episodes_per_map": 300,
+    "guided_rounds": 2,
+    "guided_episodes_per_map": 100,
+    "guided_epsilon": 0.22,
+    "training_max_steps": 128,
+    "holdout_map_count": 10,
+    "holdout_map_seed": 20260920,
+    "evaluation_episodes_per_map": 256,
+    "evaluation_seed": 73911,
+    "evaluation_max_steps": 192,
+    "temperature": 0.72
+  },
+  "adoption_thresholds": {
+    "aggregate_rate": 0.3,
+    "every_map_rate": 0.01,
+    "uniform_margin": 0.2,
+    "rotated_margin": 0.2,
+    "joint_margin": 0.1
+  },
+  "training_maps_sha256": "08d8e57d7aee19077ebc1d9916712c6ccf8accbc0de27cc02da0c930b1731297",
+  "holdout_maps_sha256": "69b1924a88532f5b0d451691d05a254cb7c7fb9b60669ea02e7b62780bdd5601",
+  "holdout_shortest_distances": [
+    8,
+    6,
+    9,
+    10,
+    7,
+    6,
+    5,
+    9,
+    5,
+    6
+  ],
+  "holdout_max_internal_wall_jaccard": 0.29411764705882354,
+  "train_holdout_max_wall_jaccard": 0.5,
+  "source_sha256": {
+    "bpc_sokoban.py": "c49cd73fa023d99638a86c089a200bae156db6e69ce672782e92a48d6faa5bf8",
+    "general_bpc_v7.py": "d37040bd087e0bbf135a491ab319411f7dd10d823038734327af1136467f05f8",
+    "sokoban_maps.py": "67dc02b6e4965f2c7066c43919362b729616a802854fe8bb3d18e3349e846842",
+    "experiment_v7_frozen.py": "c68785e0596b3edc6630fcfb7dc25b78d1f2b1068b2269f9403d9a8ea49ee333"
+  },
+  "controls": [
+    "no_joint",
+    "change_fused",
+    "action_rotated",
+    "uniform"
+  ],
+  "failure_policy": "Retain a miss; do not tune on this holdout or lower thresholds."
+}

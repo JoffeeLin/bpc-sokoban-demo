@@ -1,5 +1,7 @@
 __pycache__/
 *.pyc
 artifacts/model.pkl
+artifacts/**/*.pkl
 artifacts/*.mp4
+artifacts/**/*.mp4
 artifacts/frame_*.png

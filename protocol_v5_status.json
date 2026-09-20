@@ -1,0 +1,10 @@
+{
+  "protocol": "general-bpc-sokoban-v5-frozen-holdout",
+  "status": "executed_once_not_adopted",
+  "result": "artifacts/v5/result.json",
+  "primary_holdout_successes": 448,
+  "primary_holdout_episodes": 2560,
+  "primary_holdout_rate": 0.175,
+  "deterministic_primary_rerun": "pass",
+  "persistent_evaluation_writes": 0
+}

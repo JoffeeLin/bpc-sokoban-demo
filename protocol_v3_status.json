@@ -1,0 +1,6 @@
+{
+  "protocol": "bpc-sokoban-fragment-transfer-v3-development",
+  "status": "superseded_before_execution",
+  "result_observed": false,
+  "reason": "The theory audit found that fixed 3x3/5x5 lookup windows and fixed future horizons would test an older fragment table, not the current direct-voxel/future-effect BPC definition. The frozen file is retained unchanged for provenance."
+}

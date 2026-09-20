@@ -1,0 +1,201 @@
+{
+  "format": "bpc-sokoban-general-bpc-v4-development",
+  "evidence_level": "development only; evaluation layouts were exposed by v2",
+  "theory_question": "Can distributed raw-relation address sharing plus BPC y-p residual writeback form a transferable direct action function?",
+  "input": "486 raw binary voxels; no coordinates or semantic object labels supplied to candidate",
+  "candidate": "all raw cell-pair relation components continuously enter one normalized BPC-0 wave",
+  "no_neural_network": true,
+  "no_planner_or_search": true,
+  "no_complete_frame_hash": true,
+  "no_fixed_future_horizon": true,
+  "experience": {
+    "generated_per_training_level": 12000,
+    "retained_rule": "all successes plus first 128 failures per level",
+    "retained_episodes": 1270,
+    "retained_steps": 68401,
+    "successes_by_level": {
+      "1": 89,
+      "3": 52,
+      "5": 233,
+      "7": 191,
+      "9": 65
+    },
+    "corpus_sha256": "37466312005792dd74a155ec07eaa5eb2c9c49b298407af9813829aae9ee3280"
+  },
+  "dimensions": 1024,
+  "epochs": 3,
+  "conditions": {
+    "exact_full_frame": {
+      "1": 32,
+      "2": 0,
+      "3": 32,
+      "4": 0,
+      "5": 32,
+      "6": 0,
+      "7": 32,
+      "8": 0,
+      "9": 32,
+      "10": 0
+    },
+    "position_locked": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 32,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    "position_shared": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    "position_shared_transition_off": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    "action_rotated": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    "terminal_credit_rotated": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    "untrained_zero": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    }
+  },
+  "curve": [
+    {
+      "epoch": 1,
+      "shared_train": {
+        "1": 0,
+        "3": 0,
+        "5": 0,
+        "7": 0,
+        "9": 0
+      },
+      "shared_development": {
+        "2": 0,
+        "4": 0,
+        "6": 0,
+        "8": 0,
+        "10": 0
+      }
+    },
+    {
+      "epoch": 2,
+      "shared_train": {
+        "1": 0,
+        "3": 0,
+        "5": 0,
+        "7": 0,
+        "9": 0
+      },
+      "shared_development": {
+        "2": 0,
+        "4": 0,
+        "6": 0,
+        "8": 0,
+        "10": 0
+      }
+    },
+    {
+      "epoch": 3,
+      "shared_train": {
+        "1": 0,
+        "3": 0,
+        "5": 0,
+        "7": 0,
+        "9": 0
+      },
+      "shared_development": {
+        "2": 0,
+        "4": 0,
+        "6": 0,
+        "8": 0,
+        "10": 0
+      }
+    }
+  ],
+  "primary": {
+    "training_total": 0,
+    "development_total": 0,
+    "exact_development_total": 0,
+    "action_rotated_development_total": 0,
+    "credit_rotated_development_total": 0
+  },
+  "gate": {
+    "training_at_least_144": false,
+    "development_at_least_64": false,
+    "improvement_over_exact_at_least_32": false,
+    "every_development_level_nonzero": false,
+    "beats_action_rotated": false,
+    "beats_terminal_credit_rotated": false,
+    "evaluation_writes_zero": true
+  },
+  "adopted": false,
+  "frozen_persistent_writes": 0,
+  "model_sha256": "07bb70ddb7b30a1ff6c4e9dfc9ab2c1237cebd8f601d7a1590d2e17261f3fb36",
+  "candidate_source_sha256": "b37ecfe26d56c57279f353448dde81123f38d50ba50f0c29facf84dafdf42f5f",
+  "theory_boundary": {
+    "supported": [
+      "direct raw binary relation wave",
+      "address sharing",
+      "normalized probability read",
+      "y-p original-path writeback",
+      "external action-only discretization"
+    ],
+    "not_yet_implemented": [
+      "residual-born support lifecycle",
+      "online function-equivalence merge/split",
+      "self-born process voxels",
+      "permanent blind pack"
+    ]
+  }
+}

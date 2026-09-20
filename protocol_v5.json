@@ -1,0 +1,51 @@
+{
+  "protocol": "general-bpc-sokoban-v5-frozen-holdout",
+  "status": "locked_before_holdout_execution",
+  "candidate_source_sha256": "ce06981b41ff29f31e21b0b8cdc180302dbaa9d64e44063efe164b26b55b5ef8",
+  "training_maps_sha256": "302a725d7e89202564e094273b40f0866dbf0df778f97ee0876f506dc9ff423b",
+  "holdout_maps_sha256": "e57baf6bb2265e0e22620072f49fce57d29b08f1c310edd0fb49d2414c44bc76",
+  "holdout_overlap_with_generated_training_maps": 0,
+  "evidence_level": "developer-frozen local holdout; not independent third-party blind",
+  "candidate": {
+    "input": "9x9x6 raw binary voxel state",
+    "addressing": "position-shared raw pair relations plus anonymous three-low-frequency-group joint supports",
+    "fixed_priors": "raw-group occurrence count <=2, radius 4, 16384 anonymous addresses",
+    "writeback": "all active wave components; softmax probability error y-p; 300 epochs",
+    "experience": "uniform random actions; actual success traces; only exact raw-state-return loops undergo effect-equivalence death",
+    "measurement": "temperature 0.75 probability sampling only at the external action boundary",
+    "neural_network": false,
+    "planner_or_search_in_model": false,
+    "semantic_labels": false
+  },
+  "training": {
+    "original_levels_one_based": [1, 3, 5, 7, 9],
+    "generated_maps": 100,
+    "generated_map_seed": 19577,
+    "episodes_per_generated_map": 1000,
+    "original_episodes_per_map": 12000,
+    "interaction_seed": 20260920
+  },
+  "holdout": {
+    "maps": 10,
+    "episodes_per_map": 256,
+    "measurement_seed": 881,
+    "shortest_solution_distance_range": [5, 15],
+    "persistent_learning": false
+  },
+  "controls": [
+    "uniform_zero",
+    "action_rotated",
+    "no_three_group_joint_support",
+    "no_effect-equivalence_loop_death"
+  ],
+  "adoption_gate": {
+    "aggregate_holdout_success_rate_minimum": 0.40,
+    "each_holdout_success_rate_minimum": 0.05,
+    "improvement_over_uniform_minimum": 0.20,
+    "joint_support_gain_minimum": 0.03,
+    "loop_death_gain_minimum": 0.03,
+    "improvement_over_action_rotated_minimum": 0.20,
+    "persistent_evaluation_writes": 0
+  },
+  "boundary": "Passing supports only same-generator cross-layout transfer under fixed non-semantic addressing priors. It does not establish arbitrary Sokoban generalization, a completed universal BPC, or AGI. Any missed gate is retained without threshold changes."
+}

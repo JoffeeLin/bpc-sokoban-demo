@@ -1,0 +1,37 @@
+{
+  "protocol": "bpc-sokoban-general-bpc-v4-development",
+  "status": "locked_before_execution",
+  "evidence_level": "development only; evaluation layouts were exposed by v2",
+  "falsifiable_question": "Under an identical raw interaction stream, does a distributed position-shared relation wave with normalized BPC probability read and y-p original-path writeback transfer a direct action function better than exact full-frame memory?",
+  "candidate_source_sha256": "b37ecfe26d56c57279f353448dde81123f38d50ba50f0c29facf84dafdf42f5f",
+  "level_source_sha256": "de7778a10f74fe29b984f44c2cddc5834cc8e929f618179914e48bb41bc2e804",
+  "fixed": {
+    "train_levels_one_based": [1, 3, 5, 7, 9],
+    "development_levels_one_based": [2, 4, 6, 8, 10],
+    "generated_episodes_per_train_level": 12000,
+    "retention": "all successful episodes plus first 128 failures per level",
+    "dimensions": 1024,
+    "epochs": 3,
+    "seed": 20260920,
+    "evaluation_episodes": 32,
+    "decision": "deterministic maximum probability at the external action boundary"
+  },
+  "controls": [
+    "exact_full_frame",
+    "absolute-position-locked_relation_wave",
+    "transition_evidence_off",
+    "action_rotated",
+    "terminal_credit_rotated",
+    "untrained_zero"
+  ],
+  "adoption_gate": {
+    "training_successes_minimum": 144,
+    "development_successes_minimum": 64,
+    "improvement_over_exact_minimum": 32,
+    "each_development_level_minimum": 1,
+    "must_beat_action_rotated": true,
+    "must_beat_terminal_credit_rotated": true,
+    "evaluation_writes": 0
+  },
+  "boundary": "Passing permits a new permanent held-out pack; it does not establish a universal model or AGI. Failure is retained without changing this gate."
+}

@@ -1,0 +1,53 @@
+{
+  "protocol": "bpc-sokoban-fragment-transfer-v3-development",
+  "frozen_before_result": true,
+  "evidence_level": "development only; the five evaluation layouts were observed in v2",
+  "mechanism_question": "Does position-shared, action-conditioned raw-pixel fragment probability memory transfer a direct policy to structurally different Sokoban layouts better than exact full-frame memory under identical experience?",
+  "fixed_scaffolding": {
+    "neural_network": false,
+    "planner_or_search": false,
+    "semantic_object_labels": false,
+    "coordinates_exposed_to_shared_candidate": false,
+    "evaluation_learning": false,
+    "input": "9x9 RGB high-2-bit raw binary frame",
+    "fragment_windows": [3, 5],
+    "success_horizons": [1, 2, 4, 8, 16, 32, 64],
+    "beta_prior": [1, 1],
+    "minimum_fragment_support": 3,
+    "support_weight_cap": 64,
+    "decision": "support-weighted Beta posterior evidence across raw fragments and fixed horizons, multiplied by raw-change posterior; deterministic argmax",
+    "seed": 20260920
+  },
+  "inputs": {
+    "level_source": "bpc_sokoban.py LEVEL_MAPS",
+    "level_source_sha256": "de7778a10f74fe29b984f44c2cddc5834cc8e929f618179914e48bb41bc2e804",
+    "baseline_source_sha256": "c49cd73fa023d99638a86c089a200bae156db6e69ce672782e92a48d6faa5bf8",
+    "training_levels_one_based": [1, 3, 5, 7, 9],
+    "development_transfer_levels_one_based": [2, 4, 6, 8, 10]
+  },
+  "same_experience": {
+    "generated_episodes_per_training_level": 12000,
+    "retention_rule": "all successful episodes plus the first 128 failed episodes per level",
+    "all candidates_receive_identical_retained_episodes": true
+  },
+  "conditions": [
+    "exact_full_frame",
+    "position_locked_fragments",
+    "position_shared_fragments",
+    "position_shared_transition_off",
+    "position_shared_action_rotated",
+    "position_shared_terminal_credit_rotated",
+    "untrained_zero"
+  ],
+  "primary_metric": "total frozen successes over 5 development-transfer layouts x 32 episodes",
+  "adoption_gate": {
+    "training_successes_minimum": 144,
+    "development_successes_minimum": 64,
+    "development_improvement_over_exact_minimum": 32,
+    "each_development_level_successes_minimum": 1,
+    "must_exceed_action_rotated": true,
+    "must_exceed_terminal_credit_rotated": true,
+    "persistent_evaluation_writes": 0
+  },
+  "next_stage_rule": "Only a passed development gate permits creation and one-time execution of a new permanent held-out level pack. A failed gate is retained without threshold changes."
+}

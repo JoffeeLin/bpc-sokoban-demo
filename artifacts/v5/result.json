@@ -1,0 +1,562 @@
+{
+  "format": "general-bpc-sokoban-v5",
+  "evidence_level": "developer-frozen local holdout; not independent blind",
+  "input": "raw 9x9x6 binary voxels and anonymous external action indices",
+  "model": "position-shared raw pair and anonymous three-group joint waves; softmax probability; y-p original-path writeback",
+  "no_neural_network": true,
+  "no_planner_or_search_in_model": true,
+  "offline_solver_use": "solvability and shortest-distance range filter only; no solution actions enter experience or model",
+  "experience": {
+    "1": {
+      "episodes": 12000,
+      "successes": 89
+    },
+    "3": {
+      "episodes": 12000,
+      "successes": 52
+    },
+    "5": {
+      "episodes": 12000,
+      "successes": 233
+    },
+    "7": {
+      "episodes": 12000,
+      "successes": 191
+    },
+    "9": {
+      "episodes": 12000,
+      "successes": 65
+    },
+    "11": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "12": {
+      "episodes": 1000,
+      "successes": 6
+    },
+    "13": {
+      "episodes": 1000,
+      "successes": 93
+    },
+    "14": {
+      "episodes": 1000,
+      "successes": 7
+    },
+    "15": {
+      "episodes": 1000,
+      "successes": 2
+    },
+    "16": {
+      "episodes": 1000,
+      "successes": 47
+    },
+    "17": {
+      "episodes": 1000,
+      "successes": 13
+    },
+    "18": {
+      "episodes": 1000,
+      "successes": 28
+    },
+    "19": {
+      "episodes": 1000,
+      "successes": 34
+    },
+    "20": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "21": {
+      "episodes": 1000,
+      "successes": 53
+    },
+    "22": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "23": {
+      "episodes": 1000,
+      "successes": 42
+    },
+    "24": {
+      "episodes": 1000,
+      "successes": 45
+    },
+    "25": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "26": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "27": {
+      "episodes": 1000,
+      "successes": 8
+    },
+    "28": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "29": {
+      "episodes": 1000,
+      "successes": 2
+    },
+    "30": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "31": {
+      "episodes": 1000,
+      "successes": 172
+    },
+    "32": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "33": {
+      "episodes": 1000,
+      "successes": 46
+    },
+    "34": {
+      "episodes": 1000,
+      "successes": 6
+    },
+    "35": {
+      "episodes": 1000,
+      "successes": 94
+    },
+    "36": {
+      "episodes": 1000,
+      "successes": 11
+    },
+    "37": {
+      "episodes": 1000,
+      "successes": 173
+    },
+    "38": {
+      "episodes": 1000,
+      "successes": 19
+    },
+    "39": {
+      "episodes": 1000,
+      "successes": 48
+    },
+    "40": {
+      "episodes": 1000,
+      "successes": 2
+    },
+    "41": {
+      "episodes": 1000,
+      "successes": 9
+    },
+    "42": {
+      "episodes": 1000,
+      "successes": 29
+    },
+    "43": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "44": {
+      "episodes": 1000,
+      "successes": 63
+    },
+    "45": {
+      "episodes": 1000,
+      "successes": 3
+    },
+    "46": {
+      "episodes": 1000,
+      "successes": 3
+    },
+    "47": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "48": {
+      "episodes": 1000,
+      "successes": 48
+    },
+    "49": {
+      "episodes": 1000,
+      "successes": 3
+    },
+    "50": {
+      "episodes": 1000,
+      "successes": 7
+    },
+    "51": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "52": {
+      "episodes": 1000,
+      "successes": 124
+    },
+    "53": {
+      "episodes": 1000,
+      "successes": 9
+    },
+    "54": {
+      "episodes": 1000,
+      "successes": 191
+    },
+    "55": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "56": {
+      "episodes": 1000,
+      "successes": 80
+    },
+    "57": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "58": {
+      "episodes": 1000,
+      "successes": 24
+    },
+    "59": {
+      "episodes": 1000,
+      "successes": 26
+    },
+    "60": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "61": {
+      "episodes": 1000,
+      "successes": 3
+    },
+    "62": {
+      "episodes": 1000,
+      "successes": 4
+    },
+    "63": {
+      "episodes": 1000,
+      "successes": 12
+    },
+    "64": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "65": {
+      "episodes": 1000,
+      "successes": 27
+    },
+    "66": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "67": {
+      "episodes": 1000,
+      "successes": 4
+    },
+    "68": {
+      "episodes": 1000,
+      "successes": 66
+    },
+    "69": {
+      "episodes": 1000,
+      "successes": 22
+    },
+    "70": {
+      "episodes": 1000,
+      "successes": 206
+    },
+    "71": {
+      "episodes": 1000,
+      "successes": 5
+    },
+    "72": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "73": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "74": {
+      "episodes": 1000,
+      "successes": 14
+    },
+    "75": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "76": {
+      "episodes": 1000,
+      "successes": 99
+    },
+    "77": {
+      "episodes": 1000,
+      "successes": 3
+    },
+    "78": {
+      "episodes": 1000,
+      "successes": 2
+    },
+    "79": {
+      "episodes": 1000,
+      "successes": 33
+    },
+    "80": {
+      "episodes": 1000,
+      "successes": 3
+    },
+    "81": {
+      "episodes": 1000,
+      "successes": 55
+    },
+    "82": {
+      "episodes": 1000,
+      "successes": 200
+    },
+    "83": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "84": {
+      "episodes": 1000,
+      "successes": 37
+    },
+    "85": {
+      "episodes": 1000,
+      "successes": 2
+    },
+    "86": {
+      "episodes": 1000,
+      "successes": 48
+    },
+    "87": {
+      "episodes": 1000,
+      "successes": 2
+    },
+    "88": {
+      "episodes": 1000,
+      "successes": 7
+    },
+    "89": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "90": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "91": {
+      "episodes": 1000,
+      "successes": 2
+    },
+    "92": {
+      "episodes": 1000,
+      "successes": 18
+    },
+    "93": {
+      "episodes": 1000,
+      "successes": 30
+    },
+    "94": {
+      "episodes": 1000,
+      "successes": 9
+    },
+    "95": {
+      "episodes": 1000,
+      "successes": 20
+    },
+    "96": {
+      "episodes": 1000,
+      "successes": 2
+    },
+    "97": {
+      "episodes": 1000,
+      "successes": 200
+    },
+    "98": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "99": {
+      "episodes": 1000,
+      "successes": 1
+    },
+    "100": {
+      "episodes": 1000,
+      "successes": 6
+    },
+    "101": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "102": {
+      "episodes": 1000,
+      "successes": 108
+    },
+    "103": {
+      "episodes": 1000,
+      "successes": 85
+    },
+    "104": {
+      "episodes": 1000,
+      "successes": 144
+    },
+    "105": {
+      "episodes": 1000,
+      "successes": 193
+    },
+    "106": {
+      "episodes": 1000,
+      "successes": 15
+    },
+    "107": {
+      "episodes": 1000,
+      "successes": 122
+    },
+    "108": {
+      "episodes": 1000,
+      "successes": 7
+    },
+    "109": {
+      "episodes": 1000,
+      "successes": 0
+    },
+    "110": {
+      "episodes": 1000,
+      "successes": 238
+    }
+  },
+  "compact_function_states": 2918,
+  "uncompressed_success_states": 5199,
+  "training_maps_sha256": "302a725d7e89202564e094273b40f0866dbf0df778f97ee0876f506dc9ff423b",
+  "holdout_maps_sha256": "e57baf6bb2265e0e22620072f49fce57d29b08f1c310edd0fb49d2414c44bc76",
+  "conditions": {
+    "primary": {
+      "development": {
+        "D2": 49,
+        "D4": 94,
+        "D6": 54,
+        "D8": 156,
+        "D10": 9
+      },
+      "holdout": {
+        "H1": 0,
+        "H2": 11,
+        "H3": 133,
+        "H4": 43,
+        "H5": 121,
+        "H6": 0,
+        "H7": 14,
+        "H8": 19,
+        "H9": 107,
+        "H10": 0
+      }
+    },
+    "no_joint": {
+      "development": {
+        "D2": 53,
+        "D4": 81,
+        "D6": 33,
+        "D8": 137,
+        "D10": 8
+      },
+      "holdout": {
+        "H1": 0,
+        "H2": 7,
+        "H3": 117,
+        "H4": 37,
+        "H5": 117,
+        "H6": 0,
+        "H7": 12,
+        "H8": 14,
+        "H9": 92,
+        "H10": 0
+      }
+    },
+    "no_loop_death": {
+      "development": {
+        "D2": 47,
+        "D4": 38,
+        "D6": 39,
+        "D8": 49,
+        "D10": 1
+      },
+      "holdout": {
+        "H1": 0,
+        "H2": 0,
+        "H3": 32,
+        "H4": 34,
+        "H5": 48,
+        "H6": 1,
+        "H7": 6,
+        "H8": 8,
+        "H9": 25,
+        "H10": 0
+      }
+    },
+    "action_rotated": {
+      "development": {
+        "D2": 43,
+        "D4": 8,
+        "D6": 4,
+        "D8": 3,
+        "D10": 0
+      },
+      "holdout": {
+        "H1": 0,
+        "H2": 0,
+        "H3": 0,
+        "H4": 18,
+        "H5": 15,
+        "H6": 0,
+        "H7": 0,
+        "H8": 0,
+        "H9": 1,
+        "H10": 0
+      }
+    },
+    "uniform_zero": {
+      "development": {
+        "D2": 16,
+        "D4": 18,
+        "D6": 32,
+        "D8": 7,
+        "D10": 2
+      },
+      "holdout": {
+        "H1": 0,
+        "H2": 0,
+        "H3": 7,
+        "H4": 21,
+        "H5": 18,
+        "H6": 0,
+        "H7": 5,
+        "H8": 1,
+        "H9": 8,
+        "H10": 0
+      }
+    }
+  },
+  "primary_holdout": {
+    "successes": 448,
+    "episodes": 2560,
+    "rate": 0.175
+  },
+  "gate": {
+    "holdout_rate_at_least_40pct": false,
+    "every_holdout_at_least_5pct": false,
+    "beats_uniform_by_20pp": false,
+    "joint_gain_at_least_3pp": false,
+    "loop_death_gain_at_least_3pp": true,
+    "beats_action_rotated_by_20pp": false,
+    "frozen_writes_zero": true
+  },
+  "adopted": false,
+  "frozen_persistent_writes": 0,
+  "model_sha256": "75d1a1068d45fe2909652eabc49713f2c4091df165c094f04273ab6941afff20",
+  "candidate_source_sha256": "ce06981b41ff29f31e21b0b8cdc180302dbaa9d64e44063efe164b26b55b5ef8",
+  "boundary": "A pass would support limited same-generator cross-layout transfer only, not arbitrary Sokoban, a finished universal BPC, or AGI.",
+  "fixed_prior_disclosure": "rarity<=2 raw-group anchoring, radius 4, and three-group joint capacity are experimenter-provided non-semantic addressing priors."
+}
