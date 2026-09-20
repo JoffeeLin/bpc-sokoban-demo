@@ -1,5 +1,33 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.20 breakthrough: stochastic actuator-channel transfer
+
+The frozen non-neural controller now identifies a previously unseen probability
+channel from anonymous actuator slots to four physical effects while also
+recovering anonymous sensor planes, a D4 spatial gauge class, and an end-to-end
+sensorimotor lag.  It learns from raw unlabeled transitions and feeds the
+unchanged BPC action probabilities backward through the recovered channel; no
+planner or runtime search is added.
+
+Four new stochastic matrices, four new spatial frames, unseen total lags `2`
+and `4`, and 48 disjoint independent-generator worlds were frozen before
+execution.  All **4/4** lags and **12/12** independent-stream lags were exact.
+Maximum channel total-variation error was **2.58%** overall and **4.15%** on an
+individual stream.  Across 4,608 held-out episodes, learned stochastic binding
+completed **3,875 (84.1%)**, versus oracle 3,871, identity 2,480, and shuffled
+rows 1,569.  All 13 gates passed with zero evaluation writes.  See
+[`V20_STOCHASTIC_CHANNEL_RESULT.md`](V20_STOCHASTIC_CHANNEL_RESULT.md) and the
+[`machine-readable result`](artifacts/v20stochastic/result.json).
+
+![Frozen v0.20 result](artifacts/v20stochastic/poster_v20_stochastic_channel.png)
+
+**[Watch 12 frozen stochastic-control traces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v20.0.0/bpc_stochastic_channel_v20_12_unseen_worlds.mp4)**
+
+The learned full probability channel did **not** beat its deterministic argmax
+control (4,179 successes).  v0.20 supports probability-channel recovery and
+robust control, not a claim that modeling stochasticity improved the best
+controller.  It remains bounded developer-frozen synthetic evidence, not AGI.
+
 ## v0.19 breakthrough: end-to-end temporal gauge transfer
 
 The frozen non-neural controller now infers an unknown sensorimotor lag jointly
