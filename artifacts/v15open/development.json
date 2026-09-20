@@ -1,0 +1,523 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "chosen_label": "high value next frozen experiment",
+    "confidence": 0.93,
+    "role": "candidate routing only; absent from interface inference, policy training, evaluation, and runtime"
+  },
+  "retained_failures": [
+    "marginal occupancy/change/cochange confused a displaced composite nuisance with a real plane",
+    "unfiltered action likelihood confused a permanent zero-effect slot with a frequently blocked real action",
+    "action-conditioned local joint statistics still did not identify the composite nuisance under mixture shift; that harder case remains unsupported"
+  ],
+  "reference": {
+    "worlds": 300,
+    "transitions": 9600,
+    "interface_digest": "c0a52f7fd73aefd46f09dd540f2281f1c8f7c738a7c0efe0e4b4e9eb519cb9e3",
+    "action_digest": "eb085dac45d774d65dad960717d6d3b19623ab9bc876ddde35487e23ded9655f"
+  },
+  "bindings": [
+    {
+      "sensor_routes": [
+        null,
+        5,
+        1,
+        3,
+        null,
+        0,
+        4,
+        2
+      ],
+      "actuator_routes": [
+        2,
+        null,
+        0,
+        3,
+        null,
+        1
+      ],
+      "target_mix": {
+        "push": 200,
+        "collect": 50,
+        "open": 50
+      },
+      "channel_oracle": [
+        5,
+        2,
+        7,
+        3,
+        6,
+        1
+      ],
+      "channel_learned": {
+        "mapping": [
+          5,
+          2,
+          7,
+          3,
+          6,
+          1
+        ],
+        "posterior": 1.0,
+        "log_margin": 3069.4944661477275,
+        "second": [
+          5,
+          2,
+          7,
+          1,
+          6,
+          3
+        ]
+      },
+      "action_oracle": [
+        2,
+        5,
+        0,
+        3
+      ],
+      "action_learned": {
+        "mapping": [
+          2,
+          5,
+          0,
+          3
+        ],
+        "posterior": 1.0,
+        "log_margin": 15472.758557156658,
+        "second": [
+          5,
+          2,
+          0,
+          3
+        ],
+        "candidate_slots": [
+          0,
+          2,
+          3,
+          5
+        ]
+      },
+      "target_interface_digest": "05c252d4dc11d52caf48dce6e6ab640b21e46145488db6855ca10f00ee4b31c9",
+      "target_action_digest": "fc84fb1a8b8dc329ea98af1c84acb304731386d1a03e3a9e993eea66c477acbd",
+      "random_channels": [
+        1,
+        4,
+        2,
+        7,
+        0,
+        5
+      ],
+      "random_actions": [
+        3,
+        4,
+        5,
+        1
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "sensor_only": 11,
+        "action_only": 30,
+        "identity": 11,
+        "random": 7
+      }
+    },
+    {
+      "sensor_routes": [
+        3,
+        null,
+        5,
+        0,
+        2,
+        null,
+        1,
+        4
+      ],
+      "actuator_routes": [
+        null,
+        1,
+        3,
+        0,
+        2,
+        null
+      ],
+      "target_mix": {
+        "push": 50,
+        "collect": 200,
+        "open": 50
+      },
+      "channel_oracle": [
+        3,
+        6,
+        4,
+        0,
+        7,
+        2
+      ],
+      "channel_learned": {
+        "mapping": [
+          3,
+          6,
+          4,
+          0,
+          7,
+          2
+        ],
+        "posterior": 1.0,
+        "log_margin": 1868.1898019870641,
+        "second": [
+          3,
+          6,
+          2,
+          0,
+          7,
+          4
+        ]
+      },
+      "action_oracle": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "action_learned": {
+        "mapping": [
+          3,
+          1,
+          4,
+          2
+        ],
+        "posterior": 1.0,
+        "log_margin": 16563.783589934075,
+        "second": [
+          3,
+          2,
+          4,
+          1
+        ],
+        "candidate_slots": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "target_interface_digest": "3b7a4d0f7a97e1f525680ca469cf5cdd34951db0b0996690df5e93f9e6a286bb",
+      "target_action_digest": "c8d59a4d3a7365bc8dfe4b32ff27fad1161d97f006bfe3cd6d28c4a0f53978e6",
+      "random_channels": [
+        5,
+        0,
+        2,
+        4,
+        1,
+        7
+      ],
+      "random_actions": [
+        3,
+        1,
+        5,
+        0
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "sensor_only": 10,
+        "action_only": 31,
+        "identity": 11,
+        "random": 1
+      }
+    },
+    {
+      "sensor_routes": [
+        2,
+        4,
+        null,
+        1,
+        5,
+        3,
+        0,
+        null
+      ],
+      "actuator_routes": [
+        3,
+        2,
+        null,
+        1,
+        null,
+        0
+      ],
+      "target_mix": {
+        "push": 50,
+        "collect": 50,
+        "open": 200
+      },
+      "channel_oracle": [
+        6,
+        3,
+        0,
+        5,
+        1,
+        4
+      ],
+      "channel_learned": {
+        "mapping": [
+          6,
+          3,
+          0,
+          5,
+          1,
+          4
+        ],
+        "posterior": 1.0,
+        "log_margin": 2610.111704082068,
+        "second": [
+          6,
+          3,
+          5,
+          0,
+          1,
+          4
+        ]
+      },
+      "action_oracle": [
+        5,
+        3,
+        1,
+        0
+      ],
+      "action_learned": {
+        "mapping": [
+          5,
+          3,
+          1,
+          0
+        ],
+        "posterior": 1.0,
+        "log_margin": 15320.604802923144,
+        "second": [
+          3,
+          5,
+          1,
+          0
+        ],
+        "candidate_slots": [
+          0,
+          1,
+          3,
+          5
+        ]
+      },
+      "target_interface_digest": "eedee68ed5047b809b640af620ee6723057fe35abc4211a8453564d4fce7adeb",
+      "target_action_digest": "60d510cd06789c86cdcbd946d382a37b39c93ab774c4e035d239fc09390b714d",
+      "random_channels": [
+        7,
+        1,
+        4,
+        6,
+        5,
+        0
+      ],
+      "random_actions": [
+        5,
+        0,
+        3,
+        4
+      ],
+      "trace_worlds": {
+        "learned": 32,
+        "oracle": 32,
+        "sensor_only": 14,
+        "action_only": 29,
+        "identity": 14,
+        "random": 11
+      }
+    }
+  ],
+  "suite": {
+    "worlds": 32,
+    "families": {
+      "push": 8,
+      "collect": 8,
+      "open": 8,
+      "joint": 8
+    },
+    "attempts": {
+      "push": 15,
+      "collect": 10,
+      "open": 12,
+      "joint": 9
+    },
+    "initial_overlap_with_all_prior": 0
+  },
+  "conditions": {
+    "0": {
+      "learned": {
+        "episodes": 768,
+        "successes": 685,
+        "push_successes": 184,
+        "collect_successes": 188,
+        "open_successes": 183,
+        "joint_successes": 130
+      },
+      "oracle": {
+        "episodes": 768,
+        "successes": 685,
+        "push_successes": 184,
+        "collect_successes": 188,
+        "open_successes": 183,
+        "joint_successes": 130
+      },
+      "sensor_only": {
+        "episodes": 768,
+        "successes": 159,
+        "push_successes": 48,
+        "collect_successes": 44,
+        "open_successes": 65,
+        "joint_successes": 2
+      },
+      "action_only": {
+        "episodes": 768,
+        "successes": 389,
+        "push_successes": 154,
+        "collect_successes": 128,
+        "open_successes": 91,
+        "joint_successes": 16
+      },
+      "identity": {
+        "episodes": 768,
+        "successes": 177,
+        "push_successes": 48,
+        "collect_successes": 43,
+        "open_successes": 84,
+        "joint_successes": 2
+      },
+      "random": {
+        "episodes": 768,
+        "successes": 63,
+        "push_successes": 22,
+        "collect_successes": 11,
+        "open_successes": 20,
+        "joint_successes": 10
+      }
+    },
+    "1": {
+      "learned": {
+        "episodes": 768,
+        "successes": 685,
+        "push_successes": 186,
+        "collect_successes": 189,
+        "open_successes": 180,
+        "joint_successes": 130
+      },
+      "oracle": {
+        "episodes": 768,
+        "successes": 685,
+        "push_successes": 186,
+        "collect_successes": 189,
+        "open_successes": 180,
+        "joint_successes": 130
+      },
+      "sensor_only": {
+        "episodes": 768,
+        "successes": 127,
+        "push_successes": 37,
+        "collect_successes": 44,
+        "open_successes": 38,
+        "joint_successes": 8
+      },
+      "action_only": {
+        "episodes": 768,
+        "successes": 447,
+        "push_successes": 165,
+        "collect_successes": 113,
+        "open_successes": 147,
+        "joint_successes": 22
+      },
+      "identity": {
+        "episodes": 768,
+        "successes": 135,
+        "push_successes": 31,
+        "collect_successes": 41,
+        "open_successes": 37,
+        "joint_successes": 26
+      },
+      "random": {
+        "episodes": 768,
+        "successes": 24,
+        "push_successes": 24,
+        "collect_successes": 0,
+        "open_successes": 0,
+        "joint_successes": 0
+      }
+    },
+    "2": {
+      "learned": {
+        "episodes": 768,
+        "successes": 688,
+        "push_successes": 183,
+        "collect_successes": 189,
+        "open_successes": 180,
+        "joint_successes": 136
+      },
+      "oracle": {
+        "episodes": 768,
+        "successes": 688,
+        "push_successes": 183,
+        "collect_successes": 189,
+        "open_successes": 180,
+        "joint_successes": 136
+      },
+      "sensor_only": {
+        "episodes": 768,
+        "successes": 179,
+        "push_successes": 117,
+        "collect_successes": 7,
+        "open_successes": 51,
+        "joint_successes": 4
+      },
+      "action_only": {
+        "episodes": 768,
+        "successes": 319,
+        "push_successes": 156,
+        "collect_successes": 99,
+        "open_successes": 56,
+        "joint_successes": 8
+      },
+      "identity": {
+        "episodes": 768,
+        "successes": 189,
+        "push_successes": 118,
+        "collect_successes": 7,
+        "open_successes": 58,
+        "joint_successes": 6
+      },
+      "random": {
+        "episodes": 768,
+        "successes": 131,
+        "push_successes": 41,
+        "collect_successes": 42,
+        "open_successes": 38,
+        "joint_successes": 10
+      }
+    }
+  },
+  "evaluation_writes": 0,
+  "seconds": 87.93011166597717,
+  "boundary": "Development synthetic open-interface transfer. Six canonical planes and four canonical actions are embedded in supplied eight-channel/six-slot interfaces with deterministic state-keyed random nuisance planes. Composite causal nuisance rejection failed and is not claimed. Nuisance synthesis, null-slot mechanism, calibration samplers, generators, and terminal events remain supplied. Binders receive no entity, task, direction, success, or reward labels; evaluation uses no search or writes."
+}

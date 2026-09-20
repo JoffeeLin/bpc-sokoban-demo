@@ -1,5 +1,32 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.15 breakthrough: canonical sub-interface discovery
+
+The frozen direct controller can now locate its canonical six-sensor/four-action
+interface inside unseen eight-channel/six-slot interfaces. Two extra sensor
+planes are deterministic state-keyed random nuisances and two extra actuator
+slots have permanent zero effect. Unlabeled transition probabilities select and
+order the useful sub-interface before the unchanged policy acts; there is no
+runtime planner or search.
+
+Four new open interfaces were frozen before holdout execution. All exact sensor
+and actuator subsets were recovered, and all eight null action slots were
+rejected. Across 2,304 joint episodes, learned binding matched the oracle at
+**1,651 (71.7%)**, versus 3 with only the sensor subset, 282 with only the
+actuator subset, 103 with first-slot binding, and 179 with fixed random subsets.
+All 14 gates passed with zero evaluation writes. See
+[`V15_OPEN_INTERFACE_RESULT.md`](V15_OPEN_INTERFACE_RESULT.md) and the
+[`machine-readable result`](artifacts/v15open/result.json).
+
+![Frozen v0.15 result](artifacts/v15open/poster_v15_open_interface.png)
+
+**[Watch 12 frozen traces across four unseen open interfaces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v15.0.0/bpc_open_interface_v15_12_unseen_worlds.mp4)**
+
+This claim excludes a retained negative result: causally composed distractor
+planes were not identified reliably under mixture shift. The positive evidence
+is limited to state-keyed random nuisances and permanent-null action slots; it
+is not arbitrary grounding or AGI.
+
 ## v0.14 breakthrough: joint sensor and actuator binding
 
 The frozen direct controller can now recover simultaneous unseen permutations

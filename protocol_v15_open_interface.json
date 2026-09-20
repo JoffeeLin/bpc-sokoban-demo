@@ -1,0 +1,429 @@
+{
+  "format": "bpc-open-interface-v15-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can a frozen non-neural BPC policy identify its canonical six-sensor/four-action interface inside simultaneous unseen eight-channel/six-slot interfaces containing deterministic state-keyed random nuisance planes and permanent zero-effect action slots, using only unlabeled transition probabilities under calibration-distribution shift?",
+  "config": {
+    "train_seed": 121010,
+    "reference_seed": 153010,
+    "target_seeds": [
+      153110,
+      153111,
+      153112,
+      153113
+    ],
+    "calibration_steps": 32,
+    "reference_worlds_per_family": 100,
+    "sensor_routes": [
+      [
+        null,
+        4,
+        2,
+        0,
+        null,
+        5,
+        1,
+        3
+      ],
+      [
+        1,
+        5,
+        null,
+        3,
+        0,
+        2,
+        null,
+        4
+      ],
+      [
+        3,
+        null,
+        1,
+        4,
+        2,
+        0,
+        5,
+        null
+      ],
+      [
+        5,
+        2,
+        4,
+        null,
+        1,
+        null,
+        3,
+        0
+      ]
+    ],
+    "actuator_routes": [
+      [
+        1,
+        null,
+        3,
+        2,
+        0,
+        null
+      ],
+      [
+        null,
+        0,
+        3,
+        1,
+        null,
+        2
+      ],
+      [
+        2,
+        1,
+        null,
+        0,
+        3,
+        null
+      ],
+      [
+        3,
+        null,
+        2,
+        null,
+        0,
+        1
+      ]
+    ],
+    "target_mixtures": [
+      {
+        "push": 210,
+        "collect": 45,
+        "open": 45
+      },
+      {
+        "push": 45,
+        "collect": 210,
+        "open": 45
+      },
+      {
+        "push": 45,
+        "collect": 45,
+        "open": 210
+      },
+      {
+        "push": 100,
+        "collect": 100,
+        "open": 100
+      }
+    ],
+    "holdout_seed": 153510,
+    "worlds_per_family": 12,
+    "eval_seeds": [
+      153610,
+      153710
+    ],
+    "episodes_per_map": 24,
+    "step_budget": 64,
+    "random_binding_seed": 153810
+  },
+  "expected_training_events": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "expected_factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "reference_interface_digest": "80cd7c01585939e59564f141e9d5efabf06f8d306387e7dfda7e2d8e77a3eeb0",
+  "reference_action_digest": "5b84c3a9597edadedec5aee21efd544fab740f7773c3d3d73292e5675bec3425",
+  "expected_calibration": [
+    {
+      "target_interface_digest": "56061d208f7c8f091da1e80cffe9ff0caf9fa22b94a4b71beb04f49cc3dde073",
+      "target_action_digest": "ccdbc0fab509f43ff8832c19b7f8dc4a91214985cfb69f05d487ddb18adbc63a",
+      "channel_oracle": [
+        3,
+        6,
+        2,
+        7,
+        1,
+        5
+      ],
+      "channel_binding": {
+        "mapping": [
+          3,
+          6,
+          2,
+          7,
+          1,
+          5
+        ],
+        "posterior": 1.0,
+        "log_margin": 2356.530718064867,
+        "second": [
+          3,
+          6,
+          2,
+          5,
+          1,
+          7
+        ]
+      },
+      "action_oracle": [
+        4,
+        0,
+        3,
+        2
+      ],
+      "action_binding": {
+        "mapping": [
+          4,
+          0,
+          3,
+          2
+        ],
+        "posterior": 1.0,
+        "log_margin": 16217.67434814218,
+        "second": [
+          3,
+          0,
+          4,
+          2
+        ],
+        "candidate_slots": [
+          0,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "target_interface_digest": "6b32e46a8fc122847a503b5cbdca233330a27503f083921b259d5957ce174339",
+      "target_action_digest": "f3d6936df827e9993aef9160a07b62d9e9c3a968586b1fc512de3062e7ce49f1",
+      "channel_oracle": [
+        4,
+        0,
+        5,
+        3,
+        7,
+        1
+      ],
+      "channel_binding": {
+        "mapping": [
+          4,
+          0,
+          5,
+          3,
+          7,
+          1
+        ],
+        "posterior": 1.0,
+        "log_margin": 1420.0499472719966,
+        "second": [
+          4,
+          0,
+          1,
+          3,
+          7,
+          5
+        ]
+      },
+      "action_oracle": [
+        1,
+        3,
+        5,
+        2
+      ],
+      "action_binding": {
+        "mapping": [
+          1,
+          3,
+          5,
+          2
+        ],
+        "posterior": 1.0,
+        "log_margin": 16314.210651301337,
+        "second": [
+          5,
+          3,
+          1,
+          2
+        ],
+        "candidate_slots": [
+          1,
+          2,
+          3,
+          5
+        ]
+      }
+    },
+    {
+      "target_interface_digest": "01c8d12dcf4535a6f81e72449bd9af75f3f1d8d76395f9cc1187f9ff7b76c08c",
+      "target_action_digest": "9020ac798a6f28af5265adf989cd129dacc2d7865b76eb2fd6dc6ebe3229b12f",
+      "channel_oracle": [
+        5,
+        2,
+        4,
+        0,
+        3,
+        6
+      ],
+      "channel_binding": {
+        "mapping": [
+          5,
+          2,
+          4,
+          0,
+          3,
+          6
+        ],
+        "posterior": 1.0,
+        "log_margin": 1758.933353873479,
+        "second": [
+          5,
+          2,
+          0,
+          4,
+          3,
+          6
+        ]
+      },
+      "action_oracle": [
+        3,
+        1,
+        0,
+        4
+      ],
+      "action_binding": {
+        "mapping": [
+          3,
+          1,
+          0,
+          4
+        ],
+        "posterior": 1.0,
+        "log_margin": 15466.742207787267,
+        "second": [
+          3,
+          0,
+          1,
+          4
+        ],
+        "candidate_slots": [
+          0,
+          1,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "target_interface_digest": "2b49c1c4fc6b1c47d81b0bf9cec4e729178867f388ef8d94bc5ccbdf66c08da8",
+      "target_action_digest": "4af493c8cfe6effde96e9c8f8fc316728fff8d9a658c09f0cac1f5690a708ce5",
+      "channel_oracle": [
+        7,
+        4,
+        1,
+        6,
+        2,
+        0
+      ],
+      "channel_binding": {
+        "mapping": [
+          7,
+          4,
+          1,
+          6,
+          2,
+          0
+        ],
+        "posterior": 1.0,
+        "log_margin": 2786.267387925167,
+        "second": [
+          7,
+          4,
+          0,
+          6,
+          2,
+          1
+        ]
+      },
+      "action_oracle": [
+        4,
+        5,
+        2,
+        0
+      ],
+      "action_binding": {
+        "mapping": [
+          4,
+          5,
+          2,
+          0
+        ],
+        "posterior": 1.0,
+        "log_margin": 16001.215797969126,
+        "second": [
+          5,
+          4,
+          2,
+          0
+        ],
+        "candidate_slots": [
+          0,
+          2,
+          4,
+          5
+        ]
+      }
+    }
+  ],
+  "holdout_sha256": "129b686432bb7d68afc101a74ae0447aba2966b5e4789ae7c4ace2f08140874e",
+  "adoption_thresholds": {
+    "sensor_log_margin": 500.0,
+    "action_log_margin": 5000.0,
+    "joint_rate": 0.45,
+    "sensor_only_joint_margin": 0.45,
+    "action_only_joint_margin": 0.4,
+    "identity_joint_margin": 0.4,
+    "random_joint_margin": 0.4
+  },
+  "controls": [
+    "oracle canonical sensor/action subsets over the same frozen policy",
+    "learned sensor subset with first-four action slots",
+    "first-six sensor slots with learned action subset",
+    "first-six/first-four slots with no inference",
+    "fixed random six-of-eight and four-of-six subsets",
+    "four unseen eight-channel/six-slot interfaces",
+    "three shifted and one balanced unlabeled calibration distributions",
+    "two independent action-sampling seeds",
+    "zero policy/model writes",
+    "disjoint training, calibration, and holdout initial worlds"
+  ],
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "chosen_label": "high value next frozen experiment",
+    "confidence": 0.93,
+    "role": "development route classification only; absent from binders, BPC policy training, frozen evaluation, and runtime"
+  },
+  "retained_development_failures": [
+    "marginal occupancy/change/cochange confused a displaced composite nuisance with a real plane",
+    "unfiltered action likelihood confused a permanent zero-effect slot with a frequently blocked real action",
+    "action-conditioned local joint statistics still did not identify the composite nuisance under mixture shift; that harder case remains unsupported"
+  ],
+  "source_sha256": {
+    "bpc_open_interface_v15.py": "51798c150c56f79a7d8a34fedf131ca848a537db745d5cc164e3cc645829ad0d",
+    "bpc_three_factor_v12.py": "e7a07fbc0756fc2af8bc100cf9963e472a539d5cf9dc0348a7a3ef085bc7ff8e",
+    "bpc_evidence_field_v11.py": "8794d9a22f80242f0a59298d36592fb2300ea89ae22cc3460a43a60d3750253b",
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "bpc_direct_composition_v09.py": "6d15f3e2cb59c42d097860f2e463cfb7f46f54b7eb98b6a9963d421748a8ac3c",
+    "general_bpc_v7.py": "d37040bd087e0bbf135a491ab319411f7dd10d823038734327af1136467f05f8",
+    "experiment_v5.py": "0f883f7f0aa6d3a37299322e8214776c9179516b7be632094cd18c629231e493",
+    "experiment_v15_open_interface_frozen.py": "d9345d1c587af5d7dbfa0631365d420497787b6352fc36ed99dacdcbd4a73896",
+    "freeze_v15_open_interface.py": "1184fa31f69048d0c0d9d3adda1a2d092119e2c75cd3bb3dc3a242e087a64e6a"
+  },
+  "failure_policy": "Retain failures. Do not replace routes, nuisance mechanisms, streams, worlds, seeds, frozen sources, or thresholds after execution.",
+  "boundary": "Developer-frozen synthetic open-interface transfer. Six canonical planes and four canonical actions are embedded in supplied eight-channel/six-slot interfaces with deterministic state-keyed random nuisance planes. Composite causal nuisance rejection failed and is not claimed. Nuisance synthesis, null-slot mechanism, coordinate grid, calibration samplers, mixture schedules, interaction budget, likelihood families, generators, and terminal events remain supplied. No entity, task, direction, success, or reward labels enter binding; no neural network, planner, search, joint-task policy training, or evaluation learning is used."
+}
