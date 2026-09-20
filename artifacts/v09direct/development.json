@@ -1,0 +1,232 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1456,
+    "push_compact_steps": 5146,
+    "push_episodes": 2000,
+    "collect_success": 1841,
+    "collect_compact_steps": 11881,
+    "collect_episodes": 2000
+  },
+  "holdout": {
+    "worlds": 12,
+    "generation_attempts": 241,
+    "shortest_distances": [
+      5,
+      8,
+      8,
+      10,
+      5,
+      9,
+      5,
+      6,
+      5,
+      8,
+      7,
+      7
+    ],
+    "fixed_box_solutions": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "conditions_by_step_budget": {
+    "32": {
+      "shared": {
+        "episodes": 768,
+        "successes": 240,
+        "world_1_successes": 62,
+        "world_2_successes": 7,
+        "world_3_successes": 17,
+        "world_4_successes": 3,
+        "world_5_successes": 42,
+        "world_6_successes": 0,
+        "world_7_successes": 32,
+        "world_8_successes": 19,
+        "world_9_successes": 26,
+        "world_10_successes": 5,
+        "world_11_successes": 4,
+        "world_12_successes": 23
+      },
+      "push_only": {
+        "episodes": 768,
+        "successes": 204,
+        "world_1_successes": 59,
+        "world_2_successes": 8,
+        "world_3_successes": 20,
+        "world_4_successes": 4,
+        "world_5_successes": 25,
+        "world_6_successes": 0,
+        "world_7_successes": 34,
+        "world_8_successes": 5,
+        "world_9_successes": 19,
+        "world_10_successes": 4,
+        "world_11_successes": 2,
+        "world_12_successes": 24
+      },
+      "collect_only": {
+        "episodes": 768,
+        "successes": 275,
+        "world_1_successes": 57,
+        "world_2_successes": 10,
+        "world_3_successes": 9,
+        "world_4_successes": 9,
+        "world_5_successes": 54,
+        "world_6_successes": 4,
+        "world_7_successes": 37,
+        "world_8_successes": 24,
+        "world_9_successes": 29,
+        "world_10_successes": 6,
+        "world_11_successes": 17,
+        "world_12_successes": 19
+      },
+      "rotated": {
+        "episodes": 768,
+        "successes": 58,
+        "world_1_successes": 13,
+        "world_2_successes": 0,
+        "world_3_successes": 0,
+        "world_4_successes": 0,
+        "world_5_successes": 16,
+        "world_6_successes": 1,
+        "world_7_successes": 20,
+        "world_8_successes": 1,
+        "world_9_successes": 6,
+        "world_10_successes": 0,
+        "world_11_successes": 0,
+        "world_12_successes": 1
+      },
+      "uniform": {
+        "episodes": 768,
+        "successes": 93,
+        "world_1_successes": 33,
+        "world_2_successes": 4,
+        "world_3_successes": 7,
+        "world_4_successes": 0,
+        "world_5_successes": 12,
+        "world_6_successes": 0,
+        "world_7_successes": 15,
+        "world_8_successes": 5,
+        "world_9_successes": 9,
+        "world_10_successes": 3,
+        "world_11_successes": 1,
+        "world_12_successes": 4
+      }
+    },
+    "160": {
+      "shared": {
+        "episodes": 768,
+        "successes": 639,
+        "world_1_successes": 64,
+        "world_2_successes": 49,
+        "world_3_successes": 63,
+        "world_4_successes": 58,
+        "world_5_successes": 64,
+        "world_6_successes": 7,
+        "world_7_successes": 59,
+        "world_8_successes": 62,
+        "world_9_successes": 55,
+        "world_10_successes": 54,
+        "world_11_successes": 50,
+        "world_12_successes": 54
+      },
+      "push_only": {
+        "episodes": 768,
+        "successes": 556,
+        "world_1_successes": 64,
+        "world_2_successes": 46,
+        "world_3_successes": 64,
+        "world_4_successes": 51,
+        "world_5_successes": 61,
+        "world_6_successes": 7,
+        "world_7_successes": 61,
+        "world_8_successes": 35,
+        "world_9_successes": 49,
+        "world_10_successes": 27,
+        "world_11_successes": 38,
+        "world_12_successes": 53
+      },
+      "collect_only": {
+        "episodes": 768,
+        "successes": 634,
+        "world_1_successes": 64,
+        "world_2_successes": 49,
+        "world_3_successes": 55,
+        "world_4_successes": 63,
+        "world_5_successes": 64,
+        "world_6_successes": 11,
+        "world_7_successes": 55,
+        "world_8_successes": 64,
+        "world_9_successes": 56,
+        "world_10_successes": 54,
+        "world_11_successes": 42,
+        "world_12_successes": 57
+      },
+      "rotated": {
+        "episodes": 768,
+        "successes": 270,
+        "world_1_successes": 54,
+        "world_2_successes": 7,
+        "world_3_successes": 12,
+        "world_4_successes": 8,
+        "world_5_successes": 51,
+        "world_6_successes": 3,
+        "world_7_successes": 51,
+        "world_8_successes": 11,
+        "world_9_successes": 36,
+        "world_10_successes": 9,
+        "world_11_successes": 10,
+        "world_12_successes": 18
+      },
+      "uniform": {
+        "episodes": 768,
+        "successes": 440,
+        "world_1_successes": 63,
+        "world_2_successes": 21,
+        "world_3_successes": 44,
+        "world_4_successes": 30,
+        "world_5_successes": 60,
+        "world_6_successes": 10,
+        "world_7_successes": 48,
+        "world_8_successes": 37,
+        "world_9_successes": 36,
+        "world_10_successes": 27,
+        "world_11_successes": 36,
+        "world_12_successes": 28
+      }
+    }
+  },
+  "worlds_with_success_trace": {
+    "32": {
+      "shared": 11,
+      "push_only": 11,
+      "collect_only": 12,
+      "rotated": 7,
+      "uniform": 10
+    },
+    "160": {
+      "shared": 12,
+      "push_only": 12,
+      "collect_only": 12,
+      "rotated": 12,
+      "uniform": 12
+    }
+  },
+  "evaluation_writes": {
+    "shared": 0,
+    "push": 0,
+    "collect": 0
+  },
+  "seconds": 156.405237458006,
+  "boundary": "Development direct policy on supplied push-required collect tasks; no runtime planner/search, but task generators and binary success events are supplied."
+}

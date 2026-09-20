@@ -1,0 +1,243 @@
+{
+  "development_only": true,
+  "training": {
+    "push": 150000,
+    "push_changed": 100156,
+    "composition_inputs": 0,
+    "collect": 150000,
+    "collect_changed": 107780
+  },
+  "holdout_seed": 88008,
+  "episodes_per_horizon": 2000,
+  "conditions": {
+    "condition_deleted": {
+      "1": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 2000,
+        "exact_final": 2000,
+        "exact_steps": 2000,
+        "steps": 2000,
+        "composition_episodes": 48,
+        "composition_known": 48,
+        "composition_exact_all": 48,
+        "composition_exact_final": 48
+      },
+      "2": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 1996,
+        "exact_final": 1996,
+        "exact_steps": 3996,
+        "steps": 4000,
+        "composition_episodes": 91,
+        "composition_known": 91,
+        "composition_exact_all": 87,
+        "composition_exact_final": 87
+      },
+      "4": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 1981,
+        "exact_final": 1981,
+        "exact_steps": 7958,
+        "steps": 8000,
+        "composition_episodes": 145,
+        "composition_known": 145,
+        "composition_exact_all": 126,
+        "composition_exact_final": 126
+      },
+      "8": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 1961,
+        "exact_final": 1961,
+        "exact_steps": 15856,
+        "steps": 16000,
+        "composition_episodes": 256,
+        "composition_known": 256,
+        "composition_exact_all": 217,
+        "composition_exact_final": 217
+      },
+      "16": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 1913,
+        "exact_final": 1914,
+        "exact_steps": 31267,
+        "steps": 32000,
+        "composition_episodes": 337,
+        "composition_known": 337,
+        "composition_exact_all": 250,
+        "composition_exact_final": 251
+      },
+      "32": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 1846,
+        "exact_final": 1852,
+        "exact_steps": 61277,
+        "steps": 64000,
+        "composition_episodes": 478,
+        "composition_known": 478,
+        "composition_exact_all": 324,
+        "composition_exact_final": 330
+      }
+    },
+    "fragment_chain": {
+      "1": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 2000,
+        "exact_final": 2000,
+        "exact_steps": 2000,
+        "steps": 2000,
+        "composition_episodes": 48,
+        "composition_known": 48,
+        "composition_exact_all": 48,
+        "composition_exact_final": 48
+      },
+      "2": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 2000,
+        "exact_final": 2000,
+        "exact_steps": 4000,
+        "steps": 4000,
+        "composition_episodes": 91,
+        "composition_known": 91,
+        "composition_exact_all": 91,
+        "composition_exact_final": 91
+      },
+      "4": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 2000,
+        "exact_final": 2000,
+        "exact_steps": 8000,
+        "steps": 8000,
+        "composition_episodes": 145,
+        "composition_known": 145,
+        "composition_exact_all": 145,
+        "composition_exact_final": 145
+      },
+      "8": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 2000,
+        "exact_final": 2000,
+        "exact_steps": 16000,
+        "steps": 16000,
+        "composition_episodes": 256,
+        "composition_known": 256,
+        "composition_exact_all": 256,
+        "composition_exact_final": 256
+      },
+      "16": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 2000,
+        "exact_final": 2000,
+        "exact_steps": 32000,
+        "steps": 32000,
+        "composition_episodes": 337,
+        "composition_known": 337,
+        "composition_exact_all": 337,
+        "composition_exact_final": 337
+      },
+      "32": {
+        "episodes": 2000,
+        "known": 2000,
+        "exact_all": 2000,
+        "exact_final": 2000,
+        "exact_steps": 64000,
+        "steps": 64000,
+        "composition_episodes": 478,
+        "composition_known": 478,
+        "composition_exact_all": 478,
+        "composition_exact_final": 478
+      }
+    },
+    "full_context": {
+      "1": {
+        "episodes": 2000,
+        "known": 1952,
+        "exact_all": 1952,
+        "exact_final": 1952,
+        "exact_steps": 1952,
+        "steps": 2000,
+        "composition_episodes": 48,
+        "composition_known": 0,
+        "composition_exact_all": 0,
+        "composition_exact_final": 0
+      },
+      "2": {
+        "episodes": 2000,
+        "known": 1909,
+        "exact_all": 1909,
+        "exact_final": 1909,
+        "exact_steps": 3863,
+        "steps": 4000,
+        "composition_episodes": 91,
+        "composition_known": 0,
+        "composition_exact_all": 0,
+        "composition_exact_final": 0
+      },
+      "4": {
+        "episodes": 2000,
+        "known": 1855,
+        "exact_all": 1855,
+        "exact_final": 1855,
+        "exact_steps": 7582,
+        "steps": 8000,
+        "composition_episodes": 145,
+        "composition_known": 0,
+        "composition_exact_all": 0,
+        "composition_exact_final": 0
+      },
+      "8": {
+        "episodes": 2000,
+        "known": 1744,
+        "exact_all": 1744,
+        "exact_final": 1744,
+        "exact_steps": 14635,
+        "steps": 16000,
+        "composition_episodes": 256,
+        "composition_known": 0,
+        "composition_exact_all": 0,
+        "composition_exact_final": 0
+      },
+      "16": {
+        "episodes": 2000,
+        "known": 1663,
+        "exact_all": 1663,
+        "exact_final": 1663,
+        "exact_steps": 28612,
+        "steps": 32000,
+        "composition_episodes": 337,
+        "composition_known": 0,
+        "composition_exact_all": 0,
+        "composition_exact_final": 0
+      },
+      "32": {
+        "episodes": 2000,
+        "known": 1522,
+        "exact_all": 1522,
+        "exact_final": 1522,
+        "exact_steps": 53079,
+        "steps": 64000,
+        "composition_episodes": 478,
+        "composition_known": 0,
+        "composition_exact_all": 0,
+        "composition_exact_final": 0
+      }
+    }
+  },
+  "evaluation_writes": {
+    "condition_deleted": 0,
+    "fragment_chain": 0,
+    "full_context": 0
+  },
+  "seconds": 7.574624750006478,
+  "boundary": "Open-loop prediction under supplied random actions; not planning, goal selection, direct control, or AGI."
+}

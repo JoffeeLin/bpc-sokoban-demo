@@ -1,5 +1,45 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.9 breakthrough: direct task composition without joint training
+
+Two independent BPC policies learn from `2,000` push-only and `2,000`
+collect-only episodes. Their four-way probabilities are multiplied equally at
+inference, then sampled directly—no runtime planner, search, joint-task
+training, or evaluation writes.
+
+All 16 frozen worlds require pushing: they become unsolvable if boxes are held
+fixed. Under a 32-step budget:
+
+| Frozen condition | Successes | Rate |
+|---|---:|---:|
+| Independent probability product | **942 / 2,048** | **46.0%** |
+| Collect-only specialist | 830 / 2,048 | 40.5% |
+| Shared mixed-experience cube | 610 / 2,048 | 29.8% |
+| Uniform random | 235 / 2,048 | 11.5% |
+| Rotated learned actions | 71 / 2,048 | 3.5% |
+
+Every new world had a successful direct-control trace. See
+[`V09_DIRECT_RESULT.md`](V09_DIRECT_RESULT.md) and the machine-readable
+[`v0.9 result`](artifacts/v09direct/result.json).
+
+![Frozen v0.9 result](artifacts/v09direct/poster_v09_direct.png)
+
+**[Watch all 16 frozen direct-control traces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v9.0.0/bpc_direct_composition_v09_16_worlds.mp4)**
+
+The equal probability product is supplied, not autonomously invented. This is
+bounded synthetic cross-task control—not arbitrary planning or AGI.
+
+## v0.8 bridge: exact 64-step cross-task rollout
+
+Before direct control, the v0.7 world function was recursively rolled forward
+without teacher forcing. Across two new seeds it completed **6,000/6,000**
+64-step trajectories exactly; all `1,681/1,681` trajectories that encountered
+joint mechanisms remained exact, versus `1,081/1,681` for condition deletion
+and `0/1,681` known by full-context memory. See
+[`V08_ROLLOUT_RESULT.md`](V08_ROLLOUT_RESULT.md).
+
+This is open-loop prediction under supplied actions, not planning.
+
 ## v0.7 breakthrough: two learned world functions compose
 
 v0.7 trains on two disjoint streams—`150,000` push-only transitions and
@@ -205,6 +245,9 @@ python3 experiment_v061_frozen.py
 python3 render_v06.py
 python3 experiment_v07_cross_frozen.py
 python3 render_v07_cross.py
+python3 experiment_v08_rollout_frozen.py
+python3 experiment_v09_direct_frozen.py
+python3 render_v09_direct.py
 ```
 
 The committed protocol and holdout refuse silent source changes by verifying

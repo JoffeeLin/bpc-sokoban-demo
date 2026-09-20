@@ -1,0 +1,50 @@
+{
+  "format": "bpc-cross-task-rollout-v08-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Does the separately trained fragment-chain world function remain exact under recursive open-loop rollout in never-trained combined worlds?",
+  "config": {
+    "train_seed": 70707,
+    "train_episodes": 2500,
+    "train_steps": 60,
+    "eval_seeds": [88108, 88208],
+    "eval_episodes": 3000,
+    "horizons": [1, 2, 4, 8, 16, 32, 64],
+    "retention_seeds": [88308, 88408],
+    "retention_episodes": 1000,
+    "retention_horizon": 64
+  },
+  "expected_training_events": {
+    "push": 150000,
+    "push_changed": 100156,
+    "composition_inputs": 0,
+    "collect": 150000,
+    "collect_changed": 107780
+  },
+  "expected_model_digests": {
+    "condition_deleted": "926e41f7de5f5f639e08f49ce17be7d7b55afcedbf9c0a3088321ed4098ebc54",
+    "fragment_chain": "d744d923026025fd21cf48235c219304d8dd260b3b497f0d6356a75e7e6f7a9b"
+  },
+  "adoption_thresholds": {
+    "long_horizon_composition_min": 800,
+    "condition_deleted_max_rate": 0.8
+  },
+  "controls": [
+    "condition-deleted and full-context models receive identical training transitions",
+    "model predictions are recursively fed back without teacher forcing",
+    "learned rollout source may not call the true transition function",
+    "two separate-family 64-step retention tests must remain exact",
+    "the first complete holdout must repeat bit-for-bit",
+    "all model write counters must remain unchanged during evaluation"
+  ],
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "role": "development route classification only; absent from training, evaluation, and runtime"
+  },
+  "source_sha256": {
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "bpc_cross_task_rollout_v08.py": "144fd3bf0eb3cd8f0a1c20de4edab87687fd69844f42d3e93af0efe0709d7383",
+    "experiment_v08_rollout_frozen.py": "2393cc3f921379e7575ed38d4c2edbc6fa1d16e7d97fab1f6c862a5eb8c760d6"
+  },
+  "failure_policy": "Retain every drift or unknown rollout; do not replace seeds, alter code, or lower gates after holdout execution.",
+  "boundary": "Developer-frozen synthetic open-loop prediction. Actions, raw channels, local window, global state container, task generators, and evaluator are supplied."
+}

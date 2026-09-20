@@ -1,0 +1,58 @@
+{
+  "format": "bpc-direct-composition-v09-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can two BPC action distributions learned on disjoint push-only and collect-only tasks combine without joint training to improve direct control on new push-required collection worlds?",
+  "config": {
+    "train_seed": 90909,
+    "uniform_episodes": 1000,
+    "guided_rounds": 2,
+    "guided_episodes": 500,
+    "train_steps": 100,
+    "eval_seeds": [99309, 99409],
+    "episodes_per_map": 64,
+    "step_budgets": [32, 160]
+  },
+  "expected_training_events": {
+    "push_success": 1456,
+    "push_compact_steps": 5146,
+    "push_episodes": 2000,
+    "collect_success": 1841,
+    "collect_compact_steps": 11881,
+    "collect_episodes": 2000
+  },
+  "expected_model_digests": {
+    "shared": "2b1ef0d895235194a875ec3a67f42d67f7c4999f23cc1018686b3537d057bde8",
+    "push": "cb0fceabd564ddfa7c7103008656cd3376674fda86b1a7e257b8889be6b23e4b",
+    "collect": "6671d278f5061f3e0a9bc42f027fea24e18818e030ffcffc31fb9495c8a19e5b"
+  },
+  "holdout_sha256": "4b727aab552e4620701ae8b5d1f6a4a5a86ebd55dc79b7e635de42150d7097e3",
+  "adoption_thresholds": {
+    "product_rate": 0.30,
+    "collect_margin": 0.05,
+    "shared_margin": 0.08,
+    "uniform_margin": 0.20,
+    "rotated_margin": 0.25
+  },
+  "controls": [
+    "collect-only and push-only specialist policies",
+    "a single shared cube receiving the identical union of specialist experience",
+    "uniform random actions",
+    "the product policy with all learned action channels rotated",
+    "every holdout is solvable with true pushes and unsolvable when boxes are fixed",
+    "all model write counters remain unchanged during evaluation"
+  ],
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "role": "development route classification only; absent from training, evaluation, and runtime"
+  },
+  "source_sha256": {
+    "bpc_direct_composition_v09.py": "6d15f3e2cb59c42d097860f2e463cfb7f46f54b7eb98b6a9963d421748a8ac3c",
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "general_bpc_v7.py": "d37040bd087e0bbf135a491ab319411f7dd10d823038734327af1136467f05f8",
+    "experiment_v5.py": "0f883f7f0aa6d3a37299322e8214776c9179516b7be632094cd18c629231e493",
+    "experiment_v09_direct_frozen.py": "1b32ab09666dd047e54381db9012dece9b92365048eb68c801b3ba2de8e18566",
+    "freeze_v09_direct.py": "f58dedaa2c5eaa76e9aaaf2249cbbcb5cc512dd2b2922c5a64a93fcff7afa13e"
+  },
+  "failure_policy": "Retain every failed episode and map; do not replace holdouts, alter seeds, change code, or lower gates after execution.",
+  "boundary": "Developer-frozen synthetic direct control. Equal probability multiplication, raw encoder, success events, task generators, and evaluation limits are supplied."
+}

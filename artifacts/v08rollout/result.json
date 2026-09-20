@@ -1,0 +1,641 @@
+{
+  "format": "bpc-cross-task-rollout-v08",
+  "evidence_level": "developer-frozen held-out synthetic rollouts; not third-party blind",
+  "question": "Does the separately trained fragment-chain world function remain exact under recursive open-loop rollout in never-trained combined worlds?",
+  "training": {
+    "push": 150000,
+    "push_changed": 100156,
+    "composition_inputs": 0,
+    "collect": 150000,
+    "collect_changed": 107780
+  },
+  "model_digests": {
+    "condition_deleted": "926e41f7de5f5f639e08f49ce17be7d7b55afcedbf9c0a3088321ed4098ebc54",
+    "fragment_chain": "d744d923026025fd21cf48235c219304d8dd260b3b497f0d6356a75e7e6f7a9b"
+  },
+  "holdouts": {
+    "88108": {
+      "condition_deleted": {
+        "1": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 3000,
+          "steps": 3000,
+          "composition_episodes": 92,
+          "composition_known": 92,
+          "composition_exact_all": 92,
+          "composition_exact_final": 92
+        },
+        "2": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2988,
+          "exact_final": 2988,
+          "exact_steps": 5988,
+          "steps": 6000,
+          "composition_episodes": 119,
+          "composition_known": 119,
+          "composition_exact_all": 107,
+          "composition_exact_final": 107
+        },
+        "4": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2968,
+          "exact_final": 2968,
+          "exact_steps": 11943,
+          "steps": 12000,
+          "composition_episodes": 218,
+          "composition_known": 218,
+          "composition_exact_all": 186,
+          "composition_exact_final": 186
+        },
+        "8": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2946,
+          "exact_final": 2948,
+          "exact_steps": 23811,
+          "steps": 24000,
+          "composition_episodes": 347,
+          "composition_known": 347,
+          "composition_exact_all": 293,
+          "composition_exact_final": 295
+        },
+        "16": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2882,
+          "exact_final": 2885,
+          "exact_steps": 46998,
+          "steps": 48000,
+          "composition_episodes": 506,
+          "composition_known": 506,
+          "composition_exact_all": 388,
+          "composition_exact_final": 391
+        },
+        "32": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2797,
+          "exact_final": 2807,
+          "exact_steps": 92406,
+          "steps": 96000,
+          "composition_episodes": 659,
+          "composition_known": 659,
+          "composition_exact_all": 456,
+          "composition_exact_final": 466
+        },
+        "64": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2709,
+          "exact_final": 2729,
+          "exact_steps": 181661,
+          "steps": 192000,
+          "composition_episodes": 839,
+          "composition_known": 839,
+          "composition_exact_all": 548,
+          "composition_exact_final": 568
+        }
+      },
+      "fragment_chain": {
+        "1": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 3000,
+          "steps": 3000,
+          "composition_episodes": 92,
+          "composition_known": 92,
+          "composition_exact_all": 92,
+          "composition_exact_final": 92
+        },
+        "2": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 6000,
+          "steps": 6000,
+          "composition_episodes": 119,
+          "composition_known": 119,
+          "composition_exact_all": 119,
+          "composition_exact_final": 119
+        },
+        "4": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 12000,
+          "steps": 12000,
+          "composition_episodes": 218,
+          "composition_known": 218,
+          "composition_exact_all": 218,
+          "composition_exact_final": 218
+        },
+        "8": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 24000,
+          "steps": 24000,
+          "composition_episodes": 347,
+          "composition_known": 347,
+          "composition_exact_all": 347,
+          "composition_exact_final": 347
+        },
+        "16": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 48000,
+          "steps": 48000,
+          "composition_episodes": 506,
+          "composition_known": 506,
+          "composition_exact_all": 506,
+          "composition_exact_final": 506
+        },
+        "32": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 96000,
+          "steps": 96000,
+          "composition_episodes": 659,
+          "composition_known": 659,
+          "composition_exact_all": 659,
+          "composition_exact_final": 659
+        },
+        "64": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 192000,
+          "steps": 192000,
+          "composition_episodes": 839,
+          "composition_known": 839,
+          "composition_exact_all": 839,
+          "composition_exact_final": 839
+        }
+      },
+      "full_context": {
+        "1": {
+          "episodes": 3000,
+          "known": 2908,
+          "exact_all": 2908,
+          "exact_final": 2908,
+          "exact_steps": 2908,
+          "steps": 3000,
+          "composition_episodes": 92,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "2": {
+          "episodes": 3000,
+          "known": 2881,
+          "exact_all": 2881,
+          "exact_final": 2881,
+          "exact_steps": 5815,
+          "steps": 6000,
+          "composition_episodes": 119,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "4": {
+          "episodes": 3000,
+          "known": 2782,
+          "exact_all": 2782,
+          "exact_final": 2782,
+          "exact_steps": 11415,
+          "steps": 12000,
+          "composition_episodes": 218,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "8": {
+          "episodes": 3000,
+          "known": 2653,
+          "exact_all": 2653,
+          "exact_final": 2653,
+          "exact_steps": 22165,
+          "steps": 24000,
+          "composition_episodes": 347,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "16": {
+          "episodes": 3000,
+          "known": 2494,
+          "exact_all": 2494,
+          "exact_final": 2494,
+          "exact_steps": 42470,
+          "steps": 48000,
+          "composition_episodes": 506,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "32": {
+          "episodes": 3000,
+          "known": 2341,
+          "exact_all": 2341,
+          "exact_final": 2341,
+          "exact_steps": 81195,
+          "steps": 96000,
+          "composition_episodes": 659,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "64": {
+          "episodes": 3000,
+          "known": 2161,
+          "exact_all": 2161,
+          "exact_final": 2161,
+          "exact_steps": 152650,
+          "steps": 192000,
+          "composition_episodes": 839,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        }
+      }
+    },
+    "88208": {
+      "condition_deleted": {
+        "1": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 3000,
+          "steps": 3000,
+          "composition_episodes": 85,
+          "composition_known": 85,
+          "composition_exact_all": 85,
+          "composition_exact_final": 85
+        },
+        "2": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2987,
+          "exact_final": 2987,
+          "exact_steps": 5987,
+          "steps": 6000,
+          "composition_episodes": 123,
+          "composition_known": 123,
+          "composition_exact_all": 110,
+          "composition_exact_final": 110
+        },
+        "4": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2976,
+          "exact_final": 2976,
+          "exact_steps": 11954,
+          "steps": 12000,
+          "composition_episodes": 199,
+          "composition_known": 199,
+          "composition_exact_all": 175,
+          "composition_exact_final": 175
+        },
+        "8": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2942,
+          "exact_final": 2944,
+          "exact_steps": 23788,
+          "steps": 24000,
+          "composition_episodes": 337,
+          "composition_known": 337,
+          "composition_exact_all": 279,
+          "composition_exact_final": 281
+        },
+        "16": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2884,
+          "exact_final": 2887,
+          "exact_steps": 47011,
+          "steps": 48000,
+          "composition_episodes": 522,
+          "composition_known": 522,
+          "composition_exact_all": 406,
+          "composition_exact_final": 409
+        },
+        "32": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2807,
+          "exact_final": 2816,
+          "exact_steps": 92887,
+          "steps": 96000,
+          "composition_episodes": 693,
+          "composition_known": 693,
+          "composition_exact_all": 500,
+          "composition_exact_final": 509
+        },
+        "64": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 2691,
+          "exact_final": 2708,
+          "exact_steps": 180293,
+          "steps": 192000,
+          "composition_episodes": 842,
+          "composition_known": 842,
+          "composition_exact_all": 533,
+          "composition_exact_final": 550
+        }
+      },
+      "fragment_chain": {
+        "1": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 3000,
+          "steps": 3000,
+          "composition_episodes": 85,
+          "composition_known": 85,
+          "composition_exact_all": 85,
+          "composition_exact_final": 85
+        },
+        "2": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 6000,
+          "steps": 6000,
+          "composition_episodes": 123,
+          "composition_known": 123,
+          "composition_exact_all": 123,
+          "composition_exact_final": 123
+        },
+        "4": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 12000,
+          "steps": 12000,
+          "composition_episodes": 199,
+          "composition_known": 199,
+          "composition_exact_all": 199,
+          "composition_exact_final": 199
+        },
+        "8": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 24000,
+          "steps": 24000,
+          "composition_episodes": 337,
+          "composition_known": 337,
+          "composition_exact_all": 337,
+          "composition_exact_final": 337
+        },
+        "16": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 48000,
+          "steps": 48000,
+          "composition_episodes": 522,
+          "composition_known": 522,
+          "composition_exact_all": 522,
+          "composition_exact_final": 522
+        },
+        "32": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 96000,
+          "steps": 96000,
+          "composition_episodes": 693,
+          "composition_known": 693,
+          "composition_exact_all": 693,
+          "composition_exact_final": 693
+        },
+        "64": {
+          "episodes": 3000,
+          "known": 3000,
+          "exact_all": 3000,
+          "exact_final": 3000,
+          "exact_steps": 192000,
+          "steps": 192000,
+          "composition_episodes": 842,
+          "composition_known": 842,
+          "composition_exact_all": 842,
+          "composition_exact_final": 842
+        }
+      },
+      "full_context": {
+        "1": {
+          "episodes": 3000,
+          "known": 2915,
+          "exact_all": 2915,
+          "exact_final": 2915,
+          "exact_steps": 2915,
+          "steps": 3000,
+          "composition_episodes": 85,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "2": {
+          "episodes": 3000,
+          "known": 2877,
+          "exact_all": 2877,
+          "exact_final": 2877,
+          "exact_steps": 5811,
+          "steps": 6000,
+          "composition_episodes": 123,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "4": {
+          "episodes": 3000,
+          "known": 2801,
+          "exact_all": 2801,
+          "exact_final": 2801,
+          "exact_steps": 11456,
+          "steps": 12000,
+          "composition_episodes": 199,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "8": {
+          "episodes": 3000,
+          "known": 2663,
+          "exact_all": 2663,
+          "exact_final": 2663,
+          "exact_steps": 22303,
+          "steps": 24000,
+          "composition_episodes": 337,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "16": {
+          "episodes": 3000,
+          "known": 2478,
+          "exact_all": 2478,
+          "exact_final": 2478,
+          "exact_steps": 42418,
+          "steps": 48000,
+          "composition_episodes": 522,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "32": {
+          "episodes": 3000,
+          "known": 2307,
+          "exact_all": 2307,
+          "exact_final": 2307,
+          "exact_steps": 80798,
+          "steps": 96000,
+          "composition_episodes": 693,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        },
+        "64": {
+          "episodes": 3000,
+          "known": 2158,
+          "exact_all": 2158,
+          "exact_final": 2158,
+          "exact_steps": 151035,
+          "steps": 192000,
+          "composition_episodes": 842,
+          "composition_known": 0,
+          "composition_exact_all": 0,
+          "composition_exact_final": 0
+        }
+      }
+    }
+  },
+  "retention": {
+    "push": {
+      "condition_deleted": {
+        "64": {
+          "episodes": 1000,
+          "known": 1000,
+          "exact_all": 1000,
+          "exact_final": 1000,
+          "exact_steps": 64000,
+          "steps": 64000
+        }
+      },
+      "fragment_chain": {
+        "64": {
+          "episodes": 1000,
+          "known": 1000,
+          "exact_all": 1000,
+          "exact_final": 1000,
+          "exact_steps": 64000,
+          "steps": 64000
+        }
+      },
+      "full_context": {
+        "64": {
+          "episodes": 1000,
+          "known": 1000,
+          "exact_all": 1000,
+          "exact_final": 1000,
+          "exact_steps": 64000,
+          "steps": 64000
+        }
+      }
+    },
+    "collect": {
+      "condition_deleted": {
+        "64": {
+          "episodes": 1000,
+          "known": 1000,
+          "exact_all": 1000,
+          "exact_final": 1000,
+          "exact_steps": 64000,
+          "steps": 64000
+        }
+      },
+      "fragment_chain": {
+        "64": {
+          "episodes": 1000,
+          "known": 1000,
+          "exact_all": 1000,
+          "exact_final": 1000,
+          "exact_steps": 64000,
+          "steps": 64000
+        }
+      },
+      "full_context": {
+        "64": {
+          "episodes": 1000,
+          "known": 1000,
+          "exact_all": 1000,
+          "exact_final": 1000,
+          "exact_steps": 64000,
+          "steps": 64000
+        }
+      }
+    }
+  },
+  "source_scan": {
+    "truth": true,
+    "reward": true,
+    "score": true,
+    "loss": true,
+    "gradient": true,
+    "torch": true,
+    "tensorflow": true,
+    "sklearn": true
+  },
+  "model_writes_during_evaluation": {
+    "condition_deleted": 0,
+    "fragment_chain": 0,
+    "full_context": 0
+  },
+  "gate": {
+    "training_contains_zero_compositions": true,
+    "fragment_chain_all_rollouts_exact": true,
+    "fragment_chain_all_predicted_steps_exact": true,
+    "minimum_long_horizon_composition_episodes": true,
+    "condition_deleted_long_horizon_control_fails": true,
+    "full_context_knows_zero_composition_rollouts": true,
+    "retains_64_step_training_families": true,
+    "deterministic_repeat": true,
+    "learned_rollout_has_no_true_step": true,
+    "frozen_model_writes_zero": true
+  },
+  "adopted": true,
+  "seconds": 46.13553479098482,
+  "protocol_sha256": "7de5c7a604022df295170e039a9a37e40818dd6e7b3c0828230626267934fffc",
+  "source_sha256": {
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "bpc_cross_task_rollout_v08.py": "144fd3bf0eb3cd8f0a1c20de4edab87687fd69844f42d3e93af0efe0709d7383",
+    "experiment_v08_rollout_frozen.py": "2393cc3f921379e7575ed38d4c2edbc6fa1d16e7d97fab1f6c862a5eb8c760d6"
+  },
+  "supported_claim": "The separately trained anonymous fragment-chain world function remains exact when recursively rolled forward for up to 64 supplied random actions in never-trained combined worlds.",
+  "boundary": "Open-loop prediction with supplied actions and global state reconstruction. Not goal selection, planning, direct policy control, autonomous task discovery, or AGI."
+}
