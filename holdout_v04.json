@@ -1,0 +1,86 @@
+[
+  {
+    "id": "H1",
+    "boxes": 1,
+    "shortest_actions": 6,
+    "reference_states": 46,
+    "map": "#######\n#     #\n#$    #\n#  @ ##\n#.    #\n#   # #\n#######"
+  },
+  {
+    "id": "H2",
+    "boxes": 2,
+    "shortest_actions": 16,
+    "reference_states": 6121,
+    "map": "########\n#@     #\n#    $ #\n# .   .#\n#    $ #\n#      #\n#      #\n########"
+  },
+  {
+    "id": "H3",
+    "boxes": 3,
+    "shortest_actions": 19,
+    "reference_states": 49402,
+    "map": "#########\n# .  $  #\n#     @ #\n#.      #\n#       #\n#       #\n#  $ $  #\n#    .  #\n#########"
+  },
+  {
+    "id": "H4",
+    "boxes": 4,
+    "shortest_actions": 22,
+    "reference_states": 180880,
+    "map": "#########\n#       #\n#  #    #\n#       #\n#. $ # @#\n#     $.#\n#  .  $##\n# $    .#\n#########"
+  },
+  {
+    "id": "H5",
+    "boxes": 1,
+    "shortest_actions": 11,
+    "reference_states": 275,
+    "map": "#######\n#     #\n#  $  #\n#     #\n#   . #\n#  # @#\n#######"
+  },
+  {
+    "id": "H6",
+    "boxes": 2,
+    "shortest_actions": 12,
+    "reference_states": 5793,
+    "map": "########\n#      #\n#  @   #\n#      #\n#  $$  #\n#.     #\n##    .#\n########"
+  },
+  {
+    "id": "H7",
+    "boxes": 3,
+    "shortest_actions": 23,
+    "reference_states": 115405,
+    "map": "#########\n#.@#    #\n#       #\n#$      #\n#.  #   #\n#  .$   #\n#  $    #\n##      #\n#########"
+  },
+  {
+    "id": "H8",
+    "boxes": 4,
+    "shortest_actions": 20,
+    "reference_states": 208775,
+    "map": "#########\n#       #\n#    . ##\n#   $#$ #\n#  . .  #\n#     # #\n#  $$.  #\n#    @  #\n#########"
+  },
+  {
+    "id": "H9",
+    "boxes": 1,
+    "shortest_actions": 9,
+    "reference_states": 45,
+    "map": "#######\n#    @#\n# #   #\n# #   #\n#     #\n#  $ .#\n#######"
+  },
+  {
+    "id": "H10",
+    "boxes": 2,
+    "shortest_actions": 16,
+    "reference_states": 2005,
+    "map": "########\n# $  . #\n#   $  #\n##     #\n#      #\n#      #\n#   .@ #\n########"
+  },
+  {
+    "id": "H11",
+    "boxes": 3,
+    "shortest_actions": 17,
+    "reference_states": 118730,
+    "map": "#########\n#       #\n#   .   #\n#     $ #\n# @$  . #\n# $     #\n##  .   #\n#    #  #\n#########"
+  },
+  {
+    "id": "H12",
+    "boxes": 4,
+    "shortest_actions": 18,
+    "reference_states": 293984,
+    "map": "#########\n#@      #\n#       #\n# . $   #\n#.$     #\n#  $$   #\n#  .   .#\n#       #\n#########"
+  }
+]

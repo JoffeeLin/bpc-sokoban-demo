@@ -1,0 +1,40 @@
+{
+  "format": "bpc-learned-world-v04-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can a local transition probability cube learned only from random raw interactions replace supplied Sokoban push physics inside the fixed v0.3 wave shell on unseen layouts and an unseen box count?",
+  "config": {
+    "training_seed": 40404,
+    "training_episodes": 3000,
+    "training_steps": 80,
+    "validation_seed": 90901,
+    "validation_episodes": 500,
+    "validation_steps": 80,
+    "holdout_count": 12,
+    "holdout_seed": 44004,
+    "state_limit": 5000000
+  },
+  "expected_model_sha256": "4b6ce7815dc350acd03e2362511004c66fc536acaea62f1645ac717ddfce8070",
+  "expected_training_manifest": {
+    "episodes": 3000,
+    "steps_per_episode": 80,
+    "unique_levels": 2857,
+    "levels_sha256": "48a78844f2475bcc29289d6ad19062710f9df459dba5255552efb6d6f3d015c2"
+  },
+  "holdout_sha256": "a97a2a3ca2c6a99101512cbb066865da4626159fb024e9603e27a53417f40d03",
+  "archive_v03_sha256": "107145ee2cc50468cf35749a5082aa76475090f7c22461ad7955ab745e60a898",
+  "adoption_thresholds": {
+    "no_far_max_push_accuracy": 0.25,
+    "solve_margin": 0.75
+  },
+  "controls": [
+    "no_far removes the third action-relative cell with identical experience"
+  ],
+  "source_sha256": {
+    "bpc_learned_wave_v04.py": "700ee8e1a6810b9491a214fbe378b0c2362c188adfab726f1cd5fbdff01f62ed",
+    "v04_maps.py": "be0ba58041c760f4c2f7e48d24fb3da046c88c907c1f20c2c2bfd24a5dda9fe3",
+    "experiment_v04_frozen.py": "4564bacac330214effc321efbfd621d9bca92d69504da10c82f22b0b6bcc9d00",
+    "freeze_v04.py": "b628cda41e1512e03e67236b1858495e0ca34adf39bd7fa31e24f7bb430a3ce9"
+  },
+  "failure_policy": "Retain every miss; do not replace maps, alter seeds, change code, or lower gates after execution.",
+  "boundary": "Developer-frozen local evidence. The v0.3 reachability compression and recursive wave shell remain supplied."
+}

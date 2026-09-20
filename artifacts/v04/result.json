@@ -1,0 +1,299 @@
+{
+  "format": "bpc-learned-world-v04",
+  "evidence_level": "developer-frozen local holdout; not third-party blind",
+  "archive_v03_sha256": "107145ee2cc50468cf35749a5082aa76475090f7c22461ad7955ab745e60a898",
+  "training_experience": {
+    "blocked": 80197,
+    "box_change": 4209,
+    "move": 155594
+  },
+  "training_manifest": {
+    "episodes": 3000,
+    "steps_per_episode": 80,
+    "unique_levels": 2857,
+    "levels_sha256": "48a78844f2475bcc29289d6ad19062710f9df459dba5255552efb6d6f3d015c2"
+  },
+  "learned_rows": 48,
+  "model_sha256": "4b6ce7815dc350acd03e2362511004c66fc536acaea62f1645ac717ddfce8070",
+  "validation": {
+    "full": {
+      "other_total": 39312,
+      "other_known": 39312,
+      "other_correct": 39312,
+      "box_change_total": 688,
+      "box_change_known": 688,
+      "box_change_correct": 688
+    },
+    "no_far": {
+      "other_total": 39312,
+      "other_known": 39312,
+      "other_correct": 24513,
+      "box_change_total": 688,
+      "box_change_known": 688,
+      "box_change_correct": 0
+    }
+  },
+  "holdout": {
+    "maps": 12,
+    "boxes": [
+      1,
+      2,
+      3,
+      4,
+      1,
+      2,
+      3,
+      4,
+      1,
+      2,
+      3,
+      4
+    ],
+    "shortest_action_distances": [
+      6,
+      16,
+      19,
+      22,
+      11,
+      12,
+      23,
+      20,
+      9,
+      16,
+      17,
+      18
+    ]
+  },
+  "conditions": {
+    "primary": {
+      "H1": {
+        "solved": true,
+        "complete": false,
+        "states": 6,
+        "push_phase": 2,
+        "actions": 6,
+        "sequence": "LUULDD",
+        "seconds": 0.0005745419766753912,
+        "replay_solved": true
+      },
+      "H2": {
+        "solved": true,
+        "complete": false,
+        "states": 151,
+        "push_phase": 6,
+        "actions": 20,
+        "sequence": "RRRRRDLLLULDRRDDRDRU",
+        "seconds": 0.03036774997599423,
+        "replay_solved": true
+      },
+      "H3": {
+        "solved": true,
+        "complete": false,
+        "states": 3787,
+        "push_phase": 9,
+        "actions": 23,
+        "sequence": "ULLLRDDDDDLLDLUUURRRRDD",
+        "seconds": 1.3065241660224274,
+        "replay_solved": true
+      },
+      "H4": {
+        "solved": true,
+        "complete": false,
+        "states": 40741,
+        "push_phase": 13,
+        "actions": 42,
+        "sequence": "LULLDLLRRURRRDDLLLULDRRDDRULURLLLLLDDRRRRR",
+        "seconds": 23.840002082986757,
+        "replay_solved": true
+      },
+      "H5": {
+        "solved": true,
+        "complete": false,
+        "states": 8,
+        "push_phase": 3,
+        "actions": 11,
+        "sequence": "LULLUURURDD",
+        "seconds": 0.0023372910218313336,
+        "replay_solved": true
+      },
+      "H6": {
+        "solved": true,
+        "complete": false,
+        "states": 198,
+        "push_phase": 7,
+        "actions": 18,
+        "sequence": "DDRRURDLLDLLRRRURD",
+        "seconds": 0.07261516596190631,
+        "replay_solved": true
+      },
+      "H7": {
+        "solved": true,
+        "complete": false,
+        "states": 907,
+        "push_phase": 7,
+        "actions": 24,
+        "sequence": "DDDLUURRRRDDDLLLDLURDDRU",
+        "seconds": 0.4535078329499811,
+        "replay_solved": true
+      },
+      "H8": {
+        "solved": true,
+        "complete": false,
+        "states": 3232,
+        "push_phase": 7,
+        "actions": 28,
+        "sequence": "UULUULURURRDDRDLRDDLLDLLUUDR",
+        "seconds": 1.7849159159814008,
+        "replay_solved": true
+      },
+      "H9": {
+        "solved": true,
+        "complete": false,
+        "states": 5,
+        "push_phase": 2,
+        "actions": 9,
+        "sequence": "LLDDDLDRR",
+        "seconds": 0.0009786249720491469,
+        "replay_solved": true
+      },
+      "H10": {
+        "solved": true,
+        "complete": false,
+        "states": 205,
+        "push_phase": 7,
+        "actions": 16,
+        "sequence": "LLLUUUULURRRDDDD",
+        "seconds": 0.1060289170127362,
+        "replay_solved": true
+      },
+      "H11": {
+        "solved": true,
+        "complete": false,
+        "states": 1621,
+        "push_phase": 7,
+        "actions": 27,
+        "sequence": "URRRURDLLLLDRDRUULLLDDRRURD",
+        "seconds": 2.0084921660018153,
+        "replay_solved": true
+      },
+      "H12": {
+        "solved": true,
+        "complete": false,
+        "states": 10155,
+        "push_phase": 8,
+        "actions": 18,
+        "sequence": "RRRRDDLLDLRDRRRURD",
+        "seconds": 4.607566541992128,
+        "replay_solved": true
+      }
+    },
+    "no_far": {
+      "H1": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.0003031250089406967,
+        "replay_solved": false
+      },
+      "H2": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.00016058399342000484,
+        "replay_solved": false
+      },
+      "H3": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.0002114590024575591,
+        "replay_solved": false
+      },
+      "H4": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.00020191597286611795,
+        "replay_solved": false
+      },
+      "H5": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 9.92910354398191e-05,
+        "replay_solved": false
+      },
+      "H6": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.0001436670427210629,
+        "replay_solved": false
+      },
+      "H7": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.00019804196199402213,
+        "replay_solved": false
+      },
+      "H8": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.00019316596444696188,
+        "replay_solved": false
+      },
+      "H9": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 9.26670036278665e-05,
+        "replay_solved": false
+      },
+      "H10": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.00014754204312339425,
+        "replay_solved": false
+      },
+      "H11": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.00020608294289559126,
+        "replay_solved": false
+      },
+      "H12": {
+        "solved": false,
+        "complete": true,
+        "states": 1,
+        "seconds": 0.00021991704124957323,
+        "replay_solved": false
+      }
+    }
+  },
+  "gate": {
+    "full_local_all_correct": true,
+    "full_local_all_known": true,
+    "no_far_push_accuracy_at_most_25pct": true,
+    "all_holdouts_solved": true,
+    "all_solutions_replay": true,
+    "all_unseen_four_box_maps_solved": true,
+    "beats_no_far_by_75pp": true,
+    "frozen_model_writes_zero": true
+  },
+  "adopted": true,
+  "frozen_model_writes": 0,
+  "seconds": 35.5364239999908,
+  "protocol_sha256": "12f4231bb2ad90d9b58cc7bc44d253a552a987436ae7e6a132defc6337458424",
+  "source_sha256": {
+    "bpc_learned_wave_v04.py": "700ee8e1a6810b9491a214fbe378b0c2362c188adfab726f1cd5fbdff01f62ed",
+    "v04_maps.py": "be0ba58041c760f4c2f7e48d24fb3da046c88c907c1f20c2c2bfd24a5dda9fe3",
+    "experiment_v04_frozen.py": "4564bacac330214effc321efbfd621d9bca92d69504da10c82f22b0b6bcc9d00",
+    "freeze_v04.py": "b628cda41e1512e03e67236b1858495e0ca34adf39bd7fa31e24f7bb430a3ce9"
+  },
+  "supported_claim": "A 48-row local transition probability cube learned from raw random interaction transfers into the fixed v0.3 wave shell on unseen layouts and an unseen four-box count.",
+  "boundary": "Not pure direct control or AGI. Reachable-component compression, macro candidate geometry, terminal seeding, backward propagation, and raw cell channels remain supplied."
+}

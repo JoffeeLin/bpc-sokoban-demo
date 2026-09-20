@@ -1,4 +1,35 @@
-# GeneralBPC: Frozen Cross-Layout Sokoban
+# GeneralBPC: Learned Local World Function + Frozen Wave
+
+## v0.4 breakthrough: one supplied world law removed
+
+The new v0.4 branch restores the historical function-compressed configuration
+wave, then replaces its hand-written push-validity decision with a **48-row
+local transition probability cube learned only from 240,000 random raw game
+transitions**.
+
+In a pre-registered developer-frozen test:
+
+| Frozen condition | Local transitions | Unseen maps |
+|---|---:|---:|
+| Learned three-cell `F_world` | **40,000 / 40,000** | **12 / 12** |
+| Remove the third cell | **0 / 688 push transitions** | **0 / 12** |
+
+All three unseen four-box maps passed even though learning experience contained
+only one to three boxes. Every emitted action sequence was replayed through the
+true environment, and frozen evaluation performed zero model writes. See
+[V04_RESULT.md](V04_RESULT.md) and the machine-readable
+[v0.4 result](artifacts/v04/result.json).
+
+![Frozen v0.4 result](artifacts/v04/poster_v04.png)
+
+**[Watch all 12 frozen holdout replays](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v4.0.0/bpc_learned_world_v04_12_unseen.mp4)**
+
+The remaining reachability compression, macro candidate geometry, terminal
+seeding, backward wave, and raw channels are still supplied. This is a hybrid
+mechanism advance—not a pure direct policy, autonomous solver discovery,
+cross-task general intelligence, or AGI.
+
+## v7 direct-control result
 
 One non-neural probability-cube controller learned from other layouts and then
 directly controlled **10 structurally different, unseen Sokoban levels**. The
