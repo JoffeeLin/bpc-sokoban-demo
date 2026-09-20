@@ -1,0 +1,13 @@
+{
+  "development_only": true,
+  "attempt": 2,
+  "mechanism": "add absolute per-cell Bernoulli occupancy priors to the D4 plus action likelihood",
+  "interfaces": [
+    {"spatial_oracle": 1, "selected_transform": 4, "selected_action_mapping": [4, 1, 3, 2], "exact": false},
+    {"spatial_oracle": 4, "selected_transform": 1, "selected_action_mapping": [2, 5, 0, 4], "exact": false},
+    {"spatial_oracle": 7, "selected_transform": 0, "selected_action_mapping": [4, 2, 6, 1], "exact": false}
+  ],
+  "decision": "REJECTED",
+  "reason": "absolute position priors shifted between the square reference generator and independent rectangular target generator; 0/3 absolute frames recovered",
+  "next": "treat absolute D4 frame as an unidentifiable gauge when actuator slots are anonymous, learn the paired action injection in every gauge, and test equal gauge averaging against shuffled gauge-action pairs"
+}

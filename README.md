@@ -1,5 +1,34 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.18 breakthrough: spatial gauge-class transfer
+
+The frozen non-neural controller now transfers across an unknown rotation or
+reflection of its complete sensor field while sensor planes and actuator slots
+also change. Because directions and actions are both anonymous, absolute
+orientation is not identifiable: any D4 transform can be compensated by one
+actuator permutation. v0.18 learns that full equivalence class from unlabeled
+transitions and averages the eight paired direct-action probabilities. It does
+not select a frame by task success and uses no runtime planner or search.
+
+Four new 9–12 sensor / 5–8 action interfaces, four non-identity D4 transforms
+absent as actual transforms in development, held-out nuisance families, 48
+disjoint independent-generator worlds, and two action seeds were frozen before
+execution. All **32/32** gauge-action pairs and **128/128** independent-stream
+pairs were behaviorally equivalent. Across 9,216 held-out episodes, gauge
+averaging completed **8,339 (90.5%)**, versus oracle 8,367, a same-information
+shuffled-pair control 5,253, no spatial restoration 4,170, and fixed random
+binding 900. Every interface passed separately; all 12 gates passed with zero
+evaluation writes. See [`V18_SPATIAL_GAUGE_RESULT.md`](V18_SPATIAL_GAUGE_RESULT.md)
+and the [`machine-readable result`](artifacts/v18spatial/result.json).
+
+![Frozen v0.18 result](artifacts/v18spatial/poster_v18_spatial_gauge.png)
+
+**[Watch 12 frozen traces across four unseen D4 frames and variable interfaces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v18.0.0/bpc_spatial_gauge_v18_12_unseen_worlds.mp4)**
+
+This is bounded developer-frozen synthetic evidence, not arbitrary visual
+grounding or AGI. The D4 candidate family, canonical ontology, maximum canvas,
+statistics, generators, terminal events, and direct policy remain supplied.
+
 ## v0.17 breakthrough: cross-generator variable-interface transfer
 
 The frozen non-neural controller now transfers from its original square-map
