@@ -1,0 +1,170 @@
+{
+  "development_validation_only": true,
+  "source": "artifacts/v21hidden/rejected_attempt3_long_horizon/interface_development.json",
+  "suite_seed": 213510,
+  "evaluation_seeds": [
+    213710,
+    213711
+  ],
+  "worlds": 16,
+  "generation_attempts": {
+    "push": 7,
+    "collect": 5,
+    "open": 5,
+    "joint": 8
+  },
+  "conditions": {
+    "0": {
+      "online": {
+        "episodes": 256,
+        "successes": 225,
+        "push_successes": 57,
+        "collect_successes": 63,
+        "open_successes": 49,
+        "joint_successes": 56
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 203,
+        "push_successes": 55,
+        "collect_successes": 62,
+        "open_successes": 48,
+        "joint_successes": 38
+      },
+      "no_update": {
+        "episodes": 256,
+        "successes": 205,
+        "push_successes": 56,
+        "collect_successes": 62,
+        "open_successes": 48,
+        "joint_successes": 39
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 203,
+        "push_successes": 57,
+        "collect_successes": 63,
+        "open_successes": 51,
+        "joint_successes": 32
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 205,
+        "push_successes": 54,
+        "collect_successes": 62,
+        "open_successes": 51,
+        "joint_successes": 38
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 232,
+        "push_successes": 56,
+        "collect_successes": 64,
+        "open_successes": 52,
+        "joint_successes": 60
+      }
+    },
+    "1": {
+      "online": {
+        "episodes": 256,
+        "successes": 238,
+        "push_successes": 61,
+        "collect_successes": 63,
+        "open_successes": 58,
+        "joint_successes": 56
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 223,
+        "push_successes": 60,
+        "collect_successes": 60,
+        "open_successes": 56,
+        "joint_successes": 47
+      },
+      "no_update": {
+        "episodes": 256,
+        "successes": 223,
+        "push_successes": 59,
+        "collect_successes": 61,
+        "open_successes": 55,
+        "joint_successes": 48
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 211,
+        "push_successes": 59,
+        "collect_successes": 61,
+        "open_successes": 55,
+        "joint_successes": 36
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 219,
+        "push_successes": 59,
+        "collect_successes": 63,
+        "open_successes": 53,
+        "joint_successes": 44
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 241,
+        "push_successes": 62,
+        "collect_successes": 64,
+        "open_successes": 58,
+        "joint_successes": 57
+      }
+    }
+  },
+  "diagnostic": {
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "online": 225,
+        "memoryless": 203,
+        "no_update": 205,
+        "shuffled": 203,
+        "zero_lag": 205,
+        "oracle": 232,
+        "online_joint": 56,
+        "memoryless_joint": 38,
+        "no_update_joint": 39,
+        "shuffled_joint": 32,
+        "zero_lag_joint": 38,
+        "oracle_joint": 60
+      },
+      {
+        "interface": 1,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "online": 238,
+        "memoryless": 223,
+        "no_update": 223,
+        "shuffled": 211,
+        "zero_lag": 219,
+        "oracle": 241,
+        "online_joint": 56,
+        "memoryless_joint": 47,
+        "no_update_joint": 48,
+        "shuffled_joint": 36,
+        "zero_lag_joint": 44,
+        "oracle_joint": 57
+      }
+    ]
+  },
+  "preregistered_gates": {
+    "source_sensor_lag_recovery_passed": true,
+    "source_channel_transition_filter_gates_passed": true,
+    "each_overall_online_at_least_80pct_oracle": true,
+    "each_overall_online_beats_memoryless": true,
+    "each_joint_online_beats_memoryless_by_5pct": true,
+    "each_joint_online_beats_shuffled_by_5pct": true,
+    "each_joint_online_beats_zero_lag_by_5pct": true,
+    "evaluation_writes_zero": true
+  },
+  "adopt_for_freeze": true,
+  "evaluation_writes": 0,
+  "seconds": 137.30532795801992,
+  "boundary": "Fresh development validation, not frozen or blind. Primary causal margins are preregistered on complex joint worlds; all simple-family and overall outcomes remain reported."
+}

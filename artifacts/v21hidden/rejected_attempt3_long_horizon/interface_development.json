@@ -1,0 +1,576 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1138,
+    "push_compact_steps": 4251,
+    "signature_(1, 2)": 1138,
+    "push_episodes": 1600,
+    "collect_success": 1522,
+    "collect_compact_steps": 9880,
+    "signature_(1, 3)": 1522,
+    "collect_episodes": 1600,
+    "open_success": 1450,
+    "open_compact_steps": 5234,
+    "signature_(1, 4, 5)": 1450,
+    "open_episodes": 1600
+  },
+  "factor_digest": "4f005ee784ce677cdc339533e3e0156b0aabea9bd6b47d2a8c6de0542245020e",
+  "reference": {
+    "generator": "original",
+    "worlds": 300,
+    "interface_digest": "ec604e2f069257d13d25405bcd7ff222422500d393195b6ac5fea49198ef7209",
+    "effect_digest": "193b25244b0dfbef60c2379baa4cf78aebdb9bca02aa3cc0afd0207166828f32"
+  },
+  "target": {
+    "generator": "independent rectangular lab",
+    "interfaces": [
+      {
+        "sensor_oracle": [
+          2,
+          8,
+          3,
+          6,
+          0,
+          5
+        ],
+        "sensor_binding": {
+          "mapping": [
+            2,
+            8,
+            3,
+            6,
+            0,
+            5
+          ],
+          "posterior": 1.0,
+          "log_margin": 5664.963148005467,
+          "second": [
+            2,
+            8,
+            6,
+            3,
+            0,
+            5
+          ],
+          "change_compatible": 16,
+          "compatible": 4,
+          "sensor_log_probability": -116090.83241758555,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 1592.199139791177
+            },
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 2054.7674948018393
+            },
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 837.6334799827091
+            }
+          ]
+        },
+        "spatial_oracle": 1,
+        "selected_equivalent_transform": 0,
+        "lag_oracle": 2,
+        "selected_lag": 2,
+        "lag_probability_evidence": {
+          "lag": 2,
+          "posterior": 1.0,
+          "log_margin": 1188.8408281723932,
+          "candidates": [
+            {
+              "lag": 0,
+              "log_probability": -12611.107422564546
+            },
+            {
+              "lag": 1,
+              "log_probability": -12609.960110565085
+            },
+            {
+              "lag": 2,
+              "log_probability": -11421.119282392692
+            },
+            {
+              "lag": 3,
+              "log_probability": -12611.975238401923
+            },
+            {
+              "lag": 4,
+              "log_probability": -12610.660353979776
+            }
+          ]
+        },
+        "learned": {
+          "log_probability": -28827.07871124512,
+          "initial": [
+            0.4626807123157945,
+            0.5373192876842054
+          ],
+          "transition": [
+            [
+              0.9675403955004781,
+              0.032459604499521885
+            ],
+            [
+              0.03129888984846039,
+              0.9687011101515396
+            ]
+          ],
+          "channels": [
+            [
+              [
+                0.06365794021824658,
+                0.058195737158599076,
+                0.050051988817641016,
+                0.8280943338055132
+              ],
+              [
+                0.05901622281308174,
+                0.07805850395477704,
+                0.8011781292431709,
+                0.06174714398897028
+              ],
+              [
+                0.8398715417205929,
+                0.052722268987253004,
+                0.04402436324744229,
+                0.0633818260447119
+              ],
+              [
+                0.0642446625008994,
+                0.8211478565772686,
+                0.06233825881122466,
+                0.05226922211060722
+              ]
+            ],
+            [
+              [
+                0.07316570197781919,
+                0.06545779227439795,
+                0.7620551009851105,
+                0.09932140476267227
+              ],
+              [
+                0.07107883874839242,
+                0.06105909460868738,
+                0.05666311620267545,
+                0.8111989504402447
+              ],
+              [
+                0.054370793937529215,
+                0.8316038370858241,
+                0.06433286512942649,
+                0.049692503847220196
+              ],
+              [
+                0.8411339845662011,
+                0.043938984117557034,
+                0.05261505474620489,
+                0.0623119765700369
+              ]
+            ]
+          ],
+          "restarts": 6,
+          "iterations": 30
+        },
+        "alignment": {
+          "maximum_channel_total_variation": 0.05794489901488942,
+          "maximum_transition_error": 0.0024596044995218863,
+          "maximum_initial_error": 0.037319287684205504,
+          "model_to_truth": [
+            1,
+            0
+          ]
+        },
+        "filter_accuracy": 0.9157268170426065,
+        "calibration_sequences": 252,
+        "calibration_transitions": 9576,
+        "trace_worlds": {
+          "online": 16,
+          "memoryless": 16,
+          "no_update": 16,
+          "shuffled": 16,
+          "zero_lag": 16,
+          "oracle": 16
+        }
+      },
+      {
+        "sensor_oracle": [
+          8,
+          3,
+          1,
+          5,
+          2,
+          7
+        ],
+        "sensor_binding": {
+          "mapping": [
+            8,
+            3,
+            1,
+            5,
+            2,
+            7
+          ],
+          "posterior": 1.0,
+          "log_margin": 4981.4704027529515,
+          "second": [
+            8,
+            3,
+            5,
+            1,
+            2,
+            7
+          ],
+          "change_compatible": 24,
+          "compatible": 4,
+          "sensor_log_probability": -111784.23683641136,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 1584.3725394565918
+            },
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 2043.009427138808
+            },
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 842.1488940968557
+            }
+          ]
+        },
+        "spatial_oracle": 6,
+        "selected_equivalent_transform": 0,
+        "lag_oracle": 4,
+        "selected_lag": 4,
+        "lag_probability_evidence": {
+          "lag": 4,
+          "posterior": 1.0,
+          "log_margin": 1221.4619756449101,
+          "candidates": [
+            {
+              "lag": 0,
+              "log_probability": -12606.21947698868
+            },
+            {
+              "lag": 1,
+              "log_probability": -12605.936392365897
+            },
+            {
+              "lag": 2,
+              "log_probability": -12604.853285837251
+            },
+            {
+              "lag": 3,
+              "log_probability": -12606.37605783119
+            },
+            {
+              "lag": 4,
+              "log_probability": -11383.39131019234
+            }
+          ]
+        },
+        "learned": {
+          "log_probability": -27060.979540052296,
+          "initial": [
+            0.4893266753227832,
+            0.5106733246772167
+          ],
+          "transition": [
+            [
+              0.9470282804104257,
+              0.05297171958957419
+            ],
+            [
+              0.06452500445385122,
+              0.9354749955461488
+            ]
+          ],
+          "channels": [
+            [
+              [
+                0.06214405438197597,
+                0.8403692376765317,
+                0.05002934212252419,
+                0.0474573658189681
+              ],
+              [
+                0.8347225326266001,
+                0.055447900085677494,
+                0.04845147852545774,
+                0.06137808876226465
+              ],
+              [
+                0.09476762297438544,
+                0.06098850709133683,
+                0.7804611258064469,
+                0.06378274412783076
+              ],
+              [
+                0.06366273501810782,
+                0.07913619412265041,
+                0.057712178161923235,
+                0.7994888926973186
+              ]
+            ],
+            [
+              [
+                0.06490136992519945,
+                0.05020174968608554,
+                0.06288720683028821,
+                0.8220096735584268
+              ],
+              [
+                0.05905303810928424,
+                0.07335744688601833,
+                0.810644339506605,
+                0.056945175498092464
+              ],
+              [
+                0.8413807350988358,
+                0.07130666073991668,
+                0.039162248055492954,
+                0.04815035610575452
+              ],
+              [
+                0.06477454435364366,
+                0.8293260455215805,
+                0.05211194713764997,
+                0.053787462987125965
+              ]
+            ]
+          ],
+          "restarts": 6,
+          "iterations": 30
+        },
+        "alignment": {
+          "maximum_channel_total_variation": 0.03953887419355305,
+          "maximum_transition_error": 0.007028280410425809,
+          "maximum_initial_error": 0.010673324677216822,
+          "model_to_truth": [
+            0,
+            1
+          ]
+        },
+        "filter_accuracy": 0.8838183421516755,
+        "calibration_sequences": 252,
+        "calibration_transitions": 9072,
+        "trace_worlds": {
+          "online": 16,
+          "memoryless": 16,
+          "no_update": 16,
+          "shuffled": 16,
+          "zero_lag": 16,
+          "oracle": 16
+        }
+      }
+    ],
+    "suite_worlds": 16,
+    "generation_attempts": {
+      "push": 8,
+      "collect": 5,
+      "open": 13,
+      "joint": 6
+    }
+  },
+  "conditions": {
+    "0": {
+      "online": {
+        "episodes": 256,
+        "successes": 240,
+        "push_successes": 61,
+        "collect_successes": 62,
+        "open_successes": 61,
+        "joint_successes": 56
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 222,
+        "push_successes": 63,
+        "collect_successes": 56,
+        "open_successes": 60,
+        "joint_successes": 43
+      },
+      "no_update": {
+        "episodes": 256,
+        "successes": 217,
+        "push_successes": 62,
+        "collect_successes": 54,
+        "open_successes": 60,
+        "joint_successes": 41
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 215,
+        "push_successes": 61,
+        "collect_successes": 54,
+        "open_successes": 58,
+        "joint_successes": 42
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 217,
+        "push_successes": 63,
+        "collect_successes": 52,
+        "open_successes": 62,
+        "joint_successes": 40
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 245,
+        "push_successes": 63,
+        "collect_successes": 63,
+        "open_successes": 61,
+        "joint_successes": 58
+      }
+    },
+    "1": {
+      "online": {
+        "episodes": 256,
+        "successes": 234,
+        "push_successes": 61,
+        "collect_successes": 59,
+        "open_successes": 61,
+        "joint_successes": 53
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 227,
+        "push_successes": 62,
+        "collect_successes": 57,
+        "open_successes": 61,
+        "joint_successes": 47
+      },
+      "no_update": {
+        "episodes": 256,
+        "successes": 224,
+        "push_successes": 61,
+        "collect_successes": 57,
+        "open_successes": 61,
+        "joint_successes": 45
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 198,
+        "push_successes": 61,
+        "collect_successes": 51,
+        "open_successes": 55,
+        "joint_successes": 31
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 226,
+        "push_successes": 62,
+        "collect_successes": 56,
+        "open_successes": 60,
+        "joint_successes": 48
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 242,
+        "push_successes": 63,
+        "collect_successes": 61,
+        "open_successes": 61,
+        "joint_successes": 57
+      }
+    }
+  },
+  "diagnostic": {
+    "sensor_exact": 2,
+    "lag_exact": 2,
+    "maximum_channel_total_variation": 0.05794489901488942,
+    "maximum_transition_error": 0.007028280410425809,
+    "minimum_filter_accuracy": 0.8838183421516755,
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 256,
+        "online": 240,
+        "memoryless": 222,
+        "no_update": 217,
+        "shuffled": 215,
+        "zero_lag": 217,
+        "oracle": 245
+      },
+      {
+        "interface": 1,
+        "episodes": 256,
+        "online": 234,
+        "memoryless": 227,
+        "no_update": 224,
+        "shuffled": 198,
+        "zero_lag": 226,
+        "oracle": 242
+      }
+    ]
+  },
+  "preregistered_gates": {
+    "sensor_exact_2_of_2": true,
+    "lag_exact_2_of_2": true,
+    "all_channels_within_14pct_tv": true,
+    "all_transitions_within_10pct": true,
+    "all_filter_accuracy_at_least_78pct": true,
+    "each_online_at_least_78pct_oracle": true,
+    "each_online_beats_memoryless_by_5pct": false,
+    "each_online_beats_shuffled_by_5pct": true,
+    "each_online_beats_zero_lag_by_5pct": false,
+    "evaluation_writes_zero": true
+  },
+  "adopt_for_freeze": false,
+  "evaluation_writes": 0,
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "batch_items": 6,
+    "selected": "hidden two-state actuator regime with online Bayesian belief",
+    "confidence": 0.98,
+    "role": "route classification only; absent from inference, training, evaluation, and runtime"
+  },
+  "seconds": 175.91872758301906,
+  "boundary": "Development-only synthetic transfer, not frozen, third-party blind, or AGI. Hidden mode identities and paths are withheld. Sensor schema, two-state Markov family, D4 family, lag range 0-4, statistics, terminal events, and Bayesian recursion are supplied. No neural network, reward, planner, runtime search, classifier runtime, hidden label, or evaluation write is used."
+}

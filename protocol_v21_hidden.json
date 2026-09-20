@@ -1,0 +1,984 @@
+{
+  "format": "bpc-hidden-v21-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can a frozen non-neural BPC controller infer two unlabeled actuator regimes and their switching law, then use only ephemeral Bayesian filtering to control disjoint complex worlds through unseen anonymous sensors, D4 frames, stochastic channels, and delays?",
+  "config": {
+    "train_seed": 123010,
+    "reference_seed": 214010,
+    "target_seeds": [
+      [
+        214110,
+        214111,
+        214112
+      ],
+      [
+        214120,
+        214121,
+        214122
+      ],
+      [
+        214130,
+        214131,
+        214132
+      ]
+    ],
+    "fit_seeds": [
+      214310,
+      214311,
+      214312
+    ],
+    "calibration_steps": 40,
+    "reference_worlds_per_family": 100,
+    "maximum_lag": 4,
+    "hmm_restarts": 6,
+    "hmm_iterations": 30,
+    "sensor_routes": [
+      [
+        null,
+        5,
+        2,
+        null,
+        0,
+        4,
+        null,
+        1,
+        3
+      ],
+      [
+        3,
+        null,
+        1,
+        5,
+        null,
+        0,
+        null,
+        4,
+        2,
+        null
+      ],
+      [
+        null,
+        0,
+        null,
+        4,
+        2,
+        null,
+        5,
+        3,
+        null,
+        1,
+        null
+      ]
+    ],
+    "distractor_kinds": [
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        4,
+        5,
+        3,
+        4
+      ],
+      [
+        5,
+        3,
+        4,
+        5,
+        3
+      ]
+    ],
+    "actual_spatial_transforms": [
+      2,
+      4,
+      7
+    ],
+    "actuator_delays": [
+      1,
+      3,
+      4
+    ],
+    "hidden_channels": [
+      [
+        [
+          [
+            0.8,
+            0.06666666666666665,
+            0.06666666666666665,
+            0.06666666666666665
+          ],
+          [
+            0.06666666666666665,
+            0.8,
+            0.06666666666666665,
+            0.06666666666666665
+          ],
+          [
+            0.06666666666666665,
+            0.06666666666666665,
+            0.8,
+            0.06666666666666665
+          ],
+          [
+            0.06666666666666665,
+            0.06666666666666665,
+            0.06666666666666665,
+            0.8
+          ]
+        ],
+        [
+          [
+            0.06666666666666665,
+            0.8,
+            0.06666666666666665,
+            0.06666666666666665
+          ],
+          [
+            0.06666666666666665,
+            0.06666666666666665,
+            0.8,
+            0.06666666666666665
+          ],
+          [
+            0.06666666666666665,
+            0.06666666666666665,
+            0.06666666666666665,
+            0.8
+          ],
+          [
+            0.8,
+            0.06666666666666665,
+            0.06666666666666665,
+            0.06666666666666665
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            0.06333333333333331,
+            0.81,
+            0.06333333333333331,
+            0.06333333333333331
+          ],
+          [
+            0.06333333333333331,
+            0.06333333333333331,
+            0.06333333333333331,
+            0.81
+          ],
+          [
+            0.81,
+            0.06333333333333331,
+            0.06333333333333331,
+            0.06333333333333331
+          ],
+          [
+            0.06333333333333331,
+            0.06333333333333331,
+            0.81,
+            0.06333333333333331
+          ]
+        ],
+        [
+          [
+            0.06333333333333331,
+            0.06333333333333331,
+            0.81,
+            0.06333333333333331
+          ],
+          [
+            0.81,
+            0.06333333333333331,
+            0.06333333333333331,
+            0.06333333333333331
+          ],
+          [
+            0.06333333333333331,
+            0.06333333333333331,
+            0.06333333333333331,
+            0.81
+          ],
+          [
+            0.06333333333333331,
+            0.81,
+            0.06333333333333331,
+            0.06333333333333331
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            0.06999999999999999,
+            0.06999999999999999,
+            0.06999999999999999,
+            0.79
+          ],
+          [
+            0.06999999999999999,
+            0.06999999999999999,
+            0.79,
+            0.06999999999999999
+          ],
+          [
+            0.06999999999999999,
+            0.79,
+            0.06999999999999999,
+            0.06999999999999999
+          ],
+          [
+            0.79,
+            0.06999999999999999,
+            0.06999999999999999,
+            0.06999999999999999
+          ]
+        ],
+        [
+          [
+            0.79,
+            0.06999999999999999,
+            0.06999999999999999,
+            0.06999999999999999
+          ],
+          [
+            0.06999999999999999,
+            0.79,
+            0.06999999999999999,
+            0.06999999999999999
+          ],
+          [
+            0.06999999999999999,
+            0.06999999999999999,
+            0.79,
+            0.06999999999999999
+          ],
+          [
+            0.06999999999999999,
+            0.06999999999999999,
+            0.06999999999999999,
+            0.79
+          ]
+        ]
+      ]
+    ],
+    "hidden_transitions": [
+      [
+        [
+          0.965,
+          0.035
+        ],
+        [
+          0.035,
+          0.965
+        ]
+      ],
+      [
+        [
+          0.945,
+          0.055
+        ],
+        [
+          0.055,
+          0.945
+        ]
+      ],
+      [
+        [
+          0.925,
+          0.075
+        ],
+        [
+          0.075,
+          0.925
+        ]
+      ]
+    ],
+    "hidden_initials": [
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "target_mixtures": [
+      {
+        "push": 54,
+        "collect": 15,
+        "open": 15
+      },
+      {
+        "push": 15,
+        "collect": 54,
+        "open": 15
+      },
+      {
+        "push": 15,
+        "collect": 15,
+        "open": 54
+      }
+    ],
+    "holdout_seed": 214510,
+    "worlds_per_family": 8,
+    "evaluation_seeds": [
+      214710,
+      214810
+    ],
+    "episodes_per_map_per_seed": 8,
+    "step_budget": 128
+  },
+  "development_validation_sha256": "b4a73f6be2feb85cf7b2581d6f2f8d599c8da63f13b65c0ab449c19a4678642a",
+  "rejected_attempt_sha256": {
+    "rejected_attempt1_average_lag": "a3bc1a24ecaf664be760bbe951996422c5aa77ef5ddd5fcb53aaffac3ca753cf",
+    "rejected_attempt2_weak_control_margin": "76d8fbd6c09ade1bef92e93f90a608a60af43bedeee6601770905aa85a17bf0d",
+    "rejected_attempt3_long_horizon": "59a5d9cac2071edbc13caca533af2183e7071f6bf91da94ddb55a7af02a872a7"
+  },
+  "expected_training_events": {
+    "push_success": 1138,
+    "push_compact_steps": 4251,
+    "signature_(1, 2)": 1138,
+    "push_episodes": 1600,
+    "collect_success": 1522,
+    "collect_compact_steps": 9880,
+    "signature_(1, 3)": 1522,
+    "collect_episodes": 1600,
+    "open_success": 1450,
+    "open_compact_steps": 5234,
+    "signature_(1, 4, 5)": 1450,
+    "open_episodes": 1600
+  },
+  "expected_factor_digest": "4f005ee784ce677cdc339533e3e0156b0aabea9bd6b47d2a8c6de0542245020e",
+  "reference_interface_digest": "75433e9514b7068627ff95ed93d5d8f737c9a1b24da00843c044bc1aa86d8473",
+  "reference_support": [
+    [],
+    [
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4,
+      5
+    ]
+  ],
+  "reference_effect_digest": "1d685610b87d4c28bee5219edcf17ba208a89a22d0d6309e691a2c22538ccfa2",
+  "expected_calibration": [
+    {
+      "sensor_oracle": [
+        4,
+        7,
+        2,
+        8,
+        5,
+        1
+      ],
+      "sensor_binding": {
+        "mapping": [
+          4,
+          7,
+          2,
+          8,
+          5,
+          1
+        ],
+        "posterior": 1.0,
+        "log_margin": 6294.310390028826,
+        "second": [
+          4,
+          7,
+          8,
+          2,
+          5,
+          1
+        ],
+        "change_compatible": 96,
+        "compatible": 4,
+        "sensor_log_probability": -113299.27686542248,
+        "same_cell_log_probability": 0.0,
+        "per_stream": [
+          {
+            "mapping": [
+              4,
+              7,
+              2,
+              8,
+              5,
+              1
+            ],
+            "log_margin": 1479.3537911082822
+          },
+          {
+            "mapping": [
+              4,
+              7,
+              2,
+              8,
+              5,
+              1
+            ],
+            "log_margin": 2068.0080579966234
+          },
+          {
+            "mapping": [
+              4,
+              7,
+              2,
+              8,
+              5,
+              1
+            ],
+            "log_margin": 1241.8222387891146
+          }
+        ]
+      },
+      "actual_spatial_transform_evaluator_only": 2,
+      "selected_gauge_representative": 0,
+      "lag_oracle": 1,
+      "lag_probability_evidence": {
+        "lag": 1,
+        "posterior": 1.0,
+        "log_margin": 1157.5651877929304,
+        "candidates": [
+          {
+            "lag": 0,
+            "log_probability": -12609.653451766815
+          },
+          {
+            "lag": 1,
+            "log_probability": -11417.85467268278
+          },
+          {
+            "lag": 2,
+            "log_probability": -12575.419860475711
+          },
+          {
+            "lag": 3,
+            "log_probability": -12593.940788079888
+          },
+          {
+            "lag": 4,
+            "log_probability": -12607.21039005681
+          }
+        ]
+      },
+      "learned": {
+        "log_probability": -29388.162456166312,
+        "initial": [
+          0.4533316731900671,
+          0.5466683268099329
+        ],
+        "transition": [
+          [
+            0.9616942583285975,
+            0.038305741671402604
+          ],
+          [
+            0.03629541679252175,
+            0.9637045832074782
+          ]
+        ],
+        "channels": [
+          [
+            [
+              0.049475912790332977,
+              0.8272627739615797,
+              0.06052683660162496,
+              0.06273447664646233
+            ],
+            [
+              0.77940801331119,
+              0.06609624355514003,
+              0.07792062845939385,
+              0.07657511467427597
+            ],
+            [
+              0.06690182713151262,
+              0.09041926431943349,
+              0.05967714599354209,
+              0.7830017625555117
+            ],
+            [
+              0.06256506826549559,
+              0.0893646279596971,
+              0.7864004345834623,
+              0.061669869191344935
+            ]
+          ],
+          [
+            [
+              0.7789073045563578,
+              0.0963251318522533,
+              0.060412229443035155,
+              0.06435533414835375
+            ],
+            [
+              0.06509111888160278,
+              0.07768823999408143,
+              0.056974874495484,
+              0.8002457666288317
+            ],
+            [
+              0.0702413007095144,
+              0.07813986872183698,
+              0.7907302435787097,
+              0.06088858698993894
+            ],
+            [
+              0.06502397603495279,
+              0.8314150049825705,
+              0.05471842163080844,
+              0.04884259735166822
+            ]
+          ]
+        ],
+        "restarts": 6,
+        "iterations": 30
+      },
+      "alignment": {
+        "maximum_channel_total_variation": 0.03141500498257047,
+        "maximum_transition_error": 0.003305741671402601,
+        "maximum_initial_error": 0.046668326809932936,
+        "model_to_truth": [
+          0,
+          1
+        ]
+      },
+      "filter_accuracy": 0.9022181522181523,
+      "calibration_sequences": 252,
+      "calibration_transitions": 9828
+    },
+    {
+      "sensor_oracle": [
+        5,
+        2,
+        8,
+        0,
+        7,
+        3
+      ],
+      "sensor_binding": {
+        "mapping": [
+          5,
+          2,
+          8,
+          0,
+          7,
+          3
+        ],
+        "posterior": 1.0,
+        "log_margin": 5631.321118966545,
+        "second": [
+          5,
+          2,
+          0,
+          8,
+          7,
+          3
+        ],
+        "change_compatible": 32,
+        "compatible": 4,
+        "sensor_log_probability": -113897.64951474589,
+        "same_cell_log_probability": 0.0,
+        "per_stream": [
+          {
+            "mapping": [
+              5,
+              2,
+              8,
+              0,
+              7,
+              3
+            ],
+            "log_margin": 2578.3596859863756
+          },
+          {
+            "mapping": [
+              5,
+              2,
+              8,
+              0,
+              7,
+              3
+            ],
+            "log_margin": 1846.4475302573628
+          },
+          {
+            "mapping": [
+              5,
+              2,
+              8,
+              0,
+              7,
+              3
+            ],
+            "log_margin": 1143.55302949842
+          }
+        ]
+      },
+      "actual_spatial_transform_evaluator_only": 4,
+      "selected_gauge_representative": 0,
+      "lag_oracle": 3,
+      "lag_probability_evidence": {
+        "lag": 3,
+        "posterior": 1.0,
+        "log_margin": 1118.332806830811,
+        "candidates": [
+          {
+            "lag": 0,
+            "log_probability": -12606.163935494784
+          },
+          {
+            "lag": 1,
+            "log_probability": -12605.669266408819
+          },
+          {
+            "lag": 2,
+            "log_probability": -12603.605525462912
+          },
+          {
+            "lag": 3,
+            "log_probability": -11422.05393351188
+          },
+          {
+            "lag": 4,
+            "log_probability": -12540.38674034269
+          }
+        ]
+      },
+      "learned": {
+        "log_probability": -28134.2332705206,
+        "initial": [
+          0.4740662228708539,
+          0.5259337771291461
+        ],
+        "transition": [
+          [
+            0.9473546252578302,
+            0.05264537474216982
+          ],
+          [
+            0.053278881203203704,
+            0.9467211187967962
+          ]
+        ],
+        "channels": [
+          [
+            [
+              0.06334643502105466,
+              0.09008813620155522,
+              0.7768678125503089,
+              0.06969761622708119
+            ],
+            [
+              0.06330760335796608,
+              0.8369642659106107,
+              0.05876105072345853,
+              0.04096708000796465
+            ],
+            [
+              0.05770801619438038,
+              0.10224609837870381,
+              0.06973012607207633,
+              0.7703157593548395
+            ],
+            [
+              0.8255928192769438,
+              0.07013176845631443,
+              0.04052392279204842,
+              0.06375148947469338
+            ]
+          ],
+          [
+            [
+              0.826225758705907,
+              0.06595845870959939,
+              0.05138569058379429,
+              0.056430092000699456
+            ],
+            [
+              0.06142913376193921,
+              0.07461218619076247,
+              0.0665195606654181,
+              0.7974391193818802
+            ],
+            [
+              0.05778479891564773,
+              0.8297596438293695,
+              0.05773396458502566,
+              0.054721592669957055
+            ],
+            [
+              0.06285414579863854,
+              0.07132269015753796,
+              0.7980655990568037,
+              0.06775756498701976
+            ]
+          ]
+        ],
+        "restarts": 6,
+        "iterations": 30
+      },
+      "alignment": {
+        "maximum_channel_total_variation": 0.04530955778411348,
+        "maximum_transition_error": 0.0023546252578302562,
+        "maximum_initial_error": 0.02593377712914613,
+        "model_to_truth": [
+          1,
+          0
+        ]
+      },
+      "filter_accuracy": 0.9007936507936508,
+      "calibration_sequences": 252,
+      "calibration_transitions": 9324
+    },
+    {
+      "sensor_oracle": [
+        1,
+        9,
+        4,
+        7,
+        3,
+        6
+      ],
+      "sensor_binding": {
+        "mapping": [
+          1,
+          9,
+          4,
+          7,
+          3,
+          6
+        ],
+        "posterior": 1.0,
+        "log_margin": 5478.543892292248,
+        "second": [
+          1,
+          9,
+          7,
+          4,
+          3,
+          6
+        ],
+        "change_compatible": 32,
+        "compatible": 4,
+        "sensor_log_probability": -113375.65491715845,
+        "same_cell_log_probability": 0.0,
+        "per_stream": [
+          {
+            "mapping": [
+              1,
+              9,
+              4,
+              7,
+              3,
+              6
+            ],
+            "log_margin": 1805.4450681860617
+          },
+          {
+            "mapping": [
+              1,
+              9,
+              4,
+              7,
+              3,
+              6
+            ],
+            "log_margin": 2353.9263545910726
+          },
+          {
+            "mapping": [
+              1,
+              9,
+              4,
+              7,
+              3,
+              6
+            ],
+            "log_margin": 892.1215940748662
+          }
+        ]
+      },
+      "actual_spatial_transform_evaluator_only": 7,
+      "selected_gauge_representative": 0,
+      "lag_oracle": 4,
+      "lag_probability_evidence": {
+        "lag": 4,
+        "posterior": 1.0,
+        "log_margin": 1060.3713235584564,
+        "candidates": [
+          {
+            "lag": 0,
+            "log_probability": -12606.923331144524
+          },
+          {
+            "lag": 1,
+            "log_probability": -12608.425561766178
+          },
+          {
+            "lag": 2,
+            "log_probability": -12605.375310521562
+          },
+          {
+            "lag": 3,
+            "log_probability": -12607.383296269763
+          },
+          {
+            "lag": 4,
+            "log_probability": -11545.003986963105
+          }
+        ]
+      },
+      "learned": {
+        "log_probability": -27707.243220474138,
+        "initial": [
+          0.4135320739158205,
+          0.5864679260841794
+        ],
+        "transition": [
+          [
+            0.9187224218574153,
+            0.08127757814258481
+          ],
+          [
+            0.07524375875909882,
+            0.9247562412409013
+          ]
+        ],
+        "channels": [
+          [
+            [
+              0.05036688546862384,
+              0.08148498478985951,
+              0.7958200524935634,
+              0.07232807724795341
+            ],
+            [
+              0.06672498495678601,
+              0.08857597995535242,
+              0.06497321674223624,
+              0.7797258183456254
+            ],
+            [
+              0.7962417073350695,
+              0.09341958627594561,
+              0.05588209288344969,
+              0.0544566135055353
+            ],
+            [
+              0.08563230281706034,
+              0.8187196276455091,
+              0.05292039367519259,
+              0.042727675862237836
+            ]
+          ],
+          [
+            [
+              0.05905720412195627,
+              0.7819786034034382,
+              0.07891595936434713,
+              0.08004823311025841
+            ],
+            [
+              0.7796014463138794,
+              0.1005957382911485,
+              0.06761400715400208,
+              0.05218880824096994
+            ],
+            [
+              0.0710757579713318,
+              0.08151430823055753,
+              0.08205603564676942,
+              0.7653538981513414
+            ],
+            [
+              0.0726865996593382,
+              0.11068583352632445,
+              0.7484762961940434,
+              0.06815127062029389
+            ]
+          ]
+        ],
+        "restarts": 6,
+        "iterations": 30
+      },
+      "alignment": {
+        "maximum_channel_total_variation": 0.04435193046256948,
+        "maximum_transition_error": 0.006277578142584811,
+        "maximum_initial_error": 0.08646792608417952,
+        "model_to_truth": [
+          1,
+          0
+        ]
+      },
+      "filter_accuracy": 0.861331569664903,
+      "calibration_sequences": 252,
+      "calibration_transitions": 9072
+    }
+  ],
+  "holdout_sha256": "db980ea933da617e1dedc0f8768aff66244aab8414ac254e28079bcd48ca4511",
+  "adoption_thresholds": {
+    "maximum_channel_total_variation": 0.14,
+    "maximum_transition_absolute_error": 0.1,
+    "minimum_filter_accuracy": 0.78,
+    "minimum_oracle_fraction_each_interface": 0.8,
+    "minimum_overall_memoryless_margin_each_interface": 0.03,
+    "minimum_joint_margin_each_interface": 0.05
+  },
+  "controls": [
+    "oracle current hidden mode with true channel in the same D4 gauge",
+    "stationary memoryless mixture with the same learned parameters",
+    "frozen initial belief with no online update",
+    "one-slot-shuffled learned emissions",
+    "incorrect zero-lag update",
+    "three unseen interface configurations",
+    "three channel pairs and switching rates absent from development",
+    "actual D4 transforms 2, 4, and 7",
+    "delays 1 and 3 absent from development",
+    "two evaluation random streams",
+    "zero model writes and unchanged digest",
+    "disjoint training, calibration, and holdout worlds"
+  ],
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "batch_items": 6,
+    "selected": "hidden two-state actuator regime with online Bayesian belief",
+    "confidence": 0.98,
+    "role": "development route classification only; absent from inference, training, frozen evaluation, and runtime"
+  },
+  "source_sha256": {
+    "bpc_hidden_mode_v21.py": "ea2fc77c31c5777adb7697dcc22c8ce341f360a2718fcab4e71811135674a464",
+    "bpc_stochastic_interface_v20.py": "e17113fb3b088e70d41a56dedbf66eadd73346d5311b23a2bd8ee0eee3b68a3a",
+    "bpc_temporal_interface_v19.py": "63026740862194c165b32a1551639686f0c786bd43c73df43e1fdf94babd10ee",
+    "bpc_spatial_interface_v18.py": "d858edeee55d1898748080f427df430aae8604ef04d23773755dbf7de6d6d403",
+    "bpc_cross_generator_v17.py": "e71f53f0ec3efc65aa26b93273d76c39427631bef25f72e0334ea7671fd790ca",
+    "bpc_composite_binding_v16.py": "f4835340871bee46f692a891880fc5f282cb7d706058575870e8d2746956bd70",
+    "bpc_open_interface_v15.py": "51798c150c56f79a7d8a34fedf131ca848a537db745d5cc164e3cc645829ad0d",
+    "bpc_three_factor_v12.py": "e7a07fbc0756fc2af8bc100cf9963e472a539d5cf9dc0348a7a3ef085bc7ff8e",
+    "bpc_evidence_field_v11.py": "8794d9a22f80242f0a59298d36592fb2300ea89ae22cc3460a43a60d3750253b",
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "bpc_direct_composition_v09.py": "6d15f3e2cb59c42d097860f2e463cfb7f46f54b7eb98b6a9963d421748a8ac3c",
+    "general_bpc_v7.py": "d37040bd087e0bbf135a491ab319411f7dd10d823038734327af1136467f05f8",
+    "experiment_v5.py": "0f883f7f0aa6d3a37299322e8214776c9179516b7be632094cd18c629231e493",
+    "experiment_v21_hidden_frozen.py": "81acbef9148d6e0d91f3ea66654b6f6e59edfe6d954cc8f1888c8573911ed7c5",
+    "freeze_v21_hidden.py": "f184542eb610ae869ecb3386ca959cd2126136387e65b81bb294200da3ad30d3"
+  },
+  "failure_policy": "Retain failures. Do not replace interfaces, modes, transitions, channels, lags, worlds, seeds, sources, controls, or thresholds after held-out execution.",
+  "boundary": "Developer-frozen synthetic evidence, not third-party blind and not AGI. Two hidden modes, Markov family, sensor schema, D4 family, lag range 0-4, sufficient statistics, terminal events, and Bayesian recursion are supplied. Mode identities and paths are withheld. No neural network, reward, planner, runtime search, classifier runtime, hidden label, or evaluation learning is used."
+}

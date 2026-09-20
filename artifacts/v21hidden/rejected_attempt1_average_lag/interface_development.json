@@ -1,0 +1,522 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1138,
+    "push_compact_steps": 4251,
+    "signature_(1, 2)": 1138,
+    "push_episodes": 1600,
+    "collect_success": 1522,
+    "collect_compact_steps": 9880,
+    "signature_(1, 3)": 1522,
+    "collect_episodes": 1600,
+    "open_success": 1450,
+    "open_compact_steps": 5234,
+    "signature_(1, 4, 5)": 1450,
+    "open_episodes": 1600
+  },
+  "factor_digest": "4f005ee784ce677cdc339533e3e0156b0aabea9bd6b47d2a8c6de0542245020e",
+  "reference": {
+    "generator": "original",
+    "worlds": 300,
+    "interface_digest": "ec604e2f069257d13d25405bcd7ff222422500d393195b6ac5fea49198ef7209",
+    "effect_digest": "193b25244b0dfbef60c2379baa4cf78aebdb9bca02aa3cc0afd0207166828f32"
+  },
+  "target": {
+    "generator": "independent rectangular lab",
+    "interfaces": [
+      {
+        "sensor_oracle": [
+          2,
+          8,
+          3,
+          6,
+          0,
+          5
+        ],
+        "sensor_binding": {
+          "mapping": [
+            2,
+            8,
+            3,
+            6,
+            0,
+            5
+          ],
+          "posterior": 1.0,
+          "log_margin": 5590.001263987535,
+          "second": [
+            2,
+            8,
+            6,
+            3,
+            0,
+            5
+          ],
+          "change_compatible": 16,
+          "compatible": 4,
+          "sensor_log_probability": -111405.99415803235,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 1690.2134636783303
+            },
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 2087.0714253466795
+            },
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 681.2917519182956
+            }
+          ]
+        },
+        "spatial_oracle": 1,
+        "selected_equivalent_transform": 7,
+        "lag_oracle": 1,
+        "selected_lag": 4,
+        "learned": {
+          "log_probability": -29776.100816515565,
+          "initial": [
+            0.5881460522117974,
+            0.4118539477882026
+          ],
+          "transition": [
+            [
+              0.828939126450251,
+              0.17106087354974897
+            ],
+            [
+              0.26666312953199817,
+              0.7333368704680019
+            ]
+          ],
+          "channels": [
+            [
+              [
+                0.1010445558762989,
+                0.19916435361851564,
+                0.32698084586174786,
+                0.3728102446434375
+              ],
+              [
+                0.21472405567025568,
+                0.14820244837299743,
+                0.315073557277332,
+                0.3219999386794149
+              ],
+              [
+                0.1729867208986677,
+                0.21038361204867434,
+                0.32163714698497675,
+                0.2949925200676813
+              ],
+              [
+                0.2636582417274121,
+                0.1781910543245935,
+                0.21752924880919472,
+                0.34062145513879966
+              ]
+            ],
+            [
+              [
+                0.4246440272297768,
+                0.3724748294043864,
+                0.11838806105704205,
+                0.08449308230879463
+              ],
+              [
+                0.4054648007516913,
+                0.3769207485726358,
+                0.07948258478412441,
+                0.13813186589154847
+              ],
+              [
+                0.3915126096820912,
+                0.35231925293423705,
+                0.10417210338423749,
+                0.15199603399943426
+              ],
+              [
+                0.31337287024775534,
+                0.33935885433721374,
+                0.18704823454454397,
+                0.16022004087048694
+              ]
+            ]
+          ],
+          "restarts": 6,
+          "iterations": 30
+        },
+        "alignment": {
+          "maximum_channel_total_variation": 0.7005174152158756,
+          "maximum_transition_error": 0.18666312953199815,
+          "maximum_initial_error": 0.0785206144548693,
+          "model_to_truth": [
+            0,
+            1
+          ]
+        },
+        "filter_accuracy": 0.5764991181657848,
+        "calibration_sequences": 252,
+        "calibration_transitions": 9072,
+        "trace_worlds": {
+          "online": 16,
+          "memoryless": 16,
+          "no_update": 16,
+          "shuffled": 16,
+          "zero_lag": 16,
+          "oracle": 16
+        }
+      },
+      {
+        "sensor_oracle": [
+          8,
+          3,
+          1,
+          5,
+          2,
+          7
+        ],
+        "sensor_binding": {
+          "mapping": [
+            8,
+            3,
+            1,
+            5,
+            2,
+            7
+          ],
+          "posterior": 1.0,
+          "log_margin": 4930.575160826731,
+          "second": [
+            8,
+            3,
+            5,
+            1,
+            2,
+            7
+          ],
+          "change_compatible": 24,
+          "compatible": 4,
+          "sensor_log_probability": -112929.12306532485,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 1576.7557364192107
+            },
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 1452.1509540799234
+            },
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 648.4859816331737
+            }
+          ]
+        },
+        "spatial_oracle": 6,
+        "selected_equivalent_transform": 7,
+        "lag_oracle": 3,
+        "selected_lag": 3,
+        "learned": {
+          "log_probability": -28510.514697669518,
+          "initial": [
+            0.39395399437788403,
+            0.606046005622116
+          ],
+          "transition": [
+            [
+              0.9192948710216347,
+              0.08070512897836538
+            ],
+            [
+              0.0456875948235607,
+              0.9543124051764393
+            ]
+          ],
+          "channels": [
+            [
+              [
+                0.08013456794528886,
+                0.09432098183725761,
+                0.061882186521381895,
+                0.7636622636960717
+              ],
+              [
+                0.12032892947988655,
+                0.08802928428947376,
+                0.6822046783136541,
+                0.1094371079169857
+              ],
+              [
+                0.7695082612510965,
+                0.07398177980442801,
+                0.0804529189100182,
+                0.07605704003445733
+              ],
+              [
+                0.07673071209142024,
+                0.7375083152096037,
+                0.08261207997545998,
+                0.10314889272351614
+              ]
+            ],
+            [
+              [
+                0.09243155828392832,
+                0.764346273377482,
+                0.06906393705405872,
+                0.07415823128453099
+              ],
+              [
+                0.7911065384884103,
+                0.0618986244242483,
+                0.06703531357808884,
+                0.07995952350925263
+              ],
+              [
+                0.08743855911705468,
+                0.09501459413642263,
+                0.7298591618797962,
+                0.08768768486672665
+              ],
+              [
+                0.09136675666884898,
+                0.07918542574998215,
+                0.07144128159346673,
+                0.7580065359877022
+              ]
+            ]
+          ],
+          "restarts": 6,
+          "iterations": 30
+        },
+        "alignment": {
+          "maximum_channel_total_variation": 0.07779532168634598,
+          "maximum_transition_error": 0.00929487102163462,
+          "maximum_initial_error": 0.036811137235026936,
+          "model_to_truth": [
+            0,
+            1
+          ]
+        },
+        "filter_accuracy": 0.8665808665808665,
+        "calibration_sequences": 252,
+        "calibration_transitions": 9324,
+        "trace_worlds": {
+          "online": 16,
+          "memoryless": 16,
+          "no_update": 16,
+          "shuffled": 16,
+          "zero_lag": 16,
+          "oracle": 16
+        }
+      }
+    ],
+    "suite_worlds": 16,
+    "generation_attempts": {
+      "push": 8,
+      "collect": 5,
+      "open": 13,
+      "joint": 6
+    }
+  },
+  "conditions": {
+    "0": {
+      "online": {
+        "episodes": 256,
+        "successes": 203,
+        "push_successes": 59,
+        "collect_successes": 53,
+        "open_successes": 59,
+        "joint_successes": 32
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 204,
+        "push_successes": 59,
+        "collect_successes": 52,
+        "open_successes": 59,
+        "joint_successes": 34
+      },
+      "no_update": {
+        "episodes": 256,
+        "successes": 204,
+        "push_successes": 59,
+        "collect_successes": 52,
+        "open_successes": 59,
+        "joint_successes": 34
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 207,
+        "push_successes": 59,
+        "collect_successes": 57,
+        "open_successes": 55,
+        "joint_successes": 36
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 205,
+        "push_successes": 59,
+        "collect_successes": 54,
+        "open_successes": 59,
+        "joint_successes": 33
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 249,
+        "push_successes": 62,
+        "collect_successes": 63,
+        "open_successes": 62,
+        "joint_successes": 62
+      }
+    },
+    "1": {
+      "online": {
+        "episodes": 256,
+        "successes": 226,
+        "push_successes": 62,
+        "collect_successes": 60,
+        "open_successes": 60,
+        "joint_successes": 44
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 212,
+        "push_successes": 60,
+        "collect_successes": 54,
+        "open_successes": 59,
+        "joint_successes": 39
+      },
+      "no_update": {
+        "episodes": 256,
+        "successes": 220,
+        "push_successes": 60,
+        "collect_successes": 57,
+        "open_successes": 59,
+        "joint_successes": 44
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 215,
+        "push_successes": 60,
+        "collect_successes": 55,
+        "open_successes": 60,
+        "joint_successes": 40
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 222,
+        "push_successes": 59,
+        "collect_successes": 60,
+        "open_successes": 60,
+        "joint_successes": 43
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 241,
+        "push_successes": 62,
+        "collect_successes": 63,
+        "open_successes": 61,
+        "joint_successes": 55
+      }
+    }
+  },
+  "diagnostic": {
+    "sensor_exact": 2,
+    "lag_exact": 1,
+    "maximum_channel_total_variation": 0.7005174152158756,
+    "maximum_transition_error": 0.18666312953199815,
+    "minimum_filter_accuracy": 0.5764991181657848,
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 256,
+        "online": 203,
+        "memoryless": 204,
+        "no_update": 204,
+        "shuffled": 207,
+        "zero_lag": 205,
+        "oracle": 249
+      },
+      {
+        "interface": 1,
+        "episodes": 256,
+        "online": 226,
+        "memoryless": 212,
+        "no_update": 220,
+        "shuffled": 215,
+        "zero_lag": 222,
+        "oracle": 241
+      }
+    ]
+  },
+  "preregistered_gates": {
+    "sensor_exact_2_of_2": true,
+    "lag_exact_2_of_2": false,
+    "all_channels_within_14pct_tv": false,
+    "all_transitions_within_10pct": false,
+    "all_filter_accuracy_at_least_78pct": false,
+    "each_online_at_least_78pct_oracle": true,
+    "each_online_beats_memoryless_by_5pct": false,
+    "each_online_beats_shuffled_by_5pct": false,
+    "each_online_beats_zero_lag_by_5pct": false,
+    "evaluation_writes_zero": true
+  },
+  "adopt_for_freeze": false,
+  "evaluation_writes": 0,
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "batch_items": 6,
+    "selected": "hidden two-state actuator regime with online Bayesian belief",
+    "confidence": 0.98,
+    "role": "route classification only; absent from inference, training, evaluation, and runtime"
+  },
+  "seconds": 294.37767374998657,
+  "boundary": "Development-only synthetic transfer, not frozen, third-party blind, or AGI. Hidden mode identities and paths are withheld. Sensor schema, two-state Markov family, D4 family, lag range 0-4, statistics, terminal events, and Bayesian recursion are supplied. No neural network, reward, planner, runtime search, classifier runtime, hidden label, or evaluation write is used."
+}

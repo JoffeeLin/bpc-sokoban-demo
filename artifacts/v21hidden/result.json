@@ -1,0 +1,264 @@
+{
+  "format": "bpc-hidden-v21-frozen-result",
+  "frozen": true,
+  "protocol_sha256": "9646b93d969c76da8e14a67e395d3b25819855bd3a9b7eaebf034a0e4c2b53ff",
+  "holdout_sha256": "db980ea933da617e1dedc0f8768aff66244aab8414ac254e28079bcd48ca4511",
+  "conditions": {
+    "0": {
+      "online": {
+        "episodes": 512,
+        "successes": 489,
+        "push_successes": 123,
+        "collect_successes": 124,
+        "open_successes": 126,
+        "joint_successes": 116
+      },
+      "memoryless": {
+        "episodes": 512,
+        "successes": 451,
+        "push_successes": 124,
+        "collect_successes": 116,
+        "open_successes": 121,
+        "joint_successes": 90
+      },
+      "no_update": {
+        "episodes": 512,
+        "successes": 454,
+        "push_successes": 123,
+        "collect_successes": 115,
+        "open_successes": 122,
+        "joint_successes": 94
+      },
+      "shuffled": {
+        "episodes": 512,
+        "successes": 442,
+        "push_successes": 124,
+        "collect_successes": 111,
+        "open_successes": 123,
+        "joint_successes": 84
+      },
+      "zero_lag": {
+        "episodes": 512,
+        "successes": 461,
+        "push_successes": 125,
+        "collect_successes": 116,
+        "open_successes": 123,
+        "joint_successes": 97
+      },
+      "oracle": {
+        "episodes": 512,
+        "successes": 493,
+        "push_successes": 125,
+        "collect_successes": 127,
+        "open_successes": 125,
+        "joint_successes": 116
+      }
+    },
+    "1": {
+      "online": {
+        "episodes": 512,
+        "successes": 488,
+        "push_successes": 126,
+        "collect_successes": 124,
+        "open_successes": 127,
+        "joint_successes": 111
+      },
+      "memoryless": {
+        "episodes": 512,
+        "successes": 470,
+        "push_successes": 128,
+        "collect_successes": 118,
+        "open_successes": 123,
+        "joint_successes": 101
+      },
+      "no_update": {
+        "episodes": 512,
+        "successes": 471,
+        "push_successes": 128,
+        "collect_successes": 117,
+        "open_successes": 123,
+        "joint_successes": 103
+      },
+      "shuffled": {
+        "episodes": 512,
+        "successes": 421,
+        "push_successes": 127,
+        "collect_successes": 97,
+        "open_successes": 115,
+        "joint_successes": 82
+      },
+      "zero_lag": {
+        "episodes": 512,
+        "successes": 473,
+        "push_successes": 127,
+        "collect_successes": 121,
+        "open_successes": 124,
+        "joint_successes": 101
+      },
+      "oracle": {
+        "episodes": 512,
+        "successes": 495,
+        "push_successes": 127,
+        "collect_successes": 126,
+        "open_successes": 127,
+        "joint_successes": 115
+      }
+    },
+    "2": {
+      "online": {
+        "episodes": 512,
+        "successes": 476,
+        "push_successes": 126,
+        "collect_successes": 122,
+        "open_successes": 124,
+        "joint_successes": 104
+      },
+      "memoryless": {
+        "episodes": 512,
+        "successes": 467,
+        "push_successes": 123,
+        "collect_successes": 119,
+        "open_successes": 121,
+        "joint_successes": 104
+      },
+      "no_update": {
+        "episodes": 512,
+        "successes": 465,
+        "push_successes": 122,
+        "collect_successes": 120,
+        "open_successes": 121,
+        "joint_successes": 102
+      },
+      "shuffled": {
+        "episodes": 512,
+        "successes": 436,
+        "push_successes": 124,
+        "collect_successes": 111,
+        "open_successes": 120,
+        "joint_successes": 81
+      },
+      "zero_lag": {
+        "episodes": 512,
+        "successes": 467,
+        "push_successes": 124,
+        "collect_successes": 117,
+        "open_successes": 122,
+        "joint_successes": 104
+      },
+      "oracle": {
+        "episodes": 512,
+        "successes": 486,
+        "push_successes": 126,
+        "collect_successes": 122,
+        "open_successes": 123,
+        "joint_successes": 115
+      }
+    }
+  },
+  "diagnostic": {
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 512,
+        "joint_episodes": 128,
+        "online": 489,
+        "memoryless": 451,
+        "no_update": 454,
+        "shuffled": 442,
+        "zero_lag": 461,
+        "oracle": 493,
+        "online_joint": 116,
+        "memoryless_joint": 90,
+        "no_update_joint": 94,
+        "shuffled_joint": 84,
+        "zero_lag_joint": 97,
+        "oracle_joint": 116
+      },
+      {
+        "interface": 1,
+        "episodes": 512,
+        "joint_episodes": 128,
+        "online": 488,
+        "memoryless": 470,
+        "no_update": 471,
+        "shuffled": 421,
+        "zero_lag": 473,
+        "oracle": 495,
+        "online_joint": 111,
+        "memoryless_joint": 101,
+        "no_update_joint": 103,
+        "shuffled_joint": 82,
+        "zero_lag_joint": 101,
+        "oracle_joint": 115
+      },
+      {
+        "interface": 2,
+        "episodes": 512,
+        "joint_episodes": 128,
+        "online": 476,
+        "memoryless": 467,
+        "no_update": 465,
+        "shuffled": 436,
+        "zero_lag": 467,
+        "oracle": 486,
+        "online_joint": 104,
+        "memoryless_joint": 104,
+        "no_update_joint": 102,
+        "shuffled_joint": 81,
+        "zero_lag_joint": 104,
+        "oracle_joint": 115
+      }
+    ],
+    "trace_worlds": {
+      "0": {
+        "online": 32,
+        "memoryless": 32,
+        "no_update": 32,
+        "shuffled": 32,
+        "zero_lag": 32,
+        "oracle": 32
+      },
+      "1": {
+        "online": 32,
+        "memoryless": 32,
+        "no_update": 32,
+        "shuffled": 32,
+        "zero_lag": 32,
+        "oracle": 32
+      },
+      "2": {
+        "online": 32,
+        "memoryless": 32,
+        "no_update": 32,
+        "shuffled": 32,
+        "zero_lag": 32,
+        "oracle": 32
+      }
+    },
+    "online_successes": 1453,
+    "oracle_successes": 1474,
+    "memoryless_successes": 1388,
+    "no_update_successes": 1390,
+    "shuffled_successes": 1299,
+    "zero_lag_successes": 1401,
+    "episodes": 1536,
+    "online_joint_successes": 331,
+    "memoryless_joint_successes": 295,
+    "joint_episodes": 384
+  },
+  "preregistered_gates": {
+    "protocol_and_sources_unchanged": true,
+    "calibration_exact": true,
+    "each_online_at_least_80pct_oracle": true,
+    "each_online_beats_memoryless_by_3pct_overall": false,
+    "each_joint_online_beats_memoryless_by_5pct": false,
+    "each_joint_online_beats_shuffled_by_5pct": true,
+    "each_joint_online_beats_zero_lag_by_5pct": false,
+    "evaluation_writes_zero": true,
+    "model_digest_unchanged": true
+  },
+  "adopted": false,
+  "evaluation_writes": 0,
+  "seconds": 367.36130862496793,
+  "boundary": "Developer-frozen synthetic evidence, not third-party blind and not AGI. Two hidden modes, Markov family, sensor schema, D4 family, lag range 0-4, sufficient statistics, terminal events, and Bayesian recursion are supplied. Mode identities and paths are withheld. No neural network, reward, planner, runtime search, classifier runtime, hidden label, or evaluation learning is used."
+}

@@ -1,0 +1,229 @@
+{
+  "development_only": true,
+  "v21_frozen_result_was_non_adopted": true,
+  "mechanism": "raw canonical no-change transitions are missing emissions; Markov time still advances",
+  "conditions": {
+    "0": {
+      "censored": {
+        "episodes": 256,
+        "successes": 241,
+        "push_successes": 63,
+        "collect_successes": 63,
+        "open_successes": 64,
+        "joint_successes": 51
+      },
+      "original": {
+        "episodes": 256,
+        "successes": 242,
+        "push_successes": 62,
+        "collect_successes": 63,
+        "open_successes": 64,
+        "joint_successes": 53
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 225,
+        "push_successes": 61,
+        "collect_successes": 57,
+        "open_successes": 62,
+        "joint_successes": 45
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 223,
+        "push_successes": 63,
+        "collect_successes": 54,
+        "open_successes": 62,
+        "joint_successes": 44
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 225,
+        "push_successes": 63,
+        "collect_successes": 57,
+        "open_successes": 61,
+        "joint_successes": 44
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 248,
+        "push_successes": 64,
+        "collect_successes": 63,
+        "open_successes": 64,
+        "joint_successes": 57
+      }
+    },
+    "1": {
+      "censored": {
+        "episodes": 256,
+        "successes": 248,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 64,
+        "joint_successes": 59
+      },
+      "original": {
+        "episodes": 256,
+        "successes": 248,
+        "push_successes": 64,
+        "collect_successes": 62,
+        "open_successes": 63,
+        "joint_successes": 59
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 237,
+        "push_successes": 64,
+        "collect_successes": 59,
+        "open_successes": 63,
+        "joint_successes": 51
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 205,
+        "push_successes": 64,
+        "collect_successes": 45,
+        "open_successes": 55,
+        "joint_successes": 41
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 233,
+        "push_successes": 64,
+        "collect_successes": 59,
+        "open_successes": 64,
+        "joint_successes": 46
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 246,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 61,
+        "joint_successes": 60
+      }
+    },
+    "2": {
+      "censored": {
+        "episodes": 256,
+        "successes": 237,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 57,
+        "joint_successes": 55
+      },
+      "original": {
+        "episodes": 256,
+        "successes": 238,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 57,
+        "joint_successes": 56
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 236,
+        "push_successes": 64,
+        "collect_successes": 58,
+        "open_successes": 62,
+        "joint_successes": 52
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 220,
+        "push_successes": 62,
+        "collect_successes": 60,
+        "open_successes": 58,
+        "joint_successes": 40
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 234,
+        "push_successes": 63,
+        "collect_successes": 61,
+        "open_successes": 61,
+        "joint_successes": 49
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 246,
+        "push_successes": 63,
+        "collect_successes": 62,
+        "open_successes": 61,
+        "joint_successes": 60
+      }
+    }
+  },
+  "diagnostic": {
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "censored": 241,
+        "original": 242,
+        "memoryless": 225,
+        "shuffled": 223,
+        "zero_lag": 225,
+        "oracle": 248,
+        "censored_joint": 51,
+        "original_joint": 53,
+        "memoryless_joint": 45,
+        "shuffled_joint": 44,
+        "zero_lag_joint": 44,
+        "oracle_joint": 57
+      },
+      {
+        "interface": 1,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "censored": 248,
+        "original": 248,
+        "memoryless": 237,
+        "shuffled": 205,
+        "zero_lag": 233,
+        "oracle": 246,
+        "censored_joint": 59,
+        "original_joint": 59,
+        "memoryless_joint": 51,
+        "shuffled_joint": 41,
+        "zero_lag_joint": 46,
+        "oracle_joint": 60
+      },
+      {
+        "interface": 2,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "censored": 237,
+        "original": 238,
+        "memoryless": 236,
+        "shuffled": 220,
+        "zero_lag": 234,
+        "oracle": 246,
+        "censored_joint": 55,
+        "original_joint": 56,
+        "memoryless_joint": 52,
+        "shuffled_joint": 40,
+        "zero_lag_joint": 49,
+        "oracle_joint": 60
+      }
+    ]
+  },
+  "preregistered_gates": {
+    "each_censored_at_least_original_overall": false,
+    "failed_interface_2_censored_beats_original_joint_by_5pct": false,
+    "failed_interface_2_censored_beats_memoryless_joint_by_5pct": false,
+    "each_censored_beats_shuffled_joint_by_5pct": true,
+    "evaluation_writes_zero": true
+  },
+  "adopt_for_v22_freeze": false,
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "selected": "censor non-identifiable no-change emissions",
+    "confidence": 0.85,
+    "role": "route classification only"
+  },
+  "evaluation_writes": 0,
+  "seconds": 166.4104775839951,
+  "boundary": "Development reuse of the already-observed failed v0.21 holdout; never frozen evidence."
+}

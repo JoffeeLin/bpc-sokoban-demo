@@ -1,0 +1,117 @@
+{
+  "development_only": true,
+  "source": "artifacts/v21hidden/rejected_attempt3_long_horizon/interface_development.json",
+  "episodes_per_interface": 256,
+  "horizons": {
+    "48": [
+      {
+        "online": 156,
+        "memoryless": 125,
+        "no_update": 129,
+        "shuffled": 139,
+        "zero_lag": 122,
+        "oracle": 132
+      },
+      {
+        "online": 152,
+        "memoryless": 144,
+        "no_update": 144,
+        "shuffled": 124,
+        "zero_lag": 141,
+        "oracle": 114
+      }
+    ],
+    "64": [
+      {
+        "online": 190,
+        "memoryless": 153,
+        "no_update": 153,
+        "shuffled": 167,
+        "zero_lag": 154,
+        "oracle": 159
+      },
+      {
+        "online": 181,
+        "memoryless": 174,
+        "no_update": 171,
+        "shuffled": 154,
+        "zero_lag": 171,
+        "oracle": 139
+      }
+    ],
+    "80": [
+      {
+        "online": 217,
+        "memoryless": 168,
+        "no_update": 168,
+        "shuffled": 186,
+        "zero_lag": 170,
+        "oracle": 171
+      },
+      {
+        "online": 203,
+        "memoryless": 197,
+        "no_update": 191,
+        "shuffled": 167,
+        "zero_lag": 188,
+        "oracle": 162
+      }
+    ],
+    "96": [
+      {
+        "online": 228,
+        "memoryless": 186,
+        "no_update": 184,
+        "shuffled": 201,
+        "zero_lag": 184,
+        "oracle": 187
+      },
+      {
+        "online": 216,
+        "memoryless": 210,
+        "no_update": 202,
+        "shuffled": 181,
+        "zero_lag": 203,
+        "oracle": 175
+      }
+    ],
+    "112": [
+      {
+        "online": 230,
+        "memoryless": 194,
+        "no_update": 194,
+        "shuffled": 211,
+        "zero_lag": 191,
+        "oracle": 195
+      },
+      {
+        "online": 223,
+        "memoryless": 220,
+        "no_update": 219,
+        "shuffled": 195,
+        "zero_lag": 219,
+        "oracle": 186
+      }
+    ],
+    "128": [
+      {
+        "online": 238,
+        "memoryless": 201,
+        "no_update": 203,
+        "shuffled": 220,
+        "zero_lag": 205,
+        "oracle": 206
+      },
+      {
+        "online": 229,
+        "memoryless": 228,
+        "no_update": 227,
+        "shuffled": 208,
+        "zero_lag": 228,
+        "oracle": 194
+      }
+    ]
+  },
+  "seconds": 530.1298972080112,
+  "boundary": "Post-development horizon sensitivity only. It cannot validate or replace a frozen result."
+}

@@ -1,0 +1,278 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1138,
+    "push_compact_steps": 4251,
+    "signature_(1, 2)": 1138,
+    "push_episodes": 1600,
+    "collect_success": 1522,
+    "collect_compact_steps": 9880,
+    "signature_(1, 3)": 1522,
+    "collect_episodes": 1600,
+    "open_success": 1450,
+    "open_compact_steps": 5234,
+    "signature_(1, 4, 5)": 1450,
+    "open_episodes": 1600
+  },
+  "factor_digest": "4f005ee784ce677cdc339533e3e0156b0aabea9bd6b47d2a8c6de0542245020e",
+  "reference": {
+    "generator": "original",
+    "worlds": 300,
+    "effect_digest": "e08fd904d021c52890cf001ff5b869042ca98cf5f21970b0a8fb4455f335da84"
+  },
+  "target": {
+    "generator": "independent rectangular lab",
+    "hidden_modes": 2,
+    "unlabeled_streams": [
+      {
+        "seed": 211110,
+        "sequences": 108,
+        "transitions": 5184
+      },
+      {
+        "seed": 211111,
+        "sequences": 108,
+        "transitions": 5184
+      },
+      {
+        "seed": 211112,
+        "sequences": 108,
+        "transitions": 5184
+      }
+    ],
+    "suite_worlds": 20,
+    "generation_attempts": {
+      "push": 8,
+      "collect": 7,
+      "open": 6,
+      "joint": 11
+    },
+    "evaluator_only_channels": [
+      [
+        [
+          0.82,
+          0.06,
+          0.06,
+          0.06
+        ],
+        [
+          0.06,
+          0.82,
+          0.06,
+          0.06
+        ],
+        [
+          0.06,
+          0.06,
+          0.82,
+          0.06
+        ],
+        [
+          0.06,
+          0.06,
+          0.06,
+          0.82
+        ]
+      ],
+      [
+        [
+          0.06,
+          0.82,
+          0.06,
+          0.06
+        ],
+        [
+          0.82,
+          0.06,
+          0.06,
+          0.06
+        ],
+        [
+          0.06,
+          0.06,
+          0.06,
+          0.82
+        ],
+        [
+          0.06,
+          0.06,
+          0.82,
+          0.06
+        ]
+      ]
+    ],
+    "evaluator_only_transition": [
+      [
+        0.95,
+        0.05
+      ],
+      [
+        0.07,
+        0.93
+      ]
+    ],
+    "evaluator_only_initial": [
+      0.55,
+      0.45
+    ]
+  },
+  "learned": {
+    "log_probability": -45697.86306774941,
+    "initial": [
+      0.46692546224119164,
+      0.5330745377588084
+    ],
+    "transition": [
+      [
+        0.9259666766003267,
+        0.07403332339967332
+      ],
+      [
+        0.05277496356240781,
+        0.9472250364375923
+      ]
+    ],
+    "channels": [
+      [
+        [
+          0.051090770393389835,
+          0.8211191471741554,
+          0.06635204032765682,
+          0.06143804210479798
+        ],
+        [
+          0.8172928016219081,
+          0.04777132422568347,
+          0.06984981603647261,
+          0.06508605811593593
+        ],
+        [
+          0.05860143368170259,
+          0.05716893964216534,
+          0.05451107599965562,
+          0.8297185506764764
+        ],
+        [
+          0.057992739855311344,
+          0.055058269835715934,
+          0.8235474457690543,
+          0.06340154453991846
+        ]
+      ],
+      [
+        [
+          0.8026307018351241,
+          0.06427537971296764,
+          0.06585438635088231,
+          0.06723953210102601
+        ],
+        [
+          0.04971394656760809,
+          0.8225187485182119,
+          0.060241507896872666,
+          0.06752579701730717
+        ],
+        [
+          0.05182134491192193,
+          0.05609963096578542,
+          0.8169103520166823,
+          0.07516867210561044
+        ],
+        [
+          0.057051314640968964,
+          0.05502311787708178,
+          0.05583295531300236,
+          0.8320926121689469
+        ]
+      ]
+    ],
+    "restarts": 10,
+    "iterations": 40
+  },
+  "conditions": {
+    "online": {
+      "episodes": 360,
+      "successes": 340,
+      "push_successes": 90,
+      "collect_successes": 88,
+      "open_successes": 88,
+      "joint_successes": 74
+    },
+    "memoryless": {
+      "episodes": 360,
+      "successes": 311,
+      "push_successes": 90,
+      "collect_successes": 79,
+      "open_successes": 88,
+      "joint_successes": 54
+    },
+    "no_update": {
+      "episodes": 360,
+      "successes": 314,
+      "push_successes": 90,
+      "collect_successes": 80,
+      "open_successes": 88,
+      "joint_successes": 56
+    },
+    "shuffled": {
+      "episodes": 360,
+      "successes": 314,
+      "push_successes": 89,
+      "collect_successes": 78,
+      "open_successes": 88,
+      "joint_successes": 59
+    },
+    "oracle": {
+      "episodes": 360,
+      "successes": 353,
+      "push_successes": 90,
+      "collect_successes": 90,
+      "open_successes": 89,
+      "joint_successes": 84
+    }
+  },
+  "diagnostic": {
+    "maximum_channel_total_variation": 0.017369298164875917,
+    "maximum_transition_error": 0.0040333233996733275,
+    "maximum_initial_error": 0.016925462241191624,
+    "model_to_truth": [
+      1,
+      0
+    ],
+    "filter_accuracy": 0.8922325102880658,
+    "episodes": 360,
+    "online_successes": 340,
+    "memoryless_successes": 311,
+    "no_update_successes": 314,
+    "shuffled_successes": 314,
+    "oracle_successes": 353,
+    "trace_worlds": {
+      "online": 20,
+      "memoryless": 20,
+      "no_update": 20,
+      "shuffled": 20,
+      "oracle": 20
+    }
+  },
+  "preregistered_gates": {
+    "channel_recovery_within_12pct_tv": true,
+    "transition_recovery_within_8pct": true,
+    "filter_accuracy_at_least_80pct": true,
+    "online_at_least_80pct_oracle": true,
+    "online_beats_memoryless_by_5pct": true,
+    "online_beats_no_update_by_5pct": true,
+    "online_beats_shuffled_by_5pct": true,
+    "evaluation_writes_zero": true
+  },
+  "adopt_for_interface_integration": true,
+  "evaluation_writes": 0,
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "batch_items": 6,
+    "selected": "hidden two-state actuator regime with online Bayesian belief",
+    "confidence": 0.98,
+    "role": "development route classification only; absent from inference, training, evaluation, and runtime"
+  },
+  "seconds": 111.06313837500056,
+  "boundary": "Development-only synthetic hidden-regime evidence, not frozen, third-party blind, or AGI. Two modes and the Markov family are supplied, but mode identities and paths are withheld from fitting and control. The controller uses frozen BPC action probabilities plus learned actuator probabilities and an ephemeral Bayesian belief. No neural network, reward, planner, search, hidden label, classifier runtime, or evaluation write is used."
+}
