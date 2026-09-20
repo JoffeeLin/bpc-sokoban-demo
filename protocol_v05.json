@@ -1,0 +1,78 @@
+{
+  "format": "bpc-reversible-wave-v05-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can action inverses discovered only from exact round-trip experience replace supplied free-space reachability inside the learned-world wave on new Sokoban layouts?",
+  "config": {
+    "training_seed": 40404,
+    "training_episodes": 3000,
+    "training_steps": 80,
+    "inverse_seed": 50505,
+    "inverse_episodes": 600,
+    "inverse_steps": 60,
+    "reach_seed": 56505,
+    "reach_episodes": 200,
+    "reach_steps": 20,
+    "holdout_count": 8,
+    "holdout_seed": 55005,
+    "state_limit": 5000000
+  },
+  "expected_model_sha256": "4b6ce7815dc350acd03e2362511004c66fc536acaea62f1645ac717ddfce8070",
+  "expected_training_manifest": {
+    "episodes": 3000,
+    "steps_per_episode": 80,
+    "unique_levels": 2857,
+    "levels_sha256": "48a78844f2475bcc29289d6ad19062710f9df459dba5255552efb6d6f3d015c2"
+  },
+  "expected_inverse": [
+    1,
+    0,
+    3,
+    2
+  ],
+  "expected_inverse_evidence": [
+    [
+      0,
+      5806,
+      0,
+      0
+    ],
+    [
+      5810,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      5738
+    ],
+    [
+      0,
+      0,
+      5661,
+      0
+    ]
+  ],
+  "holdout_sha256": "a279162d54ec92e570f31d6c9e2dec005a107a65c3b7b66f5a7cd13a908a0cbf",
+  "adoption_thresholds": {
+    "inverse_min_support": 5000,
+    "reach_exact_rate": 1.0,
+    "wrong_inverse_max_reach_exact_rate": 0.05,
+    "solve_margin": 0.75
+  },
+  "controls": [
+    "wrong inverse pairs use the identical learned world and identical experience",
+    "the old supplied flood fill is disabled before holdout solving"
+  ],
+  "source_sha256": {
+    "bpc_learned_wave_v04.py": "700ee8e1a6810b9491a214fbe378b0c2362c188adfab726f1cd5fbdff01f62ed",
+    "bpc_reversible_wave_v05.py": "e550fb84e9491bfefd5b929cfd0b0a8e83f9daa5512de8cafe190de4e810c806",
+    "v04_maps.py": "be0ba58041c760f4c2f7e48d24fb3da046c88c907c1f20c2c2bfd24a5dda9fe3",
+    "experiment_v05_frozen.py": "317f6e1bc353ff1955f691ecd48d2deb79422cd7ed8eefa2f6a2a285a21ed5ea",
+    "freeze_v05.py": "7085ac3ce5a0c265b100bfbd0dff6fd676bf16bdedabe4b07ca21e07e96b0377"
+  },
+  "failure_policy": "Retain every miss; do not replace maps, alter seeds, change code, or lower gates after execution.",
+  "boundary": "Developer-frozen mechanism evidence. Raw local channels, action displacement, macro push candidate enumeration, terminal seeding, and backward wave remain supplied."
+}

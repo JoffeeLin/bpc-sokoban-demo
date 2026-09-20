@@ -1,0 +1,249 @@
+{
+  "format": "bpc-reversible-wave-v05",
+  "evidence_level": "developer-frozen local holdout; not third-party blind",
+  "training_experience": {
+    "blocked": 80197,
+    "box_change": 4209,
+    "move": 155594
+  },
+  "training_manifest": {
+    "episodes": 3000,
+    "steps_per_episode": 80,
+    "unique_levels": 2857,
+    "levels_sha256": "48a78844f2475bcc29289d6ad19062710f9df459dba5255552efb6d6f3d015c2"
+  },
+  "model_sha256": "4b6ce7815dc350acd03e2362511004c66fc536acaea62f1645ac717ddfce8070",
+  "inverse": [
+    1,
+    0,
+    3,
+    2
+  ],
+  "inverse_evidence": [
+    [
+      0,
+      5806,
+      0,
+      0
+    ],
+    [
+      5810,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      5738
+    ],
+    [
+      0,
+      0,
+      5661,
+      0
+    ]
+  ],
+  "reach_audit": {
+    "learned": {
+      "states": 4000,
+      "exact": 4000,
+      "symmetric_difference_cells": 0
+    },
+    "wrong_inverse": {
+      "states": 4000,
+      "exact": 7,
+      "symmetric_difference_cells": 50202
+    }
+  },
+  "holdout": {
+    "maps": 8,
+    "boxes": [
+      1,
+      2,
+      3,
+      4,
+      1,
+      2,
+      3,
+      4
+    ],
+    "shortest_action_distances": [
+      7,
+      13,
+      22,
+      15,
+      6,
+      24,
+      38,
+      19
+    ]
+  },
+  "conditions": {
+    "primary": {
+      "V5H1": {
+        "solved": true,
+        "complete": false,
+        "states": 10,
+        "push_phase": 4,
+        "actions": 13,
+        "sequence": "LULURRLDDRRUU",
+        "seconds": 0.006311749981250614,
+        "replay_solved": true
+      },
+      "V5H2": {
+        "solved": true,
+        "complete": false,
+        "states": 92,
+        "push_phase": 4,
+        "actions": 13,
+        "sequence": "DLLLUURRDRDLL",
+        "seconds": 0.05984874995192513,
+        "replay_solved": true
+      },
+      "V5H3": {
+        "solved": true,
+        "complete": false,
+        "states": 1744,
+        "push_phase": 8,
+        "actions": 24,
+        "sequence": "UUUUUURRDRDRDLLDLUURRDDD",
+        "seconds": 1.3818616250064224,
+        "replay_solved": true
+      },
+      "V5H4": {
+        "solved": true,
+        "complete": false,
+        "states": 2338,
+        "push_phase": 7,
+        "actions": 40,
+        "sequence": "UUULLUUULRDRRDDRULDDDLLULUURRDLDLURRRDLL",
+        "seconds": 1.5916744999703951,
+        "replay_solved": true
+      },
+      "V5H5": {
+        "solved": true,
+        "complete": false,
+        "states": 3,
+        "push_phase": 1,
+        "actions": 6,
+        "sequence": "LUUUUL",
+        "seconds": 0.0022204580018296838,
+        "replay_solved": true
+      },
+      "V5H6": {
+        "solved": true,
+        "complete": false,
+        "states": 182,
+        "push_phase": 10,
+        "actions": 32,
+        "sequence": "DDDDRULUURRDLLDLUURRRRDDDLLDLUUU",
+        "seconds": 0.11615658301161602,
+        "replay_solved": true
+      },
+      "V5H7": {
+        "solved": true,
+        "complete": false,
+        "states": 3317,
+        "push_phase": 15,
+        "actions": 44,
+        "sequence": "RRDLLLDLURDDDDLUURRRRRDRDLLDLURULLRDDLLUUUUU",
+        "seconds": 2.615551958035212,
+        "replay_solved": true
+      },
+      "V5H8": {
+        "solved": true,
+        "complete": false,
+        "states": 8966,
+        "push_phase": 8,
+        "actions": 31,
+        "sequence": "LUUUULRDDDLLULURRRURDLLLDRDRDDL",
+        "seconds": 6.828996666998137,
+        "replay_solved": true
+      }
+    },
+    "wrong_inverse": {
+      "V5H1": {
+        "solved": false,
+        "complete": true,
+        "states": 23,
+        "seconds": 0.0015072919777594507,
+        "replay_solved": false
+      },
+      "V5H2": {
+        "solved": false,
+        "complete": true,
+        "states": 31,
+        "seconds": 0.0021207500249147415,
+        "replay_solved": false
+      },
+      "V5H3": {
+        "solved": false,
+        "complete": true,
+        "states": 43,
+        "seconds": 0.003025249985512346,
+        "replay_solved": false
+      },
+      "V5H4": {
+        "solved": false,
+        "complete": true,
+        "states": 42,
+        "seconds": 0.0030476670362986624,
+        "replay_solved": false
+      },
+      "V5H5": {
+        "solved": false,
+        "complete": true,
+        "states": 24,
+        "seconds": 0.0015341250109486282,
+        "replay_solved": false
+      },
+      "V5H6": {
+        "solved": false,
+        "complete": true,
+        "states": 32,
+        "seconds": 0.002068125002551824,
+        "replay_solved": false
+      },
+      "V5H7": {
+        "solved": false,
+        "complete": true,
+        "states": 42,
+        "seconds": 0.002751332998741418,
+        "replay_solved": false
+      },
+      "V5H8": {
+        "solved": false,
+        "complete": true,
+        "states": 42,
+        "seconds": 0.0030305000254884362,
+        "replay_solved": false
+      }
+    }
+  },
+  "gate": {
+    "inverse_uniquely_discovered": true,
+    "learned_reach_exact": true,
+    "wrong_inverse_reach_at_most_5pct": true,
+    "all_new_holdouts_solved": true,
+    "all_solutions_replay": true,
+    "all_unseen_four_box_maps_solved": true,
+    "beats_wrong_inverse_by_75pp": true,
+    "supplied_reach_disabled": true,
+    "frozen_model_writes_zero": true
+  },
+  "adopted": true,
+  "frozen_model_writes": 0,
+  "seconds": 14.731567250040825,
+  "protocol_sha256": "64a9c5b8fd8626df868affce90f94a942bb8613f76f7733cf5bc82dd0256a60b",
+  "source_sha256": {
+    "bpc_learned_wave_v04.py": "700ee8e1a6810b9491a214fbe378b0c2362c188adfab726f1cd5fbdff01f62ed",
+    "bpc_reversible_wave_v05.py": "e550fb84e9491bfefd5b929cfd0b0a8e83f9daa5512de8cafe190de4e810c806",
+    "v04_maps.py": "be0ba58041c760f4c2f7e48d24fb3da046c88c907c1f20c2c2bfd24a5dda9fe3",
+    "experiment_v05_frozen.py": "317f6e1bc353ff1955f691ecd48d2deb79422cd7ed8eefa2f6a2a285a21ed5ea",
+    "freeze_v05.py": "7085ac3ce5a0c265b100bfbd0dff6fd676bf16bdedabe4b07ca21e07e96b0377"
+  },
+  "supported_claim": "Exact action inverses discovered from round-trip experience form free-space equivalence classes that transfer to new Sokoban layouts inside the fixed learned-world wave.",
+  "boundary": "Not direct control or AGI. Raw local channels, action displacement, macro push candidate enumeration, terminal seeding, and backward propagation remain supplied."
+}

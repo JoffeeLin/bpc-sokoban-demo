@@ -1,4 +1,31 @@
-# GeneralBPC: Learned Local World Function + Frozen Wave
+# GeneralBPC: Learned World + Learned Reversible Equivalence
+
+## v0.5 breakthrough: supplied reachability removed
+
+v0.5 discovers four inverse action relations from exact round-trip experience,
+then uses learned reversible orbits instead of v0.4's hand-written free-space
+flood fill. The inverse learner sees only anonymous action indices and exact
+before/after microstates; it is not given direction names or inverse pairs.
+
+| Frozen condition | Reach equivalence | New maps |
+|---|---:|---:|
+| Learned inverse relations | **4,000 / 4,000** | **8 / 8** |
+| Wrong inverse, same experience | 7 / 4,000 | **0 / 8** |
+
+The old supplied `reach()` function was deliberately replaced by an exception
+before holdout solving. Both unseen four-box maps passed, every sequence replayed
+under true physics, and evaluation performed zero model writes. See
+[V05_RESULT.md](V05_RESULT.md) and the machine-readable
+[v0.5 result](artifacts/v05/result.json).
+
+![Frozen v0.5 result](artifacts/v05/poster_v05.png)
+
+**[Watch all eight frozen holdout replays](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v5.0.0/bpc_reversible_equivalence_v05_8_unseen.mp4)**
+
+The remaining action-displacement interface, macro push-candidate enumeration,
+terminal seeding, and backward wave are still supplied. This is a second hybrid
+mechanism advance—not direct policy control, autonomous solver discovery,
+cross-task general intelligence, or AGI.
 
 ## v0.4 breakthrough: one supplied world law removed
 
@@ -87,12 +114,13 @@ action)` channel and normalized entropy confidence. Development evidence said
 that forcing this channel into action choice hurt, so it remains observable but
 is not part of the adopted controller.
 
-The `classifier.dev` skill was used only to triage 18 de-identified summaries of
-earlier BPC mechanisms. Its response named `jev-1.13.0`; no classifier output,
-remote model, or API call enters BPC training, evaluation, or runtime. The first
-batch also demonstrated why confidence is not proof of task fit: ambiguous label
-wording misclassified a positive transfer result, so all low-confidence or
-contradictory items were manually reviewed.
+The `classifier.dev` skill first triaged 18 de-identified summaries of earlier
+BPC mechanisms, then classified 12 candidate replacements for v0.4's supplied
+reachability routine. It selected exact learned forward/inverse round trips as
+the closest implementable BPC mechanism. Its response named `jev-1.13.0`; no
+classifier output, remote model, or API call enters BPC training, evaluation,
+or runtime. Candidate ranking guided development only; the committed frozen
+test, causal control, and deterministic rerun provide the evidence.
 
 ## Task-agnostic kernel
 
@@ -115,8 +143,9 @@ Requirements: Python 3.11+, Pillow 12, and `ffmpeg` on `PATH`.
 
 ```bash
 python3 -m pip install -r requirements.txt
-python3 experiment_v7_frozen.py
-python3 render_v7.py
+python3 test_reversible_wave_v05.py
+python3 experiment_v05_frozen.py
+python3 render_v05.py
 ```
 
 The committed protocol and holdout refuse silent source changes by verifying

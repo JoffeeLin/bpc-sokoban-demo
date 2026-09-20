@@ -1,0 +1,58 @@
+[
+  {
+    "id": "V5H1",
+    "boxes": 1,
+    "shortest_actions": 7,
+    "reference_states": 133,
+    "map": "#######\n#     #\n#    .#\n#     #\n#  $# #\n#   @ #\n#######"
+  },
+  {
+    "id": "V5H2",
+    "boxes": 2,
+    "shortest_actions": 13,
+    "reference_states": 2239,
+    "map": "########\n#      #\n#    # #\n#  .   #\n## $   #\n#   #$@#\n#  .   #\n########"
+  },
+  {
+    "id": "V5H3",
+    "boxes": 3,
+    "shortest_actions": 22,
+    "reference_states": 75787,
+    "map": "#########\n#  $ .  #\n## .  # #\n#       #\n#    $  #\n#    $  #\n#       #\n# @ #.  #\n#########"
+  },
+  {
+    "id": "V5H4",
+    "boxes": 4,
+    "shortest_actions": 15,
+    "reference_states": 36956,
+    "map": "#########\n#.$ #   #\n##    . #\n# .   $ #\n##      #\n# .$$   #\n#       #\n#    @  #\n#########"
+  },
+  {
+    "id": "V5H5",
+    "boxes": 1,
+    "shortest_actions": 6,
+    "reference_states": 24,
+    "map": "#######\n# .$  #\n#     #\n#     #\n#     #\n#    @#\n#######"
+  },
+  {
+    "id": "V5H6",
+    "boxes": 2,
+    "shortest_actions": 24,
+    "reference_states": 15841,
+    "map": "########\n#.@ #  #\n# .    #\n#      #\n#  $#  #\n#   $  #\n#      #\n########"
+  },
+  {
+    "id": "V5H7",
+    "boxes": 3,
+    "shortest_actions": 38,
+    "reference_states": 209075,
+    "map": "#########\n#..@    #\n#   $ # #\n#.   #  #\n#      ##\n#$      #\n#  #  $ #\n#       #\n#########"
+  },
+  {
+    "id": "V5H8",
+    "boxes": 4,
+    "shortest_actions": 19,
+    "reference_states": 189998,
+    "map": "#########\n#  #    #\n# .$    #\n#       #\n# $$..  #\n#      ##\n#    @# #\n# .$    #\n#########"
+  }
+]
