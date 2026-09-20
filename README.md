@@ -4,7 +4,7 @@ A one-file Python experiment testing whether one Binary Probability Cube (BPC) m
 
 ![Frozen BPC fails held-out level 10](artifacts/poster.png)
 
-**[Watch the 49-second result video](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v2.0.0/bpc_sokoban_diverse_negative.mp4)**
+**[Watch the 49-second result video](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v2.0.0/bpc_sokoban_10_levels.mp4)**
 
 ## Result: not adopted
 
