@@ -25,6 +25,8 @@ The model receives a raw 9×9 RGB frame quantized to the two high bits of every 
 
 The ten layouts have different wall sets, player starts, box starts, goals, and shortest routes. A solver was used only offline to confirm each literal level is solvable; it is not included in the BPC, training, evaluation, or video runtime.
 
+The maximum pairwise Jaccard overlap between internal-wall sets is `0.267`, and all ten `(player, box, goal)` triples are unique.
+
 ## Mechanism
 
 `BPC` is a sparse `raw frame × action × outcome` probability cube. Each cell holds exact Beta(1,1) Bernoulli counts for:

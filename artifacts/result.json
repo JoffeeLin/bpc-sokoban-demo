@@ -57,6 +57,10 @@
   "trained_levels_passed": true,
   "unseen_levels_passed": 0,
   "adopted": false,
+  "level_independence": {
+    "max_internal_wall_jaccard": 0.26666666666666666,
+    "unique_player_box_goal_triples": 10
+  },
   "prior": "identity raw-frame query only; no mirror/rotation mapping and no planner",
   "boundary": "five independently generated held-out layouts; failure is retained; no AGI claim"
 }

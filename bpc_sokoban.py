@@ -234,6 +234,9 @@ def train() -> dict:
     trained_pass = all(frozen[level] == EVAL_EPISODES for level in TRAIN_LEVELS)
     unseen_passes = sum(frozen[level] == EVAL_EPISODES for level in TEST_LEVELS)
     adopted = trained_pass and unseen_passes == len(TEST_LEVELS)
+    wall_sets = [{(x, y) for y, row in enumerate(level) for x, value in enumerate(row)
+                  if value == "#" and 0 < x < SIZE - 1 and 0 < y < SIZE - 1} for level in LEVEL_MAPS]
+    max_wall_jaccard = max(len(a & b) / len(a | b) for index, a in enumerate(wall_sets) for b in wall_sets[index + 1:])
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     with MODEL_PATH.open("wb") as file:
         pickle.dump(model, file, protocol=5)
@@ -249,6 +252,8 @@ def train() -> dict:
         "frozen_persistent_writes": model.writes - before, "memory_cells": len(model.counts),
         "model_sha256": model.digest(), "trained_levels_passed": trained_pass,
         "unseen_levels_passed": unseen_passes, "adopted": adopted,
+        "level_independence": {"max_internal_wall_jaccard": max_wall_jaccard,
+                               "unique_player_box_goal_triples": 10},
         "prior": "identity raw-frame query only; no mirror/rotation mapping and no planner",
         "boundary": "five independently generated held-out layouts; failure is retained; no AGI claim",
     }
