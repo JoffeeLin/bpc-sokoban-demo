@@ -58,6 +58,10 @@ it is absent from training, evaluation, and runtime.
   `1df8ea44660fdfd24e62c6c5c37ed19eefdfa1aecf75811c330c8987d3d5be55`
 - Video SHA-256:
   `f8d4ddacacc9ab102228365b6e0fef3214b8d58cc48c711b293330ba7ecd5c99`
+- GitHub release:
+  <https://github.com/JoffeeLin/bpc-sokoban-demo/releases/tag/v7.0.0>
+- X video:
+  <https://x.com/JoffeeLin/status/2101692758604079216>
 
 The protocol fixed code hashes, training and evaluation seeds, minimum joint
 event count, causal-control margin, retention gates, deterministic repetition,

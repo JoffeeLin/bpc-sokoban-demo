@@ -22,6 +22,8 @@ bit-for-bit, and evaluation performed zero model writes. See
 
 **[Watch all ten frozen joint transition classes](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v7.0.0/bpc_cross_task_v07_10_joint_classes.mp4)**
 
+**[View the v0.7 video on X](https://x.com/JoffeeLin/status/2101692758604079216)**
+
 The supported claim is exact local one-step world-function composition in a
 supplied synthetic generator—not planning, a direct policy, or AGI.
 
