@@ -26,6 +26,8 @@ Every new world had a successful direct-control trace. See
 
 **[Watch all 16 frozen direct-control traces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v9.0.0/bpc_direct_composition_v09_16_worlds.mp4)**
 
+**[View the v0.9 result and video on X](https://x.com/JoffeeLin/status/2101700819158732821)**
+
 The equal probability product is supplied, not autonomously invented. This is
 bounded synthetic cross-task control—not arbitrary planning or AGI.
 
