@@ -1,0 +1,254 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "discovered_signatures": [
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4,
+      5
+    ]
+  ],
+  "required_planes": {
+    "(1, 2)": [
+      2
+    ],
+    "(1, 3)": [
+      3
+    ],
+    "(1, 4, 5)": [
+      4,
+      5
+    ]
+  },
+  "suite": {
+    "worlds": 32,
+    "families": {
+      "push": 8,
+      "collect": 8,
+      "open": 8,
+      "joint": 8
+    },
+    "shortest_distances": [
+      3,
+      3,
+      3,
+      4,
+      3,
+      3,
+      3,
+      2,
+      4,
+      5,
+      7,
+      11,
+      3,
+      9,
+      7,
+      4,
+      2,
+      4,
+      2,
+      3,
+      2,
+      4,
+      2,
+      4,
+      7,
+      6,
+      8,
+      7,
+      7,
+      10,
+      6,
+      7
+    ],
+    "attempts": {
+      "push": 15,
+      "collect": 11,
+      "open": 9,
+      "joint": 11
+    },
+    "initial_overlap_with_training": 0
+  },
+  "conditions_by_step_budget": {
+    "64": {
+      "field": {
+        "episodes": 2048,
+        "successes": 1806,
+        "push_successes": 470,
+        "collect_successes": 498,
+        "open_successes": 501,
+        "joint_successes": 337
+      },
+      "product": {
+        "episodes": 2048,
+        "successes": 1804,
+        "push_successes": 470,
+        "collect_successes": 498,
+        "open_successes": 501,
+        "joint_successes": 335
+      },
+      "shared": {
+        "episodes": 2048,
+        "successes": 1746,
+        "push_successes": 472,
+        "collect_successes": 497,
+        "open_successes": 501,
+        "joint_successes": 276
+      },
+      "drop_0": {
+        "episodes": 2048,
+        "successes": 1692,
+        "push_successes": 408,
+        "collect_successes": 498,
+        "open_successes": 501,
+        "joint_successes": 285
+      },
+      "drop_1": {
+        "episodes": 2048,
+        "successes": 1454,
+        "push_successes": 470,
+        "collect_successes": 290,
+        "open_successes": 501,
+        "joint_successes": 193
+      },
+      "drop_2": {
+        "episodes": 2048,
+        "successes": 1645,
+        "push_successes": 470,
+        "collect_successes": 498,
+        "open_successes": 387,
+        "joint_successes": 290
+      },
+      "rotated": {
+        "episodes": 2048,
+        "successes": 688,
+        "push_successes": 335,
+        "collect_successes": 50,
+        "open_successes": 303,
+        "joint_successes": 0
+      },
+      "uniform": {
+        "episodes": 2048,
+        "successes": 1155,
+        "push_successes": 408,
+        "collect_successes": 290,
+        "open_successes": 387,
+        "joint_successes": 70
+      }
+    },
+    "256": {
+      "field": {
+        "episodes": 2048,
+        "successes": 2022,
+        "push_successes": 512,
+        "collect_successes": 512,
+        "open_successes": 512,
+        "joint_successes": 486
+      },
+      "product": {
+        "episodes": 2048,
+        "successes": 2022,
+        "push_successes": 512,
+        "collect_successes": 512,
+        "open_successes": 512,
+        "joint_successes": 486
+      },
+      "shared": {
+        "episodes": 2048,
+        "successes": 2012,
+        "push_successes": 512,
+        "collect_successes": 512,
+        "open_successes": 512,
+        "joint_successes": 476
+      },
+      "drop_0": {
+        "episodes": 2048,
+        "successes": 1986,
+        "push_successes": 512,
+        "collect_successes": 512,
+        "open_successes": 512,
+        "joint_successes": 450
+      },
+      "drop_1": {
+        "episodes": 2048,
+        "successes": 1897,
+        "push_successes": 512,
+        "collect_successes": 484,
+        "open_successes": 512,
+        "joint_successes": 389
+      },
+      "drop_2": {
+        "episodes": 2048,
+        "successes": 2014,
+        "push_successes": 512,
+        "collect_successes": 512,
+        "open_successes": 506,
+        "joint_successes": 484
+      },
+      "rotated": {
+        "episodes": 2048,
+        "successes": 1095,
+        "push_successes": 483,
+        "collect_successes": 138,
+        "open_successes": 464,
+        "joint_successes": 10
+      },
+      "uniform": {
+        "episodes": 2048,
+        "successes": 1827,
+        "push_successes": 512,
+        "collect_successes": 484,
+        "open_successes": 506,
+        "joint_successes": 325
+      }
+    }
+  },
+  "worlds_with_success_trace": {
+    "64": {
+      "field": 32,
+      "product": 32,
+      "shared": 32,
+      "drop_0": 32,
+      "drop_1": 32,
+      "drop_2": 32,
+      "rotated": 20,
+      "uniform": 32
+    },
+    "256": {
+      "field": 32,
+      "product": 32,
+      "shared": 32,
+      "drop_0": 32,
+      "drop_1": 32,
+      "drop_2": 32,
+      "rotated": 29,
+      "uniform": 32
+    }
+  },
+  "evaluation_writes": 0,
+  "seconds": 77.32967599999392,
+  "boundary": "Development synthetic evidence. Three task generators and binary terminal events are supplied. The BPC learner gets no family name; its runtime is one additive evidence query with no planner/search."
+}

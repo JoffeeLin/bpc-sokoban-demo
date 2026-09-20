@@ -1,0 +1,198 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1457,
+    "push_compact_steps": 5348,
+    "signature_(1, 2)": 1457,
+    "push_episodes": 2000,
+    "collect_success": 1835,
+    "collect_compact_steps": 11864,
+    "signature_(1, 3)": 1835,
+    "collect_episodes": 2000
+  },
+  "factor_digest": "f4f06cc7820b84b0c63a01a24ba04ade6b69108cbd14ca0079d8999c18f06f47",
+  "discovered_signatures": [
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ]
+  ],
+  "suite": {
+    "worlds": 36,
+    "shortest_distances": [
+      3,
+      3,
+      4,
+      4,
+      4,
+      2,
+      3,
+      4,
+      2,
+      2,
+      2,
+      2,
+      5,
+      6,
+      5,
+      6,
+      5,
+      5,
+      5,
+      3,
+      7,
+      5,
+      6,
+      4,
+      6,
+      6,
+      5,
+      12,
+      8,
+      4,
+      10,
+      4,
+      8,
+      8,
+      5,
+      5
+    ],
+    "combined_generation_attempts": 188,
+    "initial_overlap_with_training": 0
+  },
+  "conditions_by_step_budget": {
+    "32": {
+      "field": {
+        "routing_decisions": 41973,
+        "routing_mismatches": 0,
+        "episodes": 2304,
+        "successes": 1688,
+        "push_successes": 617,
+        "collect_successes": 727,
+        "combined_successes": 344
+      },
+      "product": {
+        "episodes": 2304,
+        "successes": 1687,
+        "push_successes": 617,
+        "collect_successes": 727,
+        "combined_successes": 343
+      },
+      "mean": {
+        "episodes": 2304,
+        "successes": 1586,
+        "push_successes": 617,
+        "collect_successes": 727,
+        "combined_successes": 242
+      },
+      "no_prior": {
+        "episodes": 2304,
+        "successes": 1690,
+        "push_successes": 620,
+        "collect_successes": 728,
+        "combined_successes": 342
+      },
+      "shared": {
+        "episodes": 2304,
+        "successes": 1572,
+        "push_successes": 619,
+        "collect_successes": 728,
+        "combined_successes": 225
+      },
+      "permuted": {
+        "episodes": 2304,
+        "successes": 1113,
+        "push_successes": 458,
+        "collect_successes": 311,
+        "combined_successes": 344
+      },
+      "rotated": {
+        "episodes": 2304,
+        "successes": 414,
+        "push_successes": 340,
+        "collect_successes": 28,
+        "combined_successes": 46
+      }
+    },
+    "160": {
+      "field": {
+        "routing_decisions": 80719,
+        "routing_mismatches": 0,
+        "episodes": 2304,
+        "successes": 2116,
+        "push_successes": 765,
+        "collect_successes": 768,
+        "combined_successes": 583
+      },
+      "product": {
+        "episodes": 2304,
+        "successes": 2116,
+        "push_successes": 765,
+        "collect_successes": 768,
+        "combined_successes": 583
+      },
+      "mean": {
+        "episodes": 2304,
+        "successes": 2126,
+        "push_successes": 765,
+        "collect_successes": 768,
+        "combined_successes": 593
+      },
+      "no_prior": {
+        "episodes": 2304,
+        "successes": 2111,
+        "push_successes": 765,
+        "collect_successes": 768,
+        "combined_successes": 578
+      },
+      "shared": {
+        "episodes": 2304,
+        "successes": 2108,
+        "push_successes": 766,
+        "collect_successes": 768,
+        "combined_successes": 574
+      },
+      "permuted": {
+        "episodes": 2304,
+        "successes": 2066,
+        "push_successes": 750,
+        "collect_successes": 733,
+        "combined_successes": 583
+      },
+      "rotated": {
+        "episodes": 2304,
+        "successes": 957,
+        "push_successes": 647,
+        "collect_successes": 182,
+        "combined_successes": 128
+      }
+    }
+  },
+  "worlds_with_success_trace": {
+    "32": {
+      "field": 35,
+      "product": 35,
+      "mean": 36,
+      "no_prior": 35,
+      "shared": 36,
+      "permuted": 35,
+      "rotated": 26
+    },
+    "160": {
+      "field": 36,
+      "product": 36,
+      "mean": 36,
+      "no_prior": 36,
+      "shared": 36,
+      "permuted": 36,
+      "rotated": 34
+    }
+  },
+  "evaluation_writes": 0,
+  "seconds": 46.31225449999329,
+  "boundary": "Development synthetic direct control. One pooled learned prior plus additive factor evidence is supplied as the BPC query rule; raw channels, terminal success, generators, and limits remain supplied."
+}

@@ -1,0 +1,505 @@
+{
+  "format": "bpc-three-factor-v12",
+  "evidence_level": "developer-frozen held-out synthetic direct control; not third-party blind",
+  "question": "Can one non-neural BPC learner discover three anonymous raw-change factors from separate successful experience and directly recombine them on unseen worlds that require all three mechanisms?",
+  "training": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "discovered_signatures": [
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4,
+      5
+    ]
+  ],
+  "common_planes": [
+    1
+  ],
+  "required_planes": {
+    "(1, 2)": [
+      2
+    ],
+    "(1, 3)": [
+      3
+    ],
+    "(1, 4, 5)": [
+      4,
+      5
+    ]
+  },
+  "holdout": {
+    "worlds": 48,
+    "families": {
+      "push": 12,
+      "collect": 12,
+      "open": 12,
+      "joint": 12
+    },
+    "shortest_distances": [
+      5,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      4,
+      3,
+      4,
+      3,
+      2,
+      2,
+      7,
+      7,
+      7,
+      6,
+      6,
+      10,
+      5,
+      5,
+      5,
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4,
+      2,
+      3,
+      2,
+      3,
+      4,
+      3,
+      7,
+      11,
+      7,
+      6,
+      7,
+      8,
+      9,
+      10,
+      5,
+      6,
+      8,
+      8,
+      9
+    ],
+    "initial_overlap_with_training": 0,
+    "initial_active_factor_counts": {
+      "push": [
+        1
+      ],
+      "collect": [
+        1
+      ],
+      "open": [
+        1
+      ],
+      "joint": [
+        3
+      ]
+    }
+  },
+  "conditions": {
+    "122110": {
+      "64": {
+        "field": {
+          "episodes": 1536,
+          "successes": 1416,
+          "push_successes": 365,
+          "collect_successes": 384,
+          "open_successes": 373,
+          "joint_successes": 294
+        },
+        "product": {
+          "episodes": 1536,
+          "successes": 1417,
+          "push_successes": 365,
+          "collect_successes": 384,
+          "open_successes": 373,
+          "joint_successes": 295
+        },
+        "shared": {
+          "episodes": 1536,
+          "successes": 1330,
+          "push_successes": 366,
+          "collect_successes": 384,
+          "open_successes": 368,
+          "joint_successes": 212
+        },
+        "drop_0": {
+          "episodes": 1536,
+          "successes": 1305,
+          "push_successes": 318,
+          "collect_successes": 384,
+          "open_successes": 373,
+          "joint_successes": 230
+        },
+        "drop_1": {
+          "episodes": 1536,
+          "successes": 1116,
+          "push_successes": 365,
+          "collect_successes": 230,
+          "open_successes": 373,
+          "joint_successes": 148
+        },
+        "drop_2": {
+          "episodes": 1536,
+          "successes": 1281,
+          "push_successes": 365,
+          "collect_successes": 384,
+          "open_successes": 286,
+          "joint_successes": 246
+        },
+        "rotated": {
+          "episodes": 1536,
+          "successes": 500,
+          "push_successes": 230,
+          "collect_successes": 43,
+          "open_successes": 222,
+          "joint_successes": 5
+        },
+        "uniform": {
+          "episodes": 1536,
+          "successes": 895,
+          "push_successes": 318,
+          "collect_successes": 230,
+          "open_successes": 286,
+          "joint_successes": 61
+        }
+      },
+      "256": {
+        "field": {
+          "episodes": 1536,
+          "successes": 1504,
+          "push_successes": 384,
+          "collect_successes": 384,
+          "open_successes": 384,
+          "joint_successes": 352
+        },
+        "product": {
+          "episodes": 1536,
+          "successes": 1506,
+          "push_successes": 384,
+          "collect_successes": 384,
+          "open_successes": 384,
+          "joint_successes": 354
+        },
+        "shared": {
+          "episodes": 1536,
+          "successes": 1490,
+          "push_successes": 384,
+          "collect_successes": 384,
+          "open_successes": 384,
+          "joint_successes": 338
+        },
+        "drop_0": {
+          "episodes": 1536,
+          "successes": 1494,
+          "push_successes": 379,
+          "collect_successes": 384,
+          "open_successes": 384,
+          "joint_successes": 347
+        },
+        "drop_1": {
+          "episodes": 1536,
+          "successes": 1436,
+          "push_successes": 384,
+          "collect_successes": 378,
+          "open_successes": 384,
+          "joint_successes": 290
+        },
+        "drop_2": {
+          "episodes": 1536,
+          "successes": 1493,
+          "push_successes": 384,
+          "collect_successes": 384,
+          "open_successes": 369,
+          "joint_successes": 356
+        },
+        "rotated": {
+          "episodes": 1536,
+          "successes": 785,
+          "push_successes": 313,
+          "collect_successes": 132,
+          "open_successes": 326,
+          "joint_successes": 14
+        },
+        "uniform": {
+          "episodes": 1536,
+          "successes": 1371,
+          "push_successes": 379,
+          "collect_successes": 378,
+          "open_successes": 369,
+          "joint_successes": 245
+        }
+      }
+    },
+    "122210": {
+      "64": {
+        "field": {
+          "episodes": 1536,
+          "successes": 1400,
+          "push_successes": 365,
+          "collect_successes": 383,
+          "open_successes": 372,
+          "joint_successes": 280
+        },
+        "product": {
+          "episodes": 1536,
+          "successes": 1399,
+          "push_successes": 365,
+          "collect_successes": 383,
+          "open_successes": 372,
+          "joint_successes": 279
+        },
+        "shared": {
+          "episodes": 1536,
+          "successes": 1346,
+          "push_successes": 367,
+          "collect_successes": 383,
+          "open_successes": 371,
+          "joint_successes": 225
+        },
+        "drop_0": {
+          "episodes": 1536,
+          "successes": 1317,
+          "push_successes": 318,
+          "collect_successes": 383,
+          "open_successes": 372,
+          "joint_successes": 244
+        },
+        "drop_1": {
+          "episodes": 1536,
+          "successes": 1122,
+          "push_successes": 365,
+          "collect_successes": 236,
+          "open_successes": 372,
+          "joint_successes": 149
+        },
+        "drop_2": {
+          "episodes": 1536,
+          "successes": 1288,
+          "push_successes": 365,
+          "collect_successes": 383,
+          "open_successes": 299,
+          "joint_successes": 241
+        },
+        "rotated": {
+          "episodes": 1536,
+          "successes": 531,
+          "push_successes": 252,
+          "collect_successes": 37,
+          "open_successes": 241,
+          "joint_successes": 1
+        },
+        "uniform": {
+          "episodes": 1536,
+          "successes": 931,
+          "push_successes": 318,
+          "collect_successes": 236,
+          "open_successes": 299,
+          "joint_successes": 78
+        }
+      },
+      "256": {
+        "field": {
+          "episodes": 1536,
+          "successes": 1508,
+          "push_successes": 384,
+          "collect_successes": 384,
+          "open_successes": 384,
+          "joint_successes": 356
+        },
+        "product": {
+          "episodes": 1536,
+          "successes": 1508,
+          "push_successes": 384,
+          "collect_successes": 384,
+          "open_successes": 384,
+          "joint_successes": 356
+        },
+        "shared": {
+          "episodes": 1536,
+          "successes": 1500,
+          "push_successes": 384,
+          "collect_successes": 384,
+          "open_successes": 384,
+          "joint_successes": 348
+        },
+        "drop_0": {
+          "episodes": 1536,
+          "successes": 1509,
+          "push_successes": 379,
+          "collect_successes": 384,
+          "open_successes": 384,
+          "joint_successes": 362
+        },
+        "drop_1": {
+          "episodes": 1536,
+          "successes": 1439,
+          "push_successes": 384,
+          "collect_successes": 378,
+          "open_successes": 384,
+          "joint_successes": 293
+        },
+        "drop_2": {
+          "episodes": 1536,
+          "successes": 1497,
+          "push_successes": 384,
+          "collect_successes": 384,
+          "open_successes": 376,
+          "joint_successes": 353
+        },
+        "rotated": {
+          "episodes": 1536,
+          "successes": 792,
+          "push_successes": 318,
+          "collect_successes": 118,
+          "open_successes": 343,
+          "joint_successes": 13
+        },
+        "uniform": {
+          "episodes": 1536,
+          "successes": 1405,
+          "push_successes": 379,
+          "collect_successes": 378,
+          "open_successes": 376,
+          "joint_successes": 272
+        }
+      }
+    }
+  },
+  "worlds_with_success_trace": {
+    "122110": {
+      "64": {
+        "field": 48,
+        "product": 48,
+        "shared": 48,
+        "drop_0": 48,
+        "drop_1": 48,
+        "drop_2": 48,
+        "rotated": 35,
+        "uniform": 47
+      },
+      "256": {
+        "field": 48,
+        "product": 48,
+        "shared": 48,
+        "drop_0": 48,
+        "drop_1": 48,
+        "drop_2": 48,
+        "rotated": 41,
+        "uniform": 48
+      }
+    },
+    "122210": {
+      "64": {
+        "field": 48,
+        "product": 48,
+        "shared": 48,
+        "drop_0": 48,
+        "drop_1": 48,
+        "drop_2": 48,
+        "rotated": 33,
+        "uniform": 48
+      },
+      "256": {
+        "field": 48,
+        "product": 48,
+        "shared": 48,
+        "drop_0": 48,
+        "drop_1": 48,
+        "drop_2": 48,
+        "rotated": 40,
+        "uniform": 48
+      }
+    }
+  },
+  "aggregate": {
+    "episodes_per_condition_budget": 3072,
+    "joint_episodes": 768,
+    "field_64_total": 2816,
+    "field_64_joint": 574,
+    "product_64_joint": 574,
+    "shared_64_joint": 437,
+    "drop_64_joint": [
+      474,
+      297,
+      487
+    ],
+    "rotated_64_joint": 6,
+    "uniform_64_joint": 139,
+    "field_256_joint": 708,
+    "product_256_joint": 710
+  },
+  "source_scan": {
+    "push": true,
+    "collect": true,
+    "open": true,
+    "family": true,
+    "goal": true,
+    "reward": true,
+    "score": true,
+    "loss": true,
+    "gradient": true,
+    "torch": true,
+    "tensorflow": true,
+    "sklearn": true,
+    "search": true,
+    "shortest": true
+  },
+  "model_writes_during_evaluation": 0,
+  "gate": {
+    "three_anonymous_factors_discovered": true,
+    "one_common_plane_and_requirements_1_1_2": true,
+    "holdout_initials_disjoint_from_training": true,
+    "joint_worlds_require_object_and_gate_mechanisms": true,
+    "joint_initials_activate_three_factors": true,
+    "field_joint_rate_at_least_45pct": true,
+    "field_beats_shared_by_8pp_on_joint": true,
+    "each_factor_drop_costs_5pp_on_joint": true,
+    "field_beats_uniform_by_30pp_on_joint": true,
+    "field_beats_rotated_by_40pp_on_joint": true,
+    "field_within_1pp_of_explicit_product": true,
+    "anonymous_runtime_source": true,
+    "frozen_model_writes_zero": true
+  },
+  "adopted": true,
+  "seconds": 91.84937995899236,
+  "protocol_sha256": "96d1e8e46b05096e9ff0e68629da5cb181e95bdb36e90c28b6eac2cda3457ec0",
+  "holdout_sha256": "cc970e8dab94b0b2fe2ff98a7a17bda5b3a4e1292e9a5cd13ab5262204adf6d2",
+  "source_sha256": {
+    "bpc_three_factor_v12.py": "e7a07fbc0756fc2af8bc100cf9963e472a539d5cf9dc0348a7a3ef085bc7ff8e",
+    "bpc_evidence_field_v11.py": "8794d9a22f80242f0a59298d36592fb2300ea89ae22cc3460a43a60d3750253b",
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "bpc_direct_composition_v09.py": "6d15f3e2cb59c42d097860f2e463cfb7f46f54b7eb98b6a9963d421748a8ac3c",
+    "general_bpc_v7.py": "d37040bd087e0bbf135a491ab319411f7dd10d823038734327af1136467f05f8",
+    "experiment_v5.py": "0f883f7f0aa6d3a37299322e8214776c9179516b7be632094cd18c629231e493",
+    "experiment_v12_three_factor_frozen.py": "5aecd9c51def1457f66c74ef4bc2dab339c7cadf87ebc7d5d7f9841a0e7b6c43",
+    "freeze_v12_three_factor.py": "dcda4fa7327865f28dd1efd616b394c5485ba0b80a36346e7c175d4002dd90d2"
+  },
+  "supported_claim": "One non-neural BPC learner discovered three anonymous raw-change factors from separate successful experience and directly recombined their learned evidence on unseen worlds requiring all three mechanisms.",
+  "boundary": "Raw channels, generators, binary terminal events, additive field rule, and evaluation limits are supplied. The near-equivalent explicit product is a same-information control. This is synthetic direct control, not autonomous operator invention, arbitrary planning, or AGI."
+}

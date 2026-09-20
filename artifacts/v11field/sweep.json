@@ -1,0 +1,178 @@
+{
+  "development_only": true,
+  "rows": [
+    {
+      "seed": 111011,
+      "training": {
+        "push_episodes": 2000,
+        "push_success": 1475,
+        "push_compact_steps": 5162,
+        "signature_(1, 2)": 1475,
+        "collect_success": 1822,
+        "collect_compact_steps": 11951,
+        "signature_(1, 3)": 1822,
+        "collect_episodes": 2000
+      },
+      "attempts": 223,
+      "result": {
+        "field": {
+          "routing_decisions": 46363,
+          "routing_mismatches": 0,
+          "episodes": 2304,
+          "successes": 1495,
+          "push_successes": 619,
+          "collect_successes": 639,
+          "combined_successes": 237
+        },
+        "product": {
+          "episodes": 2304,
+          "successes": 1495,
+          "push_successes": 619,
+          "collect_successes": 639,
+          "combined_successes": 237
+        },
+        "no_prior": {
+          "episodes": 2304,
+          "successes": 1500,
+          "push_successes": 624,
+          "collect_successes": 638,
+          "combined_successes": 238
+        },
+        "shared": {
+          "episodes": 2304,
+          "successes": 1429,
+          "push_successes": 628,
+          "collect_successes": 637,
+          "combined_successes": 164
+        },
+        "rotated": {
+          "episodes": 2304,
+          "successes": 399,
+          "push_successes": 339,
+          "collect_successes": 45,
+          "combined_successes": 15
+        }
+      },
+      "field_minus_product": 0,
+      "field_minus_shared": 66
+    },
+    {
+      "seed": 111012,
+      "training": {
+        "push_success": 1478,
+        "push_compact_steps": 5289,
+        "signature_(1, 2)": 1478,
+        "push_episodes": 2000,
+        "collect_success": 1847,
+        "collect_compact_steps": 11994,
+        "signature_(1, 3)": 1847,
+        "collect_episodes": 2000
+      },
+      "attempts": 391,
+      "result": {
+        "field": {
+          "routing_decisions": 42903,
+          "routing_mismatches": 0,
+          "episodes": 2304,
+          "successes": 1645,
+          "push_successes": 686,
+          "collect_successes": 688,
+          "combined_successes": 271
+        },
+        "product": {
+          "episodes": 2304,
+          "successes": 1645,
+          "push_successes": 686,
+          "collect_successes": 688,
+          "combined_successes": 271
+        },
+        "no_prior": {
+          "episodes": 2304,
+          "successes": 1645,
+          "push_successes": 686,
+          "collect_successes": 688,
+          "combined_successes": 271
+        },
+        "shared": {
+          "episodes": 2304,
+          "successes": 1554,
+          "push_successes": 687,
+          "collect_successes": 689,
+          "combined_successes": 178
+        },
+        "rotated": {
+          "episodes": 2304,
+          "successes": 343,
+          "push_successes": 301,
+          "collect_successes": 28,
+          "combined_successes": 14
+        }
+      },
+      "field_minus_product": 0,
+      "field_minus_shared": 91
+    },
+    {
+      "seed": 111013,
+      "training": {
+        "push_success": 1477,
+        "push_compact_steps": 5277,
+        "signature_(1, 2)": 1477,
+        "push_episodes": 2000,
+        "collect_success": 1869,
+        "collect_compact_steps": 11978,
+        "signature_(1, 3)": 1869,
+        "collect_episodes": 2000
+      },
+      "attempts": 365,
+      "result": {
+        "field": {
+          "routing_decisions": 43042,
+          "routing_mismatches": 0,
+          "episodes": 2304,
+          "successes": 1730,
+          "push_successes": 655,
+          "collect_successes": 692,
+          "combined_successes": 383
+        },
+        "product": {
+          "episodes": 2304,
+          "successes": 1728,
+          "push_successes": 655,
+          "collect_successes": 692,
+          "combined_successes": 381
+        },
+        "no_prior": {
+          "episodes": 2304,
+          "successes": 1733,
+          "push_successes": 657,
+          "collect_successes": 692,
+          "combined_successes": 384
+        },
+        "shared": {
+          "episodes": 2304,
+          "successes": 1596,
+          "push_successes": 658,
+          "collect_successes": 691,
+          "combined_successes": 247
+        },
+        "rotated": {
+          "episodes": 2304,
+          "successes": 466,
+          "push_successes": 407,
+          "collect_successes": 39,
+          "combined_successes": 20
+        }
+      },
+      "field_minus_product": 2,
+      "field_minus_shared": 134
+    }
+  ],
+  "aggregate": {
+    "field_minus_product": 2,
+    "field_wins_product": 1,
+    "field_ties_product": 2,
+    "field_minus_shared": 291
+  },
+  "seconds": 36.12131308298558,
+  "boundary": "Development seed sweep only; no frozen claim. Candidate selection must not use target frozen outcomes."
+}

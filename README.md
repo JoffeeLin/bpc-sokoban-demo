@@ -1,5 +1,30 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.12 breakthrough: three learned factors recombine directly
+
+One non-neural BPC learner now discovers three anonymous terminal raw-change
+factors from separate experience streams, then uses one additive evidence query
+to recombine them on unseen worlds requiring a switch, gate, box push, and
+target collection. It receives no task-family name and has no joint-task
+training, runtime planner, or search.
+
+Across 12 frozen joint worlds, two new action seeds, and 768 trials at 64 steps,
+the BPC field completed **574/768 (74.7%)**. The same-information explicit
+product also completed 574; one shared cube completed 437; fixed deletion of
+the three anonymous factors completed 474, 297, and 487; uniform random
+completed 139; rotated action semantics completed 6. All 13 pre-registered
+gates passed with zero evaluation writes. See
+[`V12_THREE_FACTOR_RESULT.md`](V12_THREE_FACTOR_RESULT.md) and the
+[`machine-readable result`](artifacts/v12three/result.json).
+
+![Frozen v0.12 result](artifacts/v12three/poster_v12_three_factor.png)
+
+**[Watch 12 frozen unseen joint traces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v12.0.0/bpc_three_factor_v12_12_unseen_joint_worlds.mp4)**
+
+This is bounded developer-frozen synthetic evidence. Raw channels, terminal
+events, the additive field rule, generators, and limits remain supplied; it is
+not autonomous operator invention or AGI.
+
 ## v0.10 breakthrough: anonymous factor discovery without task names
 
 One BPC learner now separates successful experience by the raw bit planes that
