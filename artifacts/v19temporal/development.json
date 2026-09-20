@@ -1,0 +1,6106 @@
+{
+  "development_only": true,
+  "training": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "batch_items": 14,
+    "selected": "joint sensor and actuator latency frontier",
+    "confidence": 0.82,
+    "implemented_identifiable_quantity": "end-to-end lag only",
+    "role": "candidate routing only; absent from inference, training, evaluation, and runtime"
+  },
+  "reference": {
+    "generator": "original",
+    "worlds": 300,
+    "interface_digest": "1390677222c79700fe0d7b8aa4226315f9a58fe47e88eee7518d1a362f93bcbf",
+    "action_digest": "f5f3fd8bde7163d239454f882ee2b80723348fb8fe8d75e75f6135407a5badb6"
+  },
+  "target": {
+    "generator": "independent rectangular lab",
+    "bindings": [
+      {
+        "sensor_routes": [
+          4,
+          null,
+          0,
+          2,
+          null,
+          5,
+          3,
+          null,
+          1
+        ],
+        "action_routes": [
+          null,
+          3,
+          1,
+          0,
+          2
+        ],
+        "kinds": [
+          0,
+          1,
+          2
+        ],
+        "spatial_oracle": 1,
+        "sensor_delay_evaluator_only": 0,
+        "actuator_delay_evaluator_only": 1,
+        "total_lag_oracle": 1,
+        "channel_oracle": [
+          2,
+          8,
+          3,
+          6,
+          0,
+          5
+        ],
+        "channel_binding": {
+          "mapping": [
+            2,
+            8,
+            3,
+            6,
+            0,
+            5
+          ],
+          "posterior": 1.0,
+          "log_margin": 12575.064328100707,
+          "second": [
+            2,
+            8,
+            6,
+            3,
+            0,
+            5
+          ],
+          "change_compatible": 16,
+          "compatible": 4,
+          "sensor_log_probability": -257862.32731454592,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 2159.539491731026
+            },
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 2155.040078641665
+            },
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 1519.6582583082636
+            },
+            {
+              "mapping": [
+                2,
+                8,
+                3,
+                6,
+                0,
+                5
+              ],
+              "log_margin": 3267.7035774763644
+            }
+          ]
+        },
+        "action_oracle": [
+          3,
+          2,
+          4,
+          1
+        ],
+        "temporal_binding": {
+          "lag": 1,
+          "posterior": 1.0,
+          "log_margin": 44520.178896996775,
+          "single": {
+            "transform": 1,
+            "mapping": [
+              3,
+              2,
+              4,
+              1
+            ],
+            "log_probability": -32005.044179634726,
+            "posterior": 1.0,
+            "log_margin": 44176.14915341369,
+            "candidate_slots": [
+              3,
+              2,
+              4,
+              1
+            ]
+          },
+          "gauges": [
+            {
+              "transform": 0,
+              "mapping": [
+                1,
+                4,
+                3,
+                2
+              ],
+              "log_probability": -32015.05389948364,
+              "posterior": 1.0,
+              "log_margin": 44380.50160390095,
+              "candidate_slots": [
+                1,
+                4,
+                3,
+                2
+              ]
+            },
+            {
+              "transform": 1,
+              "mapping": [
+                3,
+                2,
+                4,
+                1
+              ],
+              "log_probability": -32005.044179634726,
+              "posterior": 1.0,
+              "log_margin": 44176.14915341369,
+              "candidate_slots": [
+                3,
+                2,
+                4,
+                1
+              ]
+            },
+            {
+              "transform": 2,
+              "mapping": [
+                4,
+                1,
+                2,
+                3
+              ],
+              "log_probability": -32006.99418288662,
+              "posterior": 1.0,
+              "log_margin": 44400.16152371551,
+              "candidate_slots": [
+                4,
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "transform": 3,
+              "mapping": [
+                2,
+                3,
+                1,
+                4
+              ],
+              "log_probability": -32021.04434451287,
+              "posterior": 1.0,
+              "log_margin": 44163.489679584214,
+              "candidate_slots": [
+                2,
+                3,
+                1,
+                4
+              ]
+            },
+            {
+              "transform": 4,
+              "mapping": [
+                4,
+                1,
+                3,
+                2
+              ],
+              "log_probability": -32016.049089230466,
+              "posterior": 1.0,
+              "log_margin": 44357.97490699853,
+              "candidate_slots": [
+                4,
+                1,
+                3,
+                2
+              ]
+            },
+            {
+              "transform": 5,
+              "mapping": [
+                2,
+                3,
+                4,
+                1
+              ],
+              "log_probability": -32012.25534099952,
+              "posterior": 1.0,
+              "log_margin": 44176.14915341369,
+              "candidate_slots": [
+                2,
+                3,
+                4,
+                1
+              ]
+            },
+            {
+              "transform": 6,
+              "mapping": [
+                1,
+                4,
+                2,
+                3
+              ],
+              "log_probability": -32005.998993139794,
+              "posterior": 1.0,
+              "log_margin": 44422.68822061792,
+              "candidate_slots": [
+                1,
+                4,
+                2,
+                3
+              ]
+            },
+            {
+              "transform": 7,
+              "mapping": [
+                3,
+                2,
+                1,
+                4
+              ],
+              "log_probability": -32013.833183148075,
+              "posterior": 1.0,
+              "log_margin": 44163.48967958422,
+              "candidate_slots": [
+                3,
+                2,
+                1,
+                4
+              ]
+            }
+          ],
+          "candidate_lags": [
+            {
+              "lag": 0,
+              "log_evidence": -89135.24099630026,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    0,
+                    1,
+                    4,
+                    2
+                  ],
+                  "log_probability": -89154.5945849596,
+                  "posterior": 1.0,
+                  "log_margin": 43.78672936063958,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    4,
+                    2
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    4,
+                    2,
+                    1,
+                    0
+                  ],
+                  "log_probability": -89171.66470669222,
+                  "posterior": 0.9999999999998881,
+                  "log_margin": 29.825586966937408,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    1,
+                    0,
+                    2,
+                    4
+                  ],
+                  "log_probability": -89162.74281406276,
+                  "posterior": 1.0,
+                  "log_margin": 49.54779310247977,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    2,
+                    4,
+                    0,
+                    1
+                  ],
+                  "log_probability": -89135.24101487639,
+                  "posterior": 1.0,
+                  "log_margin": 52.087740598857636,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    1,
+                    0,
+                    4,
+                    2
+                  ],
+                  "log_probability": -89168.68081719488,
+                  "posterior": 1.0,
+                  "log_margin": 39.119173621584196,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    4,
+                    2
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    2,
+                    4,
+                    1,
+                    0
+                  ],
+                  "log_probability": -89146.2185809311,
+                  "posterior": 1.0,
+                  "log_margin": 39.61298222080222,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    0,
+                    1,
+                    2,
+                    4
+                  ],
+                  "log_probability": -89148.65658182748,
+                  "posterior": 1.0,
+                  "log_margin": 54.215348841564264,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    4,
+                    2,
+                    0,
+                    1
+                  ],
+                  "log_probability": -89160.6871406375,
+                  "posterior": 0.999999999999976,
+                  "log_margin": 31.361097832632367,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    0,
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 1,
+              "log_evidence": -32004.62014801079,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ],
+                  "log_probability": -32015.05389948364,
+                  "posterior": 1.0,
+                  "log_margin": 44380.50160390095,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ],
+                  "log_probability": -32005.044179634726,
+                  "posterior": 1.0,
+                  "log_margin": 44176.14915341369,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ],
+                  "log_probability": -32006.99418288662,
+                  "posterior": 1.0,
+                  "log_margin": 44400.16152371551,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ],
+                  "log_probability": -32021.04434451287,
+                  "posterior": 1.0,
+                  "log_margin": 44163.489679584214,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ],
+                  "log_probability": -32016.049089230466,
+                  "posterior": 1.0,
+                  "log_margin": 44357.97490699853,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ],
+                  "log_probability": -32012.25534099952,
+                  "posterior": 1.0,
+                  "log_margin": 44176.14915341369,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ],
+                  "log_probability": -32005.998993139794,
+                  "posterior": 1.0,
+                  "log_margin": 44422.68822061792,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ],
+                  "log_probability": -32013.833183148075,
+                  "posterior": 1.0,
+                  "log_margin": 44163.48967958422,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 2,
+              "log_evidence": -80203.29964284888,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    0,
+                    1,
+                    2,
+                    3
+                  ],
+                  "log_probability": -80210.15607830601,
+                  "posterior": 1.0,
+                  "log_margin": 1324.8984980912937,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    2,
+                    3,
+                    1,
+                    0
+                  ],
+                  "log_probability": -80224.97487699943,
+                  "posterior": 1.0,
+                  "log_margin": 1309.637737230587,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    1,
+                    0,
+                    3,
+                    2
+                  ],
+                  "log_probability": -80261.13205487185,
+                  "posterior": 1.0,
+                  "log_margin": 1304.7077740376844,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    3,
+                    2,
+                    0,
+                    1
+                  ],
+                  "log_probability": -80215.39346049506,
+                  "posterior": 1.0,
+                  "log_margin": 1277.2251776400517,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    1,
+                    0,
+                    2,
+                    3
+                  ],
+                  "log_probability": -80230.08292005847,
+                  "posterior": 1.0,
+                  "log_margin": 1328.4584029300313,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    3,
+                    2,
+                    1,
+                    0
+                  ],
+                  "log_probability": -80203.30070166312,
+                  "posterior": 1.0,
+                  "log_margin": 1309.3100892688963,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    0,
+                    1,
+                    3,
+                    2
+                  ],
+                  "log_probability": -80241.20521311938,
+                  "posterior": 1.0,
+                  "log_margin": 1301.147869198976,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    2,
+                    3,
+                    0,
+                    1
+                  ],
+                  "log_probability": -80237.06763583138,
+                  "posterior": 1.0,
+                  "log_margin": 1277.5528256017424,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    0,
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 3,
+              "log_evidence": -78524.21049603175,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    0,
+                    1,
+                    2,
+                    3
+                  ],
+                  "log_probability": -78554.02466809242,
+                  "posterior": 1.0,
+                  "log_margin": 1256.7926572411961,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    2,
+                    3,
+                    1,
+                    0
+                  ],
+                  "log_probability": -78526.40871646124,
+                  "posterior": 1.0,
+                  "log_margin": 1276.5929677189852,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    1,
+                    0,
+                    3,
+                    2
+                  ],
+                  "log_probability": -78530.65830073765,
+                  "posterior": 1.0,
+                  "log_margin": 1273.05987368348,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    3,
+                    2,
+                    0,
+                    1
+                  ],
+                  "log_probability": -78561.10864506266,
+                  "posterior": 1.0,
+                  "log_margin": 1257.320298829698,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    1,
+                    0,
+                    2,
+                    3
+                  ],
+                  "log_probability": -78527.08008916899,
+                  "posterior": 1.0,
+                  "log_margin": 1274.1680001602072,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    3,
+                    2,
+                    1,
+                    0
+                  ],
+                  "log_probability": -78563.1213710933,
+                  "posterior": 1.0,
+                  "log_margin": 1261.3677354519314,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    0,
+                    1,
+                    3,
+                    2
+                  ],
+                  "log_probability": -78557.60287966108,
+                  "posterior": 1.0,
+                  "log_margin": 1255.684530764469,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    2,
+                    3,
+                    0,
+                    1
+                  ],
+                  "log_probability": -78524.39599043061,
+                  "posterior": 1.0,
+                  "log_margin": 1272.5455310967664,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    0,
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 4,
+              "log_evidence": -76524.79904500756,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    0,
+                    1,
+                    2,
+                    3
+                  ],
+                  "log_probability": -76553.18535675222,
+                  "posterior": 1.0,
+                  "log_margin": 534.3945580528816,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    2,
+                    3,
+                    1,
+                    0
+                  ],
+                  "log_probability": -76528.98795067747,
+                  "posterior": 1.0,
+                  "log_margin": 569.3104887985974,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    1,
+                    0,
+                    3,
+                    2
+                  ],
+                  "log_probability": -76548.9017976153,
+                  "posterior": 1.0,
+                  "log_margin": 556.4207433563861,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    3,
+                    2,
+                    0,
+                    1
+                  ],
+                  "log_probability": -76540.22516395562,
+                  "posterior": 1.0,
+                  "log_margin": 551.5259615619289,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    1,
+                    0,
+                    2,
+                    3
+                  ],
+                  "log_probability": -76544.21021048863,
+                  "posterior": 1.0,
+                  "log_margin": 553.8867906206724,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    3,
+                    2,
+                    1,
+                    0
+                  ],
+                  "log_probability": -76544.39879041504,
+                  "posterior": 1.0,
+                  "log_margin": 550.8715587267652,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    0,
+                    1,
+                    3,
+                    2
+                  ],
+                  "log_probability": -76557.8769438789,
+                  "posterior": 1.0,
+                  "log_margin": 536.9285107885808,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    2,
+                    3,
+                    0,
+                    1
+                  ],
+                  "log_probability": -76524.81432421804,
+                  "posterior": 1.0,
+                  "log_margin": 569.9648916337756,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    0,
+                    1
+                  ]
+                }
+              ]
+            }
+          ],
+          "per_stream": [
+            {
+              "lag": 1,
+              "log_margin": 11404.78063382507,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ],
+                  "log_probability": -7627.914825782321,
+                  "posterior": 1.0,
+                  "log_margin": 11023.327401954259,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ],
+                  "log_probability": -7616.095855286934,
+                  "posterior": 1.0,
+                  "log_margin": 10941.458882104696,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ],
+                  "log_probability": -7618.926231628931,
+                  "posterior": 1.0,
+                  "log_margin": 11021.143526744661,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ],
+                  "log_probability": -7624.6961712740285,
+                  "posterior": 1.0,
+                  "log_margin": 10940.215842389278,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ],
+                  "log_probability": -7628.875575189372,
+                  "posterior": 1.0,
+                  "log_margin": 11021.143526744658,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ],
+                  "log_probability": -7623.921871182554,
+                  "posterior": 1.0,
+                  "log_margin": 10941.458882104695,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ],
+                  "log_probability": -7617.965482221878,
+                  "posterior": 1.0,
+                  "log_margin": 11023.32740195426,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ],
+                  "log_probability": -7616.8701553784085,
+                  "posterior": 1.0,
+                  "log_margin": 10940.21584238928,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 1,
+              "log_margin": 11425.27085691421,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ],
+                  "log_probability": -8114.239263804033,
+                  "posterior": 1.0,
+                  "log_margin": 11266.809827188783,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ],
+                  "log_probability": -8118.9406443400885,
+                  "posterior": 1.0,
+                  "log_margin": 11289.807522951342,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ],
+                  "log_probability": -8118.306109594677,
+                  "posterior": 1.0,
+                  "log_margin": 11259.113826266843,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ],
+                  "log_probability": -8123.302552960746,
+                  "posterior": 1.0,
+                  "log_margin": 11299.0909693163,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ],
+                  "log_probability": -8114.711999975512,
+                  "posterior": 1.0,
+                  "log_margin": 11266.809827188783,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ],
+                  "log_probability": -8121.33654016829,
+                  "posterior": 1.0,
+                  "log_margin": 11310.024309120454,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ],
+                  "log_probability": -8117.833373423197,
+                  "posterior": 1.0,
+                  "log_margin": 11259.113826266843,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ],
+                  "log_probability": -8120.906657132543,
+                  "posterior": 1.0,
+                  "log_margin": 11278.874183147193,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 1,
+              "log_margin": 11110.88658747569,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ],
+                  "log_probability": -8144.272682796036,
+                  "posterior": 1.0,
+                  "log_margin": 10946.912581927034,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ],
+                  "log_probability": -8135.5285479048525,
+                  "posterior": 1.0,
+                  "log_margin": 10931.401082738683,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ],
+                  "log_probability": -8134.136800584092,
+                  "posterior": 1.0,
+                  "log_margin": 10963.45714285491,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ],
+                  "log_probability": -8135.190709270941,
+                  "posterior": 1.0,
+                  "log_margin": 10935.457086910912,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ],
+                  "log_probability": -8143.287080668077,
+                  "posterior": 1.0,
+                  "log_margin": 10947.82224168818,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ],
+                  "log_probability": -8137.011139107939,
+                  "posterior": 1.0,
+                  "log_margin": 10931.401082738683,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ],
+                  "log_probability": -8135.122402712052,
+                  "posterior": 1.0,
+                  "log_margin": 10962.547483093764,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ],
+                  "log_probability": -8133.708118067852,
+                  "posterior": 1.0,
+                  "log_margin": 10935.45708691091,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 1,
+              "log_margin": 10919.138994626566,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ],
+                  "log_probability": -8128.627127101252,
+                  "posterior": 1.0,
+                  "log_margin": 10750.23419841097,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ],
+                  "log_probability": -8134.479132102854,
+                  "posterior": 1.0,
+                  "log_margin": 10688.260869769896,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ],
+                  "log_probability": -8135.625041078923,
+                  "posterior": 1.0,
+                  "log_margin": 10733.81674601966,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ],
+                  "log_probability": -8137.854911007166,
+                  "posterior": 1.0,
+                  "log_margin": 10676.306841436864,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    1,
+                    4
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ],
+                  "log_probability": -8129.1744333975075,
+                  "posterior": 1.0,
+                  "log_margin": 10746.153478249762,
+                  "candidate_slots": [
+                    4,
+                    1,
+                    3,
+                    2
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ],
+                  "log_probability": -8129.98579054074,
+                  "posterior": 1.0,
+                  "log_margin": 10688.260869769896,
+                  "candidate_slots": [
+                    2,
+                    3,
+                    4,
+                    1
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ],
+                  "log_probability": -8135.077734782667,
+                  "posterior": 1.0,
+                  "log_margin": 10737.897466180864,
+                  "candidate_slots": [
+                    1,
+                    4,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ],
+                  "log_probability": -8142.348252569281,
+                  "posterior": 1.0,
+                  "log_margin": 10676.306841436868,
+                  "candidate_slots": [
+                    3,
+                    2,
+                    1,
+                    4
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gauge_equivalence": [
+          {
+            "transform": 0,
+            "expected": [
+              1,
+              4,
+              3,
+              2
+            ],
+            "learned": [
+              1,
+              4,
+              3,
+              2
+            ],
+            "exact": true
+          },
+          {
+            "transform": 1,
+            "expected": [
+              3,
+              2,
+              4,
+              1
+            ],
+            "learned": [
+              3,
+              2,
+              4,
+              1
+            ],
+            "exact": true
+          },
+          {
+            "transform": 2,
+            "expected": [
+              4,
+              1,
+              2,
+              3
+            ],
+            "learned": [
+              4,
+              1,
+              2,
+              3
+            ],
+            "exact": true
+          },
+          {
+            "transform": 3,
+            "expected": [
+              2,
+              3,
+              1,
+              4
+            ],
+            "learned": [
+              2,
+              3,
+              1,
+              4
+            ],
+            "exact": true
+          },
+          {
+            "transform": 4,
+            "expected": [
+              4,
+              1,
+              3,
+              2
+            ],
+            "learned": [
+              4,
+              1,
+              3,
+              2
+            ],
+            "exact": true
+          },
+          {
+            "transform": 5,
+            "expected": [
+              2,
+              3,
+              4,
+              1
+            ],
+            "learned": [
+              2,
+              3,
+              4,
+              1
+            ],
+            "exact": true
+          },
+          {
+            "transform": 6,
+            "expected": [
+              1,
+              4,
+              2,
+              3
+            ],
+            "learned": [
+              1,
+              4,
+              2,
+              3
+            ],
+            "exact": true
+          },
+          {
+            "transform": 7,
+            "expected": [
+              3,
+              2,
+              1,
+              4
+            ],
+            "learned": [
+              3,
+              2,
+              1,
+              4
+            ],
+            "exact": true
+          }
+        ],
+        "stream_gauge_equivalence": [
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ],
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ],
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ],
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ]
+        ],
+        "regimes": [
+          {
+            "digest": "b2786d2eb372efb58e9a3a67ab9c885b7a05c6d20f60424a45de31ff10a9f041",
+            "support_size": 6
+          },
+          {
+            "digest": "8c4fb25f32f90dc8424f9cfc25713b4c522f7f1afae9c675c6992abd7fc39a6e",
+            "support_size": 6
+          },
+          {
+            "digest": "428a27d67312ffc8ec5eb0f3fa4625d43a1a60b1772aeb17f8fd8a6d1603f695",
+            "support_size": 6
+          },
+          {
+            "digest": "07e7d26abcedce4f9225e914cee1331ceacaae159022fd7faa454928b0240ff3",
+            "support_size": 6
+          }
+        ],
+        "shifted_lag_control": 2,
+        "random_channels": [
+          4,
+          2,
+          0,
+          5,
+          7,
+          8
+        ],
+        "random_actions": [
+          1,
+          0,
+          3,
+          2
+        ],
+        "random_spatial": 5,
+        "trace_worlds": {
+          "temporal_average": 32,
+          "zero_lag": 12,
+          "shifted_lag": 15,
+          "ml_single": 32,
+          "oracle": 32,
+          "random": 19
+        }
+      },
+      {
+        "sensor_routes": [
+          null,
+          2,
+          4,
+          1,
+          null,
+          3,
+          null,
+          5,
+          0,
+          null
+        ],
+        "action_routes": [
+          0,
+          null,
+          2,
+          null,
+          1,
+          3,
+          null
+        ],
+        "kinds": [
+          2,
+          0,
+          1,
+          2
+        ],
+        "spatial_oracle": 4,
+        "sensor_delay_evaluator_only": 1,
+        "actuator_delay_evaluator_only": 2,
+        "total_lag_oracle": 3,
+        "channel_oracle": [
+          8,
+          3,
+          1,
+          5,
+          2,
+          7
+        ],
+        "channel_binding": {
+          "mapping": [
+            8,
+            3,
+            1,
+            5,
+            2,
+            7
+          ],
+          "posterior": 1.0,
+          "log_margin": 10580.3610061394,
+          "second": [
+            8,
+            3,
+            5,
+            1,
+            2,
+            7
+          ],
+          "change_compatible": 12,
+          "compatible": 4,
+          "sensor_log_probability": -252306.17533575758,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 3222.794721842598
+            },
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 3026.6839345973713
+            },
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 1240.406995857942
+            },
+            {
+              "mapping": [
+                8,
+                3,
+                1,
+                5,
+                2,
+                7
+              ],
+              "log_margin": 2716.267540351233
+            }
+          ]
+        },
+        "action_oracle": [
+          0,
+          4,
+          2,
+          5
+        ],
+        "temporal_binding": {
+          "lag": 3,
+          "posterior": 1.0,
+          "log_margin": 24691.21568403082,
+          "single": {
+            "transform": 6,
+            "mapping": [
+              4,
+              0,
+              5,
+              2
+            ],
+            "log_probability": -22740.37442962784,
+            "posterior": 1.0,
+            "log_margin": 29172.403475579333,
+            "candidate_slots": [
+              4,
+              0,
+              5,
+              2
+            ]
+          },
+          "gauges": [
+            {
+              "transform": 0,
+              "mapping": [
+                4,
+                0,
+                2,
+                5
+              ],
+              "log_probability": -22758.564398636703,
+              "posterior": 1.0,
+              "log_margin": 29139.21051833851,
+              "candidate_slots": [
+                4,
+                0,
+                2,
+                5
+              ]
+            },
+            {
+              "transform": 1,
+              "mapping": [
+                2,
+                5,
+                0,
+                4
+              ],
+              "log_probability": -22762.625879756917,
+              "posterior": 1.0,
+              "log_margin": 29377.229296580044,
+              "candidate_slots": [
+                2,
+                5,
+                0,
+                4
+              ]
+            },
+            {
+              "transform": 2,
+              "mapping": [
+                0,
+                4,
+                5,
+                2
+              ],
+              "log_probability": -22759.87540401615,
+              "posterior": 1.0,
+              "log_margin": 29172.403475579325,
+              "candidate_slots": [
+                0,
+                4,
+                5,
+                2
+              ]
+            },
+            {
+              "transform": 3,
+              "mapping": [
+                5,
+                2,
+                4,
+                0
+              ],
+              "log_probability": -22759.972557745066,
+              "posterior": 1.0,
+              "log_margin": 29373.313898931956,
+              "candidate_slots": [
+                5,
+                2,
+                4,
+                0
+              ]
+            },
+            {
+              "transform": 4,
+              "mapping": [
+                0,
+                4,
+                2,
+                5
+              ],
+              "log_probability": -22778.065373025012,
+              "posterior": 1.0,
+              "log_margin": 29139.210518338507,
+              "candidate_slots": [
+                0,
+                4,
+                2,
+                5
+              ]
+            },
+            {
+              "transform": 5,
+              "mapping": [
+                5,
+                2,
+                0,
+                4
+              ],
+              "log_probability": -22764.46664696793,
+              "posterior": 1.0,
+              "log_margin": 29373.313898931978,
+              "candidate_slots": [
+                5,
+                2,
+                0,
+                4
+              ]
+            },
+            {
+              "transform": 6,
+              "mapping": [
+                4,
+                0,
+                5,
+                2
+              ],
+              "log_probability": -22740.37442962784,
+              "posterior": 1.0,
+              "log_margin": 29172.403475579333,
+              "candidate_slots": [
+                4,
+                0,
+                5,
+                2
+              ]
+            },
+            {
+              "transform": 7,
+              "mapping": [
+                2,
+                5,
+                4,
+                0
+              ],
+              "log_probability": -22758.13179053405,
+              "posterior": 1.0,
+              "log_margin": 29377.229296580026,
+              "candidate_slots": [
+                2,
+                5,
+                4,
+                0
+              ]
+            }
+          ],
+          "candidate_lags": [
+            {
+              "lag": 0,
+              "log_evidence": -53295.08419957731,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    5,
+                    1,
+                    3,
+                    4
+                  ],
+                  "log_probability": -53309.50777413847,
+                  "posterior": 1.0,
+                  "log_margin": 175.87016747963935,
+                  "candidate_slots": [
+                    5,
+                    1,
+                    3,
+                    4
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    3,
+                    4,
+                    1,
+                    5
+                  ],
+                  "log_probability": -53315.89842701592,
+                  "posterior": 1.0,
+                  "log_margin": 168.54738442649978,
+                  "candidate_slots": [
+                    3,
+                    4,
+                    1,
+                    5
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    1,
+                    5,
+                    4,
+                    3
+                  ],
+                  "log_probability": -53298.44225941391,
+                  "posterior": 1.0,
+                  "log_margin": 171.1775566371798,
+                  "candidate_slots": [
+                    1,
+                    5,
+                    4,
+                    3
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    4,
+                    3,
+                    5,
+                    1
+                  ],
+                  "log_probability": -53308.01370975855,
+                  "posterior": 1.0,
+                  "log_margin": 172.92959793200862,
+                  "candidate_slots": [
+                    4,
+                    3,
+                    5,
+                    1
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    1,
+                    5,
+                    3,
+                    4
+                  ],
+                  "log_probability": -53297.953598464606,
+                  "posterior": 1.0,
+                  "log_margin": 171.1861887649211,
+                  "candidate_slots": [
+                    1,
+                    5,
+                    3,
+                    4
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    4,
+                    3,
+                    1,
+                    5
+                  ],
+                  "log_probability": -53295.18020294175,
+                  "posterior": 1.0,
+                  "log_margin": 176.25574709939247,
+                  "candidate_slots": [
+                    4,
+                    3,
+                    1,
+                    5
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    5,
+                    1,
+                    4,
+                    3
+                  ],
+                  "log_probability": -53309.99643508777,
+                  "posterior": 1.0,
+                  "log_margin": 175.86153535189078,
+                  "candidate_slots": [
+                    5,
+                    1,
+                    4,
+                    3
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    3,
+                    4,
+                    5,
+                    1
+                  ],
+                  "log_probability": -53328.73193383273,
+                  "posterior": 1.0,
+                  "log_margin": 165.22123525910138,
+                  "candidate_slots": [
+                    3,
+                    4,
+                    5,
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 1,
+              "log_evidence": -52137.45152884257,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    6,
+                    4,
+                    0,
+                    5
+                  ],
+                  "log_probability": -52165.10800372616,
+                  "posterior": 1.0,
+                  "log_margin": 75.5336707506649,
+                  "candidate_slots": [
+                    6,
+                    4,
+                    0,
+                    5
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    0,
+                    5,
+                    4,
+                    6
+                  ],
+                  "log_probability": -52157.71244290117,
+                  "posterior": 1.0,
+                  "log_margin": 98.41340832575952,
+                  "candidate_slots": [
+                    0,
+                    5,
+                    4,
+                    6
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    4,
+                    6,
+                    5,
+                    0
+                  ],
+                  "log_probability": -52169.04384534534,
+                  "posterior": 1.0,
+                  "log_margin": 65.112363636581,
+                  "candidate_slots": [
+                    4,
+                    6,
+                    5,
+                    0
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    5,
+                    0,
+                    6,
+                    4
+                  ],
+                  "log_probability": -52137.461219843964,
+                  "posterior": 1.0,
+                  "log_margin": 93.37527376921935,
+                  "candidate_slots": [
+                    5,
+                    0,
+                    6,
+                    4
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    4,
+                    6,
+                    0,
+                    5
+                  ],
+                  "log_probability": -52172.363828418274,
+                  "posterior": 1.0,
+                  "log_margin": 72.5134373022156,
+                  "candidate_slots": [
+                    4,
+                    6,
+                    0,
+                    5
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    5,
+                    0,
+                    4,
+                    6
+                  ],
+                  "log_probability": -52142.09294501997,
+                  "posterior": 1.0,
+                  "log_margin": 101.46067910836427,
+                  "candidate_slots": [
+                    5,
+                    0,
+                    4,
+                    6
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    6,
+                    4,
+                    5,
+                    0
+                  ],
+                  "log_probability": -52161.78802065323,
+                  "posterior": 1.0,
+                  "log_margin": 68.13259708503028,
+                  "candidate_slots": [
+                    6,
+                    4,
+                    5,
+                    0
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    0,
+                    5,
+                    6,
+                    4
+                  ],
+                  "log_probability": -52153.08071772517,
+                  "posterior": 1.0,
+                  "log_margin": 90.32800298661459,
+                  "candidate_slots": [
+                    0,
+                    5,
+                    6,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 2,
+              "log_evidence": -51697.15413948013,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    6,
+                    5,
+                    3
+                  ],
+                  "log_probability": -51704.50239516461,
+                  "posterior": 1.0,
+                  "log_margin": 67.21523766423343,
+                  "candidate_slots": [
+                    4,
+                    6,
+                    5,
+                    3
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    5,
+                    3,
+                    6,
+                    4
+                  ],
+                  "log_probability": -51716.8961566227,
+                  "posterior": 1.0,
+                  "log_margin": 56.249835282003914,
+                  "candidate_slots": [
+                    5,
+                    3,
+                    6,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    6,
+                    4,
+                    3,
+                    5
+                  ],
+                  "log_probability": -51713.36316856978,
+                  "posterior": 0.9999999999999982,
+                  "log_margin": 34.0269204246797,
+                  "candidate_slots": [
+                    6,
+                    4,
+                    3,
+                    5
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    3,
+                    5,
+                    4,
+                    6
+                  ],
+                  "log_probability": -51698.30722019763,
+                  "posterior": 1.0,
+                  "log_margin": 58.62182118595956,
+                  "candidate_slots": [
+                    3,
+                    5,
+                    4,
+                    6
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    6,
+                    4,
+                    5,
+                    3
+                  ],
+                  "log_probability": -51720.27792205047,
+                  "posterior": 1.0,
+                  "log_margin": 43.88918917966657,
+                  "candidate_slots": [
+                    6,
+                    4,
+                    5,
+                    3
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    3,
+                    5,
+                    6,
+                    4
+                  ],
+                  "log_probability": -51714.709845114834,
+                  "posterior": 1.0,
+                  "log_margin": 48.30796394407662,
+                  "candidate_slots": [
+                    3,
+                    5,
+                    6,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    6,
+                    3,
+                    5
+                  ],
+                  "log_probability": -51697.587641683924,
+                  "posterior": 1.0,
+                  "log_margin": 57.35296890923928,
+                  "candidate_slots": [
+                    4,
+                    6,
+                    3,
+                    5
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    5,
+                    3,
+                    4,
+                    6
+                  ],
+                  "log_probability": -51700.4935317055,
+                  "posterior": 1.0,
+                  "log_margin": 72.79411433106725,
+                  "candidate_slots": [
+                    5,
+                    3,
+                    4,
+                    6
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 3,
+              "log_evidence": -22740.374429589105,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ],
+                  "log_probability": -22758.564398636703,
+                  "posterior": 1.0,
+                  "log_margin": 29139.21051833851,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ],
+                  "log_probability": -22762.625879756917,
+                  "posterior": 1.0,
+                  "log_margin": 29377.229296580044,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ],
+                  "log_probability": -22759.87540401615,
+                  "posterior": 1.0,
+                  "log_margin": 29172.403475579325,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ],
+                  "log_probability": -22759.972557745066,
+                  "posterior": 1.0,
+                  "log_margin": 29373.313898931956,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ],
+                  "log_probability": -22778.065373025012,
+                  "posterior": 1.0,
+                  "log_margin": 29139.210518338507,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ],
+                  "log_probability": -22764.46664696793,
+                  "posterior": 1.0,
+                  "log_margin": 29373.313898931978,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ],
+                  "log_probability": -22740.37442962784,
+                  "posterior": 1.0,
+                  "log_margin": 29172.403475579333,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ],
+                  "log_probability": -22758.13179053405,
+                  "posterior": 1.0,
+                  "log_margin": 29377.229296580026,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 4,
+              "log_evidence": -47431.590113619925,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    0,
+                    6,
+                    1,
+                    2
+                  ],
+                  "log_probability": -47452.32497719444,
+                  "posterior": 0.9999999999999993,
+                  "log_margin": 34.92801515359315,
+                  "candidate_slots": [
+                    0,
+                    6,
+                    1,
+                    2
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    1,
+                    2,
+                    6,
+                    0
+                  ],
+                  "log_probability": -47440.51413182402,
+                  "posterior": 1.0,
+                  "log_margin": 53.842364563126466,
+                  "candidate_slots": [
+                    1,
+                    2,
+                    6,
+                    0
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    6,
+                    0,
+                    2,
+                    1
+                  ],
+                  "log_probability": -47456.19253925957,
+                  "posterior": 1.0,
+                  "log_margin": 44.83960007083806,
+                  "candidate_slots": [
+                    6,
+                    0,
+                    2,
+                    1
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    2,
+                    1,
+                    0,
+                    6
+                  ],
+                  "log_probability": -47436.75120451258,
+                  "posterior": 1.0,
+                  "log_margin": 49.05968673719326,
+                  "candidate_slots": [
+                    2,
+                    1,
+                    0,
+                    6
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    6,
+                    0,
+                    1,
+                    2
+                  ],
+                  "log_probability": -47449.77180723632,
+                  "posterior": 1.0,
+                  "log_margin": 37.078832481682184,
+                  "candidate_slots": [
+                    6,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    2,
+                    1,
+                    6,
+                    0
+                  ],
+                  "log_probability": -47431.59600028596,
+                  "posterior": 1.0,
+                  "log_margin": 56.174295430406346,
+                  "candidate_slots": [
+                    2,
+                    1,
+                    6,
+                    0
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    0,
+                    6,
+                    2,
+                    1
+                  ],
+                  "log_probability": -47458.74570921769,
+                  "posterior": 1.0,
+                  "log_margin": 42.68878274274175,
+                  "candidate_slots": [
+                    0,
+                    6,
+                    2,
+                    1
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    1,
+                    2,
+                    0,
+                    6
+                  ],
+                  "log_probability": -47445.66933605063,
+                  "posterior": 1.0,
+                  "log_margin": 46.72775586992066,
+                  "candidate_slots": [
+                    1,
+                    2,
+                    0,
+                    6
+                  ]
+                }
+              ]
+            }
+          ],
+          "per_stream": [
+            {
+              "lag": 3,
+              "log_margin": 6175.399143562095,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ],
+                  "log_probability": -5353.95598284515,
+                  "posterior": 1.0,
+                  "log_margin": 7216.106927447604,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ],
+                  "log_probability": -5348.253595771734,
+                  "posterior": 1.0,
+                  "log_margin": 7274.020298833981,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ],
+                  "log_probability": -5351.7360440125285,
+                  "posterior": 1.0,
+                  "log_margin": 7222.4080870950565,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ],
+                  "log_probability": -5355.670692417393,
+                  "posterior": 1.0,
+                  "log_margin": 7270.480358865262,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ],
+                  "log_probability": -5355.521700829185,
+                  "posterior": 1.0,
+                  "log_margin": 7216.106927447602,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ],
+                  "log_probability": -5349.925155016703,
+                  "posterior": 1.0,
+                  "log_margin": 7270.480358865261,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ],
+                  "log_probability": -5350.170326028494,
+                  "posterior": 1.0,
+                  "log_margin": 7222.4080870950565,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ],
+                  "log_probability": -5353.999133172424,
+                  "posterior": 1.0,
+                  "log_margin": 7274.0202988339815,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 3,
+              "log_margin": 6775.577403054984,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ],
+                  "log_probability": -5547.934806762863,
+                  "posterior": 1.0,
+                  "log_margin": 7474.035760296514,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ],
+                  "log_probability": -5545.269160102711,
+                  "posterior": 1.0,
+                  "log_margin": 7523.5028254861845,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ],
+                  "log_probability": -5536.3923216453995,
+                  "posterior": 1.0,
+                  "log_margin": 7480.135980459742,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ],
+                  "log_probability": -5535.9119488900615,
+                  "posterior": 1.0,
+                  "log_margin": 7546.1491011068865,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ],
+                  "log_probability": -5539.510348421234,
+                  "posterior": 1.0,
+                  "log_margin": 7474.035760296514,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ],
+                  "log_probability": -5534.066469073854,
+                  "posterior": 1.0,
+                  "log_margin": 7546.14910110689,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ],
+                  "log_probability": -5544.81677998703,
+                  "posterior": 1.0,
+                  "log_margin": 7480.135980459741,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ],
+                  "log_probability": -5547.114639918919,
+                  "posterior": 1.0,
+                  "log_margin": 7523.50282548618,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 3,
+              "log_margin": 5610.845043570572,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ],
+                  "log_probability": -6084.69423645916,
+                  "posterior": 1.0,
+                  "log_margin": 6668.097308490915,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ],
+                  "log_probability": -6087.75519095094,
+                  "posterior": 1.0,
+                  "log_margin": 6731.433367059843,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ],
+                  "log_probability": -6085.457353791322,
+                  "posterior": 1.0,
+                  "log_margin": 6679.060610025519,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ],
+                  "log_probability": -6086.959889439247,
+                  "posterior": 1.0,
+                  "log_margin": 6716.425351999244,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ],
+                  "log_probability": -6090.918170890386,
+                  "posterior": 1.0,
+                  "log_margin": 6668.097308490914,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ],
+                  "log_probability": -6095.277087780931,
+                  "posterior": 1.0,
+                  "log_margin": 6716.4253519992435,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ],
+                  "log_probability": -6079.2334193600955,
+                  "posterior": 1.0,
+                  "log_margin": 6679.060610025518,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ],
+                  "log_probability": -6079.437992609256,
+                  "posterior": 1.0,
+                  "log_margin": 6731.4333670598435,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 3,
+              "log_margin": 6132.281173564061,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ],
+                  "log_probability": -5771.97937256954,
+                  "posterior": 1.0,
+                  "log_margin": 7572.551386547388,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ],
+                  "log_probability": -5781.34793293153,
+                  "posterior": 1.0,
+                  "log_margin": 7491.989033754026,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ],
+                  "log_probability": -5786.2896845668965,
+                  "posterior": 1.0,
+                  "log_margin": 7532.314419733866,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ],
+                  "log_probability": -5781.430026998362,
+                  "posterior": 1.0,
+                  "log_margin": 7499.276374797878,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    4,
+                    0
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ],
+                  "log_probability": -5792.115152884218,
+                  "posterior": 1.0,
+                  "log_margin": 7532.314419733872,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    2,
+                    5
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ],
+                  "log_probability": -5785.197935096445,
+                  "posterior": 1.0,
+                  "log_margin": 7491.9890337540255,
+                  "candidate_slots": [
+                    5,
+                    2,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ],
+                  "log_probability": -5766.153904252216,
+                  "posterior": 1.0,
+                  "log_margin": 7572.551386547384,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    5,
+                    2
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ],
+                  "log_probability": -5777.580024833447,
+                  "posterior": 1.0,
+                  "log_margin": 7499.276374797877,
+                  "candidate_slots": [
+                    2,
+                    5,
+                    4,
+                    0
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gauge_equivalence": [
+          {
+            "transform": 0,
+            "expected": [
+              4,
+              0,
+              2,
+              5
+            ],
+            "learned": [
+              4,
+              0,
+              2,
+              5
+            ],
+            "exact": true
+          },
+          {
+            "transform": 1,
+            "expected": [
+              2,
+              5,
+              0,
+              4
+            ],
+            "learned": [
+              2,
+              5,
+              0,
+              4
+            ],
+            "exact": true
+          },
+          {
+            "transform": 2,
+            "expected": [
+              0,
+              4,
+              5,
+              2
+            ],
+            "learned": [
+              0,
+              4,
+              5,
+              2
+            ],
+            "exact": true
+          },
+          {
+            "transform": 3,
+            "expected": [
+              5,
+              2,
+              4,
+              0
+            ],
+            "learned": [
+              5,
+              2,
+              4,
+              0
+            ],
+            "exact": true
+          },
+          {
+            "transform": 4,
+            "expected": [
+              0,
+              4,
+              2,
+              5
+            ],
+            "learned": [
+              0,
+              4,
+              2,
+              5
+            ],
+            "exact": true
+          },
+          {
+            "transform": 5,
+            "expected": [
+              5,
+              2,
+              0,
+              4
+            ],
+            "learned": [
+              5,
+              2,
+              0,
+              4
+            ],
+            "exact": true
+          },
+          {
+            "transform": 6,
+            "expected": [
+              4,
+              0,
+              5,
+              2
+            ],
+            "learned": [
+              4,
+              0,
+              5,
+              2
+            ],
+            "exact": true
+          },
+          {
+            "transform": 7,
+            "expected": [
+              2,
+              5,
+              4,
+              0
+            ],
+            "learned": [
+              2,
+              5,
+              4,
+              0
+            ],
+            "exact": true
+          }
+        ],
+        "stream_gauge_equivalence": [
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ],
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ],
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ],
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ]
+        ],
+        "regimes": [
+          {
+            "digest": "14f099159abdfb3ff18643f442a75a0d58d512740d32d11062ac00cc282c94c7",
+            "support_size": 9
+          },
+          {
+            "digest": "8e1aa05c3b65be085907400bc7c156593c389e850d6643996e622610e9b8ddfb",
+            "support_size": 9
+          },
+          {
+            "digest": "1c76e24d45ab30e5d36ebec4e91278b776b00d73617c194e353cd9af20412fd8",
+            "support_size": 9
+          },
+          {
+            "digest": "a7bfbe2ac7be651a4febb157e4f3d3b51872a679a477ef5532484a810cb113d2",
+            "support_size": 10
+          }
+        ],
+        "shifted_lag_control": 4,
+        "random_channels": [
+          5,
+          0,
+          6,
+          9,
+          2,
+          8
+        ],
+        "random_actions": [
+          5,
+          0,
+          6,
+          4
+        ],
+        "random_spatial": 7,
+        "trace_worlds": {
+          "temporal_average": 32,
+          "zero_lag": 6,
+          "shifted_lag": 5,
+          "ml_single": 32,
+          "oracle": 32,
+          "random": 18
+        }
+      },
+      {
+        "sensor_routes": [
+          5,
+          null,
+          3,
+          null,
+          0,
+          1,
+          null,
+          null,
+          2,
+          4,
+          null
+        ],
+        "action_routes": [
+          null,
+          1,
+          3,
+          null,
+          2,
+          null,
+          0,
+          null
+        ],
+        "kinds": [
+          1,
+          2,
+          0,
+          1,
+          2
+        ],
+        "spatial_oracle": 7,
+        "sensor_delay_evaluator_only": 1,
+        "actuator_delay_evaluator_only": 0,
+        "total_lag_oracle": 1,
+        "channel_oracle": [
+          4,
+          5,
+          8,
+          2,
+          9,
+          0
+        ],
+        "channel_binding": {
+          "mapping": [
+            4,
+            5,
+            8,
+            2,
+            9,
+            0
+          ],
+          "posterior": 1.0,
+          "log_margin": 10528.35729526711,
+          "second": [
+            4,
+            5,
+            2,
+            8,
+            9,
+            0
+          ],
+          "change_compatible": 4,
+          "compatible": 4,
+          "sensor_log_probability": -252955.93878716422,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                4,
+                5,
+                8,
+                2,
+                9,
+                0
+              ],
+              "log_margin": 2579.6899148872108
+            },
+            {
+              "mapping": [
+                4,
+                5,
+                8,
+                2,
+                9,
+                0
+              ],
+              "log_margin": 2479.6412667448676
+            },
+            {
+              "mapping": [
+                4,
+                5,
+                8,
+                2,
+                9,
+                0
+              ],
+              "log_margin": 1205.828677146943
+            },
+            {
+              "mapping": [
+                4,
+                5,
+                8,
+                2,
+                9,
+                0
+              ],
+              "log_margin": 2845.4194520528326
+            }
+          ]
+        },
+        "action_oracle": [
+          6,
+          1,
+          4,
+          2
+        ],
+        "temporal_binding": {
+          "lag": 1,
+          "posterior": 1.0,
+          "log_margin": 17754.857601806118,
+          "single": {
+            "transform": 3,
+            "mapping": [
+              1,
+              6,
+              4,
+              2
+            ],
+            "log_probability": -21849.494476890166,
+            "posterior": 1.0,
+            "log_margin": 27454.808067970396,
+            "candidate_slots": [
+              1,
+              6,
+              4,
+              2
+            ]
+          },
+          "gauges": [
+            {
+              "transform": 0,
+              "mapping": [
+                4,
+                2,
+                6,
+                1
+              ],
+              "log_probability": -21857.42016715195,
+              "posterior": 1.0,
+              "log_margin": 27243.41695810432,
+              "candidate_slots": [
+                4,
+                2,
+                6,
+                1
+              ]
+            },
+            {
+              "transform": 1,
+              "mapping": [
+                6,
+                1,
+                2,
+                4
+              ],
+              "log_probability": -21860.122777301538,
+              "posterior": 1.0,
+              "log_margin": 27452.916763846388,
+              "candidate_slots": [
+                6,
+                1,
+                2,
+                4
+              ]
+            },
+            {
+              "transform": 2,
+              "mapping": [
+                2,
+                4,
+                1,
+                6
+              ],
+              "log_probability": -21852.55720620427,
+              "posterior": 1.0,
+              "log_margin": 27252.595096127312,
+              "candidate_slots": [
+                2,
+                4,
+                1,
+                6
+              ]
+            },
+            {
+              "transform": 3,
+              "mapping": [
+                1,
+                6,
+                4,
+                2
+              ],
+              "log_probability": -21849.494476890166,
+              "posterior": 1.0,
+              "log_margin": 27454.808067970396,
+              "candidate_slots": [
+                1,
+                6,
+                4,
+                2
+              ]
+            },
+            {
+              "transform": 4,
+              "mapping": [
+                2,
+                4,
+                6,
+                1
+              ],
+              "log_probability": -21858.59545879312,
+              "posterior": 1.0,
+              "log_margin": 27243.416958104317,
+              "candidate_slots": [
+                2,
+                4,
+                6,
+                1
+              ]
+            },
+            {
+              "transform": 5,
+              "mapping": [
+                1,
+                6,
+                2,
+                4
+              ],
+              "log_probability": -21859.00534094391,
+              "posterior": 1.0,
+              "log_margin": 27454.808067970353,
+              "candidate_slots": [
+                1,
+                6,
+                2,
+                4
+              ]
+            },
+            {
+              "transform": 6,
+              "mapping": [
+                4,
+                2,
+                1,
+                6
+              ],
+              "log_probability": -21851.381914563102,
+              "posterior": 1.0,
+              "log_margin": 27252.59509612731,
+              "candidate_slots": [
+                4,
+                2,
+                1,
+                6
+              ]
+            },
+            {
+              "transform": 7,
+              "mapping": [
+                6,
+                1,
+                4,
+                2
+              ],
+              "log_probability": -21850.611913247794,
+              "posterior": 1.0,
+              "log_margin": 27452.91676384643,
+              "candidate_slots": [
+                6,
+                1,
+                4,
+                2
+              ]
+            }
+          ],
+          "candidate_lags": [
+            {
+              "lag": 0,
+              "log_evidence": -45903.01234427016,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    0,
+                    1,
+                    5
+                  ],
+                  "log_probability": -45904.23580621477,
+                  "posterior": 1.0,
+                  "log_margin": 89.8934639460931,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    1,
+                    5
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    1,
+                    5,
+                    0,
+                    4
+                  ],
+                  "log_probability": -45916.19207349392,
+                  "posterior": 1.0,
+                  "log_margin": 82.68798115236132,
+                  "candidate_slots": [
+                    1,
+                    5,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    0,
+                    4,
+                    5,
+                    1
+                  ],
+                  "log_probability": -45910.16242931514,
+                  "posterior": 1.0,
+                  "log_margin": 87.69631306485826,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    5,
+                    1
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    5,
+                    1,
+                    4,
+                    0
+                  ],
+                  "log_probability": -45923.000448677,
+                  "posterior": 1.0,
+                  "log_margin": 83.7969489711104,
+                  "candidate_slots": [
+                    5,
+                    1,
+                    4,
+                    0
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    0,
+                    4,
+                    1,
+                    5
+                  ],
+                  "log_probability": -45911.03586204675,
+                  "posterior": 1.0,
+                  "log_margin": 89.8934639460931,
+                  "candidate_slots": [
+                    0,
+                    4,
+                    1,
+                    5
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    5,
+                    1,
+                    0,
+                    4
+                  ],
+                  "log_probability": -45924.47835592931,
+                  "posterior": 1.0,
+                  "log_margin": 81.51009314064868,
+                  "candidate_slots": [
+                    5,
+                    1,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    0,
+                    5,
+                    1
+                  ],
+                  "log_probability": -45903.362373483156,
+                  "posterior": 1.0,
+                  "log_margin": 89.12691451076535,
+                  "candidate_slots": [
+                    4,
+                    0,
+                    5,
+                    1
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    1,
+                    5,
+                    4,
+                    0
+                  ],
+                  "log_probability": -45914.71416624161,
+                  "posterior": 1.0,
+                  "log_margin": 81.39286711690511,
+                  "candidate_slots": [
+                    1,
+                    5,
+                    4,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 1,
+              "log_evidence": -21849.07188738388,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ],
+                  "log_probability": -21857.42016715195,
+                  "posterior": 1.0,
+                  "log_margin": 27243.41695810432,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ],
+                  "log_probability": -21860.122777301538,
+                  "posterior": 1.0,
+                  "log_margin": 27452.916763846388,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ],
+                  "log_probability": -21852.55720620427,
+                  "posterior": 1.0,
+                  "log_margin": 27252.595096127312,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ],
+                  "log_probability": -21849.494476890166,
+                  "posterior": 1.0,
+                  "log_margin": 27454.808067970396,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ],
+                  "log_probability": -21858.59545879312,
+                  "posterior": 1.0,
+                  "log_margin": 27243.416958104317,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ],
+                  "log_probability": -21859.00534094391,
+                  "posterior": 1.0,
+                  "log_margin": 27454.808067970353,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ],
+                  "log_probability": -21851.381914563102,
+                  "posterior": 1.0,
+                  "log_margin": 27252.59509612731,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ],
+                  "log_probability": -21850.611913247794,
+                  "posterior": 1.0,
+                  "log_margin": 27452.91676384643,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 2,
+              "log_evidence": -42554.60930434183,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    2,
+                    0,
+                    1,
+                    5
+                  ],
+                  "log_probability": -42563.57370145433,
+                  "posterior": 1.0,
+                  "log_margin": 387.7649868392109,
+                  "candidate_slots": [
+                    2,
+                    0,
+                    1,
+                    5
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    1,
+                    5,
+                    0,
+                    2
+                  ],
+                  "log_probability": -42556.71846431021,
+                  "posterior": 1.0,
+                  "log_margin": 378.47690152224095,
+                  "candidate_slots": [
+                    1,
+                    5,
+                    0,
+                    2
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    0,
+                    2,
+                    5,
+                    1
+                  ],
+                  "log_probability": -42578.278744227166,
+                  "posterior": 1.0,
+                  "log_margin": 370.175463642634,
+                  "candidate_slots": [
+                    0,
+                    2,
+                    5,
+                    1
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    5,
+                    1,
+                    2,
+                    0
+                  ],
+                  "log_probability": -42563.102743806776,
+                  "posterior": 1.0,
+                  "log_margin": 398.545273490854,
+                  "candidate_slots": [
+                    5,
+                    1,
+                    2,
+                    0
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    0,
+                    2,
+                    1,
+                    5
+                  ],
+                  "log_probability": -42577.42308318794,
+                  "posterior": 1.0,
+                  "log_margin": 368.1944078491433,
+                  "candidate_slots": [
+                    0,
+                    2,
+                    1,
+                    5
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    5,
+                    1,
+                    0,
+                    2
+                  ],
+                  "log_probability": -42565.08207387731,
+                  "posterior": 1.0,
+                  "log_margin": 397.80427918558416,
+                  "candidate_slots": [
+                    5,
+                    1,
+                    0,
+                    2
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    2,
+                    0,
+                    5,
+                    1
+                  ],
+                  "log_probability": -42564.42936249355,
+                  "posterior": 1.0,
+                  "log_margin": 389.74604263270885,
+                  "candidate_slots": [
+                    2,
+                    0,
+                    5,
+                    1
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    1,
+                    5,
+                    2,
+                    0
+                  ],
+                  "log_probability": -42554.73913423967,
+                  "posterior": 1.0,
+                  "log_margin": 379.2178958275108,
+                  "candidate_slots": [
+                    1,
+                    5,
+                    2,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 3,
+              "log_evidence": -41079.38933963573,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    3,
+                    4,
+                    1,
+                    0
+                  ],
+                  "log_probability": -41095.860224706805,
+                  "posterior": 1.0,
+                  "log_margin": 314.0115303009079,
+                  "candidate_slots": [
+                    3,
+                    4,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    1,
+                    0,
+                    4,
+                    3
+                  ],
+                  "log_probability": -41087.5508800795,
+                  "posterior": 1.0,
+                  "log_margin": 312.1276428684432,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    4,
+                    3
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    4,
+                    3,
+                    0,
+                    1
+                  ],
+                  "log_probability": -41081.635241655786,
+                  "posterior": 1.0,
+                  "log_margin": 340.0962804571245,
+                  "candidate_slots": [
+                    4,
+                    3,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    0,
+                    1,
+                    3,
+                    4
+                  ],
+                  "log_probability": -41098.82206084511,
+                  "posterior": 1.0,
+                  "log_margin": 319.8643960041518,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    3,
+                    4
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    4,
+                    3,
+                    1,
+                    0
+                  ],
+                  "log_probability": -41079.50852332493,
+                  "posterior": 1.0,
+                  "log_margin": 330.4821405622788,
+                  "candidate_slots": [
+                    4,
+                    3,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    0,
+                    1,
+                    4,
+                    3
+                  ],
+                  "log_probability": -41084.4664793115,
+                  "posterior": 1.0,
+                  "log_margin": 328.4017281655906,
+                  "candidate_slots": [
+                    0,
+                    1,
+                    4,
+                    3
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    3,
+                    4,
+                    0,
+                    1
+                  ],
+                  "log_probability": -41097.986943037664,
+                  "posterior": 1.0,
+                  "log_margin": 323.6256701957536,
+                  "candidate_slots": [
+                    3,
+                    4,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    1,
+                    0,
+                    3,
+                    4
+                  ],
+                  "log_probability": -41101.90646161311,
+                  "posterior": 1.0,
+                  "log_margin": 303.5903107070044,
+                  "candidate_slots": [
+                    1,
+                    0,
+                    3,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 4,
+              "log_evidence": -39603.92948919,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    2,
+                    0,
+                    3,
+                    6
+                  ],
+                  "log_probability": -39624.02388602015,
+                  "posterior": 1.0,
+                  "log_margin": 351.8428590153562,
+                  "candidate_slots": [
+                    2,
+                    0,
+                    3,
+                    6
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    3,
+                    6,
+                    0,
+                    2
+                  ],
+                  "log_probability": -39613.28192887821,
+                  "posterior": 1.0,
+                  "log_margin": 370.852035909862,
+                  "candidate_slots": [
+                    3,
+                    6,
+                    0,
+                    2
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    0,
+                    2,
+                    6,
+                    3
+                  ],
+                  "log_probability": -39624.53870259769,
+                  "posterior": 1.0,
+                  "log_margin": 357.92141532814276,
+                  "candidate_slots": [
+                    0,
+                    2,
+                    6,
+                    3
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    6,
+                    3,
+                    2,
+                    0
+                  ],
+                  "log_probability": -39613.38629333768,
+                  "posterior": 1.0,
+                  "log_margin": 367.06828264510114,
+                  "candidate_slots": [
+                    6,
+                    3,
+                    2,
+                    0
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    0,
+                    2,
+                    3,
+                    6
+                  ],
+                  "log_probability": -39619.5452547352,
+                  "posterior": 1.0,
+                  "log_margin": 351.52349735868484,
+                  "candidate_slots": [
+                    0,
+                    2,
+                    3,
+                    6
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    6,
+                    3,
+                    0,
+                    2
+                  ],
+                  "log_probability": -39603.92965428815,
+                  "posterior": 1.0,
+                  "log_margin": 371.38522418163484,
+                  "candidate_slots": [
+                    6,
+                    3,
+                    0,
+                    2
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    2,
+                    0,
+                    6,
+                    3
+                  ],
+                  "log_probability": -39629.017333882635,
+                  "posterior": 1.0,
+                  "log_margin": 358.24077698480687,
+                  "candidate_slots": [
+                    2,
+                    0,
+                    6,
+                    3
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    3,
+                    6,
+                    2,
+                    0
+                  ],
+                  "log_probability": -39622.73856792774,
+                  "posterior": 1.0,
+                  "log_margin": 366.5350943733356,
+                  "candidate_slots": [
+                    3,
+                    6,
+                    2,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "per_stream": [
+            {
+              "lag": 1,
+              "log_margin": 4979.590620002016,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ],
+                  "log_probability": -4911.933163334767,
+                  "posterior": 1.0,
+                  "log_margin": 6832.065096367592,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ],
+                  "log_probability": -4907.538716572985,
+                  "posterior": 1.0,
+                  "log_margin": 6837.173058806054,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ],
+                  "log_probability": -4899.556201040252,
+                  "posterior": 1.0,
+                  "log_margin": 6842.805019872765,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ],
+                  "log_probability": -4902.647065371331,
+                  "posterior": 1.0,
+                  "log_margin": 6826.609905418005,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ],
+                  "log_probability": -4917.195099964327,
+                  "posterior": 1.0,
+                  "log_margin": 6838.326623668245,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ],
+                  "log_probability": -4905.723949921354,
+                  "posterior": 1.0,
+                  "log_margin": 6834.268391055748,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ],
+                  "log_probability": -4894.294264410693,
+                  "posterior": 1.0,
+                  "log_margin": 6836.543492572113,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ],
+                  "log_probability": -4904.461832022962,
+                  "posterior": 1.0,
+                  "log_margin": 6829.51457316831,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 1,
+              "log_margin": 4598.365319075944,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ],
+                  "log_probability": -5602.843331340732,
+                  "posterior": 1.0,
+                  "log_margin": 7045.012088278844,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ],
+                  "log_probability": -5606.049855814707,
+                  "posterior": 1.0,
+                  "log_margin": 7061.902132052758,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ],
+                  "log_probability": -5590.606879906506,
+                  "posterior": 1.0,
+                  "log_margin": 7064.455222322572,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ],
+                  "log_probability": -5597.768244514143,
+                  "posterior": 1.0,
+                  "log_margin": 7050.555209543271,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ],
+                  "log_probability": -5591.893591952236,
+                  "posterior": 1.0,
+                  "log_margin": 7060.229206596575,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ],
+                  "log_probability": -5603.992418959488,
+                  "posterior": 1.0,
+                  "log_margin": 7057.701189630792,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ],
+                  "log_probability": -5601.556619295002,
+                  "posterior": 1.0,
+                  "log_margin": 7049.238104004841,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ],
+                  "log_probability": -5599.825681369362,
+                  "posterior": 1.0,
+                  "log_margin": 7054.756151965239,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 1,
+              "log_margin": 4025.3493108594066,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ],
+                  "log_probability": -5987.75296205579,
+                  "posterior": 1.0,
+                  "log_margin": 6476.291541546424,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ],
+                  "log_probability": -5990.747330745421,
+                  "posterior": 1.0,
+                  "log_margin": 6518.431124199919,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ],
+                  "log_probability": -5996.787179175377,
+                  "posterior": 1.0,
+                  "log_margin": 6469.414603733876,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ],
+                  "log_probability": -5991.860748648155,
+                  "posterior": 1.0,
+                  "log_margin": 6526.533722746529,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ],
+                  "log_probability": -5992.9073164131305,
+                  "posterior": 1.0,
+                  "log_margin": 6476.291541546422,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ],
+                  "log_probability": -5986.717514304616,
+                  "posterior": 1.0,
+                  "log_margin": 6526.533722746525,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ],
+                  "log_probability": -5991.632824818037,
+                  "posterior": 1.0,
+                  "log_margin": 6469.414603733877,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ],
+                  "log_probability": -5995.890565088961,
+                  "posterior": 1.0,
+                  "log_margin": 6518.431124199922,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "lag": 1,
+              "log_margin": 4517.09401823174,
+              "gauges": [
+                {
+                  "transform": 0,
+                  "mapping": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ],
+                  "log_probability": -5354.890710420664,
+                  "posterior": 1.0,
+                  "log_margin": 6752.277184690055,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 1,
+                  "mapping": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ],
+                  "log_probability": -5355.7868741684215,
+                  "posterior": 1.0,
+                  "log_margin": 6800.554939434442,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 2,
+                  "mapping": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ],
+                  "log_probability": -5365.606946082132,
+                  "posterior": 1.0,
+                  "log_margin": 6733.7528829024495,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 3,
+                  "mapping": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ],
+                  "log_probability": -5357.218418356543,
+                  "posterior": 1.0,
+                  "log_margin": 6787.084736203403,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    4,
+                    2
+                  ]
+                },
+                {
+                  "transform": 4,
+                  "mapping": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ],
+                  "log_probability": -5356.599450463427,
+                  "posterior": 1.0,
+                  "log_margin": 6752.277184690054,
+                  "candidate_slots": [
+                    2,
+                    4,
+                    6,
+                    1
+                  ]
+                },
+                {
+                  "transform": 5,
+                  "mapping": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ],
+                  "log_probability": -5362.571457758444,
+                  "posterior": 1.0,
+                  "log_margin": 6787.084736203402,
+                  "candidate_slots": [
+                    1,
+                    6,
+                    2,
+                    4
+                  ]
+                },
+                {
+                  "transform": 6,
+                  "mapping": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ],
+                  "log_probability": -5363.898206039369,
+                  "posterior": 1.0,
+                  "log_margin": 6733.7528829024495,
+                  "candidate_slots": [
+                    4,
+                    2,
+                    1,
+                    6
+                  ]
+                },
+                {
+                  "transform": 7,
+                  "mapping": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ],
+                  "log_probability": -5350.433834766522,
+                  "posterior": 1.0,
+                  "log_margin": 6800.554939434442,
+                  "candidate_slots": [
+                    6,
+                    1,
+                    4,
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "gauge_equivalence": [
+          {
+            "transform": 0,
+            "expected": [
+              4,
+              2,
+              6,
+              1
+            ],
+            "learned": [
+              4,
+              2,
+              6,
+              1
+            ],
+            "exact": true
+          },
+          {
+            "transform": 1,
+            "expected": [
+              6,
+              1,
+              2,
+              4
+            ],
+            "learned": [
+              6,
+              1,
+              2,
+              4
+            ],
+            "exact": true
+          },
+          {
+            "transform": 2,
+            "expected": [
+              2,
+              4,
+              1,
+              6
+            ],
+            "learned": [
+              2,
+              4,
+              1,
+              6
+            ],
+            "exact": true
+          },
+          {
+            "transform": 3,
+            "expected": [
+              1,
+              6,
+              4,
+              2
+            ],
+            "learned": [
+              1,
+              6,
+              4,
+              2
+            ],
+            "exact": true
+          },
+          {
+            "transform": 4,
+            "expected": [
+              2,
+              4,
+              6,
+              1
+            ],
+            "learned": [
+              2,
+              4,
+              6,
+              1
+            ],
+            "exact": true
+          },
+          {
+            "transform": 5,
+            "expected": [
+              1,
+              6,
+              2,
+              4
+            ],
+            "learned": [
+              1,
+              6,
+              2,
+              4
+            ],
+            "exact": true
+          },
+          {
+            "transform": 6,
+            "expected": [
+              4,
+              2,
+              1,
+              6
+            ],
+            "learned": [
+              4,
+              2,
+              1,
+              6
+            ],
+            "exact": true
+          },
+          {
+            "transform": 7,
+            "expected": [
+              6,
+              1,
+              4,
+              2
+            ],
+            "learned": [
+              6,
+              1,
+              4,
+              2
+            ],
+            "exact": true
+          }
+        ],
+        "stream_gauge_equivalence": [
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ],
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ],
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ],
+          [
+            {
+              "transform": 0,
+              "exact": true
+            },
+            {
+              "transform": 1,
+              "exact": true
+            },
+            {
+              "transform": 2,
+              "exact": true
+            },
+            {
+              "transform": 3,
+              "exact": true
+            },
+            {
+              "transform": 4,
+              "exact": true
+            },
+            {
+              "transform": 5,
+              "exact": true
+            },
+            {
+              "transform": 6,
+              "exact": true
+            },
+            {
+              "transform": 7,
+              "exact": true
+            }
+          ]
+        ],
+        "regimes": [
+          {
+            "digest": "cb638809f5c1bdb478123d9b4840d78e22424889c966e38141df880202045ee7",
+            "support_size": 13
+          },
+          {
+            "digest": "da8e279ed1dc0e90a8ce3ab2e8427291a621d08bbadee0cff51088e4950c20f3",
+            "support_size": 12
+          },
+          {
+            "digest": "fa58f1d6e13951be7e5b13f611e2ad6cd80e5a96275cdea71c6193da248c20a4",
+            "support_size": 13
+          },
+          {
+            "digest": "ed5e1e1d7ca83dcd89c8927c390c5de39942a087baf1aaa350b01eacbcc3e20c",
+            "support_size": 13
+          }
+        ],
+        "shifted_lag_control": 2,
+        "random_channels": [
+          9,
+          4,
+          6,
+          1,
+          8,
+          2
+        ],
+        "random_actions": [
+          5,
+          7,
+          3,
+          4
+        ],
+        "random_spatial": 5,
+        "trace_worlds": {
+          "temporal_average": 32,
+          "zero_lag": 3,
+          "shifted_lag": 6,
+          "ml_single": 32,
+          "oracle": 32,
+          "random": 1
+        }
+      }
+    ],
+    "suite": {
+      "worlds": 32,
+      "attempts": {
+        "push": 9,
+        "collect": 8,
+        "open": 9,
+        "joint": 14
+      }
+    }
+  },
+  "conditions": {
+    "0": {
+      "temporal_average": {
+        "episodes": 768,
+        "successes": 715,
+        "push_successes": 179,
+        "collect_successes": 192,
+        "open_successes": 183,
+        "joint_successes": 161
+      },
+      "zero_lag": {
+        "episodes": 768,
+        "successes": 150,
+        "push_successes": 43,
+        "collect_successes": 3,
+        "open_successes": 101,
+        "joint_successes": 3
+      },
+      "shifted_lag": {
+        "episodes": 768,
+        "successes": 181,
+        "push_successes": 72,
+        "collect_successes": 13,
+        "open_successes": 84,
+        "joint_successes": 12
+      },
+      "ml_single": {
+        "episodes": 768,
+        "successes": 697,
+        "push_successes": 171,
+        "collect_successes": 191,
+        "open_successes": 186,
+        "joint_successes": 149
+      },
+      "oracle": {
+        "episodes": 768,
+        "successes": 697,
+        "push_successes": 171,
+        "collect_successes": 191,
+        "open_successes": 186,
+        "joint_successes": 149
+      },
+      "random": {
+        "episodes": 768,
+        "successes": 299,
+        "push_successes": 88,
+        "collect_successes": 27,
+        "open_successes": 104,
+        "joint_successes": 80
+      }
+    },
+    "1": {
+      "temporal_average": {
+        "episodes": 768,
+        "successes": 726,
+        "push_successes": 182,
+        "collect_successes": 190,
+        "open_successes": 185,
+        "joint_successes": 169
+      },
+      "zero_lag": {
+        "episodes": 768,
+        "successes": 106,
+        "push_successes": 17,
+        "collect_successes": 0,
+        "open_successes": 89,
+        "joint_successes": 0
+      },
+      "shifted_lag": {
+        "episodes": 768,
+        "successes": 42,
+        "push_successes": 28,
+        "collect_successes": 9,
+        "open_successes": 5,
+        "joint_successes": 0
+      },
+      "ml_single": {
+        "episodes": 768,
+        "successes": 726,
+        "push_successes": 182,
+        "collect_successes": 190,
+        "open_successes": 182,
+        "joint_successes": 172
+      },
+      "oracle": {
+        "episodes": 768,
+        "successes": 708,
+        "push_successes": 177,
+        "collect_successes": 188,
+        "open_successes": 185,
+        "joint_successes": 158
+      },
+      "random": {
+        "episodes": 768,
+        "successes": 264,
+        "push_successes": 84,
+        "collect_successes": 24,
+        "open_successes": 88,
+        "joint_successes": 68
+      }
+    },
+    "2": {
+      "temporal_average": {
+        "episodes": 768,
+        "successes": 722,
+        "push_successes": 178,
+        "collect_successes": 192,
+        "open_successes": 187,
+        "joint_successes": 165
+      },
+      "zero_lag": {
+        "episodes": 768,
+        "successes": 27,
+        "push_successes": 0,
+        "collect_successes": 15,
+        "open_successes": 12,
+        "joint_successes": 0
+      },
+      "shifted_lag": {
+        "episodes": 768,
+        "successes": 87,
+        "push_successes": 18,
+        "collect_successes": 0,
+        "open_successes": 69,
+        "joint_successes": 0
+      },
+      "ml_single": {
+        "episodes": 768,
+        "successes": 713,
+        "push_successes": 176,
+        "collect_successes": 190,
+        "open_successes": 189,
+        "joint_successes": 158
+      },
+      "oracle": {
+        "episodes": 768,
+        "successes": 701,
+        "push_successes": 166,
+        "collect_successes": 190,
+        "open_successes": 189,
+        "joint_successes": 156
+      },
+      "random": {
+        "episodes": 768,
+        "successes": 24,
+        "push_successes": 0,
+        "collect_successes": 0,
+        "open_successes": 24,
+        "joint_successes": 0
+      }
+    }
+  },
+  "diagnostic": {
+    "channel_exact": 3,
+    "lag_exact": 3,
+    "stream_lag_exact": 12,
+    "gauge_pairs_exact": 24,
+    "stream_gauge_pairs_exact": 96,
+    "temporal_average_successes": 2163,
+    "oracle_successes": 2106,
+    "zero_lag_successes": 283,
+    "shifted_lag_successes": 310,
+    "episodes": 2304,
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 768,
+        "temporal_average": 715,
+        "zero_lag": 150,
+        "shifted_lag": 181,
+        "ml_single": 697,
+        "oracle": 697,
+        "random": 299
+      },
+      {
+        "interface": 1,
+        "episodes": 768,
+        "temporal_average": 726,
+        "zero_lag": 106,
+        "shifted_lag": 42,
+        "ml_single": 726,
+        "oracle": 708,
+        "random": 264
+      },
+      {
+        "interface": 2,
+        "episodes": 768,
+        "temporal_average": 722,
+        "zero_lag": 27,
+        "shifted_lag": 87,
+        "ml_single": 713,
+        "oracle": 701,
+        "random": 24
+      }
+    ]
+  },
+  "preregistered_gates": {
+    "channel_exact_3_of_3": true,
+    "total_lag_exact_3_of_3": true,
+    "all_12_stream_lags_exact": true,
+    "all_24_gauge_pairs_equivalent": true,
+    "all_96_stream_gauge_pairs_equivalent": true,
+    "each_interface_at_least_80pct_oracle": true,
+    "each_interface_beats_zero_lag_by_5pct": true,
+    "each_interface_beats_shifted_lag_by_5pct": true,
+    "evaluation_writes_zero": true
+  },
+  "adopt_for_freeze": true,
+  "evaluation_writes": 0,
+  "seconds": 551.3293692499865,
+  "boundary": "Development-only synthetic end-to-end temporal-gauge binding. Sensor and actuator delay are not separately identifiable; only their sum is claimed. Lag candidates 0-4, D4 family, schema, statistics, generators, terminal events, and direct policy remain supplied. No neural network, label, reward, planner, runtime search, classifier runtime, or evaluation write is used."
+}

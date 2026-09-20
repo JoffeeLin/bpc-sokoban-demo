@@ -1,5 +1,35 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.19 breakthrough: end-to-end temporal gauge transfer
+
+The frozen non-neural controller now infers an unknown sensorimotor lag jointly
+with anonymous sensor planes, actuator slots, and a D4 spatial frame. Sensor
+latency and actuator latency are not separately identifiable from observation/
+action sequences: only their sum is. v0.19 therefore marginalizes every D4
+gauge and action injection inside each supplied total-lag candidate `0–4`, then
+keeps the identifiable temporal equivalence class instead of inventing a
+physical decomposition.
+
+Four new variable interfaces, four new spatial frames, held-out nuisance
+families, and unseen total lags `2` and `4` were frozen before execution. Each
+lag used two distinct physical decompositions: `0+2` / `1+1` and `0+4` / `2+2`.
+All **4/4** lags, **16/16** independent-stream lags, **32/32** temporal-spatial
+gauge/action pairs, and **128/128** per-stream pairs were recovered. Across
+9,216 held-out episodes, the learned temporal gauge completed **8,552 (92.8%)**,
+versus oracle 8,532, zero-lag alignment 1,182, one-step-shifted history 1,145,
+and fixed random binding 1,809. Every interface and all 14 gates passed with
+zero evaluation writes. See [`V19_TEMPORAL_GAUGE_RESULT.md`](V19_TEMPORAL_GAUGE_RESULT.md)
+and the [`machine-readable result`](artifacts/v19temporal/result.json).
+
+![Frozen v0.19 result](artifacts/v19temporal/poster_v19_temporal_gauge.png)
+
+**[Watch 12 frozen delayed-control traces across four unseen temporal gauges](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v19.0.0/bpc_temporal_gauge_v19_12_unseen_worlds.mp4)**
+
+This is bounded developer-frozen synthetic evidence, not arbitrary temporal
+reasoning or AGI. The lag candidate family, D4 family, canonical ontology,
+maximum canvas, statistics, generators, terminal events, and direct policy
+remain supplied.
+
 ## v0.18 breakthrough: spatial gauge-class transfer
 
 The frozen non-neural controller now transfers across an unknown rotation or
