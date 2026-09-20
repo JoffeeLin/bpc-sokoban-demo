@@ -1,0 +1,96 @@
+{
+  "development_only": true,
+  "question": "Can condition-deleted anonymous bit functions compose push-only and collect-only experience in a never-trained combined world?",
+  "training": {
+    "push": 150000,
+    "push_changed": 100156,
+    "composition_inputs": 0,
+    "collect": 150000,
+    "collect_changed": 107780
+  },
+  "distinct_training_inputs": 14,
+  "context_widths": [
+    0,
+    4,
+    0,
+    0,
+    1,
+    4,
+    3,
+    0,
+    1,
+    0,
+    3,
+    1
+  ],
+  "model_digests": {
+    "condition_deleted": "926e41f7de5f5f639e08f49ce17be7d7b55afcedbf9c0a3088321ed4098ebc54",
+    "residual_prime": "8e4add774c9c7eff2aa528e1bf756bffb2eb43f43e5980d704cff75bd7efcdda",
+    "fragment_chain": "d744d923026025fd21cf48235c219304d8dd260b3b497f0d6356a75e7e6f7a9b"
+  },
+  "residual_clause_counts": [
+    0,
+    5,
+    0,
+    0,
+    0,
+    5,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+  ],
+  "fragment_prerequisites": [
+    0,
+    32,
+    0,
+    0,
+    0,
+    2,
+    1058,
+    34,
+    0,
+    0,
+    98,
+    0
+  ],
+  "evaluation": {
+    "condition_deleted": {
+      "total": 60000,
+      "known": 60000,
+      "correct": 59666,
+      "composition_total": 938,
+      "composition_known": 938,
+      "composition_correct": 604
+    },
+    "residual_prime": {
+      "total": 60000,
+      "known": 60000,
+      "correct": 59637,
+      "composition_total": 938,
+      "composition_known": 938,
+      "composition_correct": 575
+    },
+    "fragment_chain": {
+      "total": 60000,
+      "known": 60000,
+      "correct": 60000,
+      "composition_total": 938,
+      "composition_known": 938,
+      "composition_correct": 938
+    },
+    "full_context": {
+      "total": 60000,
+      "known": 59062,
+      "correct": 59062,
+      "composition_total": 938,
+      "composition_known": 0,
+      "composition_correct": 0
+    }
+  },
+  "evaluation_writes": 0,
+  "seconds": 4.759264833002817,
+  "boundary": "One-step local world-function transfer only. Raw bit channels, action-relative three-cell addressing, task generators, and evaluator remain supplied; no planning or AGI claim."
+}

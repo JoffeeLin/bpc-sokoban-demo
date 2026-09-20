@@ -1,5 +1,30 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.7 breakthrough: two learned world functions compose
+
+v0.7 trains on two disjoint streams—`150,000` push-only transitions and
+`150,000` collect-only transitions—with **zero** local contexts containing both
+an object and a mark. Its anonymous fragment chain then predicts two frozen
+combined-world seeds exactly:
+
+| Frozen condition | Never-trained joint transitions |
+|---|---:|
+| Learned fragment chain | **3,795 / 3,795** |
+| Condition deletion only | 2,478 / 3,795 |
+| Full-context memory known | **0 / 3,795** |
+
+Both old families remained `60,000 / 60,000`, the first holdout repeated
+bit-for-bit, and evaluation performed zero model writes. See
+[`V07_CROSS_RESULT.md`](V07_CROSS_RESULT.md) and the machine-readable
+[`v0.7 result`](artifacts/v07cross/result.json).
+
+![Frozen v0.7 result](artifacts/v07cross/poster_v07_cross.png)
+
+**[Watch all ten frozen joint transition classes](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v7.0.0/bpc_cross_task_v07_10_joint_classes.mp4)**
+
+The supported claim is exact local one-step world-function composition in a
+supplied synthetic generator—not planning, a direct policy, or AGI.
+
 ## v0.6.1 breakthrough: supplied macro geometry removed
 
 v0.6 learns anonymous push-delta templates from random interaction and uses
@@ -176,6 +201,8 @@ python3 -m pip install -r requirements.txt
 python3 test_learned_geometry_v06.py
 python3 experiment_v061_frozen.py
 python3 render_v06.py
+python3 experiment_v07_cross_frozen.py
+python3 render_v07_cross.py
 ```
 
 The committed protocol and holdout refuse silent source changes by verifying

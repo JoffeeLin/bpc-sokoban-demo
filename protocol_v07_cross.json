@@ -1,0 +1,50 @@
+{
+  "format": "bpc-cross-task-v07-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can anonymous bit-change fragments learned separately in push-only and collect-only worlds compose an exact transition model when both mechanisms first coexist?",
+  "config": {
+    "train_seed": 70707,
+    "train_episodes": 2500,
+    "train_steps": 60,
+    "eval_seeds": [77107, 77207],
+    "eval_episodes": 2000,
+    "eval_steps": 60,
+    "retention_seeds": [77307, 77407],
+    "retention_episodes": 1000,
+    "retention_steps": 60
+  },
+  "expected_training_events": {
+    "push": 150000,
+    "push_changed": 100156,
+    "composition_inputs": 0,
+    "collect": 150000,
+    "collect_changed": 107780
+  },
+  "expected_distinct_training_inputs": 14,
+  "expected_model_digests": {
+    "condition_deleted": "926e41f7de5f5f639e08f49ce17be7d7b55afcedbf9c0a3088321ed4098ebc54",
+    "residual_prime": "8e4add774c9c7eff2aa528e1bf756bffb2eb43f43e5980d704cff75bd7efcdda",
+    "fragment_chain": "d744d923026025fd21cf48235c219304d8dd260b3b497f0d6356a75e7e6f7a9b"
+  },
+  "adoption_thresholds": {
+    "composition_min_events": 1500,
+    "condition_deleted_margin": 0.25
+  },
+  "controls": [
+    "full-context memory receives identical experience and must know zero never-trained joint contexts",
+    "condition-deleted bit functions receive identical experience and must trail the fragment chain by at least 25 percentage points on joint contexts",
+    "both separate training families must retain exact one-step prediction",
+    "the first holdout is executed twice and must be bit-identical",
+    "all model write counters must remain unchanged during evaluation"
+  ],
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "role": "development candidate routing only; absent from training, evaluation, and runtime"
+  },
+  "source_sha256": {
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "experiment_v07_cross_frozen.py": "a9b35177e9dee31dabdedd3d89ddcdcac9f2872550bb85610be590daf70f9c0a"
+  },
+  "failure_policy": "Retain every miss; do not replace seeds, alter code, or lower gates after holdout execution.",
+  "boundary": "Developer-frozen synthetic one-step world-function test. Raw bit channels, action-relative window, action interface, task generators, and evaluator are supplied."
+}
