@@ -57,6 +57,7 @@ manually. It is absent from training, inference, and frozen evaluation.
 - Holdout SHA-256: `cc970e8dab94b0b2fe2ff98a7a17bda5b3a4e1292e9a5cd13ab5262204adf6d2`
 - Video SHA-256: `33c506d95ce1a7e53c54c2f671cc94904b3d6d27a1e568f728d9b8cc593ad183`
 - GitHub release: <https://github.com/JoffeeLin/bpc-sokoban-demo/releases/tag/v12.0.0>
+- X video and result thread: <https://x.com/JoffeeLin/status/2101727094967603654>
 
 ## Boundary
 

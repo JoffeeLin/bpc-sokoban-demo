@@ -21,6 +21,8 @@ gates passed with zero evaluation writes. See
 
 **[Watch 12 frozen unseen joint traces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v12.0.0/bpc_three_factor_v12_12_unseen_joint_worlds.mp4)**
 
+**[View the v0.12 video and result thread on X](https://x.com/JoffeeLin/status/2101727094967603654)**
+
 This is bounded developer-frozen synthetic evidence. Raw channels, terminal
 events, the additive field rule, generators, and limits remain supplied; it is
 not autonomous operator invention or AGI.
