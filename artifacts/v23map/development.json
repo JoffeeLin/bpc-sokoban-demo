@@ -1,0 +1,229 @@
+{
+  "development_only": true,
+  "v21_frozen_result_was_non_adopted": true,
+  "mechanism": "posterior MAP mode directly selects the actuator inverse; filtering remains Bayesian",
+  "conditions": {
+    "0": {
+      "map": {
+        "episodes": 256,
+        "successes": 248,
+        "push_successes": 64,
+        "collect_successes": 64,
+        "open_successes": 64,
+        "joint_successes": 56
+      },
+      "average": {
+        "episodes": 256,
+        "successes": 247,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 64,
+        "joint_successes": 58
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 234,
+        "push_successes": 63,
+        "collect_successes": 59,
+        "open_successes": 63,
+        "joint_successes": 49
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 231,
+        "push_successes": 61,
+        "collect_successes": 61,
+        "open_successes": 64,
+        "joint_successes": 45
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 237,
+        "push_successes": 64,
+        "collect_successes": 62,
+        "open_successes": 62,
+        "joint_successes": 49
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 250,
+        "push_successes": 64,
+        "collect_successes": 64,
+        "open_successes": 63,
+        "joint_successes": 59
+      }
+    },
+    "1": {
+      "map": {
+        "episodes": 256,
+        "successes": 247,
+        "push_successes": 62,
+        "collect_successes": 63,
+        "open_successes": 61,
+        "joint_successes": 61
+      },
+      "average": {
+        "episodes": 256,
+        "successes": 242,
+        "push_successes": 61,
+        "collect_successes": 61,
+        "open_successes": 60,
+        "joint_successes": 60
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 236,
+        "push_successes": 61,
+        "collect_successes": 59,
+        "open_successes": 63,
+        "joint_successes": 53
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 193,
+        "push_successes": 59,
+        "collect_successes": 43,
+        "open_successes": 57,
+        "joint_successes": 34
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 235,
+        "push_successes": 63,
+        "collect_successes": 62,
+        "open_successes": 60,
+        "joint_successes": 50
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 251,
+        "push_successes": 63,
+        "collect_successes": 64,
+        "open_successes": 63,
+        "joint_successes": 61
+      }
+    },
+    "2": {
+      "map": {
+        "episodes": 256,
+        "successes": 240,
+        "push_successes": 63,
+        "collect_successes": 60,
+        "open_successes": 62,
+        "joint_successes": 55
+      },
+      "average": {
+        "episodes": 256,
+        "successes": 239,
+        "push_successes": 62,
+        "collect_successes": 61,
+        "open_successes": 61,
+        "joint_successes": 55
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 231,
+        "push_successes": 62,
+        "collect_successes": 58,
+        "open_successes": 60,
+        "joint_successes": 51
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 219,
+        "push_successes": 63,
+        "collect_successes": 55,
+        "open_successes": 60,
+        "joint_successes": 41
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 242,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 63,
+        "joint_successes": 54
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 246,
+        "push_successes": 63,
+        "collect_successes": 63,
+        "open_successes": 64,
+        "joint_successes": 56
+      }
+    }
+  },
+  "diagnostic": {
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "map": 248,
+        "average": 247,
+        "memoryless": 234,
+        "shuffled": 231,
+        "zero_lag": 237,
+        "oracle": 250,
+        "map_joint": 56,
+        "average_joint": 58,
+        "memoryless_joint": 49,
+        "shuffled_joint": 45,
+        "zero_lag_joint": 49,
+        "oracle_joint": 59
+      },
+      {
+        "interface": 1,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "map": 247,
+        "average": 242,
+        "memoryless": 236,
+        "shuffled": 193,
+        "zero_lag": 235,
+        "oracle": 251,
+        "map_joint": 61,
+        "average_joint": 60,
+        "memoryless_joint": 53,
+        "shuffled_joint": 34,
+        "zero_lag_joint": 50,
+        "oracle_joint": 61
+      },
+      {
+        "interface": 2,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "map": 240,
+        "average": 239,
+        "memoryless": 231,
+        "shuffled": 219,
+        "zero_lag": 242,
+        "oracle": 246,
+        "map_joint": 55,
+        "average_joint": 55,
+        "memoryless_joint": 51,
+        "shuffled_joint": 41,
+        "zero_lag_joint": 54,
+        "oracle_joint": 56
+      }
+    ]
+  },
+  "preregistered_gates": {
+    "each_map_at_least_average_overall": true,
+    "failed_interface_2_map_beats_average_joint_by_5pct": false,
+    "failed_interface_2_map_beats_memoryless_joint_by_5pct": true,
+    "each_map_beats_shuffled_joint_by_5pct": true,
+    "evaluation_writes_zero": true
+  },
+  "adopt_for_v23_freeze": false,
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "selected": "posterior MAP hidden mode direct decision",
+    "confidence": 0.32,
+    "role": "low-confidence route classification only"
+  },
+  "evaluation_writes": 0,
+  "seconds": 165.31362591701327,
+  "boundary": "Development reuse of the already-observed failed v0.21 holdout; never frozen evidence."
+}

@@ -45,6 +45,13 @@ The full result is `artifacts/v21hidden/result.json`.
   hash; the holdout hash stayed identical.
 - v0.22 development censored canonical no-change emissions. It failed its own
   preregistered development gates and was not frozen.
+- v0.23 used the posterior MAP mode for direct action selection. It matched the
+  factorized posterior average on the failed interface's complex worlds and was
+  not frozen.
+- v0.24 replaced factorized effect likelihoods with a single empirical joint
+  raw-effect category. It improved the failed interface from 55 to 57 complex
+  successes out of 64, below the preregistered four-success margin, and was not
+  frozen.
 
 ## Boundary
 

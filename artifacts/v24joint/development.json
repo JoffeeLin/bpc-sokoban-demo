@@ -1,0 +1,230 @@
+{
+  "development_only": true,
+  "v21_frozen_result_was_non_adopted": true,
+  "mechanism": "one empirical categorical probability over the full raw effect tuple instead of factorized marginals",
+  "joint_profile_digest": "c523a550a66cb062a265adcc834f5fea24aad325478bdd4d853482498afd9cc8",
+  "conditions": {
+    "0": {
+      "joint": {
+        "episodes": 256,
+        "successes": 248,
+        "push_successes": 64,
+        "collect_successes": 63,
+        "open_successes": 62,
+        "joint_successes": 59
+      },
+      "factored": {
+        "episodes": 256,
+        "successes": 248,
+        "push_successes": 64,
+        "collect_successes": 63,
+        "open_successes": 62,
+        "joint_successes": 59
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 237,
+        "push_successes": 64,
+        "collect_successes": 59,
+        "open_successes": 62,
+        "joint_successes": 52
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 235,
+        "push_successes": 64,
+        "collect_successes": 60,
+        "open_successes": 62,
+        "joint_successes": 49
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 235,
+        "push_successes": 63,
+        "collect_successes": 59,
+        "open_successes": 59,
+        "joint_successes": 54
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 254,
+        "push_successes": 64,
+        "collect_successes": 64,
+        "open_successes": 63,
+        "joint_successes": 63
+      }
+    },
+    "1": {
+      "joint": {
+        "episodes": 256,
+        "successes": 245,
+        "push_successes": 64,
+        "collect_successes": 62,
+        "open_successes": 64,
+        "joint_successes": 55
+      },
+      "factored": {
+        "episodes": 256,
+        "successes": 244,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 64,
+        "joint_successes": 55
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 240,
+        "push_successes": 63,
+        "collect_successes": 60,
+        "open_successes": 62,
+        "joint_successes": 55
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 198,
+        "push_successes": 61,
+        "collect_successes": 48,
+        "open_successes": 61,
+        "joint_successes": 28
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 235,
+        "push_successes": 64,
+        "collect_successes": 60,
+        "open_successes": 60,
+        "joint_successes": 51
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 250,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 64,
+        "joint_successes": 61
+      }
+    },
+    "2": {
+      "joint": {
+        "episodes": 256,
+        "successes": 242,
+        "push_successes": 61,
+        "collect_successes": 63,
+        "open_successes": 61,
+        "joint_successes": 57
+      },
+      "factored": {
+        "episodes": 256,
+        "successes": 240,
+        "push_successes": 61,
+        "collect_successes": 63,
+        "open_successes": 61,
+        "joint_successes": 55
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 240,
+        "push_successes": 61,
+        "collect_successes": 62,
+        "open_successes": 62,
+        "joint_successes": 55
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 216,
+        "push_successes": 61,
+        "collect_successes": 50,
+        "open_successes": 59,
+        "joint_successes": 46
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 234,
+        "push_successes": 61,
+        "collect_successes": 61,
+        "open_successes": 59,
+        "joint_successes": 53
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 244,
+        "push_successes": 63,
+        "collect_successes": 63,
+        "open_successes": 62,
+        "joint_successes": 56
+      }
+    }
+  },
+  "diagnostic": {
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "joint": 248,
+        "factored": 248,
+        "memoryless": 237,
+        "shuffled": 235,
+        "zero_lag": 235,
+        "oracle": 254,
+        "joint_complex": 59,
+        "factored_complex": 59,
+        "memoryless_complex": 52,
+        "shuffled_complex": 49,
+        "zero_lag_complex": 54,
+        "oracle_complex": 63
+      },
+      {
+        "interface": 1,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "joint": 245,
+        "factored": 244,
+        "memoryless": 240,
+        "shuffled": 198,
+        "zero_lag": 235,
+        "oracle": 250,
+        "joint_complex": 55,
+        "factored_complex": 55,
+        "memoryless_complex": 55,
+        "shuffled_complex": 28,
+        "zero_lag_complex": 51,
+        "oracle_complex": 61
+      },
+      {
+        "interface": 2,
+        "episodes": 256,
+        "joint_episodes": 64,
+        "joint": 242,
+        "factored": 240,
+        "memoryless": 240,
+        "shuffled": 216,
+        "zero_lag": 234,
+        "oracle": 244,
+        "joint_complex": 57,
+        "factored_complex": 55,
+        "memoryless_complex": 55,
+        "shuffled_complex": 46,
+        "zero_lag_complex": 53,
+        "oracle_complex": 56
+      }
+    ]
+  },
+  "preregistered_gates": {
+    "each_joint_emission_at_least_factored_overall": true,
+    "failed_interface_2_joint_emission_beats_factored_complex_by_5pct": false,
+    "failed_interface_2_joint_emission_beats_memoryless_complex_by_5pct": false,
+    "each_joint_emission_beats_shuffled_complex_by_5pct": true,
+    "evaluation_writes_zero": true
+  },
+  "adopt_for_v24_freeze": false,
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "selected": "joint raw-effect emission probability",
+    "confidence": 0.99,
+    "role": "route classification only"
+  },
+  "evaluation_writes": 0,
+  "seconds": 163.47751816594973,
+  "boundary": "Development reuse of the already-observed failed v0.21 holdout; never frozen evidence."
+}
