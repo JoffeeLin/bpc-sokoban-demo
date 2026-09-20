@@ -1,5 +1,34 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.17 breakthrough: cross-generator variable-interface transfer
+
+The frozen non-neural controller now transfers from its original square-map
+training generator to a separately implemented rectangular-map generator while
+simultaneously recovering a variable anonymous interface: 9–12 sensor planes
+and 5–8 actuator slots around its canonical `6 × 4` policy. Extra sensors use
+composite formula families held out from development. Extra actuators are
+non-null—they change nuisance planes while leaving the canonical world alone.
+
+Anonymous change support and bidirectional same-cell conditional support reduce
+the four sensor assignment spaces from `60,480–665,280` candidates to four
+bases each. Probabilities from four unlabeled regimes choose the oracle basis.
+All four sensor and action mappings were exact, and all 16 individual streams
+agreed. Across 2,304 joint episodes on 48 disjoint worlds from the independent
+generator, learned binding matched oracle at **1,879 (81.6%)**, versus 83 with
+only sensor binding, 780 with only action binding, 227 with identity binding,
+and 309 with fixed random binding. All 16 gates passed with zero evaluation
+writes. See [`V17_CROSS_GENERATOR_RESULT.md`](V17_CROSS_GENERATOR_RESULT.md)
+and the [`machine-readable result`](artifacts/v17crossgen/result.json).
+
+![Frozen v0.17 result](artifacts/v17crossgen/poster_v17_cross_generator.png)
+
+**[Watch 12 frozen traces across four variable interfaces and independent-generator worlds](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v17.0.0/bpc_cross_generator_v17_12_unseen_worlds.mp4)**
+
+This is bounded synthetic cross-generator transfer, not arbitrary simulator
+transfer. The task ontology, canonical schema, maximum canvas, distractor
+family, structural statistics, generators, and goals remain supplied; it is
+not autonomous grounding or AGI.
+
 ## v0.16 breakthrough: composite-distractor rejection
 
 The frozen non-neural controller now recovers its canonical six-sensor/four-

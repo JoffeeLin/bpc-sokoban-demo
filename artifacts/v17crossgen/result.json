@@ -1,0 +1,1950 @@
+{
+  "format": "bpc-cross-generator-v17",
+  "evidence_level": "developer-frozen held-out synthetic cross-generator and held-out-distractor-family transfer; not third-party blind",
+  "question": "Can the frozen non-neural BPC controller transfer from its original square-map generator to an independently implemented rectangular-map physics generator while simultaneously inferring four unseen variable-width interfaces containing held-out composite sensor families and non-null nuisance actuators, using only unlabeled transition and anonymous same-cell conditional probabilities?",
+  "training": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "calibration": {
+    "reference_generator": "original",
+    "target_generator": "independent rectangular lab",
+    "reference_interface_digest": "370ff260ab3f89350b803f259c1831008145cf289d7ae0effcea4521502c8e36",
+    "reference_support": [
+      [],
+      [
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4,
+        5
+      ]
+    ],
+    "reference_action_digest": "6de4cdfd89e0e59dddef62423c78e3920585455456703fa3f09caf612bc27b7f",
+    "interfaces": [
+      {
+        "sensor_routes": [
+          4,
+          null,
+          1,
+          5,
+          null,
+          0,
+          3,
+          null,
+          2
+        ],
+        "action_routes": [
+          3,
+          null,
+          0,
+          2,
+          1
+        ],
+        "distractor_kinds": [
+          5,
+          3,
+          4
+        ],
+        "regimes": [
+          {
+            "interface_digest": "0b4eca25057b2cb95bb35a094b08c7d16735de502c5065c36382ae7a88dc3fb3",
+            "support": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                4,
+                6
+              ],
+              [
+                2,
+                7,
+                8
+              ],
+              [
+                1,
+                2,
+                7,
+                8
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            ]
+          },
+          {
+            "interface_digest": "cf074ea224537bb79dcbb47d01b45a88e183e4594d4dd7d1628f27affa9396b5",
+            "support": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                4,
+                6
+              ],
+              [
+                2,
+                7,
+                8
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            ]
+          },
+          {
+            "interface_digest": "4943474491e7ebe884f6751e1d032a3a0bffdc4402ab4db24715c23db7474bb5",
+            "support": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                4,
+                6
+              ],
+              [
+                2,
+                7,
+                8
+              ],
+              [
+                1,
+                2,
+                7,
+                8
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            ]
+          },
+          {
+            "interface_digest": "4657cb36825b7deecf147f22534fbcdb4300d438599d21daee286a600ab3afff",
+            "support": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                4,
+                6
+              ],
+              [
+                2,
+                7,
+                8
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            ]
+          }
+        ],
+        "channel_oracle": [
+          5,
+          2,
+          8,
+          6,
+          0,
+          3
+        ],
+        "channel_binding": {
+          "mapping": [
+            5,
+            2,
+            8,
+            6,
+            0,
+            3
+          ],
+          "posterior": 1.0,
+          "log_margin": 12204.425934714818,
+          "second": [
+            5,
+            2,
+            6,
+            8,
+            0,
+            3
+          ],
+          "change_compatible": 16,
+          "compatible": 4,
+          "sensor_log_probability": -258610.19479294444,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                5,
+                2,
+                8,
+                6,
+                0,
+                3
+              ],
+              "log_margin": 2334.485813502237
+            },
+            {
+              "mapping": [
+                5,
+                2,
+                8,
+                6,
+                0,
+                3
+              ],
+              "log_margin": 3301.4453051317105
+            },
+            {
+              "mapping": [
+                5,
+                2,
+                8,
+                6,
+                0,
+                3
+              ],
+              "log_margin": 1390.2850265044399
+            },
+            {
+              "mapping": [
+                5,
+                2,
+                8,
+                6,
+                0,
+                3
+              ],
+              "log_margin": 3113.222861871058
+            }
+          ]
+        },
+        "action_oracle": [
+          2,
+          4,
+          3,
+          0
+        ],
+        "action_binding": {
+          "mapping": [
+            2,
+            4,
+            3,
+            0
+          ],
+          "posterior": 1.0,
+          "log_margin": 45566.09568731208,
+          "second": [
+            2,
+            3,
+            4,
+            0
+          ],
+          "candidate_slots": [
+            0,
+            2,
+            3,
+            4
+          ]
+        },
+        "random_channels": [
+          2,
+          4,
+          7,
+          1,
+          6,
+          3
+        ],
+        "random_actions": [
+          4,
+          2,
+          3,
+          1
+        ]
+      },
+      {
+        "sensor_routes": [
+          null,
+          1,
+          4,
+          null,
+          2,
+          5,
+          null,
+          0,
+          null,
+          3
+        ],
+        "action_routes": [
+          2,
+          null,
+          1,
+          3,
+          null,
+          0
+        ],
+        "distractor_kinds": [
+          4,
+          5,
+          3,
+          4
+        ],
+        "regimes": [
+          {
+            "interface_digest": "6e3258eecdda264fffb2ccee1527650c799ec61898c5a8a25a9b3bc0813a3565",
+            "support": [
+              [],
+              [
+                0
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                8
+              ],
+              [
+                0,
+                1,
+                8
+              ],
+              [
+                1,
+                3,
+                8,
+                9
+              ],
+              [
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                2,
+                5,
+                6,
+                8
+              ]
+            ]
+          },
+          {
+            "interface_digest": "a9fc2887bf886931f5a97b66623474f88fb084afaf03fa83b24fd1f768b30506",
+            "support": [
+              [],
+              [
+                0
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                8
+              ],
+              [
+                0,
+                1,
+                8
+              ],
+              [
+                1,
+                3,
+                8,
+                9
+              ],
+              [
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                2,
+                5,
+                6,
+                8
+              ]
+            ]
+          },
+          {
+            "interface_digest": "bbb15ad226b350b246d0cc452b8245d38fe2ac132c048e5b7a586fdca3e42865",
+            "support": [
+              [],
+              [
+                0
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                8
+              ],
+              [
+                0,
+                1,
+                8
+              ],
+              [
+                1,
+                3,
+                8,
+                9
+              ],
+              [
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                2,
+                5,
+                6,
+                8
+              ]
+            ]
+          },
+          {
+            "interface_digest": "093952628277eab799c16e49987a708163a3bd1d6e710472fab2e2bccea961d1",
+            "support": [
+              [],
+              [
+                0
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                8
+              ],
+              [
+                0,
+                1,
+                8
+              ],
+              [
+                1,
+                3,
+                8,
+                9
+              ],
+              [
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                2,
+                5,
+                6,
+                8
+              ]
+            ]
+          }
+        ],
+        "channel_oracle": [
+          7,
+          1,
+          4,
+          9,
+          2,
+          5
+        ],
+        "channel_binding": {
+          "mapping": [
+            7,
+            1,
+            4,
+            9,
+            2,
+            5
+          ],
+          "posterior": 1.0,
+          "log_margin": 10900.055340337742,
+          "second": [
+            7,
+            1,
+            9,
+            4,
+            2,
+            5
+          ],
+          "change_compatible": 8,
+          "compatible": 4,
+          "sensor_log_probability": -253925.97264839726,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                7,
+                1,
+                4,
+                9,
+                2,
+                5
+              ],
+              "log_margin": 2623.780011780116
+            },
+            {
+              "mapping": [
+                7,
+                1,
+                4,
+                9,
+                2,
+                5
+              ],
+              "log_margin": 1947.1372315264962
+            },
+            {
+              "mapping": [
+                7,
+                1,
+                4,
+                9,
+                2,
+                5
+              ],
+              "log_margin": 1060.6970010704317
+            },
+            {
+              "mapping": [
+                7,
+                1,
+                4,
+                9,
+                2,
+                5
+              ],
+              "log_margin": 2865.7193086318803
+            }
+          ]
+        },
+        "action_oracle": [
+          5,
+          2,
+          0,
+          3
+        ],
+        "action_binding": {
+          "mapping": [
+            5,
+            2,
+            0,
+            3
+          ],
+          "posterior": 1.0,
+          "log_margin": 37596.79490276296,
+          "second": [
+            2,
+            5,
+            0,
+            3
+          ],
+          "candidate_slots": [
+            0,
+            2,
+            3,
+            5
+          ]
+        },
+        "random_channels": [
+          1,
+          5,
+          3,
+          4,
+          2,
+          9
+        ],
+        "random_actions": [
+          2,
+          0,
+          3,
+          5
+        ]
+      },
+      {
+        "sensor_routes": [
+          3,
+          null,
+          5,
+          0,
+          null,
+          null,
+          1,
+          4,
+          null,
+          2,
+          null
+        ],
+        "action_routes": [
+          null,
+          0,
+          3,
+          null,
+          1,
+          null,
+          2
+        ],
+        "distractor_kinds": [
+          3,
+          4,
+          5,
+          3,
+          4
+        ],
+        "regimes": [
+          {
+            "interface_digest": "30b549ad5c807af9fdff7de1077704526cd860b3899d7055608ce6f7d8d3aa83",
+            "support": [
+              [],
+              [
+                1
+              ],
+              [
+                4
+              ],
+              [
+                5
+              ],
+              [
+                1,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                1,
+                2,
+                6,
+                7,
+                8
+              ],
+              [
+                1,
+                5,
+                6,
+                8,
+                9
+              ]
+            ]
+          },
+          {
+            "interface_digest": "15db7bc5b73eec7b5ced054f2d6aef9030c8bfd4ce2b6b5cb5239614d8a97930",
+            "support": [
+              [],
+              [
+                1
+              ],
+              [
+                4
+              ],
+              [
+                5
+              ],
+              [
+                1,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                1,
+                2,
+                6,
+                7,
+                8
+              ],
+              [
+                1,
+                5,
+                6,
+                8,
+                9
+              ]
+            ]
+          },
+          {
+            "interface_digest": "4c2ded6f83818ea1584033388d302505caed209044044012e6242a6f81bf6f68",
+            "support": [
+              [],
+              [
+                1
+              ],
+              [
+                4
+              ],
+              [
+                5
+              ],
+              [
+                1,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                1,
+                2,
+                6,
+                7,
+                8
+              ],
+              [
+                1,
+                5,
+                6,
+                8,
+                9
+              ]
+            ]
+          },
+          {
+            "interface_digest": "144c6fb288b9d8bd002e28cd273f0b15acb53a0a27c4ea4b9615e2174abeace5",
+            "support": [
+              [],
+              [
+                1
+              ],
+              [
+                4
+              ],
+              [
+                5
+              ],
+              [
+                1,
+                6,
+                8
+              ],
+              [
+                0,
+                1,
+                4,
+                6,
+                8
+              ],
+              [
+                1,
+                2,
+                6,
+                7,
+                8
+              ],
+              [
+                1,
+                5,
+                6,
+                8,
+                9
+              ]
+            ]
+          }
+        ],
+        "channel_oracle": [
+          3,
+          6,
+          9,
+          0,
+          7,
+          2
+        ],
+        "channel_binding": {
+          "mapping": [
+            3,
+            6,
+            9,
+            0,
+            7,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 11142.703496894683,
+          "second": [
+            3,
+            6,
+            0,
+            9,
+            7,
+            2
+          ],
+          "change_compatible": 24,
+          "compatible": 4,
+          "sensor_log_probability": -255631.65310577356,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                3,
+                6,
+                9,
+                0,
+                7,
+                2
+              ],
+              "log_margin": 3016.6075497631828
+            },
+            {
+              "mapping": [
+                3,
+                6,
+                9,
+                0,
+                7,
+                2
+              ],
+              "log_margin": 3569.7473411916
+            },
+            {
+              "mapping": [
+                3,
+                6,
+                9,
+                0,
+                7,
+                2
+              ],
+              "log_margin": 1326.7319583404824
+            },
+            {
+              "mapping": [
+                3,
+                6,
+                9,
+                0,
+                7,
+                2
+              ],
+              "log_margin": 2880.942747579691
+            }
+          ]
+        },
+        "action_oracle": [
+          1,
+          4,
+          6,
+          2
+        ],
+        "action_binding": {
+          "mapping": [
+            1,
+            4,
+            6,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 32629.321732353434,
+          "second": [
+            1,
+            6,
+            4,
+            2
+          ],
+          "candidate_slots": [
+            1,
+            2,
+            4,
+            6
+          ]
+        },
+        "random_channels": [
+          6,
+          1,
+          8,
+          10,
+          9,
+          3
+        ],
+        "random_actions": [
+          5,
+          6,
+          4,
+          2
+        ]
+      },
+      {
+        "sensor_routes": [
+          null,
+          0,
+          4,
+          null,
+          2,
+          null,
+          5,
+          1,
+          null,
+          null,
+          3,
+          null
+        ],
+        "action_routes": [
+          1,
+          null,
+          3,
+          0,
+          null,
+          2,
+          null,
+          null
+        ],
+        "distractor_kinds": [
+          5,
+          3,
+          4,
+          5,
+          3,
+          4
+        ],
+        "regimes": [
+          {
+            "interface_digest": "4cab5095b6b63f52ff486b3acff05a8ad42b0206bac2643dad5788ba36d372bd",
+            "support": [
+              [],
+              [
+                0
+              ],
+              [
+                3
+              ],
+              [
+                5
+              ],
+              [
+                7
+              ],
+              [
+                8
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                0,
+                7,
+                8
+              ],
+              [
+                3,
+                7,
+                8,
+                9,
+                10
+              ],
+              [
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              [
+                0,
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              [
+                0,
+                2,
+                3,
+                6,
+                7,
+                8,
+                11
+              ]
+            ]
+          },
+          {
+            "interface_digest": "a55da4b19515975313e415fbe157cbc268014cd20091d6a7b0f58a7461d41c78",
+            "support": [
+              [],
+              [
+                0
+              ],
+              [
+                3
+              ],
+              [
+                5
+              ],
+              [
+                7
+              ],
+              [
+                8
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                0,
+                7,
+                8
+              ],
+              [
+                3,
+                7,
+                8,
+                9,
+                10
+              ],
+              [
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              [
+                0,
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              [
+                0,
+                2,
+                3,
+                6,
+                7,
+                8,
+                11
+              ]
+            ]
+          },
+          {
+            "interface_digest": "8065e1c77e45906ef919106ad937963154166e55dea6df9320a6139df6499a77",
+            "support": [
+              [],
+              [
+                0
+              ],
+              [
+                3
+              ],
+              [
+                5
+              ],
+              [
+                7
+              ],
+              [
+                8
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                0,
+                7,
+                8
+              ],
+              [
+                3,
+                7,
+                8,
+                9,
+                10
+              ],
+              [
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              [
+                0,
+                2,
+                3,
+                6,
+                7,
+                8,
+                11
+              ]
+            ]
+          },
+          {
+            "interface_digest": "cb11dd98cf4236be2caebbf256e31199ca491358e8be9ce23bb53c8183bd136e",
+            "support": [
+              [],
+              [
+                0
+              ],
+              [
+                3
+              ],
+              [
+                5
+              ],
+              [
+                7
+              ],
+              [
+                8
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                0,
+                7,
+                8
+              ],
+              [
+                3,
+                7,
+                8,
+                9,
+                10
+              ],
+              [
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              [
+                0,
+                2,
+                3,
+                6,
+                7,
+                8,
+                11
+              ]
+            ]
+          }
+        ],
+        "channel_oracle": [
+          1,
+          7,
+          4,
+          10,
+          2,
+          6
+        ],
+        "channel_binding": {
+          "mapping": [
+            1,
+            7,
+            4,
+            10,
+            2,
+            6
+          ],
+          "posterior": 1.0,
+          "log_margin": 10216.124001868098,
+          "second": [
+            1,
+            7,
+            10,
+            4,
+            2,
+            6
+          ],
+          "change_compatible": 24,
+          "compatible": 4,
+          "sensor_log_probability": -247501.7872774273,
+          "same_cell_log_probability": 0.0,
+          "per_stream": [
+            {
+              "mapping": [
+                1,
+                7,
+                4,
+                10,
+                2,
+                6
+              ],
+              "log_margin": 2825.9141268312087
+            },
+            {
+              "mapping": [
+                1,
+                7,
+                4,
+                10,
+                2,
+                6
+              ],
+              "log_margin": 3168.6767459073308
+            },
+            {
+              "mapping": [
+                1,
+                7,
+                4,
+                10,
+                2,
+                6
+              ],
+              "log_margin": 1185.3468109344103
+            },
+            {
+              "mapping": [
+                1,
+                7,
+                4,
+                10,
+                2,
+                6
+              ],
+              "log_margin": 2778.370621039059
+            }
+          ]
+        },
+        "action_oracle": [
+          3,
+          0,
+          5,
+          2
+        ],
+        "action_binding": {
+          "mapping": [
+            3,
+            0,
+            5,
+            2
+          ],
+          "posterior": 1.0,
+          "log_margin": 28742.361860983026,
+          "second": [
+            5,
+            0,
+            3,
+            2
+          ],
+          "candidate_slots": [
+            0,
+            2,
+            3,
+            5
+          ]
+        },
+        "random_channels": [
+          8,
+          6,
+          4,
+          11,
+          7,
+          10
+        ],
+        "random_actions": [
+          4,
+          5,
+          3,
+          6
+        ]
+      }
+    ]
+  },
+  "holdout": {
+    "worlds": 48,
+    "families": {
+      "push": 12,
+      "collect": 12,
+      "open": 12,
+      "joint": 12
+    },
+    "initial_overlap_with_all_prior": 0
+  },
+  "conditions": {
+    "0": {
+      "173610": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1073,
+          "push_successes": 276,
+          "collect_successes": 285,
+          "open_successes": 277,
+          "joint_successes": 235
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1073,
+          "push_successes": 276,
+          "collect_successes": 285,
+          "open_successes": 277,
+          "joint_successes": 235
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 240,
+          "push_successes": 122,
+          "collect_successes": 21,
+          "open_successes": 97,
+          "joint_successes": 0
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 679,
+          "push_successes": 244,
+          "collect_successes": 174,
+          "open_successes": 194,
+          "joint_successes": 67
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 289,
+          "push_successes": 138,
+          "collect_successes": 43,
+          "open_successes": 108,
+          "joint_successes": 0
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 292,
+          "push_successes": 65,
+          "collect_successes": 72,
+          "open_successes": 155,
+          "joint_successes": 0
+        }
+      },
+      "173710": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1068,
+          "push_successes": 271,
+          "collect_successes": 282,
+          "open_successes": 278,
+          "joint_successes": 237
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1068,
+          "push_successes": 271,
+          "collect_successes": 282,
+          "open_successes": 278,
+          "joint_successes": 237
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 250,
+          "push_successes": 128,
+          "collect_successes": 23,
+          "open_successes": 99,
+          "joint_successes": 0
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 677,
+          "push_successes": 230,
+          "collect_successes": 166,
+          "open_successes": 207,
+          "joint_successes": 74
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 305,
+          "push_successes": 146,
+          "collect_successes": 45,
+          "open_successes": 114,
+          "joint_successes": 0
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 289,
+          "push_successes": 67,
+          "collect_successes": 68,
+          "open_successes": 154,
+          "joint_successes": 0
+        }
+      }
+    },
+    "1": {
+      "173610": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1064,
+          "push_successes": 268,
+          "collect_successes": 282,
+          "open_successes": 278,
+          "joint_successes": 236
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1064,
+          "push_successes": 268,
+          "collect_successes": 282,
+          "open_successes": 278,
+          "joint_successes": 236
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 246,
+          "push_successes": 88,
+          "collect_successes": 36,
+          "open_successes": 88,
+          "joint_successes": 34
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 881,
+          "push_successes": 238,
+          "collect_successes": 240,
+          "open_successes": 265,
+          "joint_successes": 138
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 270,
+          "push_successes": 81,
+          "collect_successes": 39,
+          "open_successes": 85,
+          "joint_successes": 65
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 713,
+          "push_successes": 232,
+          "collect_successes": 177,
+          "open_successes": 230,
+          "joint_successes": 74
+        }
+      },
+      "173710": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1074,
+          "push_successes": 278,
+          "collect_successes": 282,
+          "open_successes": 281,
+          "joint_successes": 233
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1074,
+          "push_successes": 278,
+          "collect_successes": 282,
+          "open_successes": 281,
+          "joint_successes": 233
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 249,
+          "push_successes": 93,
+          "collect_successes": 32,
+          "open_successes": 94,
+          "joint_successes": 30
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 861,
+          "push_successes": 239,
+          "collect_successes": 240,
+          "open_successes": 266,
+          "joint_successes": 116
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 280,
+          "push_successes": 84,
+          "collect_successes": 41,
+          "open_successes": 84,
+          "joint_successes": 71
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 710,
+          "push_successes": 238,
+          "collect_successes": 161,
+          "open_successes": 235,
+          "joint_successes": 76
+        }
+      }
+    },
+    "2": {
+      "173610": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1065,
+          "push_successes": 271,
+          "collect_successes": 276,
+          "open_successes": 277,
+          "joint_successes": 241
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1065,
+          "push_successes": 271,
+          "collect_successes": 276,
+          "open_successes": 277,
+          "joint_successes": 241
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 85,
+          "push_successes": 46,
+          "collect_successes": 7,
+          "open_successes": 32,
+          "joint_successes": 0
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 729,
+          "push_successes": 229,
+          "collect_successes": 143,
+          "open_successes": 237,
+          "joint_successes": 120
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 98,
+          "push_successes": 61,
+          "collect_successes": 11,
+          "open_successes": 26,
+          "joint_successes": 0
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 292,
+          "push_successes": 82,
+          "collect_successes": 41,
+          "open_successes": 88,
+          "joint_successes": 81
+        }
+      },
+      "173710": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1072,
+          "push_successes": 277,
+          "collect_successes": 282,
+          "open_successes": 280,
+          "joint_successes": 233
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1072,
+          "push_successes": 277,
+          "collect_successes": 282,
+          "open_successes": 280,
+          "joint_successes": 233
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 86,
+          "push_successes": 49,
+          "collect_successes": 8,
+          "open_successes": 29,
+          "joint_successes": 0
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 724,
+          "push_successes": 234,
+          "collect_successes": 150,
+          "open_successes": 224,
+          "joint_successes": 116
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 101,
+          "push_successes": 54,
+          "collect_successes": 15,
+          "open_successes": 32,
+          "joint_successes": 0
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 286,
+          "push_successes": 81,
+          "collect_successes": 41,
+          "open_successes": 86,
+          "joint_successes": 78
+        }
+      }
+    },
+    "3": {
+      "173610": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1072,
+          "push_successes": 272,
+          "collect_successes": 279,
+          "open_successes": 283,
+          "joint_successes": 238
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1072,
+          "push_successes": 272,
+          "collect_successes": 279,
+          "open_successes": 283,
+          "joint_successes": 238
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 178,
+          "push_successes": 74,
+          "collect_successes": 15,
+          "open_successes": 81,
+          "joint_successes": 8
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 704,
+          "push_successes": 228,
+          "collect_successes": 170,
+          "open_successes": 232,
+          "joint_successes": 74
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 227,
+          "push_successes": 77,
+          "collect_successes": 21,
+          "open_successes": 88,
+          "joint_successes": 41
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 169,
+          "push_successes": 43,
+          "collect_successes": 19,
+          "open_successes": 107,
+          "joint_successes": 0
+        }
+      },
+      "173710": {
+        "learned": {
+          "episodes": 1152,
+          "successes": 1060,
+          "push_successes": 271,
+          "collect_successes": 286,
+          "open_successes": 277,
+          "joint_successes": 226
+        },
+        "oracle": {
+          "episodes": 1152,
+          "successes": 1060,
+          "push_successes": 271,
+          "collect_successes": 286,
+          "open_successes": 277,
+          "joint_successes": 226
+        },
+        "sensor_only": {
+          "episodes": 1152,
+          "successes": 172,
+          "push_successes": 70,
+          "collect_successes": 10,
+          "open_successes": 81,
+          "joint_successes": 11
+        },
+        "action_only": {
+          "episodes": 1152,
+          "successes": 678,
+          "push_successes": 228,
+          "collect_successes": 152,
+          "open_successes": 223,
+          "joint_successes": 75
+        },
+        "identity": {
+          "episodes": 1152,
+          "successes": 249,
+          "push_successes": 78,
+          "collect_successes": 34,
+          "open_successes": 87,
+          "joint_successes": 50
+        },
+        "random": {
+          "episodes": 1152,
+          "successes": 160,
+          "push_successes": 40,
+          "collect_successes": 22,
+          "open_successes": 98,
+          "joint_successes": 0
+        }
+      }
+    }
+  },
+  "worlds_with_success_trace": {
+    "0": {
+      "173610": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 18,
+        "action_only": 46,
+        "identity": 21,
+        "random": 17
+      },
+      "173710": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 17,
+        "action_only": 46,
+        "identity": 21,
+        "random": 17
+      }
+    },
+    "1": {
+      "173610": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 20,
+        "action_only": 48,
+        "identity": 21,
+        "random": 48
+      },
+      "173710": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 21,
+        "action_only": 48,
+        "identity": 23,
+        "random": 48
+      }
+    },
+    "2": {
+      "173610": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 8,
+        "action_only": 48,
+        "identity": 8,
+        "random": 23
+      },
+      "173710": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 8,
+        "action_only": 48,
+        "identity": 8,
+        "random": 23
+      }
+    },
+    "3": {
+      "173610": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 19,
+        "action_only": 48,
+        "identity": 21,
+        "random": 12
+      },
+      "173710": {
+        "learned": 48,
+        "oracle": 48,
+        "sensor_only": 17,
+        "action_only": 48,
+        "identity": 19,
+        "random": 12
+      }
+    }
+  },
+  "aggregate": {
+    "episodes_per_condition": 9216,
+    "joint_episodes": 2304,
+    "learned_total": 8548,
+    "oracle_total": 8548,
+    "sensor_only_total": 1506,
+    "action_only_total": 5933,
+    "identity_total": 1819,
+    "random_total": 2911,
+    "learned_joint": 1879,
+    "oracle_joint": 1879,
+    "sensor_only_joint": 83,
+    "action_only_joint": 780,
+    "identity_joint": 227,
+    "random_joint": 309
+  },
+  "source_scan": {
+    "push": true,
+    "collect": true,
+    "open": true,
+    "joint": true,
+    "family": true,
+    "goal": true,
+    "reward": true,
+    "score": true,
+    "loss": true,
+    "gradient": true,
+    "torch": true,
+    "tensorflow": true,
+    "sklearn": true,
+    "search": true,
+    "shortest": true,
+    "left": true,
+    "right": true,
+    "up": true,
+    "down": true
+  },
+  "model_writes_during_evaluation": 0,
+  "gate": {
+    "four_unseen_variable_sensor_interfaces_recovered": true,
+    "all_sixteen_unlabeled_streams_agree_with_oracle": true,
+    "compatible_mapping_count_in_frozen_range": true,
+    "combined_sensor_log_margin_at_least_8000": true,
+    "each_stream_sensor_log_margin_at_least_800": true,
+    "four_unseen_variable_action_interfaces_recovered": true,
+    "all_noncanonical_action_slots_rejected": true,
+    "holdout_initials_disjoint_from_training_and_calibration": true,
+    "learned_matches_oracle_every_condition": true,
+    "learned_joint_rate_at_least_55pct": true,
+    "both_bindings_beat_sensor_only_by_45pp": true,
+    "both_bindings_beat_action_only_by_40pp": true,
+    "both_bindings_beat_identity_by_45pp": true,
+    "both_bindings_beat_random_by_40pp": true,
+    "anonymous_support_probability_source": true,
+    "frozen_policy_and_model_writes_zero": true
+  },
+  "adopted": true,
+  "seconds": 441.44723833398893,
+  "protocol_sha256": "f74ea144b096c35f338fedb2425ebeff526e9e6f9d2e6dce1968de621a2fd95d",
+  "holdout_sha256": "b9667d9b97129b18f0a116ae23efe9ae2d70b96a72c438d7b247019f9ec6285f",
+  "source_sha256": {
+    "bpc_cross_generator_v17.py": "e71f53f0ec3efc65aa26b93273d76c39427631bef25f72e0334ea7671fd790ca",
+    "bpc_composite_binding_v16.py": "f4835340871bee46f692a891880fc5f282cb7d706058575870e8d2746956bd70",
+    "bpc_open_interface_v15.py": "51798c150c56f79a7d8a34fedf131ca848a537db745d5cc164e3cc645829ad0d",
+    "bpc_three_factor_v12.py": "e7a07fbc0756fc2af8bc100cf9963e472a539d5cf9dc0348a7a3ef085bc7ff8e",
+    "bpc_evidence_field_v11.py": "8794d9a22f80242f0a59298d36592fb2300ea89ae22cc3460a43a60d3750253b",
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "bpc_direct_composition_v09.py": "6d15f3e2cb59c42d097860f2e463cfb7f46f54b7eb98b6a9963d421748a8ac3c",
+    "general_bpc_v7.py": "d37040bd087e0bbf135a491ab319411f7dd10d823038734327af1136467f05f8",
+    "experiment_v5.py": "0f883f7f0aa6d3a37299322e8214776c9179516b7be632094cd18c629231e493",
+    "experiment_v17_cross_generator_frozen.py": "5ab737f857c53b52cd8605e29d5d9fe6ba4e49e53f970b2f7792b463a81448ce",
+    "freeze_v17_cross_generator.py": "7963567b4b1e08562fb63c3e10282cdbc1763df7e0c64b1733e2308328703f89"
+  },
+  "supported_claim": "A frozen non-neural BPC controller trained on the original square-map generator preserved oracle direct control on disjoint unseen worlds from an independently implemented rectangular-map generator while recovering four variable-width anonymous sensor/action interfaces containing held-out composite sensor families and non-null nuisance actuators from unlabeled transitions.",
+  "boundary": "Developer-frozen synthetic cross-generator transfer. Canonical semantics, six raw planes, four actions, maximum 7x7 canvas, distractor-family code, support-equality rule, same-cell conditional probability statistic, four calibration schedules, generators, terminal events, and direct policy remain supplied. No neural network, task label, reward, planner, search, classifier runtime, or evaluation learning is used."
+}

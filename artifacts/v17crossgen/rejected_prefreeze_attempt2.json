@@ -1,0 +1,19 @@
+{
+  "stage": "pre-freeze calibration",
+  "holdout_generated": false,
+  "retained": true,
+  "reason": "Support equality plus marginal/transition probabilities left an exact observational tie on the first held-out distractor-family interface.",
+  "sensor_routes": [null, 5, 2, null, 0, 4, null, 1, 3],
+  "action_routes": [2, 0, null, 1, 3],
+  "distractor_kinds": [3, 4, 5],
+  "oracle_mapping": [4, 7, 2, 8, 5, 1],
+  "selected_mapping": [4, 7, 2, 8, 5, 1],
+  "second_mapping": [4, 7, 2, 3, 5, 1],
+  "posterior": 0.5,
+  "combined_log_margin": 0.0,
+  "compatible_mappings": 96,
+  "per_stream_mappings": [[4, 7, 2, 8, 5, 1], [4, 7, 6, 8, 5, 1], [4, 7, 2, 5, 8, 3], [4, 7, 2, 8, 5, 1]],
+  "per_stream_log_margins": [0.0, 0.0, 0.0, 0.0],
+  "joint_sensor_action_tie_persisted": true,
+  "next_mechanism": "Add anonymous same-cell joint occupancy probabilities learned from the reference interface; do not use formula identities or entity labels."
+}

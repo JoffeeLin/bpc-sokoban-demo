@@ -1,0 +1,1492 @@
+{
+  "format": "bpc-cross-generator-v17-frozen-protocol",
+  "frozen_before_holdout_execution": true,
+  "question": "Can the frozen non-neural BPC controller transfer from its original square-map generator to an independently implemented rectangular-map physics generator while simultaneously inferring four unseen variable-width interfaces containing held-out composite sensor families and non-null nuisance actuators, using only unlabeled transition and anonymous same-cell conditional probabilities?",
+  "config": {
+    "train_seed": 121010,
+    "reference_seed": 172010,
+    "target_seeds": [
+      [
+        172110,
+        172111,
+        172112,
+        172113
+      ],
+      [
+        172120,
+        172121,
+        172122,
+        172123
+      ],
+      [
+        172130,
+        172131,
+        172132,
+        172133
+      ],
+      [
+        172140,
+        172141,
+        172142,
+        172143
+      ]
+    ],
+    "calibration_steps": 32,
+    "reference_worlds_per_family": 100,
+    "sensor_routes": [
+      [
+        null,
+        5,
+        2,
+        null,
+        0,
+        4,
+        null,
+        1,
+        3
+      ],
+      [
+        3,
+        null,
+        0,
+        5,
+        null,
+        2,
+        4,
+        null,
+        1,
+        null
+      ],
+      [
+        null,
+        4,
+        1,
+        null,
+        5,
+        3,
+        null,
+        0,
+        null,
+        2,
+        null
+      ],
+      [
+        2,
+        null,
+        5,
+        null,
+        1,
+        4,
+        null,
+        null,
+        0,
+        3,
+        null,
+        null
+      ]
+    ],
+    "action_routes": [
+      [
+        2,
+        0,
+        null,
+        1,
+        3
+      ],
+      [
+        null,
+        3,
+        0,
+        null,
+        2,
+        1
+      ],
+      [
+        1,
+        null,
+        2,
+        null,
+        0,
+        3,
+        null
+      ],
+      [
+        null,
+        2,
+        0,
+        null,
+        3,
+        null,
+        1,
+        null
+      ]
+    ],
+    "distractor_kinds": [
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        5,
+        3,
+        4,
+        5
+      ],
+      [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      [
+        3,
+        5,
+        4,
+        3,
+        5,
+        4
+      ]
+    ],
+    "target_mixtures": [
+      {
+        "push": 126,
+        "collect": 27,
+        "open": 27
+      },
+      {
+        "push": 27,
+        "collect": 126,
+        "open": 27
+      },
+      {
+        "push": 27,
+        "collect": 27,
+        "open": 126
+      },
+      {
+        "push": 60,
+        "collect": 60,
+        "open": 60
+      }
+    ],
+    "holdout_seed": 172510,
+    "worlds_per_family": 12,
+    "eval_seeds": [
+      172610,
+      172710
+    ],
+    "episodes_per_map": 24,
+    "step_budget": 64,
+    "random_binding_seed": 172810
+  },
+  "expected_training_events": {
+    "push_success": 1150,
+    "push_compact_steps": 4163,
+    "signature_(1, 2)": 1150,
+    "push_episodes": 1600,
+    "collect_success": 1504,
+    "collect_compact_steps": 9867,
+    "signature_(1, 3)": 1504,
+    "collect_episodes": 1600,
+    "open_success": 1441,
+    "open_compact_steps": 5024,
+    "signature_(1, 4, 5)": 1441,
+    "open_episodes": 1600
+  },
+  "expected_factor_digest": "24bbe41f4fb0791abab83dbedb4b14d6d86eb6a78686cbd6b4fa7ff13fd36cf4",
+  "reference_interface_digest": "e3acc0d92be113672232ee545ff142af12231cc385ffca9d54176b66b46d11c0",
+  "reference_support": [
+    [],
+    [
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4,
+      5
+    ]
+  ],
+  "reference_action_digest": "56d73e6e0f783829d1bd8ed2e5c5003c743722c2f9527500638119daa3ff9a7d",
+  "expected_calibration": [
+    {
+      "regimes": [
+        {
+          "interface_digest": "ab8bbc2339034846f1bc8e6f757a2b67b7d4e89bd4f02f3d7c90d8695f2c5055",
+          "support": [
+            [],
+            [
+              0
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              1,
+              5,
+              7
+            ],
+            [
+              0,
+              2,
+              6,
+              7
+            ],
+            [
+              0,
+              3,
+              7,
+              8
+            ]
+          ]
+        },
+        {
+          "interface_digest": "9eaf953e0d649030938f7febb05b23cd4a3689081ad584253a63037655ca4825",
+          "support": [
+            [],
+            [
+              0
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              1,
+              5,
+              7
+            ],
+            [
+              0,
+              2,
+              6,
+              7
+            ],
+            [
+              0,
+              3,
+              7,
+              8
+            ]
+          ]
+        },
+        {
+          "interface_digest": "00744b7e19ea8864d65bed9731f17f1bdc8d1b454a67c6479f6473587b60910f",
+          "support": [
+            [],
+            [
+              0
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              1,
+              5,
+              7
+            ],
+            [
+              0,
+              2,
+              6,
+              7
+            ],
+            [
+              0,
+              3,
+              7,
+              8
+            ]
+          ]
+        },
+        {
+          "interface_digest": "c50c83fa400e53b8828a427a9a5dde2b0e07a8e945f6f3dd959955b86267c8c9",
+          "support": [
+            [],
+            [
+              0
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              1,
+              5,
+              7
+            ],
+            [
+              0,
+              2,
+              6,
+              7
+            ],
+            [
+              0,
+              3,
+              7,
+              8
+            ]
+          ]
+        }
+      ],
+      "channel_oracle": [
+        4,
+        7,
+        2,
+        8,
+        5,
+        1
+      ],
+      "channel_binding": {
+        "mapping": [
+          4,
+          7,
+          2,
+          8,
+          5,
+          1
+        ],
+        "posterior": 1.0,
+        "log_margin": 12559.219557397242,
+        "second": [
+          4,
+          7,
+          8,
+          2,
+          5,
+          1
+        ],
+        "compatible": 96,
+        "sensor_log_probability": -255925.58099353674,
+        "same_cell_log_probability": 0.0,
+        "per_stream": [
+          {
+            "mapping": [
+              4,
+              7,
+              2,
+              8,
+              5,
+              1
+            ],
+            "log_margin": 2636.326167024912
+          },
+          {
+            "mapping": [
+              4,
+              7,
+              2,
+              8,
+              5,
+              1
+            ],
+            "log_margin": 2583.1610729556924
+          },
+          {
+            "mapping": [
+              4,
+              7,
+              2,
+              8,
+              5,
+              1
+            ],
+            "log_margin": 1135.941070449524
+          },
+          {
+            "mapping": [
+              4,
+              7,
+              2,
+              8,
+              5,
+              1
+            ],
+            "log_margin": 3174.3232394474253
+          }
+        ]
+      },
+      "action_oracle": [
+        1,
+        3,
+        0,
+        4
+      ],
+      "action_binding": {
+        "mapping": [
+          1,
+          3,
+          0,
+          4
+        ],
+        "posterior": 1.0,
+        "log_margin": 45352.00190293787,
+        "second": [
+          1,
+          4,
+          0,
+          3
+        ],
+        "candidate_slots": [
+          0,
+          1,
+          3,
+          4
+        ]
+      },
+      "target_action_digest": "0a3b3c8a19694a5cc0e1a182176b8c6a89d92e42df13775ba5bdffbf7b04c2e8"
+    },
+    {
+      "regimes": [
+        {
+          "interface_digest": "fc4a74a122a7df80c953dd8e9d473172c58e275195293c27b78c6a867312f356",
+          "support": [
+            [],
+            [
+              1
+            ],
+            [
+              4
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              1,
+              8,
+              9
+            ],
+            [
+              0,
+              4,
+              8,
+              9
+            ],
+            [
+              5,
+              7,
+              8,
+              9
+            ],
+            [
+              1,
+              5,
+              7,
+              8,
+              9
+            ],
+            [
+              1,
+              3,
+              4,
+              6,
+              8,
+              9
+            ]
+          ]
+        },
+        {
+          "interface_digest": "2abb16beac0faa4cb8ace600b1dd84bdb85886bdc5a98eaf55fa734d39c83f99",
+          "support": [
+            [],
+            [
+              1
+            ],
+            [
+              4
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              1,
+              8,
+              9
+            ],
+            [
+              0,
+              4,
+              8,
+              9
+            ],
+            [
+              5,
+              7,
+              8,
+              9
+            ],
+            [
+              1,
+              5,
+              7,
+              8,
+              9
+            ],
+            [
+              1,
+              3,
+              4,
+              6,
+              8,
+              9
+            ]
+          ]
+        },
+        {
+          "interface_digest": "340aafbaaa6097ba38907024d8bc0d006784df6a22c60238b0f22ff1643c5d3c",
+          "support": [
+            [],
+            [
+              1
+            ],
+            [
+              4
+            ],
+            [
+              8
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              1,
+              8,
+              9
+            ],
+            [
+              0,
+              4,
+              8,
+              9
+            ],
+            [
+              5,
+              7,
+              8,
+              9
+            ],
+            [
+              1,
+              5,
+              7,
+              8,
+              9
+            ],
+            [
+              1,
+              3,
+              4,
+              6,
+              8,
+              9
+            ]
+          ]
+        },
+        {
+          "interface_digest": "10848b702781c64b5e5622a7f94f49d8b53eb61475c636c7fa5150e7988ee287",
+          "support": [
+            [],
+            [
+              1
+            ],
+            [
+              4
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              1,
+              8,
+              9
+            ],
+            [
+              0,
+              4,
+              8,
+              9
+            ],
+            [
+              5,
+              7,
+              8,
+              9
+            ],
+            [
+              1,
+              5,
+              7,
+              8,
+              9
+            ],
+            [
+              1,
+              3,
+              4,
+              6,
+              8,
+              9
+            ]
+          ]
+        }
+      ],
+      "channel_oracle": [
+        2,
+        8,
+        5,
+        0,
+        6,
+        3
+      ],
+      "channel_binding": {
+        "mapping": [
+          2,
+          8,
+          5,
+          0,
+          6,
+          3
+        ],
+        "posterior": 1.0,
+        "log_margin": 11581.083271172713,
+        "second": [
+          2,
+          8,
+          0,
+          5,
+          6,
+          3
+        ],
+        "compatible": 32,
+        "sensor_log_probability": -249783.40007524024,
+        "same_cell_log_probability": 0.0,
+        "per_stream": [
+          {
+            "mapping": [
+              2,
+              8,
+              5,
+              0,
+              6,
+              3
+            ],
+            "log_margin": 2953.5521743609133
+          },
+          {
+            "mapping": [
+              2,
+              8,
+              5,
+              0,
+              6,
+              3
+            ],
+            "log_margin": 3397.5508739201905
+          },
+          {
+            "mapping": [
+              2,
+              8,
+              5,
+              0,
+              6,
+              3
+            ],
+            "log_margin": 1320.1465694461222
+          },
+          {
+            "mapping": [
+              2,
+              8,
+              5,
+              0,
+              6,
+              3
+            ],
+            "log_margin": 2687.1384356247145
+          }
+        ]
+      },
+      "action_oracle": [
+        2,
+        5,
+        4,
+        1
+      ],
+      "action_binding": {
+        "mapping": [
+          2,
+          5,
+          4,
+          1
+        ],
+        "posterior": 1.0,
+        "log_margin": 38091.98339213696,
+        "second": [
+          5,
+          2,
+          4,
+          1
+        ],
+        "candidate_slots": [
+          1,
+          2,
+          4,
+          5
+        ]
+      },
+      "target_action_digest": "166a70046e37398afdb352ef9d39d749cb2424b13219de673a8dd043992f87d7"
+    },
+    {
+      "regimes": [
+        {
+          "interface_digest": "7606083b3282160dfb7c9e1807976af76f7cc55e119e23d9387c21fd537533a2",
+          "support": [
+            [],
+            [
+              0
+            ],
+            [
+              3
+            ],
+            [
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              0,
+              2,
+              8
+            ],
+            [
+              2,
+              3,
+              5,
+              8
+            ],
+            [
+              2,
+              6,
+              8,
+              9
+            ],
+            [
+              0,
+              2,
+              6,
+              8,
+              9
+            ],
+            [
+              2,
+              6,
+              8,
+              9,
+              10
+            ],
+            [
+              0,
+              1,
+              2,
+              4,
+              6,
+              8
+            ],
+            [
+              0,
+              2,
+              6,
+              8,
+              9,
+              10
+            ]
+          ]
+        },
+        {
+          "interface_digest": "623f395fc09c3d0394cb43009c485c4814c143ac501be2ed0d862c9afd576f6a",
+          "support": [
+            [],
+            [
+              0
+            ],
+            [
+              3
+            ],
+            [
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              0,
+              2,
+              8
+            ],
+            [
+              2,
+              3,
+              5,
+              8
+            ],
+            [
+              2,
+              6,
+              8,
+              9
+            ],
+            [
+              0,
+              2,
+              6,
+              8,
+              9
+            ],
+            [
+              2,
+              6,
+              8,
+              9,
+              10
+            ],
+            [
+              0,
+              1,
+              2,
+              4,
+              6,
+              8
+            ],
+            [
+              0,
+              2,
+              6,
+              8,
+              9,
+              10
+            ]
+          ]
+        },
+        {
+          "interface_digest": "baf8595b930a81097da2eea47e9e8cdd72332c39afeb8e6c2c14d619fd316e30",
+          "support": [
+            [],
+            [
+              0
+            ],
+            [
+              3
+            ],
+            [
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              0,
+              2,
+              8
+            ],
+            [
+              2,
+              3,
+              5,
+              8
+            ],
+            [
+              2,
+              6,
+              8,
+              9
+            ],
+            [
+              2,
+              6,
+              8,
+              9,
+              10
+            ],
+            [
+              0,
+              1,
+              2,
+              4,
+              6,
+              8
+            ]
+          ]
+        },
+        {
+          "interface_digest": "f77480cec7db893772eb5d7a22620778f47e9e73b0e2ecef32f077d4f3ff6ff1",
+          "support": [
+            [],
+            [
+              0
+            ],
+            [
+              3
+            ],
+            [
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              0,
+              2,
+              8
+            ],
+            [
+              2,
+              3,
+              5,
+              8
+            ],
+            [
+              2,
+              6,
+              8,
+              9
+            ],
+            [
+              0,
+              2,
+              6,
+              8,
+              9
+            ],
+            [
+              2,
+              6,
+              8,
+              9,
+              10
+            ],
+            [
+              0,
+              1,
+              2,
+              4,
+              6,
+              8
+            ],
+            [
+              0,
+              2,
+              6,
+              8,
+              9,
+              10
+            ]
+          ]
+        }
+      ],
+      "channel_oracle": [
+        7,
+        2,
+        9,
+        5,
+        1,
+        4
+      ],
+      "channel_binding": {
+        "mapping": [
+          7,
+          2,
+          9,
+          5,
+          1,
+          4
+        ],
+        "posterior": 1.0,
+        "log_margin": 10909.673065046518,
+        "second": [
+          7,
+          2,
+          5,
+          9,
+          1,
+          4
+        ],
+        "compatible": 16,
+        "sensor_log_probability": -249202.08877780585,
+        "same_cell_log_probability": 0.0,
+        "per_stream": [
+          {
+            "mapping": [
+              7,
+              2,
+              9,
+              5,
+              1,
+              4
+            ],
+            "log_margin": 2961.0402364153124
+          },
+          {
+            "mapping": [
+              7,
+              2,
+              9,
+              5,
+              1,
+              4
+            ],
+            "log_margin": 3303.6977924889434
+          },
+          {
+            "mapping": [
+              7,
+              2,
+              9,
+              5,
+              1,
+              4
+            ],
+            "log_margin": 1526.9890962164427
+          },
+          {
+            "mapping": [
+              7,
+              2,
+              9,
+              5,
+              1,
+              4
+            ],
+            "log_margin": 2677.4682671598785
+          }
+        ]
+      },
+      "action_oracle": [
+        4,
+        0,
+        2,
+        5
+      ],
+      "action_binding": {
+        "mapping": [
+          4,
+          0,
+          2,
+          5
+        ],
+        "posterior": 1.0,
+        "log_margin": 33126.416240198814,
+        "second": [
+          4,
+          2,
+          0,
+          5
+        ],
+        "candidate_slots": [
+          0,
+          2,
+          4,
+          5
+        ]
+      },
+      "target_action_digest": "4c4aaa97e16d07be48e41046825b6286a3eadcea12f056b6bf6d74f8f77f52df"
+    },
+    {
+      "regimes": [
+        {
+          "interface_digest": "e316d8a187251c5408e94f1791e03bd19480704872e0f7045cf6d86e358d648a",
+          "support": [
+            [],
+            [
+              1
+            ],
+            [
+              3
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              1,
+              4,
+              7
+            ],
+            [
+              0,
+              1,
+              4,
+              6,
+              7
+            ],
+            [
+              1,
+              3,
+              4,
+              7,
+              9
+            ],
+            [
+              0,
+              1,
+              4,
+              6,
+              7,
+              10
+            ],
+            [
+              1,
+              2,
+              4,
+              5,
+              7,
+              11
+            ]
+          ]
+        },
+        {
+          "interface_digest": "2781a9eb68719b46192d5cccc5e61421af8828cffd470e3c5b7beff8594f80dd",
+          "support": [
+            [],
+            [
+              1
+            ],
+            [
+              3
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              1,
+              4,
+              7
+            ],
+            [
+              0,
+              1,
+              4,
+              6,
+              7
+            ],
+            [
+              1,
+              3,
+              4,
+              7,
+              9
+            ],
+            [
+              0,
+              1,
+              4,
+              6,
+              7,
+              10
+            ],
+            [
+              1,
+              2,
+              4,
+              5,
+              7,
+              11
+            ]
+          ]
+        },
+        {
+          "interface_digest": "ecafb71cc5c36b35a2ae0aad567c30d1afc902a201c636f22f43507ba18795ce",
+          "support": [
+            [],
+            [
+              1
+            ],
+            [
+              3
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              1,
+              4,
+              7
+            ],
+            [
+              0,
+              1,
+              4,
+              6,
+              7
+            ],
+            [
+              1,
+              3,
+              4,
+              7,
+              9
+            ],
+            [
+              0,
+              1,
+              4,
+              6,
+              7,
+              10
+            ],
+            [
+              1,
+              2,
+              4,
+              5,
+              7,
+              11
+            ]
+          ]
+        },
+        {
+          "interface_digest": "14983c9657189cba05c7adc32f6267d1d0c48df167fba7f5d2bb03fe0e53a77a",
+          "support": [
+            [],
+            [
+              1
+            ],
+            [
+              3
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              1,
+              4,
+              7
+            ],
+            [
+              0,
+              1,
+              4,
+              6,
+              7
+            ],
+            [
+              1,
+              3,
+              4,
+              7,
+              9
+            ],
+            [
+              0,
+              1,
+              4,
+              6,
+              7,
+              10
+            ],
+            [
+              1,
+              2,
+              4,
+              5,
+              7,
+              11
+            ]
+          ]
+        }
+      ],
+      "channel_oracle": [
+        8,
+        4,
+        0,
+        9,
+        5,
+        2
+      ],
+      "channel_binding": {
+        "mapping": [
+          8,
+          4,
+          0,
+          9,
+          5,
+          2
+        ],
+        "posterior": 1.0,
+        "log_margin": 10080.037601549062,
+        "second": [
+          8,
+          4,
+          9,
+          0,
+          5,
+          2
+        ],
+        "compatible": 72,
+        "sensor_log_probability": -245807.67813016404,
+        "same_cell_log_probability": 0.0,
+        "per_stream": [
+          {
+            "mapping": [
+              8,
+              4,
+              0,
+              9,
+              5,
+              2
+            ],
+            "log_margin": 3223.371679852702
+          },
+          {
+            "mapping": [
+              8,
+              4,
+              0,
+              9,
+              5,
+              2
+            ],
+            "log_margin": 2737.4192119680374
+          },
+          {
+            "mapping": [
+              8,
+              4,
+              0,
+              9,
+              5,
+              2
+            ],
+            "log_margin": 885.8426368282089
+          },
+          {
+            "mapping": [
+              8,
+              4,
+              0,
+              9,
+              5,
+              2
+            ],
+            "log_margin": 2656.3780595156277
+          }
+        ]
+      },
+      "action_oracle": [
+        2,
+        6,
+        1,
+        4
+      ],
+      "action_binding": {
+        "mapping": [
+          2,
+          6,
+          1,
+          4
+        ],
+        "posterior": 1.0,
+        "log_margin": 28358.367187315827,
+        "second": [
+          6,
+          2,
+          1,
+          4
+        ],
+        "candidate_slots": [
+          1,
+          2,
+          4,
+          6
+        ]
+      },
+      "target_action_digest": "91dd0f6e4e2fcac2d958e9334ca2f7d7ce061546f168f03602ca57c257085fd5"
+    }
+  ],
+  "holdout_sha256": "bb42c9c174a91d50738fd0ce5cfc3cee190e3abd9f14ca0d877967fd1a47f343",
+  "adoption_thresholds": {
+    "minimum_compatible_mappings": 2,
+    "maximum_compatible_mappings": 32,
+    "combined_sensor_log_margin": 8000.0,
+    "per_stream_sensor_log_margin": 800.0,
+    "action_log_margin": 20000.0,
+    "joint_rate": 0.55,
+    "sensor_only_joint_margin": 0.45,
+    "action_only_joint_margin": 0.4,
+    "identity_joint_margin": 0.45,
+    "random_joint_margin": 0.4
+  },
+  "controls": [
+    "oracle bindings over the same frozen policy and independent-generator worlds",
+    "learned sensors with first four action slots",
+    "first six sensors with learned actions",
+    "first-slot identity binding",
+    "fixed random bindings",
+    "four variable-width unseen interfaces",
+    "held-out distractor formulas 3/4/5 after development used only 0/1/2",
+    "non-null nuisance actions alter extra sensor planes",
+    "four independently sampled unlabeled regimes per interface",
+    "two evaluation action seeds",
+    "zero model writes",
+    "disjoint training, calibration, and holdout initial worlds"
+  ],
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "chosen_proposal": "cross-generator transfer",
+    "confidence": 0.73,
+    "secondary_proposal": "held-out distractor-family transfer",
+    "secondary_confidence": 0.66,
+    "role": "development route classification only; absent from inference, policy training, frozen evaluation, and runtime"
+  },
+  "source_sha256": {
+    "bpc_cross_generator_v17.py": "0e88ae8385a04360406f935fba1e24b96c5bf8ba45d79555c73af5f267a3d7a2",
+    "bpc_composite_binding_v16.py": "f4835340871bee46f692a891880fc5f282cb7d706058575870e8d2746956bd70",
+    "bpc_open_interface_v15.py": "51798c150c56f79a7d8a34fedf131ca848a537db745d5cc164e3cc645829ad0d",
+    "bpc_three_factor_v12.py": "e7a07fbc0756fc2af8bc100cf9963e472a539d5cf9dc0348a7a3ef085bc7ff8e",
+    "bpc_evidence_field_v11.py": "8794d9a22f80242f0a59298d36592fb2300ea89ae22cc3460a43a60d3750253b",
+    "bpc_cross_task_v07.py": "cfc8341c057e0674bbe46a2cc4edc338e1c9fed2235e07b212b326be15d742b9",
+    "bpc_direct_composition_v09.py": "6d15f3e2cb59c42d097860f2e463cfb7f46f54b7eb98b6a9963d421748a8ac3c",
+    "general_bpc_v7.py": "d37040bd087e0bbf135a491ab319411f7dd10d823038734327af1136467f05f8",
+    "experiment_v5.py": "0f883f7f0aa6d3a37299322e8214776c9179516b7be632094cd18c629231e493",
+    "experiment_v17_cross_generator_frozen.py": "fa0f600efab442191c1812a5e5bea106c1824bc303699648d0f922dd06a07021",
+    "freeze_v17_cross_generator.py": "af11533e68cf3647d4c1db79d19abd3c2fbf88fb81c2034bf1bceed142f638c2"
+  },
+  "failure_policy": "Retain failures. Do not replace formula families, interfaces, generators, worlds, seeds, sources, controls, or thresholds after holdout execution.",
+  "boundary": "Developer-frozen synthetic cross-generator transfer. Canonical semantics, six raw planes, four actions, maximum 7x7 canvas, distractor-family code, support-equality rule, same-cell conditional probability statistic, four calibration schedules, generators, terminal events, and direct policy remain supplied. No neural network, task label, reward, planner, search, classifier runtime, or evaluation learning is used."
+}
