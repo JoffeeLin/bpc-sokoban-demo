@@ -38,6 +38,12 @@ only reduced it to 356 and 354. The fixed 10% margin therefore failed. This
 supports a zero-shot candidate but does not yet establish causal use of all
 three factors; the 160-step suite permits too much random recovery.
 
+v0.30 used 24 fresh development worlds and a precommitted 48-step limit. The
+full model scored 479 / 768, while deleting `(1,2)`, `(1,3)`, and `(1,4,5)`
+reduced success to 349, 153, and 348: all three fixed causal margins passed.
+However, the absolute 75% gate failed at 62.4%, and one difficult world reached
+only 1 / 32. The candidate is therefore still not ready for freezing.
+
 ## Boundary
 
 This is generated development evidence, not frozen or third-party blind
