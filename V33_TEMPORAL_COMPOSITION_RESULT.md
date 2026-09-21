@@ -82,3 +82,16 @@ the same result, so learned duration structure was not causal under the fixed
 gates. Old joint retention also fell to 49 / 64 versus 56 / 64. The mechanism
 is not adopted. Its machine-readable result is
 `artifacts/v36runs/development.json`.
+
+## v0.37 development follow-up
+
+An observable-effect model conditioned next actions on the previous anonymous
+action and changed-plane tuple. It reached 428 / 768 (55.7%), only four
+successes above the gated first-order model at 424 and five above the
+event-erased control at 423. It therefore failed both the 75% absolute gate and
+the five-point causal margin; old joint retention was 55 / 64 versus 59 / 64.
+The training audit explains the weak increment: only `(1)` and `(1,3)` had
+observable successor actions. Push `(1,2)` and open `(1,4,5)` effects occur at
+the terminal step of their separate tasks, so no post-event action exists to
+estimate. The mechanism is not adopted. Its machine-readable result is
+`artifacts/v37effects/development.json`.
