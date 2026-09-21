@@ -1,0 +1,202 @@
+{
+  "frozen_first_execution": true,
+  "core_sha256": "68d4c1f1e7898baf0972454c1aca93c3e6e8616b0537c55d34952059c65d35ef",
+  "development_core_commit": "efd74b3",
+  "sokoban_generation_attempts": {
+    "training": 369,
+    "holdout": 53
+  },
+  "lattice_generation_attempts": {
+    "training": 363,
+    "holdout": 24
+  },
+  "tracks": [
+    {
+      "track": "sokoban_physics",
+      "training_transitions": 8640,
+      "training_initials": 360,
+      "holdout_transitions": 2304,
+      "holdout_initials": 24,
+      "medium": {
+        "capacity": 1048576,
+        "active_cells": 133373,
+        "writes": 17694720,
+        "digest": "4e27ccf9db40c0f97a15986fb55a8fdcea25f738fcf4999393748164801fb145",
+        "control_digest": "09199e54794ea9c40ba05b58a382ae251bde75a0fb17cc03bfe795a21f82a0ac"
+      },
+      "metrics_brier": {
+        "candidate": {
+          "all": 0.00627701385225922,
+          "changed": 0.14060942528973058,
+          "novel_changed": 0.1951805373649675
+        },
+        "no_action": {
+          "all": 0.01079832246562036,
+          "changed": 0.29063500552038285,
+          "novel_changed": 0.3110105494990022
+        },
+        "rotated": {
+          "all": 0.009558897978994311,
+          "changed": 0.5426589686678878,
+          "novel_changed": 0.5086139721426757
+        },
+        "copy": {
+          "all": 0.0040592631826742,
+          "changed": 1.0,
+          "novel_changed": 1.0
+        },
+        "half": {
+          "all": 0.25,
+          "changed": 0.25,
+          "novel_changed": 0.25
+        }
+      },
+      "counts": {
+        "candidate": {
+          "all": 679680,
+          "changed": 2759,
+          "novel_changed": 1477
+        },
+        "no_action": {
+          "all": 679680,
+          "changed": 2759,
+          "novel_changed": 1477
+        },
+        "rotated": {
+          "all": 679680,
+          "changed": 2759,
+          "novel_changed": 1477
+        },
+        "copy": {
+          "all": 679680,
+          "changed": 2759,
+          "novel_changed": 1477
+        },
+        "half": {
+          "all": 679680,
+          "changed": 2759,
+          "novel_changed": 1477
+        }
+      },
+      "novel_context_fraction": 0.4256597222222222,
+      "relative_improvement": {
+        "no_action_changed": 0.5161992787552587,
+        "no_action_novel_changed": 0.37243113560174046,
+        "rotated_changed": 0.7408880468060874,
+        "rotated_novel_changed": 0.6162501463679497
+      },
+      "gates": {
+        "initial_worlds_disjoint": true,
+        "novel_context_fraction_at_least_10pct": true,
+        "overall_brier_below_ceiling": true,
+        "changed_brier_at_most_050_and_below_copy": true,
+        "novel_changed_brier_at_most_025": true,
+        "changed_improves_action_controls_by_10pct": true,
+        "novel_changed_improves_action_controls_by_10pct": true,
+        "fixed_capacity_and_compression_boundary": true,
+        "evaluation_zero_write_and_unchanged": true,
+        "all_tests_passed_before_execution": true
+      },
+      "pass": true,
+      "evaluation_writes": {
+        "candidate": 0,
+        "control": 0
+      }
+    },
+    {
+      "track": "particle_lattice",
+      "training_transitions": 8640,
+      "training_initials": 360,
+      "holdout_transitions": 2304,
+      "holdout_initials": 24,
+      "medium": {
+        "capacity": 1048576,
+        "active_cells": 229959,
+        "writes": 17694720,
+        "digest": "6f02f9ce6228dffa5b26ea2ff7ab9bc54378c039451bea9b97e55fa40070c0a2",
+        "control_digest": "510dd72d0a7e36331c98eb14ba92d8407964571a0c414a5946cb03643362af98"
+      },
+      "metrics_brier": {
+        "candidate": {
+          "all": 0.012654492222160339,
+          "changed": 0.03433972396686378,
+          "novel_changed": 0.06338599858156264
+        },
+        "no_action": {
+          "all": 0.05422745754775531,
+          "changed": 0.24652774570251376,
+          "novel_changed": 0.24955926698539296
+        },
+        "rotated": {
+          "all": 0.05643979840385162,
+          "changed": 0.42853483913739326,
+          "novel_changed": 0.34327602975193705
+        },
+        "copy": {
+          "all": 0.053690592447916664,
+          "changed": 1.0,
+          "novel_changed": 1.0
+        },
+        "half": {
+          "all": 0.25,
+          "changed": 0.25,
+          "novel_changed": 0.25
+        }
+      },
+      "counts": {
+        "candidate": {
+          "all": 294912,
+          "changed": 15834,
+          "novel_changed": 1132
+        },
+        "no_action": {
+          "all": 294912,
+          "changed": 15834,
+          "novel_changed": 1132
+        },
+        "rotated": {
+          "all": 294912,
+          "changed": 15834,
+          "novel_changed": 1132
+        },
+        "copy": {
+          "all": 294912,
+          "changed": 15834,
+          "novel_changed": 1132
+        },
+        "half": {
+          "all": 294912,
+          "changed": 15834,
+          "novel_changed": 1132
+        }
+      },
+      "novel_context_fraction": 0.029052734375,
+      "relative_improvement": {
+        "no_action_changed": 0.860706453673163,
+        "no_action_novel_changed": 0.7460082354494465,
+        "rotated_changed": 0.919867136039658,
+        "rotated_novel_changed": 0.8153497678606703
+      },
+      "gates": {
+        "initial_worlds_disjoint": true,
+        "novel_context_fraction_at_least_10pct": false,
+        "overall_brier_below_ceiling": true,
+        "changed_brier_at_most_050_and_below_copy": true,
+        "novel_changed_brier_at_most_025": true,
+        "changed_improves_action_controls_by_10pct": true,
+        "novel_changed_improves_action_controls_by_10pct": true,
+        "fixed_capacity_and_compression_boundary": true,
+        "evaluation_zero_write_and_unchanged": true,
+        "all_tests_passed_before_execution": true
+      },
+      "pass": false,
+      "evaluation_writes": {
+        "candidate": 0,
+        "control": 0
+      }
+    }
+  ],
+  "all_tracks_pass": false,
+  "seconds": 193.83170333399903,
+  "boundary": "World prediction only; no goal behavior, weight transfer, or AGI claim."
+}
