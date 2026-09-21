@@ -107,3 +107,14 @@ for always-on first-order time, and retained 247 / 256 old tasks versus 241 for
 the field. Yet it missed the 75% gate, had one world at 2 / 32, and its 11-win
 gain over always-on time missed the fixed 39-win causal margin. It is not
 adopted. Its result is `artifacts/v38boundary/development.json`.
+
+## v0.39 development follow-up
+
+Factor-specific Beta raw-change probabilities were trained by replaying every
+transition from the unchanged separate-task successful traces, then multiplied
+with the event-boundary direct policy. The full product reached 415 / 768
+(54.0%), versus 394 for the boundary policy, 402 for the old v7 fixed-0.24
+fusion, and 409 for a shared change cube. Those 21-, 13-, and 6-win gains all
+missed the fixed 39-win causal margin; one world reached only 2 / 32. Old push
+retention also fell to 53 / 64 versus 56 / 64 for the field. Raw-change fusion
+is not adopted. Its result is `artifacts/v39change/development.json`.
