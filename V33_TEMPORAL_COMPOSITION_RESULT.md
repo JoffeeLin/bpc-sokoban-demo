@@ -71,3 +71,14 @@ alignment still reached 461, below the required five-point causal margin; one
 world reached only 1 / 32. Old joint retention also fell to 45 / 64 versus
 51 / 64 for the field. The mechanism is not adopted. Its machine-readable
 result is `artifacts/v35responsibility/development.json`.
+
+## v0.36 development follow-up
+
+An action-run survival model learned run-length posteriors from the same compact
+separate-factor success traces. It scored 261 / 768 (34.0%), below both the
+field at 313 and the structurally gated first-order model at 422. Removing run
+age, rotating duration rows, or shuffling factor-duration rows produced nearly
+the same result, so learned duration structure was not causal under the fixed
+gates. Old joint retention also fell to 49 / 64 versus 56 / 64. The mechanism
+is not adopted. Its machine-readable result is
+`artifacts/v36runs/development.json`.
