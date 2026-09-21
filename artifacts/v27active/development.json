@@ -1,0 +1,303 @@
+{
+  "development_only": true,
+  "v21_frozen_result_was_non_adopted": true,
+  "source": "artifacts/v26context/development.json",
+  "mechanism": "predict hidden mode through actuator delay; among actions no less probable under the unchanged BPC task distribution, choose maximum I(mode; raw-change)",
+  "conditions": {
+    "0": {
+      "active": {
+        "probe_opportunities": 2563,
+        "probe_replacements": 2563,
+        "episodes": 256,
+        "successes": 252,
+        "push_successes": 64,
+        "collect_successes": 64,
+        "open_successes": 64,
+        "joint_successes": 60
+      },
+      "random_probe": {
+        "probe_opportunities": 2560,
+        "probe_replacements": 2560,
+        "episodes": 256,
+        "successes": 254,
+        "push_successes": 64,
+        "collect_successes": 64,
+        "open_successes": 64,
+        "joint_successes": 62
+      },
+      "wrong_probe": {
+        "probe_opportunities": 2975,
+        "probe_replacements": 2975,
+        "episodes": 256,
+        "successes": 244,
+        "push_successes": 64,
+        "collect_successes": 64,
+        "open_successes": 64,
+        "joint_successes": 52
+      },
+      "predictive_passive": {
+        "episodes": 256,
+        "successes": 245,
+        "push_successes": 64,
+        "collect_successes": 59,
+        "open_successes": 64,
+        "joint_successes": 58
+      },
+      "legacy_passive": {
+        "episodes": 256,
+        "successes": 244,
+        "push_successes": 64,
+        "collect_successes": 59,
+        "open_successes": 64,
+        "joint_successes": 57
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 224,
+        "push_successes": 63,
+        "collect_successes": 52,
+        "open_successes": 62,
+        "joint_successes": 47
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 250,
+        "push_successes": 64,
+        "collect_successes": 62,
+        "open_successes": 64,
+        "joint_successes": 60
+      }
+    },
+    "1": {
+      "active": {
+        "probe_opportunities": 3808,
+        "probe_replacements": 3808,
+        "episodes": 256,
+        "successes": 238,
+        "push_successes": 64,
+        "collect_successes": 62,
+        "open_successes": 62,
+        "joint_successes": 50
+      },
+      "random_probe": {
+        "probe_opportunities": 3436,
+        "probe_replacements": 3436,
+        "episodes": 256,
+        "successes": 242,
+        "push_successes": 64,
+        "collect_successes": 64,
+        "open_successes": 62,
+        "joint_successes": 52
+      },
+      "wrong_probe": {
+        "probe_opportunities": 4097,
+        "probe_replacements": 4097,
+        "episodes": 256,
+        "successes": 244,
+        "push_successes": 64,
+        "collect_successes": 64,
+        "open_successes": 63,
+        "joint_successes": 53
+      },
+      "predictive_passive": {
+        "episodes": 256,
+        "successes": 242,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 63,
+        "joint_successes": 54
+      },
+      "legacy_passive": {
+        "episodes": 256,
+        "successes": 246,
+        "push_successes": 64,
+        "collect_successes": 60,
+        "open_successes": 63,
+        "joint_successes": 59
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 238,
+        "push_successes": 64,
+        "collect_successes": 58,
+        "open_successes": 64,
+        "joint_successes": 52
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 243,
+        "push_successes": 64,
+        "collect_successes": 63,
+        "open_successes": 62,
+        "joint_successes": 54
+      }
+    },
+    "2": {
+      "active": {
+        "probe_opportunities": 4249,
+        "probe_replacements": 4249,
+        "episodes": 256,
+        "successes": 241,
+        "push_successes": 63,
+        "collect_successes": 63,
+        "open_successes": 64,
+        "joint_successes": 51
+      },
+      "random_probe": {
+        "probe_opportunities": 4010,
+        "probe_replacements": 4010,
+        "episodes": 256,
+        "successes": 252,
+        "push_successes": 64,
+        "collect_successes": 64,
+        "open_successes": 64,
+        "joint_successes": 60
+      },
+      "wrong_probe": {
+        "probe_opportunities": 4273,
+        "probe_replacements": 4273,
+        "episodes": 256,
+        "successes": 244,
+        "push_successes": 63,
+        "collect_successes": 63,
+        "open_successes": 64,
+        "joint_successes": 54
+      },
+      "predictive_passive": {
+        "episodes": 256,
+        "successes": 235,
+        "push_successes": 64,
+        "collect_successes": 56,
+        "open_successes": 61,
+        "joint_successes": 54
+      },
+      "legacy_passive": {
+        "episodes": 256,
+        "successes": 235,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 62,
+        "joint_successes": 48
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 235,
+        "push_successes": 64,
+        "collect_successes": 58,
+        "open_successes": 61,
+        "joint_successes": 52
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 241,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 62,
+        "joint_successes": 54
+      }
+    }
+  },
+  "diagnostic": {
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 256,
+        "complex_episodes": 64,
+        "active": 252,
+        "random_probe": 254,
+        "wrong_probe": 244,
+        "predictive_passive": 245,
+        "legacy_passive": 244,
+        "memoryless": 224,
+        "oracle": 250,
+        "active_complex": 60,
+        "random_probe_complex": 62,
+        "wrong_probe_complex": 52,
+        "predictive_passive_complex": 58,
+        "legacy_passive_complex": 57,
+        "memoryless_complex": 47,
+        "oracle_complex": 60,
+        "active_probes": 2563,
+        "random_probe_probes": 2560,
+        "wrong_probe_probes": 2975,
+        "predictive_passive_probes": 0,
+        "legacy_passive_probes": 0,
+        "memoryless_probes": 0,
+        "oracle_probes": 0
+      },
+      {
+        "interface": 1,
+        "episodes": 256,
+        "complex_episodes": 64,
+        "active": 238,
+        "random_probe": 242,
+        "wrong_probe": 244,
+        "predictive_passive": 242,
+        "legacy_passive": 246,
+        "memoryless": 238,
+        "oracle": 243,
+        "active_complex": 50,
+        "random_probe_complex": 52,
+        "wrong_probe_complex": 53,
+        "predictive_passive_complex": 54,
+        "legacy_passive_complex": 59,
+        "memoryless_complex": 52,
+        "oracle_complex": 54,
+        "active_probes": 3808,
+        "random_probe_probes": 3436,
+        "wrong_probe_probes": 4097,
+        "predictive_passive_probes": 0,
+        "legacy_passive_probes": 0,
+        "memoryless_probes": 0,
+        "oracle_probes": 0
+      },
+      {
+        "interface": 2,
+        "episodes": 256,
+        "complex_episodes": 64,
+        "active": 241,
+        "random_probe": 252,
+        "wrong_probe": 244,
+        "predictive_passive": 235,
+        "legacy_passive": 235,
+        "memoryless": 235,
+        "oracle": 241,
+        "active_complex": 51,
+        "random_probe_complex": 60,
+        "wrong_probe_complex": 54,
+        "predictive_passive_complex": 54,
+        "legacy_passive_complex": 48,
+        "memoryless_complex": 52,
+        "oracle_complex": 54,
+        "active_probes": 4249,
+        "random_probe_probes": 4010,
+        "wrong_probe_probes": 4273,
+        "predictive_passive_probes": 0,
+        "legacy_passive_probes": 0,
+        "memoryless_probes": 0,
+        "oracle_probes": 0
+      }
+    ]
+  },
+  "preregistered_gates": {
+    "each_predictive_passive_at_least_legacy_overall": false,
+    "each_active_at_least_predictive_passive_overall": false,
+    "failed_interface_2_active_beats_predictive_complex_by_5pct": false,
+    "each_active_at_least_random_probe_overall": false,
+    "failed_interface_2_active_beats_random_probe_complex_by_5pct": false,
+    "each_active_beats_wrong_probe_complex_by_5pct": false,
+    "active_probe_used_each_interface": true,
+    "evaluation_writes_zero_and_digest_unchanged": true
+  },
+  "adopt_for_v27_freeze": false,
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "batch_items": 10,
+    "selected": "active raw-observation probe under same-experience controls",
+    "confidence": 0.99,
+    "role": "route classification only"
+  },
+  "evaluation_writes": 0,
+  "seconds": 180.36415320797823,
+  "boundary": "Development reuse of observed v0.21 holdout. Probability statistics only; no reward, semantic rule, planner, neural network, classifier runtime, hidden label, or evaluation learning."
+}

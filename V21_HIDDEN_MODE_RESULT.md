@@ -61,6 +61,12 @@ The full result is `artifacts/v21hidden/result.json`.
   It recovered the hidden parameters accurately, but interface 2 gained only
   two complex successes over v0.25 and interface 0 regressed by one success
   overall. It failed the fixed development gates and was not frozen.
+- v0.27 propagated hidden-mode belief through the actuator delay and replaced
+  a sampled task action only with a no-less-probable action carrying more
+  mode/raw-change mutual information. Active probing lost to its matched random
+  probe on all three interfaces; on interface 2 it scored 241 / 256 versus 252
+  / 256, and 51 / 64 versus 60 / 64 on complex worlds. This rejects immediate
+  binary-change information as the cause of the random probe improvement.
 
 ## Boundary
 
