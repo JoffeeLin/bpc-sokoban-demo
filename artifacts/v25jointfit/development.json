@@ -1,0 +1,489 @@
+{
+  "development_only": true,
+  "v21_frozen_result_was_non_adopted": true,
+  "mechanism": "the same joint raw-effect categorical emission is used in Baum-Welch fitting and online filtering",
+  "calibration": [
+    {
+      "joint_model": {
+        "log_probability": -13357.188958485607,
+        "initial": [
+          0.44995665669268264,
+          0.5500433433073173
+        ],
+        "transition": [
+          [
+            0.962002122160556,
+            0.03799787783944395
+          ],
+          [
+            0.036117723647813786,
+            0.9638822763521863
+          ]
+        ],
+        "channels": [
+          [
+            [
+              0.05488966248240802,
+              0.8125323881044955,
+              0.0648877146264942,
+              0.06769023478660238
+            ],
+            [
+              0.783710174457692,
+              0.05937281940191369,
+              0.07817771693437285,
+              0.07873928920602143
+            ],
+            [
+              0.06609424405176319,
+              0.07782040059452155,
+              0.05900615026732401,
+              0.7970792050863912
+            ],
+            [
+              0.06160261171956566,
+              0.07966986678160837,
+              0.7950062875209554,
+              0.06372123397787054
+            ]
+          ],
+          [
+            [
+              0.7884440183661227,
+              0.08425550406587896,
+              0.06131154359194179,
+              0.06598893397605661
+            ],
+            [
+              0.06383540261313415,
+              0.06788745016318316,
+              0.056059580382193004,
+              0.8122175668414897
+            ],
+            [
+              0.06997957711966665,
+              0.07004498793259066,
+              0.7969222343481651,
+              0.06305320059957753
+            ],
+            [
+              0.07036935290034292,
+              0.8174921131723327,
+              0.05947531149234667,
+              0.05266322243497764
+            ]
+          ]
+        ],
+        "restarts": 6,
+        "iterations": 30
+      },
+      "alignment": {
+        "maximum_channel_total_variation": 0.023583672807061,
+        "maximum_transition_error": 0.002997877839443948,
+        "maximum_initial_error": 0.050043343307317356,
+        "model_to_truth": [
+          0,
+          1
+        ]
+      },
+      "filter_accuracy": 0.9041514041514042
+    },
+    {
+      "joint_model": {
+        "log_probability": -12743.726434737247,
+        "initial": [
+          0.4714884761245379,
+          0.5285115238754621
+        ],
+        "transition": [
+          [
+            0.9470906554470766,
+            0.052909344552923426
+          ],
+          [
+            0.05319970995389979,
+            0.9468002900461001
+          ]
+        ],
+        "channels": [
+          [
+            [
+              0.06272458352998093,
+              0.08095116067697014,
+              0.785011989245624,
+              0.07131226654742487
+            ],
+            [
+              0.0678088430011242,
+              0.8259482731663665,
+              0.06131860598861923,
+              0.044924277843890074
+            ],
+            [
+              0.05739175389767644,
+              0.08443982005665876,
+              0.06775985911487124,
+              0.7904085669307935
+            ],
+            [
+              0.8324098409233864,
+              0.06261448682430647,
+              0.04044742898734213,
+              0.06452824326496495
+            ]
+          ],
+          [
+            [
+              0.8303844830997534,
+              0.059767769301520175,
+              0.05219505231326474,
+              0.057652695285461686
+            ],
+            [
+              0.060687442610074596,
+              0.06074443670365225,
+              0.06473909295231647,
+              0.8138290277339567
+            ],
+            [
+              0.06252076384756268,
+              0.8130952357191978,
+              0.06258690569529206,
+              0.06179709473794742
+            ],
+            [
+              0.06155467889668611,
+              0.06338010150475196,
+              0.8053492399623531,
+              0.06971597963620896
+            ]
+          ]
+        ],
+        "restarts": 6,
+        "iterations": 30
+      },
+      "alignment": {
+        "maximum_channel_total_variation": 0.025596760557728415,
+        "maximum_transition_error": 0.0020906554470766503,
+        "maximum_initial_error": 0.028511523875462075,
+        "model_to_truth": [
+          1,
+          0
+        ]
+      },
+      "filter_accuracy": 0.9013299013299013
+    },
+    {
+      "joint_model": {
+        "log_probability": -12820.45671184236,
+        "initial": [
+          0.4154093490850628,
+          0.5845906509149372
+        ],
+        "transition": [
+          [
+            0.9192607597591762,
+            0.08073924024082381
+          ],
+          [
+            0.07528758407298182,
+            0.9247124159270181
+          ]
+        ],
+        "channels": [
+          [
+            [
+              0.051332286042824256,
+              0.06963025473243599,
+              0.804815106475941,
+              0.0742223527487987
+            ],
+            [
+              0.06655483378989785,
+              0.07647506549450402,
+              0.06391153515600678,
+              0.7930585655595914
+            ],
+            [
+              0.8009914571682752,
+              0.08337562643178056,
+              0.05710743619157918,
+              0.05852548020836506
+            ],
+            [
+              0.0924104578922983,
+              0.7995363658310068,
+              0.061009714531392215,
+              0.04704346174530267
+            ]
+          ],
+          [
+            [
+              0.06311039474596034,
+              0.7662760620006287,
+              0.08379025578828092,
+              0.08682328746513002
+            ],
+            [
+              0.7896650298922027,
+              0.08863444824104685,
+              0.06849527133951386,
+              0.053205250527236694
+            ],
+            [
+              0.06954531674871132,
+              0.07028789282606754,
+              0.08110078419761872,
+              0.7790660062276024
+            ],
+            [
+              0.0725892334856165,
+              0.09488828154385454,
+              0.762051078705663,
+              0.07047140626486595
+            ]
+          ]
+        ],
+        "restarts": 6,
+        "iterations": 30
+      },
+      "alignment": {
+        "maximum_channel_total_variation": 0.03194682372330511,
+        "maximum_transition_error": 0.00573924024082384,
+        "maximum_initial_error": 0.08459065091493723,
+        "model_to_truth": [
+          1,
+          0
+        ]
+      },
+      "filter_accuracy": 0.8634259259259259
+    }
+  ],
+  "conditions": {
+    "0": {
+      "joint_fit": {
+        "episodes": 256,
+        "successes": 243,
+        "push_successes": 62,
+        "collect_successes": 64,
+        "open_successes": 62,
+        "joint_successes": 55
+      },
+      "factored_fit": {
+        "episodes": 256,
+        "successes": 243,
+        "push_successes": 62,
+        "collect_successes": 64,
+        "open_successes": 61,
+        "joint_successes": 56
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 227,
+        "push_successes": 61,
+        "collect_successes": 61,
+        "open_successes": 60,
+        "joint_successes": 45
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 235,
+        "push_successes": 63,
+        "collect_successes": 56,
+        "open_successes": 63,
+        "joint_successes": 53
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 229,
+        "push_successes": 60,
+        "collect_successes": 60,
+        "open_successes": 62,
+        "joint_successes": 47
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 247,
+        "push_successes": 63,
+        "collect_successes": 64,
+        "open_successes": 63,
+        "joint_successes": 57
+      }
+    },
+    "1": {
+      "joint_fit": {
+        "episodes": 256,
+        "successes": 246,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 63,
+        "joint_successes": 58
+      },
+      "factored_fit": {
+        "episodes": 256,
+        "successes": 243,
+        "push_successes": 64,
+        "collect_successes": 60,
+        "open_successes": 62,
+        "joint_successes": 57
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 231,
+        "push_successes": 62,
+        "collect_successes": 56,
+        "open_successes": 63,
+        "joint_successes": 50
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 216,
+        "push_successes": 60,
+        "collect_successes": 54,
+        "open_successes": 58,
+        "joint_successes": 44
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 229,
+        "push_successes": 61,
+        "collect_successes": 57,
+        "open_successes": 62,
+        "joint_successes": 49
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 246,
+        "push_successes": 64,
+        "collect_successes": 63,
+        "open_successes": 61,
+        "joint_successes": 58
+      }
+    },
+    "2": {
+      "joint_fit": {
+        "episodes": 256,
+        "successes": 242,
+        "push_successes": 62,
+        "collect_successes": 63,
+        "open_successes": 62,
+        "joint_successes": 55
+      },
+      "factored_fit": {
+        "episodes": 256,
+        "successes": 241,
+        "push_successes": 62,
+        "collect_successes": 62,
+        "open_successes": 63,
+        "joint_successes": 54
+      },
+      "memoryless": {
+        "episodes": 256,
+        "successes": 238,
+        "push_successes": 63,
+        "collect_successes": 64,
+        "open_successes": 61,
+        "joint_successes": 50
+      },
+      "shuffled": {
+        "episodes": 256,
+        "successes": 217,
+        "push_successes": 63,
+        "collect_successes": 52,
+        "open_successes": 63,
+        "joint_successes": 39
+      },
+      "zero_lag": {
+        "episodes": 256,
+        "successes": 235,
+        "push_successes": 64,
+        "collect_successes": 61,
+        "open_successes": 62,
+        "joint_successes": 48
+      },
+      "oracle": {
+        "episodes": 256,
+        "successes": 243,
+        "push_successes": 63,
+        "collect_successes": 64,
+        "open_successes": 62,
+        "joint_successes": 54
+      }
+    }
+  },
+  "diagnostic": {
+    "per_interface": [
+      {
+        "interface": 0,
+        "episodes": 256,
+        "complex_episodes": 64,
+        "joint_fit": 243,
+        "factored_fit": 243,
+        "memoryless": 227,
+        "shuffled": 235,
+        "zero_lag": 229,
+        "oracle": 247,
+        "joint_fit_complex": 55,
+        "factored_fit_complex": 56,
+        "memoryless_complex": 45,
+        "shuffled_complex": 53,
+        "zero_lag_complex": 47,
+        "oracle_complex": 57
+      },
+      {
+        "interface": 1,
+        "episodes": 256,
+        "complex_episodes": 64,
+        "joint_fit": 246,
+        "factored_fit": 243,
+        "memoryless": 231,
+        "shuffled": 216,
+        "zero_lag": 229,
+        "oracle": 246,
+        "joint_fit_complex": 58,
+        "factored_fit_complex": 57,
+        "memoryless_complex": 50,
+        "shuffled_complex": 44,
+        "zero_lag_complex": 49,
+        "oracle_complex": 58
+      },
+      {
+        "interface": 2,
+        "episodes": 256,
+        "complex_episodes": 64,
+        "joint_fit": 242,
+        "factored_fit": 241,
+        "memoryless": 238,
+        "shuffled": 217,
+        "zero_lag": 235,
+        "oracle": 243,
+        "joint_fit_complex": 55,
+        "factored_fit_complex": 54,
+        "memoryless_complex": 50,
+        "shuffled_complex": 39,
+        "zero_lag_complex": 48,
+        "oracle_complex": 54
+      }
+    ]
+  },
+  "preregistered_gates": {
+    "all_joint_channel_error_within_14pct": true,
+    "all_joint_transition_error_within_10pct": true,
+    "all_joint_filter_accuracy_at_least_78pct": true,
+    "each_joint_fit_at_least_factored_fit_overall": true,
+    "failed_interface_2_joint_fit_beats_factored_complex_by_5pct": false,
+    "failed_interface_2_joint_fit_beats_memoryless_complex_by_5pct": true,
+    "each_joint_fit_beats_shuffled_complex_by_5pct": false,
+    "evaluation_writes_zero": true
+  },
+  "adopt_for_v25_freeze": false,
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "selected": "joint emission in both fitting and filtering",
+    "confidence": 0.99,
+    "role": "route classification only"
+  },
+  "evaluation_writes": 0,
+  "seconds": 218.6927748749731,
+  "boundary": "Development reuse of the already-observed failed v0.21 calibration and holdout; never frozen evidence."
+}

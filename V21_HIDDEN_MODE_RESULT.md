@@ -52,6 +52,10 @@ The full result is `artifacts/v21hidden/result.json`.
   raw-effect category. It improved the failed interface from 55 to 57 complex
   successes out of 64, below the preregistered four-success margin, and was not
   frozen.
+- v0.25 used that same joint categorical emission consistently in Baum-Welch
+  fitting and online filtering. Parameter recovery improved, but the failed
+  interface gained only one complex success over the factorized model and one
+  other interface failed its shuffled-channel margin. It was not frozen.
 
 ## Boundary
 
