@@ -59,6 +59,19 @@ Old-task retention was 251 / 256 versus 252 / 256, with zero evaluation writes.
 All ten development gates passed, so the mechanism is eligible for a new
 independent-generator freeze; it is not yet a frozen result.
 
+v0.33 executed that freeze on 24 worlds from a separately implemented
+generator, using two fixed action seeds and an exact deterministic rerun. The
+temporal policy reached 378 / 768 (49.2%), versus 303 for the state field, 307
+for order-zero action counts, 233 for shuffled history, and 292 / 164 / 265
+after deleting each old factor. It passed the causal margins, all-world
+coverage, exact-repeat, hash, and zero-write gates, but failed the precommitted
+75% absolute gate and the per-seed 70% gate. Old-task retention was 243 / 256
+versus 248 / 256 for the field, with one push family/seed below the required
+95% ratio. The candidate is therefore **not adopted**. This is evidence that
+first-order temporal probability contributes, not evidence of reliable
+cross-generator composition. The frozen result is
+`artifacts/v33temporal/result.json`.
+
 ## Boundary
 
 This is generated development evidence, not frozen or third-party blind
