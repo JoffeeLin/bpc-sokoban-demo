@@ -47,3 +47,15 @@ AGI. The raw channels, terminal event, factor signatures, dynamics, generators,
 first-order temporal family, and direct controller are supplied. No neural
 network, reward, task score, planner, runtime search, semantic model rule,
 classifier runtime, or evaluation learning is used.
+
+## v0.34 development follow-up
+
+A hierarchical zero-to-four-action suffix model was tested once on 24 fresh
+development worlds excluded from the v0.33 holdout. It reached 480 / 768
+(62.5%), versus 405 for the state field, 409 for order-zero counts, and 504 for
+a structurally gated first-order model. The longer suffix therefore lost to its
+precommitted first-order control and also missed the unchanged 75% absolute
+gate. It is not adopted. The composition gate did remove the old-skill
+regression: suffix and field both reached 251 / 256 on fresh old-task worlds.
+The machine-readable result is
+`artifacts/v34suffix/development.json`.
