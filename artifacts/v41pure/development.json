@@ -1,0 +1,143 @@
+{
+  "development_only": true,
+  "phase": "pure BPC world prediction before goal behavior",
+  "theory_sha256": "594697f1bf8ea2d92b669936e41ff7c284d1360409e4cfd275d33b1f84733212",
+  "interface": {
+    "bytes": 64,
+    "actions": 4,
+    "closure_cell": 63,
+    "closure_bit": 0
+  },
+  "training": {
+    "seed": 241010,
+    "transitions": 8640,
+    "initial_worlds": 357,
+    "unique_raw_states": 2649,
+    "seen_full_contexts": 16322
+  },
+  "holdout": {
+    "seed": 241110,
+    "worlds": 24,
+    "transitions": 2304,
+    "generation_attempts": 49,
+    "distances_auditor_only": [
+      9,
+      9,
+      9,
+      11,
+      9,
+      13,
+      14,
+      8,
+      11,
+      10,
+      8,
+      12,
+      9,
+      13,
+      13,
+      10,
+      9,
+      9,
+      15,
+      10,
+      10,
+      9,
+      9,
+      8
+    ]
+  },
+  "medium": {
+    "capacity": 1048576,
+    "active_cells": 132415,
+    "writes": 17694720,
+    "digest": "fc01df93b414298e2e744664e8b946c77fcdfe605a28dedb54bc5568e706e67f",
+    "control_active_cells": 44625,
+    "control_digest": "f6efa96006061890fe539884eeaa03627f3e7ccb85246f6f07fc01dfbc32c29a"
+  },
+  "metrics_brier": {
+    "candidate": {
+      "all": 0.008387304497131787,
+      "changed": 0.24803815839421486,
+      "novel_changed": 0.2857241977604821
+    },
+    "no_action": {
+      "all": 0.011233721237433453,
+      "changed": 0.290894956311894,
+      "novel_changed": 0.3127503290343317
+    },
+    "rotated": {
+      "all": 0.009112409254139937,
+      "changed": 0.33748601100241044,
+      "novel_changed": 0.36826513886488094
+    },
+    "copy": {
+      "all": 0.00431820856873823,
+      "changed": 1.0,
+      "novel_changed": 1.0
+    },
+    "half": {
+      "all": 0.25,
+      "changed": 0.25,
+      "novel_changed": 0.25
+    }
+  },
+  "context_counts": {
+    "candidate": {
+      "all": 679680,
+      "changed": 2935,
+      "novel_changed": 1543
+    },
+    "no_action": {
+      "all": 679680,
+      "changed": 2935,
+      "novel_changed": 1543
+    },
+    "rotated": {
+      "all": 679680,
+      "changed": 2935,
+      "novel_changed": 1543
+    },
+    "copy": {
+      "all": 679680,
+      "changed": 2935,
+      "novel_changed": 1543
+    },
+    "half": {
+      "all": 679680,
+      "changed": 2935,
+      "novel_changed": 1543
+    }
+  },
+  "novel_context_fraction": 0.396015625,
+  "relative_improvement": {
+    "no_action_changed": 0.1473274011383291,
+    "no_action_novel_changed": 0.08641439757169,
+    "rotated_changed": 0.26504166007508,
+    "rotated_novel_changed": 0.22413454979425496
+  },
+  "preregistered_gates": {
+    "train_holdout_initial_worlds_disjoint": true,
+    "novel_local_context_fraction_at_least_10pct": true,
+    "overall_defined_bit_brier_at_most_0020": true,
+    "changed_bit_brier_at_most_050_and_below_copy": true,
+    "changed_bit_improves_action_controls_by_10pct": true,
+    "novel_changed_bit_improves_action_controls_by_10pct": false,
+    "fixed_capacity_and_compression_boundary": true,
+    "evaluation_writes_zero_and_digests_unchanged": true,
+    "equivariance_typed_output_and_full_unit_suite_passed_before_execution": true
+  },
+  "adopt_for_independent_freeze": false,
+  "evaluation_writes": {
+    "candidate": 0,
+    "no_action": 0
+  },
+  "classifier_dev": {
+    "model": "jev-1.13.0",
+    "selected": "one fixed task-independent probability medium",
+    "confidence": 0.96,
+    "role": "development triage only"
+  },
+  "seconds": 53.01846258301521,
+  "boundary": "No neural network, reward, task score, planner, search, factor, event, memory module, semantic model channel, goal field, classifier runtime, evaluation learning, or BFS information enters the medium."
+}
