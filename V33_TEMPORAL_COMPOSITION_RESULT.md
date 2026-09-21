@@ -59,3 +59,15 @@ gate. It is not adopted. The composition gate did remove the old-skill
 regression: suffix and field both reached 251 / 256 on fresh old-task worlds.
 The machine-readable result is
 `artifacts/v34suffix/development.json`.
+
+## v0.35 development follow-up
+
+A uniform latent-factor mixture multiplied each factor's raw-state posterior by
+its first-order temporal posterior before marginalizing factors. On another 24
+fresh excluded development worlds it reached 478 / 768 (62.2%), versus 330 for
+the field, 407 for pooled temporal counts, 408 for uniform factor-temporal
+mixing, and 399 for state-only mixing. However, shuffling the factor/temporal
+alignment still reached 461, below the required five-point causal margin; one
+world reached only 1 / 32. Old joint retention also fell to 45 / 64 versus
+51 / 64 for the field. The mechanism is not adopted. Its machine-readable
+result is `artifacts/v35responsibility/development.json`.
