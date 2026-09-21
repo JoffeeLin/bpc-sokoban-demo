@@ -118,3 +118,21 @@ fusion, and 409 for a shared change cube. Those 21-, 13-, and 6-win gains all
 missed the fixed 39-win causal margin; one world reached only 2 / 32. Old push
 retention also fell to 53 / 64 versus 56 / 64 for the field. Raw-change fusion
 is not adopted. Its result is `artifacts/v39change/development.json`.
+
+## v0.40 development follow-up
+
+A recursive probability state tracked responsibility across the three anonymous
+factors. At every step it updated factor belief with the selected action, the
+observed changed-plane tuple, and the learned probability that the current
+factor event continued. It reached 434 / 768 (56.5%), versus 430 for a
+memoryless factor mixture and 276 for the state field. The apparent gain over
+memoryless control was only four successes. Removing raw-effect updates reached
+438, and shuffling factor/emission associations reached 441, so the proposed
+observation update was not causal. One world remained at 0 / 32, and deleting
+the `(1,2)` factor lost only twelve successes rather than the required 77.
+
+The boundary reset itself was useful: removing it reduced success to 354. Old
+task retention was 252 / 256, equal to the field total, and all evaluation
+write/digest checks passed. Nevertheless, four preregistered adoption gates
+failed, so the model is not frozen or published. The machine-readable result is
+`artifacts/v40recursive/development.json`.
