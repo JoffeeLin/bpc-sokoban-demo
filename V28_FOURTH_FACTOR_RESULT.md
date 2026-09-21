@@ -31,6 +31,13 @@ This aggregate cannot be promoted from the failed v0.28 experiment. It first
 needs source audit, individual old-factor deletions, old-skill retention, and a
 new generator/seeds/holdout frozen before execution.
 
+The v0.29 development audit confirmed zero object/mark overlap across 4,412
+actual training initial worlds. The unchanged model repeated at 380 / 384;
+deleting `(1,3)` reduced success to 297, but deleting `(1,2)` or `(1,4,5)`
+only reduced it to 356 and 354. The fixed 10% margin therefore failed. This
+supports a zero-shot candidate but does not yet establish causal use of all
+three factors; the 160-step suite permits too much random recovery.
+
 ## Boundary
 
 This is generated development evidence, not frozen or third-party blind
