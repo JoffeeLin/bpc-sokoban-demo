@@ -50,6 +50,15 @@ for the retained additive evidence field and 572 / 768 for the probability
 product. Old joint retention also fell from 61 / 64 to 54 / 64. Arithmetic
 mixing is not adopted.
 
+v0.32 added factor-conditioned first-order action probabilities learned only
+from the original separate successful traces. On 24 fresh development worlds
+at 48 steps it reached 628 / 768 (81.8%), versus 566 for the unchanged state
+field, 477 for shuffled action history, and 570 for order-zero action counts.
+Deleting `(1,2)`, `(1,3)`, or `(1,4,5)` reduced it to 440, 308, and 509.
+Old-task retention was 251 / 256 versus 252 / 256, with zero evaluation writes.
+All ten development gates passed, so the mechanism is eligible for a new
+independent-generator freeze; it is not yet a frozen result.
+
 ## Boundary
 
 This is generated development evidence, not frozen or third-party blind
