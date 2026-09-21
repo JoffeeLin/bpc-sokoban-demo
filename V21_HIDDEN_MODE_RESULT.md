@@ -56,6 +56,11 @@ The full result is `artifacts/v21hidden/result.json`.
   fitting and online filtering. Parameter recovery improved, but the failed
   interface gained only one complex success over the factorized model and one
   other interface failed its shuffled-channel margin. It was not frozen.
+- v0.26 conditioned the joint emission on raw relational change probabilities
+  learned by `RelationalBPC`, sharing observations across all D4 transforms.
+  It recovered the hidden parameters accurately, but interface 2 gained only
+  two complex successes over v0.25 and interface 0 regressed by one success
+  overall. It failed the fixed development gates and was not frozen.
 
 ## Boundary
 
