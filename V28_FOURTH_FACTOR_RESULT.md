@@ -44,6 +44,12 @@ reduced success to 349, 153, and 348: all three fixed causal margins passed.
 However, the absolute 75% gate failed at 62.4%, and one difficult world reached
 only 1 / 32. The candidate is therefore still not ready for freezing.
 
+v0.31 tested an arithmetic mixture of the independent factor posteriors on 24
+more fresh development worlds. It failed decisively: 294 / 768 versus 578 / 768
+for the retained additive evidence field and 572 / 768 for the probability
+product. Old joint retention also fell from 61 / 64 to 54 / 64. Arithmetic
+mixing is not adopted.
+
 ## Boundary
 
 This is generated development evidence, not frozen or third-party blind
