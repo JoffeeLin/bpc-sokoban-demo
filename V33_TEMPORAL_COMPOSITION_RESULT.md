@@ -95,3 +95,15 @@ observable successor actions. Push `(1,2)` and open `(1,4,5)` effects occur at
 the terminal step of their separate tasks, so no post-event action exists to
 estimate. The mechanism is not adopted. Its machine-readable result is
 `artifacts/v37effects/development.json`.
+
+## v0.38 development follow-up
+
+A Beta event-boundary posterior learned whether each anonymous raw effect had a
+successor action. The counts were sharply separated: ordinary `(1)` movement
+always continued, while push `(1,2)` and open `(1,4,5)` effects always ended
+their separate-task traces; collect `(1,3)` contained both terminal and
+continuing events. Boundary-gated control reached 439 / 768 (57.2%), versus 428
+for always-on first-order time, and retained 247 / 256 old tasks versus 241 for
+the field. Yet it missed the 75% gate, had one world at 2 / 32, and its 11-win
+gain over always-on time missed the fixed 39-win causal margin. It is not
+adopted. Its result is `artifacts/v38boundary/development.json`.
