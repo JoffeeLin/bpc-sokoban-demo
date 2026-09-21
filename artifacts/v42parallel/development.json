@@ -1,0 +1,108 @@
+{
+  "development_only": true,
+  "version": "v0.42",
+  "mechanism": "parallel action-posterior separation above exact Beta sampling variance",
+  "fresh_from_v41": true,
+  "training": {
+    "seed": 242010,
+    "transitions": 8640,
+    "initial_worlds": 360,
+    "generation_attempts": 367,
+    "unique_raw_states": 2547,
+    "seen_full_contexts": 15712
+  },
+  "holdout": {
+    "seed": 242110,
+    "worlds": 24,
+    "transitions": 2304,
+    "generation_attempts": 65
+  },
+  "medium": {
+    "capacity": 1048576,
+    "active_cells": 128240,
+    "writes": 17694720,
+    "digest": "954ec3d0163f6437ae21c3f8a4bb7bd022c56735139438ae67494aa9f61e86c8",
+    "control_active_cells": 43028,
+    "control_digest": "afc815a419ffe6fcfb5954a6954093d9bbc566c994792c012260e1c5827f4973"
+  },
+  "metrics_brier": {
+    "candidate": {
+      "all": 0.006654743207154573,
+      "changed": 0.14525608421210118,
+      "novel_changed": 0.21719025580390552
+    },
+    "no_action": {
+      "all": 0.011157507348528137,
+      "changed": 0.28967418527009386,
+      "novel_changed": 0.3208657683011529
+    },
+    "rotated": {
+      "all": 0.01001922154961871,
+      "changed": 0.5331683688380331,
+      "novel_changed": 0.535734920546826
+    },
+    "copy": {
+      "all": 0.004222575329566855,
+      "changed": 1.0,
+      "novel_changed": 1.0
+    },
+    "half": {
+      "all": 0.25,
+      "changed": 0.25,
+      "novel_changed": 0.25
+    }
+  },
+  "context_counts": {
+    "candidate": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1380
+    },
+    "no_action": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1380
+    },
+    "rotated": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1380
+    },
+    "copy": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1380
+    },
+    "half": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1380
+    }
+  },
+  "novel_context_fraction": 0.430078125,
+  "relative_improvement": {
+    "no_action_changed": 0.49855357640286935,
+    "no_action_novel_changed": 0.32311178922627015,
+    "rotated_changed": 0.7275605742916318,
+    "rotated_novel_changed": 0.5945938047454161
+  },
+  "preregistered_gates": {
+    "all_initial_world_sets_disjoint": true,
+    "novel_local_context_fraction_at_least_10pct": true,
+    "overall_defined_bit_brier_at_most_0020": true,
+    "changed_bit_brier_at_most_050_and_below_copy": true,
+    "novel_changed_bit_brier_at_most_025": true,
+    "changed_bit_improves_action_controls_by_10pct": true,
+    "novel_changed_bit_improves_action_controls_by_10pct": true,
+    "fixed_capacity_and_compression_boundary": true,
+    "evaluation_writes_zero_and_digests_unchanged": true,
+    "parallel_equivariance_typed_output_and_full_unit_suite_passed_before_execution": true
+  },
+  "adopt_for_independent_freeze": true,
+  "evaluation_writes": {
+    "candidate": 0,
+    "no_action": 0
+  },
+  "seconds": 100.1848689589533,
+  "boundary": "No neural network, reward, task score, planner, search, semantic field, selected physical axis, classifier runtime, or evaluation learning."
+}
