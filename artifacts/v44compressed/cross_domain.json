@@ -1,0 +1,210 @@
+{
+  "frozen_first_execution": true,
+  "version": "v0.44",
+  "hashes": {
+    "bpc_compressed_medium_v44.py": "db94de62090b8966d797318cde8c58720b23e5c16b09c8b8f6f833b6c2b7b9f6",
+    "bpc_parallel_medium_v42.py": "68d4c1f1e7898baf0972454c1aca93c3e6e8616b0537c55d34952059c65d35ef",
+    "bpc_pure_medium_v41.py": "e1893081144c47f97191b4b82c9e5d7959774951e3f7bc05860c8d06fe1122cf"
+  },
+  "hashes_match_preregistration": true,
+  "full_unit_suite_passed_before_execution": true,
+  "tracks": [
+    {
+      "name": "sokoban_physics",
+      "training_seed": 245010,
+      "holdout_seed": 245110,
+      "training_transitions": 8640,
+      "holdout_transitions": 2304,
+      "generation_attempts": [
+        374,
+        46
+      ],
+      "unique_raw_states": 2706,
+      "active_cells": 10885,
+      "metrics_brier": {
+        "candidate": {
+          "all": 0.006685976477182198,
+          "changed": 0.18491626713161813,
+          "novel_changed": 0.23143455267762508
+        },
+        "no_action": {
+          "all": 0.011938965480484277,
+          "changed": 0.2966417068013737,
+          "novel_changed": 0.3276829965924492
+        },
+        "rotated": {
+          "all": 0.009249708916619009,
+          "changed": 0.5007770831734379,
+          "novel_changed": 0.5404217862731628
+        },
+        "copy": {
+          "all": 0.004362346986817326,
+          "changed": 1.0,
+          "novel_changed": 1.0
+        },
+        "half": {
+          "all": 0.25,
+          "changed": 0.25,
+          "novel_changed": 0.25
+        }
+      },
+      "counts": {
+        "candidate": {
+          "all": 679680,
+          "changed": 2965,
+          "novel_changed": 1431
+        },
+        "no_action": {
+          "all": 679680,
+          "changed": 2965,
+          "novel_changed": 1431
+        },
+        "rotated": {
+          "all": 679680,
+          "changed": 2965,
+          "novel_changed": 1431
+        },
+        "copy": {
+          "all": 679680,
+          "changed": 2965,
+          "novel_changed": 1431
+        },
+        "half": {
+          "all": 679680,
+          "changed": 2965,
+          "novel_changed": 1431
+        }
+      },
+      "novel_context_fraction": 0.4027951388888889,
+      "relative_improvement": {
+        "no_action_changed": 0.3766342935201794,
+        "no_action_novel_changed": 0.293724254586611,
+        "rotated_changed": 0.6307413550959666,
+        "rotated_novel_changed": 0.571751993431583
+      },
+      "gates": {
+        "fresh_initials_disjoint": true,
+        "novel_context_fraction_at_least_10pct": true,
+        "overall_brier_at_most_0020": true,
+        "changed_brier_below_025_copy_and_half": true,
+        "novel_changed_brier_at_most_025": true,
+        "changed_improves_action_controls_by_10pct": true,
+        "novel_changed_improves_action_controls_by_10pct": true,
+        "compression_and_quarter_occupancy": true,
+        "evaluation_zero_write_and_unchanged": true
+      },
+      "pass": true,
+      "evaluation_writes": {
+        "candidate": 0,
+        "control": 0
+      }
+    },
+    {
+      "name": "causal_particle_lattice",
+      "training_seed": 245020,
+      "holdout_seed": 245120,
+      "training_transitions": 8640,
+      "holdout_transitions": 2304,
+      "generation_attempts": [
+        360,
+        24
+      ],
+      "unique_raw_states": 3707,
+      "active_cells": 14000,
+      "metrics_brier": {
+        "candidate": {
+          "all": 0.012765540954876366,
+          "changed": 0.04051798930052745,
+          "novel_changed": 0.04170371612497038
+        },
+        "no_action": {
+          "all": 0.02352118650097854,
+          "changed": 0.3012976113898706,
+          "novel_changed": 0.30553409761419603
+        },
+        "rotated": {
+          "all": 0.031139931675338055,
+          "changed": 0.8275980210743681,
+          "novel_changed": 0.8222404951610555
+        },
+        "phase_flipped": {
+          "all": 0.36870103647568536,
+          "changed": 0.9070006219354384,
+          "novel_changed": 0.9065915828228005
+        },
+        "copy": {
+          "all": 0.012392397280092593,
+          "changed": 1.0,
+          "novel_changed": 1.0
+        },
+        "half": {
+          "all": 0.25,
+          "changed": 0.25,
+          "novel_changed": 0.25
+        }
+      },
+      "counts": {
+        "candidate": {
+          "all": 442368,
+          "changed": 5482,
+          "novel_changed": 4814
+        },
+        "no_action": {
+          "all": 442368,
+          "changed": 5482,
+          "novel_changed": 4814
+        },
+        "rotated": {
+          "all": 442368,
+          "changed": 5482,
+          "novel_changed": 4814
+        },
+        "phase_flipped": {
+          "all": 442368,
+          "changed": 5482,
+          "novel_changed": 4814
+        },
+        "copy": {
+          "all": 442368,
+          "changed": 5482,
+          "novel_changed": 4814
+        },
+        "half": {
+          "all": 442368,
+          "changed": 5482,
+          "novel_changed": 4814
+        }
+      },
+      "novel_context_fraction": 0.5589667426215278,
+      "relative_improvement": {
+        "no_action_changed": 0.8655217042258648,
+        "no_action_novel_changed": 0.8635055254041384,
+        "rotated_changed": 0.9510414618344206,
+        "rotated_novel_changed": 0.9492803913570302,
+        "phase_flipped_changed": 0.9553274955709881,
+        "phase_flipped_novel_changed": 0.9539994448270521
+      },
+      "gates": {
+        "fresh_initials_disjoint": true,
+        "novel_context_fraction_at_least_25pct": true,
+        "overall_brier_at_most_0030": true,
+        "changed_brier_below_025_copy_and_half": true,
+        "novel_changed_brier_at_most_025": true,
+        "changed_improves_action_controls_by_10pct": true,
+        "novel_changed_improves_action_controls_by_10pct": true,
+        "changed_improves_phase_flip_by_10pct": true,
+        "novel_changed_improves_phase_flip_by_10pct": true,
+        "compression_and_quarter_occupancy": true,
+        "evaluation_zero_write_and_unchanged": true
+      },
+      "pass": true,
+      "evaluation_writes": {
+        "candidate": 0,
+        "control": 0
+      }
+    }
+  ],
+  "all_tracks_pass": true,
+  "seconds": 148.79458483401686,
+  "boundary": "Same compact core, fresh weights per domain. Physical prediction only; no goal behavior, weight transfer, or AGI claim."
+}

@@ -1,5 +1,41 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.44 milestone: compressed pure-BPC physics across two domains
+
+The latest line removes the earlier hand-named factor/field/memory stack and
+tests one fixed non-neural probability medium on anonymous bytes, anonymous
+actions and real next bytes. It uses center and axis-local physical stencils,
+parallel action posteriors and Beta residual writeback. There is no reward,
+planner, search, neural network, semantic selector or evaluation learning.
+
+The first frozen execution used fresh worlds excluded from all development and
+diagnostic data. Both domains passed every preregistered probability, causal,
+novelty, compression and no-write gate:
+
+| Frozen holdout | Sokoban physics | Causal particle lattice |
+|---|---:|---:|
+| unseen full local contexts | **40.28%** | **55.90%** |
+| changed-bit Brier | **0.1849** | **0.0405** |
+| unseen-context changed-bit Brier | **0.2314** | **0.0417** |
+| active medium cells | **10,885** | **14,000** |
+
+The second domain improved 86.35% over action removal, 94.93% over action
+rotation and 95.40% over a physical terrain-phase flip on unseen changed bits.
+Removing exact 3x3 storage reduced active occupancy by 91.84% and 97.84%
+relative to the failed predecessors while preserving the held-out effects.
+
+![Frozen v0.44 cross-domain runtime](artifacts/v44compressed/poster_v44_compressed.png)
+
+**[Watch the 12-second real-prediction video](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v44.0.0/bpc_v44_cross_domain.mp4)**
+
+See the [frozen result](V44_COMPRESSED_CROSS_DOMAIN_RESULT.md),
+[preregistration](V44_COMPRESSED_CROSS_DOMAIN_PREREG.md),
+[machine-readable evidence](artifacts/v44compressed/cross_domain.json), and
+[compact core](bpc_compressed_medium_v44.py).
+
+This is a compact two-domain **physical prediction** milestone. It is not
+goal-directed Sokoban solving, cross-domain weight transfer, or AGI.
+
 ## v0.20 breakthrough: stochastic actuator-channel transfer
 
 The frozen non-neural controller now identifies a previously unseen probability
