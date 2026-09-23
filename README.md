@@ -2,6 +2,13 @@
 
 ## v0.44 milestone: compressed pure-BPC physics across two domains
 
+> **Post-publication audit (2026-09-23):** the Sokoban camera packed 7x7 pixels
+> contiguously while local stencils assumed an 8-cell row stride. Its numerical
+> result remains reproducible byte-interface prediction, but its 2D axis-local
+> interpretation is invalid. The 8x8 causal-lattice track is unaffected. See
+> [the geometry audit](V44_GEOMETRY_AUDIT.md). Do not treat v0.44 as confirmed
+> two-domain spatial physics; aligned-camera v0.47 revalidation is required.
+
 The latest line removes the earlier hand-named factor/field/memory stack and
 tests one fixed non-neural probability medium on anonymous bytes, anonymous
 actions and real next bytes. It uses center and axis-local physical stencils,

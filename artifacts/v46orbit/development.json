@@ -1,0 +1,78 @@
+{
+  "development_only": true,
+  "version": "v0.46",
+  "core_unchanged_from_v45": true,
+  "hashes": {
+    "bpc_port_interference_v45.py": "27e9a2158fc9df3c3519c08d0d122b10aaa93e0d73c753cd39652e6ada49f85d",
+    "bpc_compressed_medium_v44.py": "db94de62090b8966d797318cde8c58720b23e5c16b09c8b8f6f833b6c2b7b9f6"
+  },
+  "training": {
+    "seed": 461010,
+    "base_orbits": 150,
+    "worlds": 600,
+    "transitions": 2400,
+    "attempts": 152
+  },
+  "holdout": {
+    "seed": 461110,
+    "base_orbits": 128,
+    "worlds": 512,
+    "attempts": 129
+  },
+  "medium": {
+    "capacity": 1048576,
+    "active_cells": 15580,
+    "writes": 4039200,
+    "digest": "a98379fddf4c0cd20fcd1591588083c524221b056a7b92402d3056e405245cba"
+  },
+  "metrics": {
+    "selection_rate": {
+      "candidate": 0.677734375,
+      "no_action": 0.0,
+      "local_only": 0.0,
+      "rotated": 0.107421875,
+      "shifted_state": 0.099609375
+    },
+    "port_brier": {
+      "candidate": 0.10605554344822384,
+      "no_action": 0.24304207243963483,
+      "local_only": 0.20201470118810877,
+      "rotated": 0.2830487782739482,
+      "shifted_state": 0.2883108499390963
+    },
+    "median_margin": 0.1179830145163619,
+    "non_port_brier": {
+      "candidate": 0.005104921543927146,
+      "local_only": 0.005104115485434441
+    },
+    "novel_context_fraction": 0.13572225765306123,
+    "cases": 512
+  },
+  "per_orientation_selection_rate": [
+    0.78125,
+    0.75,
+    0.65625,
+    0.5234375
+  ],
+  "gates": {
+    "hashes_disjointness_balance_and_orbits": true,
+    "novel_context_fraction_at_least_10pct": true,
+    "strict_closure_selection_at_least_70pct": false,
+    "each_orientation_at_least_60pct": false,
+    "port_brier_at_most_0120": true,
+    "selection_beats_all_controls_by_30_points": true,
+    "median_probability_margin_above_005": true,
+    "local_world_prediction_retained": true,
+    "fixed_capacity_compression_boundary": true,
+    "evaluation_zero_write_and_unchanged": true,
+    "full_unit_suite_passed_before_execution": true
+  },
+  "orbit_development_pass": false,
+  "evaluation_writes": {
+    "candidate": 0,
+    "no_action": 0,
+    "local": 0
+  },
+  "seconds": 64.97666779201245,
+  "boundary": "Symmetry-balanced one-step closure experience only; no recurrent internal state, long process, planner, Sokoban solving, or AGI claim."
+}
