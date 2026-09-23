@@ -1,0 +1,68 @@
+{
+  "development_only": true,
+  "version": "v0.45",
+  "hashes": {
+    "bpc_port_interference_v45.py": "27e9a2158fc9df3c3519c08d0d122b10aaa93e0d73c753cd39652e6ada49f85d",
+    "bpc_compressed_medium_v44.py": "db94de62090b8966d797318cde8c58720b23e5c16b09c8b8f6f833b6c2b7b9f6"
+  },
+  "training": {
+    "seed": 451010,
+    "worlds": 600,
+    "transitions": 2400,
+    "attempts": 603
+  },
+  "holdout": {
+    "seed": 451110,
+    "worlds": 256,
+    "attempts": 257
+  },
+  "medium": {
+    "capacity": 1048576,
+    "active_cells": 14652,
+    "writes": 4039200,
+    "digest": "78b7a41ae58d81bfdecfda73465b04cf96fe8ad633aa6bc6342b34d459b9d881"
+  },
+  "metrics": {
+    "selection_rate": {
+      "candidate": 0.7421875,
+      "no_action": 0.0,
+      "local_only": 0.0,
+      "rotated": 0.08203125,
+      "shifted_state": 0.109375
+    },
+    "port_brier": {
+      "candidate": 0.09783747516029169,
+      "no_action": 0.24349733188708508,
+      "local_only": 0.20201470118810333,
+      "rotated": 0.28739798560621915,
+      "shifted_state": 0.2920123477931612
+    },
+    "median_margin": 0.18233095388420306,
+    "non_port_brier": {
+      "candidate": 0.005029952040715653,
+      "local_only": 0.005001962946113291
+    },
+    "novel_context_fraction": 0.13576211734693877,
+    "cases": 256
+  },
+  "gates": {
+    "hashes_disjointness_and_action_balance": true,
+    "novel_context_fraction_at_least_10pct": true,
+    "strict_closure_selection_at_least_70pct": true,
+    "port_brier_at_most_0120": true,
+    "selection_beats_all_controls_by_30_points": true,
+    "median_probability_margin_above_005": true,
+    "local_world_prediction_retained": true,
+    "fixed_capacity_compression_boundary": true,
+    "evaluation_zero_write_and_unchanged": true,
+    "full_unit_suite_passed_before_execution": true
+  },
+  "minimal_boundary_pass": true,
+  "evaluation_writes": {
+    "candidate": 0,
+    "no_action": 0,
+    "local": 0
+  },
+  "seconds": 28.289226624998264,
+  "boundary": "One-step closure measurement only; no recurrent internal state, long process, planning, Sokoban solving, or AGI claim."
+}
