@@ -1,0 +1,179 @@
+{
+  "development_only": true,
+  "version": "v0.49",
+  "phase": "residual-born activity carry precursor",
+  "hashes": {
+    "bpc_residual_activity_v49.py": "d3d646b8edc2f4a586585831fa992a83d9134a1e4ca408518e7d3858add3ee7e",
+    "carry_probe_v49.py": "ad3bbabb050db3b6aa85daa23ad5e887e5a0185e513ab00261b53011ff5c804b",
+    "bpc_port_interference_v45.py": "27e9a2158fc9df3c3519c08d0d122b10aaa93e0d73c753cd39652e6ada49f85d"
+  },
+  "training": {
+    "seed": 491010,
+    "worlds": 800,
+    "attempts": 814,
+    "random_action_counts": {
+      "1": 3520,
+      "3": 3493,
+      "2": 3479,
+      "0": 3555
+    },
+    "transitions": 14047,
+    "closed_random_episodes": 694,
+    "unique_raw_states": 2219
+  },
+  "holdout": {
+    "seed": 491110,
+    "worlds": 256,
+    "attempts": 257,
+    "lengths": [
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "medium": {
+    "capacity": 262144,
+    "active_cells": 17623,
+    "writes": 25114237,
+    "digest": "b0a3f19f02f8bcc1432bf740b16e5ab1419c5b9a3fe8120e099952f6b8e16054",
+    "local_digest": "e66293a54d170d34dc6b2dc1057bd85daafedd43e709889938956691b0e2fc10"
+  },
+  "conditions": {
+    "candidate": {
+      "success_rate": 0.87890625,
+      "successes": 225,
+      "cases": 256,
+      "per_cue": [
+        0.953125,
+        0.890625,
+        0.875,
+        0.796875
+      ],
+      "per_length": {
+        "7": 0.9166666666666666,
+        "8": 0.9230769230769231,
+        "9": 0.8307692307692308,
+        "10": 0.8484848484848485
+      },
+      "first_action_accuracy": 0.91796875,
+      "unique_choice_fraction": 0.994017094017094,
+      "mean_steps": 9.140625
+    },
+    "zero": {
+      "success_rate": 0.26953125,
+      "successes": 69,
+      "cases": 256,
+      "per_cue": [
+        0.265625,
+        0.328125,
+        0.3125,
+        0.171875
+      ],
+      "per_length": {
+        "7": 0.3,
+        "8": 0.3230769230769231,
+        "9": 0.23076923076923078,
+        "10": 0.22727272727272727
+      },
+      "first_action_accuracy": 0.91796875,
+      "unique_choice_fraction": 0.9913461538461539,
+      "mean_steps": 12.1875
+    },
+    "flip": {
+      "success_rate": 0.38671875,
+      "successes": 99,
+      "cases": 256,
+      "per_cue": [
+        0.359375,
+        0.46875,
+        0.390625,
+        0.328125
+      ],
+      "per_length": {
+        "7": 0.36666666666666664,
+        "8": 0.4307692307692308,
+        "9": 0.38461538461538464,
+        "10": 0.36363636363636365
+      },
+      "first_action_accuracy": 0.91796875,
+      "unique_choice_fraction": 1.0,
+      "mean_steps": 12.625
+    },
+    "shift": {
+      "success_rate": 0.21484375,
+      "successes": 55,
+      "cases": 256,
+      "per_cue": [
+        0.21875,
+        0.390625,
+        0.1875,
+        0.0625
+      ],
+      "per_length": {
+        "7": 0.21666666666666667,
+        "8": 0.23076923076923078,
+        "9": 0.23076923076923078,
+        "10": 0.18181818181818182
+      },
+      "first_action_accuracy": 0.91796875,
+      "unique_choice_fraction": 0.9961101137043686,
+      "mean_steps": 13.0546875
+    },
+    "memoryless": {
+      "success_rate": 0.26953125,
+      "successes": 69,
+      "cases": 256,
+      "per_cue": [
+        0.265625,
+        0.328125,
+        0.3125,
+        0.171875
+      ],
+      "per_length": {
+        "7": 0.3,
+        "8": 0.3230769230769231,
+        "9": 0.23076923076923078,
+        "10": 0.22727272727272727
+      },
+      "first_action_accuracy": 0.91796875,
+      "unique_choice_fraction": 0.9913461538461539,
+      "mean_steps": 12.1875
+    },
+    "local_only": {
+      "success_rate": 0.12109375,
+      "successes": 31,
+      "cases": 256,
+      "per_cue": [
+        0.125,
+        0.140625,
+        0.15625,
+        0.0625
+      ]
+    }
+  },
+  "non_port_prediction_brier": {
+    "candidate": 0.004952855124182682,
+    "local": 0.0046155278153574685
+  },
+  "non_port_prediction_count": 884520,
+  "preregistered_gates": {
+    "hashes_and_disjoint_worlds": true,
+    "uniform_random_action_balance_22_to_28pct": true,
+    "candidate_success_at_least_70pct": true,
+    "every_cue_at_least_60pct": true,
+    "every_unseen_length_at_least_60pct": true,
+    "beats_every_intervention_by_30_points": true,
+    "non_port_world_prediction_retained": true,
+    "fixed_capacity_compression": true,
+    "evaluation_zero_persistent_write_and_unchanged": true,
+    "full_92_test_suite_passed_before_execution": true
+  },
+  "adopt_for_independent_freeze": true,
+  "evaluation_writes": {
+    "candidate": 0,
+    "local": 0
+  },
+  "seconds": 168.80396791599924,
+  "boundary": "Development-only cross-length delayed-closure probe. The activity law is generic, but this is not yet Sokoban process generalization, cross-domain reuse, planning, or AGI."
+}
