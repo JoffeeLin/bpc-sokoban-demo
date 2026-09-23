@@ -1,5 +1,30 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.49: residual-born activity carries a vanished condition
+
+The fixed-capacity pure-BPC medium now has one task-independent transient law:
+hashed physical addresses remain active, decay, and let later reality residuals
+write through the same medium.  No history list, memory slot, process ID,
+target coordinate, reward, task score, planner or search is present.
+
+After uniform-random experience only on process lengths `3–6`, the first and
+only frozen run closed **232/256 (90.63%)** new decorated processes of unseen
+lengths `7–10`. Every cue orientation passed at 87.5% or higher and every
+length at 86.11% or higher. Zeroing activity fell to 23.44%, reflecting its
+probability displacement fell to 32.03%, shifting its action coordinates fell
+to 22.66%, and erasing it after every step fell to 23.44%. Non-port world
+prediction remained intact and evaluation writes were zero. See
+[the result](V49_RESIDUAL_ACTIVITY_FROZEN_RESULT.md) and
+[raw evidence](artifacts/v49activity/frozen.json).
+
+![Frozen v0.49 residual activity carry](artifacts/v49activity/poster_v49_residual_activity.png)
+
+**[Watch ten frozen unseen carry traces](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v49.0.0/bpc_v49_residual_activity.mp4)**
+
+This is a bounded cross-length carry precursor. The probe is not yet general
+Sokoban control, the same dynamics have not yet reproduced in a second domain,
+and this is not autonomous planning or AGI.
+
 ## v0.48: reproduced minimal physical closure boundary
 
 The unchanged pure-BPC probability medium now couples aligned physical world
