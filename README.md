@@ -1,5 +1,29 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
+## v0.48: reproduced minimal physical closure boundary
+
+The unchanged pure-BPC probability medium now couples aligned physical world
+prediction to one external boundary bit.  It predicts in parallel whether the
+boundary remains after each anonymous action and directly chooses the lowest
+probability—without reward, a task score, search, a planner, or evaluation
+learning.
+
+The preregistered development run and its one authorized fresh-seed frozen
+reproduction both passed every gate.  Frozen strict selection was **512/512
+(100%)**, including **100% in every physical orientation**. Removing the port
+carrier reduced selection to 0%; zeroing the spatial condition channel reduced
+it to 16.21%. Non-port world-prediction Brier remained 0.00307 and evaluation
+writes remained zero. See [the result](V48_ALIGNED_BOUNDARY_FROZEN_RESULT.md)
+and [raw evidence](artifacts/v48aligned_boundary/frozen.json).
+
+![Frozen v0.48 one-bit closure boundary](artifacts/v48aligned_boundary/poster_v48_aligned_boundary.png)
+
+**[Watch ten frozen unseen decisions](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v48.0.0/bpc_v48_aligned_boundary.mp4)**
+
+This is reproducible one-step external closure, not yet a recurrent internal
+state with zero/flip ablation, long-process behavior, general Sokoban solving,
+or AGI.
+
 ## v0.47: aligned phase-one reproduction
 
 v0.47 corrects the camera-stride defect discovered after v0.44 and preserves
