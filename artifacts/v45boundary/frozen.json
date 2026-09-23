@@ -1,0 +1,75 @@
+{
+  "frozen_first_execution": true,
+  "version": "v0.45",
+  "hashes": {
+    "bpc_port_interference_v45.py": "27e9a2158fc9df3c3519c08d0d122b10aaa93e0d73c753cd39652e6ada49f85d",
+    "bpc_compressed_medium_v44.py": "db94de62090b8966d797318cde8c58720b23e5c16b09c8b8f6f833b6c2b7b9f6"
+  },
+  "training": {
+    "seed": 452010,
+    "worlds": 600,
+    "transitions": 2400,
+    "attempts": 603
+  },
+  "holdout": {
+    "seed": 452110,
+    "worlds": 512,
+    "attempts": 513
+  },
+  "medium": {
+    "capacity": 1048576,
+    "active_cells": 15144,
+    "writes": 4039200,
+    "digest": "cd0a96d24cc7a3b01ff334068535f9145b113c35bf1206d9037a8462389b9d7f"
+  },
+  "metrics": {
+    "selection_rate": {
+      "candidate": 0.708984375,
+      "no_action": 0.0,
+      "local_only": 0.0,
+      "rotated": 0.087890625,
+      "shifted_state": 0.123046875
+    },
+    "port_brier": {
+      "candidate": 0.10124119605615264,
+      "no_action": 0.24297612922156225,
+      "local_only": 0.20201470118810877,
+      "rotated": 0.2878787526580626,
+      "shifted_state": 0.2854475964507676
+    },
+    "median_margin": 0.17726652460756726,
+    "non_port_brier": {
+      "candidate": 0.004958708365432446,
+      "local_only": 0.004957038265318345
+    },
+    "novel_context_fraction": 0.14317602040816327,
+    "cases": 512
+  },
+  "per_orientation_selection_rate": [
+    0.7578125,
+    0.796875,
+    0.6953125,
+    0.5859375
+  ],
+  "gates": {
+    "hashes_disjointness_and_action_balance": true,
+    "novel_context_fraction_at_least_10pct": true,
+    "strict_closure_selection_at_least_70pct": true,
+    "each_orientation_at_least_60pct": false,
+    "port_brier_at_most_0120": true,
+    "selection_beats_all_controls_by_30_points": true,
+    "median_probability_margin_above_005": true,
+    "local_world_prediction_retained": true,
+    "fixed_capacity_compression_boundary": true,
+    "evaluation_zero_write_and_unchanged": true,
+    "full_unit_suite_passed_before_execution": true
+  },
+  "frozen_minimal_boundary_pass": false,
+  "evaluation_writes": {
+    "candidate": 0,
+    "no_action": 0,
+    "local": 0
+  },
+  "seconds": 66.34478254202986,
+  "boundary": "Frozen one-step closure measurement only; no recurrent internal state, long process, planning, Sokoban solving, or AGI claim."
+}
