@@ -1,0 +1,89 @@
+{
+  "development_only": true,
+  "version": "v0.48",
+  "phase": "aligned minimal one-bit external boundary precursor",
+  "core_unchanged_from_v45": true,
+  "hashes": {
+    "bpc_aligned_canvas_v47.py": "49a3c9bd98797a867641783f9659108254d98ff2fb85c38f62ba71f710606186",
+    "bpc_port_interference_v45.py": "27e9a2158fc9df3c3519c08d0d122b10aaa93e0d73c753cd39652e6ada49f85d",
+    "bpc_compressed_medium_v44.py": "db94de62090b8966d797318cde8c58720b23e5c16b09c8b8f6f833b6c2b7b9f6",
+    "closure_orbit_v46.py": "b66d6097cf003b9b0ef2ca3ad8304a9fc948a79a62ca437c2d8b0a7b72af0eff",
+    "closure_probe_v45.py": "48eb49a0f59885d6b4c4faef8ca98db2a40d11bf017beb6117b0e844de22e557",
+    "bpc_pure_medium_v41.py": "e1893081144c47f97191b4b82c9e5d7959774951e3f7bc05860c8d06fe1122cf"
+  },
+  "training": {
+    "seed": 481010,
+    "base_orbits": 150,
+    "worlds": 600,
+    "transitions": 2400,
+    "attempts": 150
+  },
+  "holdout": {
+    "seed": 481110,
+    "base_orbits": 128,
+    "worlds": 512,
+    "attempts": 130
+  },
+  "medium": {
+    "capacity": 1048576,
+    "active_cells": 17168,
+    "writes": 4039200,
+    "digest": "f0a3c1b62bd13e2b26c398b89eccd4578ed2e4cfced94623fdc73cfab2be06b4"
+  },
+  "metrics": {
+    "selection_rate": {
+      "candidate": 1.0,
+      "no_action": 0.0,
+      "local_only": 0.0,
+      "rotated": 0.0,
+      "shifted_state": 0.0,
+      "zero_carrier": 0.0,
+      "zero_condition": 0.23046875,
+      "flipped_readout": 0.0
+    },
+    "port_brier": {
+      "candidate": 0.02682549786647031,
+      "no_action": 0.24225184375552686,
+      "local_only": 0.20201470118810877,
+      "rotated": 0.33900335502058754,
+      "shifted_state": 0.3643297233751465,
+      "zero_carrier": 0.7470741271972656,
+      "zero_condition": 0.19247539161646834,
+      "flipped_readout": 0.7511786559936637
+    },
+    "median_margin": 0.5915539232790006,
+    "non_port_brier": {
+      "candidate": 0.002746593378517302,
+      "local_only": 0.002703262970193514
+    },
+    "novel_context_fraction": 0.18080357142857142,
+    "cases": 512
+  },
+  "per_orientation_selection_rate": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "preregistered_gates": {
+    "hashes_disjointness_balance_and_orbits": true,
+    "novel_context_fraction_at_least_10pct": true,
+    "strict_closure_selection_at_least_70pct": true,
+    "each_orientation_at_least_60pct": true,
+    "port_brier_at_most_0120": true,
+    "selection_beats_every_control_by_30_points": true,
+    "median_probability_margin_above_005": true,
+    "local_world_prediction_retained": true,
+    "fixed_capacity_compression_boundary": true,
+    "evaluation_zero_write_and_unchanged": true,
+    "aligned_geometry_and_full_unit_suite_passed_before_execution": true
+  },
+  "adopt_for_independent_freeze": true,
+  "evaluation_writes": {
+    "candidate": 0,
+    "no_action": 0,
+    "local": 0
+  },
+  "seconds": 99.07103829196421,
+  "boundary": "Aligned one-step external closure only. Port and target-channel controls are not recurrent internal-state zero/flip ablations. No long process, planner, general Sokoban solving, or AGI claim."
+}
