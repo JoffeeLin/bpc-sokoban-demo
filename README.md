@@ -1,6 +1,26 @@
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
-## v0.44 milestone: compressed pure-BPC physics across two domains
+## v0.47: aligned phase-one reproduction
+
+v0.47 corrects the camera-stride defect discovered after v0.44 and preserves
+the old serializer unchanged for auditability. Board coordinate `(x,y)` now
+maps to byte `y*8+x`; explicit tests verify row padding, real physical
+neighbors and rotation correspondence.
+
+Both the preregistered development run and its one authorized fresh-seed frozen
+reproduction passed every fixed gate. In the frozen run, 39.79% of full local
+contexts were unseen; changed-bit Brier was 0.04646 and unseen-changed Brier was
+0.06478. The candidate improved over action removal by 83.52% and 78.98% on
+those subsets, used 11,803 active addresses for 2,735 unique training states,
+and made zero evaluation writes. See
+[the frozen result](V47_ALIGNED_PHASE1_FROZEN_RESULT.md) and
+[`artifacts/v47aligned/frozen.json`](artifacts/v47aligned/frozen.json).
+
+This restores reproducible evidence for aligned one-step Sokoban-world physics
+prediction. It does **not** establish goal behavior, Sokoban solving,
+cross-domain transfer or AGI.
+
+## Archived v0.44: numerical result with a geometry defect
 
 > **Post-publication audit (2026-09-23):** the Sokoban camera packed 7x7 pixels
 > contiguously while local stencils assumed an 8-cell row stride. Its numerical
@@ -9,15 +29,15 @@
 > [the geometry audit](V44_GEOMETRY_AUDIT.md). Do not treat v0.44 as confirmed
 > two-domain spatial physics; aligned-camera v0.47 revalidation is required.
 
-The latest line removes the earlier hand-named factor/field/memory stack and
+This historical line removed the earlier hand-named factor/field/memory stack and
 tests one fixed non-neural probability medium on anonymous bytes, anonymous
 actions and real next bytes. It uses center and axis-local physical stencils,
 parallel action posteriors and Beta residual writeback. There is no reward,
 planner, search, neural network, semantic selector or evaluation learning.
 
 The first frozen execution used fresh worlds excluded from all development and
-diagnostic data. Both domains passed every preregistered probability, causal,
-novelty, compression and no-write gate:
+diagnostic data. Both serialized tracks passed their preregistered numerical
+gates, but the Sokoban spatial interpretation was later invalidated:
 
 | Frozen holdout | Sokoban physics | Causal particle lattice |
 |---|---:|---:|
@@ -40,8 +60,8 @@ See the [frozen result](V44_COMPRESSED_CROSS_DOMAIN_RESULT.md),
 [machine-readable evidence](artifacts/v44compressed/cross_domain.json), and
 [compact core](bpc_compressed_medium_v44.py).
 
-This is a compact two-domain **physical prediction** milestone. It is not
-goal-directed Sokoban solving, cross-domain weight transfer, or AGI.
+This is retained as an auditable historical result, not as confirmed two-domain
+spatial prediction, goal-directed Sokoban solving, cross-domain transfer, or AGI.
 
 ## v0.20 breakthrough: stochastic actuator-channel transfer
 
