@@ -20,6 +20,10 @@ This restores reproducible evidence for aligned one-step Sokoban-world physics
 prediction. It does **not** establish goal behavior, Sokoban solving,
 cross-domain transfer or AGI.
 
+![Frozen v0.47 aligned prediction](artifacts/v47aligned/poster_v47_aligned.png)
+
+**[Watch the 12-second frozen prediction video](https://github.com/JoffeeLin/bpc-sokoban-demo/releases/download/v47.0.0/bpc_v47_aligned_prediction.mp4)**
+
 ## Archived v0.44: numerical result with a geometry defect
 
 > **Post-publication audit (2026-09-23):** the Sokoban camera packed 7x7 pixels
