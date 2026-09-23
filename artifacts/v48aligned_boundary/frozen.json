@@ -1,0 +1,84 @@
+{
+  "frozen_first_execution": true,
+  "version": "v0.48",
+  "phase": "aligned minimal one-bit external boundary independent reproduction",
+  "core_unchanged_from_v45": true,
+  "hashes": {
+    "experiment_v48_aligned_boundary_dev.py": "cfb78a6d08d107659122247c7f313b6f6e90f364f7b9c9812e97cfb01f3e9874"
+  },
+  "training": {
+    "seed": 482010,
+    "base_orbits": 150,
+    "worlds": 600,
+    "transitions": 2400,
+    "attempts": 154
+  },
+  "holdout": {
+    "seed": 482110,
+    "base_orbits": 128,
+    "worlds": 512,
+    "attempts": 130
+  },
+  "medium": {
+    "capacity": 1048576,
+    "active_cells": 16960,
+    "writes": 4039200,
+    "digest": "06987d30043cc702306b8c5a0362b20c5f80b8a2b62934408a1b27869e517e1a"
+  },
+  "metrics": {
+    "selection_rate": {
+      "candidate": 1.0,
+      "no_action": 0.0,
+      "local_only": 0.0,
+      "rotated": 0.0,
+      "shifted_state": 0.0,
+      "zero_carrier": 0.0,
+      "zero_condition": 0.162109375,
+      "flipped_readout": 0.0
+    },
+    "port_brier": {
+      "candidate": 0.023350014899576218,
+      "no_action": 0.24320398261439374,
+      "local_only": 0.20201470118810877,
+      "rotated": 0.34856453698471923,
+      "shifted_state": 0.36974868570110897,
+      "zero_carrier": 0.7470741271972656,
+      "zero_condition": 0.1953647903374847,
+      "flipped_readout": 0.7659660961807755
+    },
+    "median_margin": 0.6127438324652652,
+    "non_port_brier": {
+      "candidate": 0.003069480257766132,
+      "local_only": 0.0030369871862008057
+    },
+    "novel_context_fraction": 0.16868622448979592,
+    "cases": 512
+  },
+  "per_orientation_selection_rate": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "preregistered_gates": {
+    "hashes_disjointness_balance_and_orbits": true,
+    "novel_context_fraction_at_least_10pct": true,
+    "strict_closure_selection_at_least_70pct": true,
+    "each_orientation_at_least_60pct": true,
+    "port_brier_at_most_0120": true,
+    "selection_beats_every_control_by_30_points": true,
+    "median_probability_margin_above_005": true,
+    "local_world_prediction_retained": true,
+    "fixed_capacity_compression_boundary": true,
+    "evaluation_zero_write_and_unchanged": true,
+    "aligned_geometry_and_full_unit_suite_passed_before_execution": true
+  },
+  "frozen_pass": true,
+  "evaluation_writes": {
+    "candidate": 0,
+    "no_action": 0,
+    "local": 0
+  },
+  "seconds": 99.51686820801115,
+  "boundary": "Reproduced aligned one-step external closure only. Port and target-channel controls are not recurrent internal-state zero/flip ablations. No long process, planner, general Sokoban solving, or AGI claim."
+}
