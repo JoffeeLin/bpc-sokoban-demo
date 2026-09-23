@@ -1,0 +1,113 @@
+{
+  "development_only": true,
+  "version": "v0.47",
+  "phase": "phase-one aligned Sokoban world prediction revalidation",
+  "hashes": {
+    "bpc_aligned_canvas_v47.py": "49a3c9bd98797a867641783f9659108254d98ff2fb85c38f62ba71f710606186",
+    "bpc_compressed_medium_v44.py": "db94de62090b8966d797318cde8c58720b23e5c16b09c8b8f6f833b6c2b7b9f6",
+    "bpc_parallel_medium_v42.py": "68d4c1f1e7898baf0972454c1aca93c3e6e8616b0537c55d34952059c65d35ef",
+    "bpc_pure_medium_v41.py": "e1893081144c47f97191b4b82c9e5d7959774951e3f7bc05860c8d06fe1122cf"
+  },
+  "training": {
+    "seed": 247010,
+    "transitions": 8640,
+    "initial_worlds": 360,
+    "generation_attempts": 376,
+    "unique_raw_states": 2719,
+    "seen_full_contexts": 19598
+  },
+  "holdout": {
+    "seed": 247110,
+    "worlds": 24,
+    "transitions": 2304,
+    "generation_attempts": 42
+  },
+  "medium": {
+    "capacity": 1048576,
+    "active_cells": 11720,
+    "writes": 13271040,
+    "digest": "c7654c041c08e1cd76627251d94b0afac93c1e2d0979daad0b7d4038e882f5f1",
+    "control_digest": "50f6c29f9759f968efc1d2255cf7904ed6b4c11bc85282578fd0df0ede052fc4"
+  },
+  "metrics_brier": {
+    "candidate": {
+      "all": 0.0032720613412496246,
+      "changed": 0.048301183333494896,
+      "novel_changed": 0.07304850166754866
+    },
+    "no_action": {
+      "all": 0.011401861974384048,
+      "changed": 0.2873643821199812,
+      "novel_changed": 0.3210775717252812
+    },
+    "rotated": {
+      "all": 0.0078089905452500405,
+      "changed": 0.6262570708011644,
+      "novel_changed": 0.6389153461817156
+    },
+    "copy": {
+      "all": 0.004222575329566855,
+      "changed": 1.0,
+      "novel_changed": 1.0
+    },
+    "half": {
+      "all": 0.25,
+      "changed": 0.25,
+      "novel_changed": 0.25
+    }
+  },
+  "context_counts": {
+    "candidate": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1219
+    },
+    "no_action": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1219
+    },
+    "rotated": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1219
+    },
+    "copy": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1219
+    },
+    "half": {
+      "all": 679680,
+      "changed": 2870,
+      "novel_changed": 1219
+    }
+  },
+  "novel_context_fraction": 0.379921875,
+  "relative_improvement": {
+    "no_action_changed": 0.8319165967015075,
+    "no_action_novel_changed": 0.7724895536146322,
+    "rotated_changed": 0.9228732327577497,
+    "rotated_novel_changed": 0.8856679494332059
+  },
+  "preregistered_gates": {
+    "hashes_match_preregistration": true,
+    "fresh_initials_disjoint": true,
+    "novel_context_fraction_at_least_10pct": true,
+    "overall_brier_at_most_0020": true,
+    "changed_brier_below_025_copy_and_half": true,
+    "novel_changed_brier_at_most_025": true,
+    "changed_improves_action_controls_by_10pct": true,
+    "novel_changed_improves_action_controls_by_10pct": true,
+    "compression_and_v44_occupancy_ceiling": true,
+    "evaluation_zero_write_and_unchanged": true,
+    "aligned_geometry_and_full_unit_suite_passed_before_execution": true
+  },
+  "adopt_for_independent_freeze": true,
+  "evaluation_writes": {
+    "candidate": 0,
+    "no_action": 0
+  },
+  "seconds": 66.44887749996269,
+  "boundary": "Correctly aligned camera, physical next-state prediction only. No reward, task score, planner, search, goal behavior, or evaluation learning."
+}
