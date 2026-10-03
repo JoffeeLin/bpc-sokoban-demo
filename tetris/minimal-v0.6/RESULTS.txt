@@ -1,0 +1,25 @@
+v0.3b (train only 3x3 single cell, 1 epoch / 140 local writes)
+3x3 single                    n=2000 full=100.000% changeF1=1.0000
+5x5 single UNSEEN SCALE       n=4000 full=100.000% changeF1=1.0000
+10x10 single UNSEEN SCALE     n=4000 full=100.000% changeF1=1.0000
+10x20 single UNSEEN SCALE     n=4000 full=100.000% changeF1=1.0000
+10x20 action-blind            n=4000 full=25.850%
+10x20 fragment-shift          n=4000 full=0.000%
+10x20 four separated          n=4000 full=100.000%
+10x20 2x2 rigid UNSEEN        n=4000 full=100.000%
+10x20 I-piece UNSEEN          n=4000 full=100.000%
+10x20 all 7 tetrominoes       n=10000 full=100.000%
+
+v0.5c (train only 3x3 single entity + obstacle)
+shared-wave normal             n=10000 full=100.000% blocked=100.000% clear=100.000% Cblk=0.000 Cclr=0.989
+carrier forced-open            n=10000 full=50.760% blocked=0.000% clear=100.000%
+carrier reflected              n=10000 full=0.000%
+
+v0.6d (NO Hard Drop training)
+normal           n=10000 final_exact=100.000% step_exact=100.000% true_h=10.88 model_h=10.88
+carrier-off      n=10000 final_exact=0.000% step_exact=0.000% true_h=10.88 model_h=19.19
+
+Engineering:
+C11 -Wall -Wextra -Werror: PASS
+O2/O3 diff: 0 for representative v0.3/v0.5/v0.6 outputs
+UBSan v0.6 stderr: 0 bytes
