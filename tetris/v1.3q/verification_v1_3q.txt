@@ -1,0 +1,8 @@
+BPC Tetris v1.3q verification
+Date: 2026-10-04
+
+Compile strict: gcc -O2/-O3 -std=c11 -Wall -Wextra -Werror : PASS
+O2/O3 formal seed0 output diff bytes: 0
+O2 formal seed0 SHA-256: f731900d27bc9d1604763bea0b4a70e063fba409d3b958567e4773fcf75afc02
+O3 formal seed0 SHA-256: f731900d27bc9d1604763bea0b4a70e063fba409d3b958567e4773fcf75afc02
+UBSan smoke: exit=0, stderr=0 bytes
