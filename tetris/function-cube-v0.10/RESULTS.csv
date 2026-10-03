@@ -1,0 +1,6 @@
+version,training_basis,random_step_exact,harddrop_random_terrain,notes
+v0.1,contains engineered displacement target,100.000,100.000,development only; target leakage found
+v0.4,reality-only but obstacle query coordinates misaligned,72.340,2.580,pure target but wrong query coordinate system
+v0.7,reality-only aligned relative query,90.855,86.760,same cube; query alignment causes large jump
+v0.8,boundary forcibly merged into obstacle wave,52.105,28.120,negative result; over-merging relations
+v0.10,reality-only aligned continuous signed relation field,100.000,100.000,formal adopted result
