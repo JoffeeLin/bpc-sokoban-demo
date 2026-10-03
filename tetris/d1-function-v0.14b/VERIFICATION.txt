@@ -1,0 +1,6 @@
+BPC Tetris D1-Function v0.14b verification
+- C11 -Wall -Wextra -Werror: PASS (O2 and O3)
+- Representative O2/O3 output diff bytes: 0
+- Representative O2/O3 output SHA256: 89caee900668eea454986d6268afe6d415839ea8c8c7326dfe5433dfdbf18c29
+- UBSan smoke: PASS
+- UBSan stderr bytes: 0
