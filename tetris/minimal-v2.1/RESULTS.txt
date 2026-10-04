@@ -1,0 +1,35 @@
+BPC Tetris Minimal v2.1 formal frozen summary
+
+8 seeds
+one-step exact: 40000/40000 = 100%
+free rollout exact: 312839/312839 = 100%
+lock events: 96635, divergence=0
+game-over events: 8000, divergence=0
+Left failures=0
+Right failures=0
+Down failures=0
+Rotate failures=0
+Hard Drop failures=0
+
+Representative:
+integrated n=20000 exact=100.000% lock_events=5773 lock_exact=100.000%
+left 3973/3973
+right 4015/4015
+down 4043/4043
+rot 3966/3966
+drop 4003/4003
+rollout 78061/78061 = 100%
+locks=24180
+gameovers=2000
+
+Rotation visible-state audit:
+exact 7x7 physical address, no hidden pivot
+empty-world rotation=20000/20000
+random-obstacle total=20000/20000
+blocked subset=100%
+clear subset=100%
+
+Previous hidden-pivot audit:
+true pivot top-1 from binary screen only=74.48%
+Rotate exact≈74.65%
+The same visible O/S/Z geometry can map to multiple hidden pivots, so the old environment was not Markov-observable from the screen.
