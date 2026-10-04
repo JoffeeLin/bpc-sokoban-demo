@@ -1,5 +1,5 @@
 #define main v22_embedded_main
-#include "../minimal-v2.2/bpc_tetris_minimal_v22.c"
+#include "bpc_tetris_minimal_v22_core.c"
 #undef main
 
 static int popu(unsigned x){ return __builtin_popcount(x); }
