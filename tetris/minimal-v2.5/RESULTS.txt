@@ -1,0 +1,35 @@
+BPC Tetris Minimal v2.5
+
+v2.3 exhaustive
+translation <=4-cell + disjoint 3x3 world: 48960/48960
+blocked translation: 26112/26112
+rotation <=4-cell + every single obstacle: 339025/339025
+blocked rotation: 49302/49302
+all nonempty previews: 65535/65535
+blocked spawn: 65520/65520
+row carrier: 1024/1024
+row propagation: 1024/1024
+
+v2.4 arbitrary polyomino
+main: 190184/190184 ticks exact, locks=59089, gameovers=5000
+5 seeds: 227490/227490 ticks exact, locks=70306
+
+v2.5 entity count
+k1 28898/28898
+k2 18108/18108
+k3 11896/11896
+k4 9125/9125
+k5 8263/8263
+k6 7380/7380
+k7 6879/6879
+k8 6543/6543
+k9 6425/6425
+k10 6374/6374
+k11 5992/5992
+k12 6087/6087
+
+engineering
+-Wall -Wextra -Werror PASS
+O2/O3 diff=0
+SHA256=a87a28677b64d81761d0cf306ae0ff051d1dd28d10515f6495d99f50ad6919cf
+UBSan stderr=0
