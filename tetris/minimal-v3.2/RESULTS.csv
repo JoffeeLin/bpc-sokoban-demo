@@ -1,0 +1,10 @@
+experiment,field_power,phases,salt_or_group,ticks,exact_ticks,accuracy,notes
+v3.1_bad_salt,22,1,271828,24229,24164,99.731726,single-address collision persists
+v3.1_bad_salt,24,1,271828,24229,24164,99.731726,two spawn relation collisions still present
+v3.1_bad_salt,25,1,271828,26440,26440,100.000000,collisions disappear
+v3.2_salt0,19,4,0,18342,18180,99.116781,p19 not robust
+v3.2_salt57721,20,4,57721,11265,11256,99.920107,p20 rare Drop failures
+v3.2_salt57721,21,4,57721,11198,11191,99.937489,p21 rare Drop failures
+v3.2_salt57721,22,4,57721,11334,11324,99.911770,p22 rare Drop failures
+v3.2_bad_salt,23,4,271828,11252,11252,100.000000,bad salt+world restored
+v3.2_formal,23,4,5 salts x 5 worlds,95913,95913,100.000000,formal frozen matrix
