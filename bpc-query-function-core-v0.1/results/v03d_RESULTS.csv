@@ -1,0 +1,13 @@
+experiment,seed,mode,phase2_accuracy_pct,restore_accuracy_pct,effective_K_after_adapt,effective_K_after_restore,notes
+v0.3d,0,normal,100.000,100.000,1,0,A0*C1 only effective relation
+v0.3d,1,normal,100.000,100.000,1,0,A0*C1 only effective relation
+v0.3d,2,normal,100.000,100.000,1,0,A0*C1 only effective relation
+v0.3d,3,normal,100.000,100.000,1,0,A0*C1 only effective relation
+v0.3d,4,normal,100.000,100.000,1,0,A0*C1 only effective relation
+v0.3d,0,utility_off,76.525,100.000,0,0,new condition not learned
+v0.3d,1,utility_off,75.625,100.000,0,0,new condition not learned
+v0.3d,2,utility_off,76.075,100.000,0,0,new condition not learned
+v0.3d,3,utility_off,75.900,100.000,0,0,new condition not learned
+v0.3d,4,utility_off,74.450,100.000,0,0,new condition not learned
+v0.3d,0,utility_shift,100.000,100.000,8,16,accuracy recovered but redundant relations proliferate and persist
+v0.3d,0,utility_reverse,76.525,100.000,0,0,new condition not learned
