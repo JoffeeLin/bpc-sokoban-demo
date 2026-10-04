@@ -1,0 +1,28 @@
+BPC Tetris Minimal v2.12b
+
+Sparse functions: ~34
+Shared cells: 8192 (robust tested frontier)
+Address phases: 3
+Readout: continuous pairwise agreement
+
+p12 five salts: unstable 0%..99.05%
+p13 five salts: 5/5 100%
+p14 five salts: 5/5 100%
+
+p13 cross-seed:
+3 address salts x 3 rollout seeds
+75369/75369 ticks exact
+
+Line clear stress:
+50000/50000 exact
+1..4 forced full rows all 100%
+
+Compression vs v2.6:
+conceptual relations ~7070 -> ~34
+field cells 4194304 -> 8192
+training writes ~6468350 -> 51720
+
+C11 strict compile PASS
+O2/O3 diff 0
+SHA256 e5be7a3849db8917cb557eb7cde5e9c409b0a720610742f71e29f816964850f8
+UBSan stderr 0 bytes
