@@ -1,0 +1,11 @@
+BPC Tetris Minimal v2.12b verification
+
+p13 5-salt audit: 5/5 exact
+p13 3-salt x 3-world-seed audit: 75369/75369 ticks exact
+line-clear stress: 50000/50000 exact
+
+C11 -Wall -Wextra -Werror: PASS
+O2/O3 diff: 0 bytes
+O2/O3 SHA256: e5be7a3849db8917cb557eb7cde5e9c409b0a720610742f71e29f816964850f8
+UBSan exit: 0
+UBSan stderr: 0 bytes
