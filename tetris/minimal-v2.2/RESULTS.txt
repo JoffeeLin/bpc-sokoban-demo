@@ -1,0 +1,42 @@
+BPC Tetris Minimal v2.2 frozen summary
+
+v1.8 experience-only geometry learning
+- integrated one-step: 20,000/20,000 = 100%
+- rollout: 80,925/80,925 = 100%
+- Move / Rotate / Spawn geometry is generated only by external micro-world reality; the learner observes before/after states.
+
+v1.9 no top-1 line selector
+- 1-line clear: 10,000/10,000
+- 2-line clear: 10,000/10,000
+- 3-line clear: 10,000/10,000
+- 4-line clear: 10,000/10,000
+- carrier-off: 0%
+- carrier-reflect: 0%
+- integrated rollout: 80,925/80,925 = 100%
+
+Visible-state rotation audit
+- distinct visible active masks: 3,053
+- masks with >1 legal next ROT result: 695
+- ambiguity appears in O/S/Z symmetric states
+- best current-visible-mask-only exact lookup ceiling under exhaustive hidden-state enumeration: ~75.68%
+
+v2.0 latent pivot carrier
+- true pivot injection during rollout: 0
+- model carrier is born from learned spawn experience and then maintained internally
+- 5,000 episodes, 200,935 compared ticks: 100%
+- 62,216 locks: all exact
+
+v2.2 no QGate / deliberately wrong-order relaxation
+- explicit quiescence QGate removed
+- internal microstep order is Spawn -> Clear, opposite to the semantic reference ordering
+- relations keep acting until a fixed point
+- 5,000 episodes: 200,935/200,935 = 100%
+
+Formal 5-seed v2.2
+- seed 98765: 80,925/80,925
+- seed 1234567: 80,862/80,862
+- seed 7654321: 80,846/80,846
+- seed 0xB0C2026: 81,467/81,467
+- seed 0xDEADBEEF: 80,230/80,230
+TOTAL: 404,330/404,330 = 100%
+locks total: 124,841
