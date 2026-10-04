@@ -1,0 +1,6 @@
+C11 -Wall -Wextra -Werror: PASS
+O2/O3 diff bytes: 0
+O2 SHA256: 37659ac24f5fc3ba9cb743483fa4ce224701cc822addeccddee55f8408bf6f14
+O3 SHA256: 37659ac24f5fc3ba9cb743483fa4ce224701cc822addeccddee55f8408bf6f14
+UBSan exit: 0
+UBSan stderr bytes: 0
