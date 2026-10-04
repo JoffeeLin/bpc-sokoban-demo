@@ -1,3 +1,15 @@
+# Current unified BPC query-function line
+
+The current integrated theory + engineering baseline is:
+
+**[BPC Query-Function Core v0.1](bpc-query-function-core-v0.1/README.md)**
+
+This line integrates voxel-accumulated functions with query-wave participation, Reality Residual trace writeback, consequence-grounded lifecycle, dynamic support topology, causal support focusing, and relation-state re-entry. It preserves both positive and negative evidence from v0.3d through v0.8 and defines the next target as recurrent relation-carrier orbit formation without clocks, phase labels, fixed history depth, or task-specific operators.
+
+> The older Sokoban/Tetris directories remain historical mechanism experiments and reference baselines. The Query-Function Core is the current self-building-function research line.
+
+---
+
 # GeneralBPC: Learned World + Relations + Macro Geometry
 
 ## v0.49: residual-born activity carries a vanished condition
