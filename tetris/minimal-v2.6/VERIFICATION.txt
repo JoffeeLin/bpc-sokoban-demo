@@ -1,0 +1,21 @@
+BPC Tetris Minimal v2.6 verification
+
+Shared field: one direct-hashed Beta z/o medium
+Conceptual relation addresses before hashing: 7070
+
+Capacity:
+- p18: fail
+- p19: 99.60% representative
+- p20: address-salt dependent
+- p22: 5/5 tested address salts exact
+
+p22 cross seed:
+- 3 address salts x 3 rollout seeds
+- 40653/40653 ticks exact
+
+Engineering:
+- C11 -Wall -Wextra -Werror PASS
+- O2/O3 diff = 0 bytes
+- SHA256 = 762bed5978f1e94a0103c49c0b0a0364d9e4fffd0c9c35a4fa6ba2f16e2d1d28
+- UBSan exit 0
+- UBSan stderr 0 bytes
