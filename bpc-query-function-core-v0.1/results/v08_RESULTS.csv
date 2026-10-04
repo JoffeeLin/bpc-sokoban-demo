@@ -1,0 +1,17 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: RESULTS(7).csv>
+index,version,world,metric,result,notes
+0,v0.6,conjunction,full_accuracy,100%,5/5 seeds; temporal carriers unnecessary
+1,v0.6,order2,full_accuracy,100%,5/5 seeds
+2,v0.6,order2,prev_raw_off,~87-88%,previous raw token is causally required
+3,v0.6,visible_cycle,full_accuracy,100%,5/5 seeds
+4,v0.6,visible_cycle,prev_outcome_off,33.333%,previous real-future wave is causally required
+5,v0.6,reversible_ring,full_accuracy,99.992-100%,5/5 seeds; K=14-20
+6,v0.6,reversible_ring,prev_outcome_off,~19-21%,previous real-future wave is primary state carrier
+7,v0.7,hidden_order3,full_accuracy,87.342-87.867%,current+previous raw+previous outcome insufficient
+8,v0.7,hidden_cycle3,full_accuracy,66.200-66.867%,identical visible queries need internal process state
+9,v0.8,order3_relation_reentry,full_accuracy,100%,5/5 seeds
+10,v0.8,order3_relation_reentry,carrier_off,74.544-75.787%,anonymous function carrier is causally required
+11,v0.8,order3_relation_reentry,trace_writeback_off,74.544-75.787%,carrier node alone is insufficient; query-error writeback is required
+12,v0.8,order3_relation_reentry,base_K,2,order2 functions
+13,v0.8,order3_relation_reentry,temporal_K,2,two anonymous relation-carrier refinements
