@@ -1,0 +1,163 @@
+--- raw-history/model.h
++++ support-joint/model.h
+@@ -1,6 +1,7 @@
+ #ifndef BPC_RAW_HISTORY_MODEL_H
+ #define BPC_RAW_HISTORY_MODEL_H
+ #include <stdint.h>
++#include <math.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -17,9 +18,20 @@
+ #endif
+ typedef struct { uint8_t q[RN]; } Raw;
+ typedef struct { Raw past[LAGS]; uint8_t memory[PORTS][RN]; int with_memory; } Medium;
+-typedef struct { uint64_t a, b; uint32_t yes, total; } Cell;
++/* MODE 0: inherited priority; 1: equal probability pooling control;
++   2: all-address additive probability residual, BPC-0 equations.
++   Every independent model uses one field and the same 32-byte cell budget. */
++#ifndef MODE
++#define MODE 2
++#endif
++#ifndef MAX_CELLS
++#define MAX_CELLS 10000000u
++#endif
++#define ETA 0.5
++_Static_assert(MODE >= 0 && MODE <= 2, "unknown mode");
++typedef struct { uint64_t a, b; uint32_t yes, total; double residual; } Cell;
+ typedef struct { Cell *table; size_t capacity, used; } Field;
+-_Static_assert(sizeof(Cell) == 24, "field cell layout changed");
++_Static_assert(sizeof(Cell) == 32, "field cell layout changed");
+ 
+ static void require(int ok, const char *what) {
+     if (!ok) { fprintf(stderr, "%s\n", what); exit(2); }
+@@ -41,6 +53,7 @@
+         i = (i + 1) & (f->capacity - 1);
+     }
+     if (!create) return NULL;
++    if (f->used >= MAX_CELLS) return NULL;
+     f->table[i].a = a; f->table[i].b = b; f->used++;
+     return &f->table[i];
+ }
+@@ -112,47 +125,59 @@
+     *a = mix64(ga ^ mix64((uint64_t)site + UINT64_C(0x7603abdce1479801)));
+     *b = mix64(gb ^ mix64((uint64_t)site + UINT64_C(0x241e7690abcf8523)));
+ }
++/* Physical supports are enumerated, never ranked. An unseen address has
++   zero residual; fixed wave norm includes it. Sigmoid readout and its update
++   are an additive logistic probability model, not a new mathematical family. */
++static double site_probability(Field *f, const Medium *m, const uint16_t codes[RN],
++                               int site, int act, uint64_t ga, uint64_t gb) {
++    if (MODE == 0) {
++        if (GLOBAL_SUPPORT) {
++            uint64_t a,b; global_site_key(ga,gb,site,&a,&b); Cell *c=find_cell(f,a,b,0);
++            if(c) return (c->yes+1.0)/(c->total+2.0);
++        }
++        for(int l=LEVELS-1;l>=0;l--){
++            uint64_t a,b; support_key(codes,site,act,l,&a,&b); Cell *c=find_cell(f,a,b,0);
++            if(c) return (c->yes+1.0)/(c->total+2.0);
++        }
++        return (double)m->past[0].q[site];
++    }
++    double sum=0; int known=0;
++    for(int l=0;l<LEVELS+GLOBAL_SUPPORT;l++){
++        uint64_t a,b;
++        if(l<LEVELS) support_key(codes,site,act,l,&a,&b);
++        else global_site_key(ga,gb,site,&a,&b);
++        Cell *c=find_cell(f,a,b,0); if(!c)continue; known++;
++        sum += MODE==1 ? (c->yes+1.0)/(c->total+2.0) : c->residual;
++    }
++    if(MODE==1) return known ? sum/known : (double)m->past[0].q[site];
++    double z=sum/sqrt((double)(LEVELS+GLOBAL_SUPPORT));
++    return z>=0 ? 1.0/(1.0+exp(-z)) : exp(z)/(1.0+exp(z));
++}
+ static uint8_t predict_site(Field *f, const Medium *m, const uint16_t codes[RN],
+                             int site, int act, uint64_t ga, uint64_t gb) {
+-    uint8_t value = m->past[0].q[site];
+-    if (GLOBAL_SUPPORT) {
+-        uint64_t a, b; global_site_key(ga, gb, site, &a, &b);
+-        Cell *c = find_cell(f, a, b, 0);
+-        if (c) {
+-            uint64_t twice = (uint64_t)c->yes*2;
+-            return twice == c->total ? value : (uint8_t)(twice > c->total);
+-        }
+-    }
+-    for (int l = LEVELS-1; l >= 0; l--) {
+-        uint64_t a, b; support_key(codes, site, act, l, &a, &b);
+-        Cell *c = find_cell(f, a, b, 0);
+-        if (!c) continue;
+-        uint64_t twice = (uint64_t)c->yes*2;
+-        if (twice != c->total) value = (uint8_t)(twice > c->total);
+-        break;
+-    }
+-    return value;
++    double p=site_probability(f,m,codes,site,act,ga,gb);
++    return p==0.5 ? m->past[0].q[site] : (uint8_t)(p>0.5);
++}
++static void record_cell(Cell *c,uint8_t truth,double error){
++    if(!c)return;
++    require(c->total!=UINT32_MAX,"count overflow"); c->yes+=truth; c->total++;
++    if(MODE==2)c->residual+=ETA*error/sqrt((double)(LEVELS+GLOBAL_SUPPORT));
+ }
+ static void field_observe(Field *f, const Medium *m, int act, const Raw *next) {
+-    uint16_t codes[RN]; medium_codes(m, codes);
+-    uint64_t ga = 0, gb = 0;
+-    if (GLOBAL_SUPPORT) global_key(codes, act, &ga, &gb);
+-    if ((f->used + RN*(LEVELS+1))*10 > f->capacity*7) field_grow(f);
+-    for (int i = 0; i < RN; i++) {
+-        if (GLOBAL_SUPPORT) {
+-            uint64_t a, b; global_site_key(ga, gb, i, &a, &b);
+-            int residual = predict_site(f, m, codes, i, act, ga, gb) != next->q[i];
+-            Cell *c = find_cell(f, a, b, residual);
+-            if (c) {
+-                require(c->total != UINT32_MAX, "count overflow");
+-                c->yes += next->q[i]; c->total++;
+-            }
+-        }
+-        for (int l = 0; l < LEVELS; l++) {
+-            uint64_t a, b; support_key(codes, i, act, l, &a, &b);
+-            Cell *c = find_cell(f, a, b, 1);
+-            require(c->total != UINT32_MAX, "count overflow");
+-            c->yes += next->q[i]; c->total++;
++    uint16_t codes[RN]; medium_codes(m,codes);
++    uint64_t ga=0,gb=0; if(GLOBAL_SUPPORT)global_key(codes,act,&ga,&gb);
++    if((f->used+RN*(LEVELS+1))*10>f->capacity*7)field_grow(f);
++    for(int i=0;i<RN;i++){
++        double p=site_probability(f,m,codes,i,act,ga,gb);
++        uint8_t bit=p==0.5?m->past[0].q[i]:(uint8_t)(p>0.5);
++        double e=next->q[i]-p; /* Real consequence only; never self confirmation. */
++        if(GLOBAL_SUPPORT){
++            uint64_t a,b;global_site_key(ga,gb,i,&a,&b);
++            record_cell(find_cell(f,a,b,bit!=next->q[i]),next->q[i],e);
++        }
++        for(int l=0;l<LEVELS;l++){
++            uint64_t a,b;support_key(codes,i,act,l,&a,&b);
++            record_cell(find_cell(f,a,b,1),next->q[i],e);
+         }
+     }
+ }
+@@ -182,7 +207,7 @@
+ }
+ static void field_save(const Field *f, const char *path, int with_memory) {
+     FILE *fp = fopen(path, "wb"); require(fp != NULL, "cannot save field");
+-    uint64_t header[4] = {UINT64_C(0x5241574849535431), f->used, (uint64_t)with_memory, LEVELS+GLOBAL_SUPPORT*16};
++    uint64_t header[5] = {UINT64_C(0x4250435355505031), f->used, (uint64_t)with_memory, LEVELS+GLOBAL_SUPPORT*16, MODE};
+     require(fwrite(header, sizeof(header), 1, fp) == 1, "write header failed");
+     for (size_t i = 0; i < f->capacity; i++) if (f->table[i].total)
+         require(fwrite(&f->table[i], sizeof(Cell), 1, fp) == 1, "write cell failed");
+@@ -190,12 +215,13 @@
+ }
+ static void field_load(Field *f, const char *path, int *with_memory) {
+     FILE *fp = fopen(path, "rb"); require(fp != NULL, "cannot load field");
+-    uint64_t header[4]; require(fread(header, sizeof(header), 1, fp) == 1, "read header failed");
+-    require(header[0] == UINT64_C(0x5241574849535431) && header[3] == LEVELS+GLOBAL_SUPPORT*16, "field format mismatch");
++    uint64_t header[5]; require(fread(header, sizeof(header), 1, fp) == 1, "read header failed");
++    require(header[0] == UINT64_C(0x4250435355505031) && header[3] == LEVELS+GLOBAL_SUPPORT*16 && header[4] == MODE && header[1] <= MAX_CELLS, "field format mismatch");
+     size_t cap = 1024; while (cap*7/10 < header[1]+1) cap *= 2;
+     field_init(f, cap); *with_memory = (int)header[2];
+     for (uint64_t k = 0; k < header[1]; k++) {
+         Cell c; require(fread(&c, sizeof(c), 1, fp) == 1 && c.total != 0, "invalid cell");
++        require(isfinite(c.residual), "nonfinite residual");
+         *find_cell(f, c.a, c.b, 1) = c;
+     }
+     require(fgetc(fp) == EOF, "unexpected field data"); fclose(fp);

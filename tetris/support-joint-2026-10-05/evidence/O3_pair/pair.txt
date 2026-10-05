@@ -1,0 +1,16 @@
+ALIAS seed=96 identical_current_and_last_3_frames=1 repeated_noops=200 same_next_operation=1 different_next=1 differing_bits=4 memory_diff=1
+PAIR_FIELD memory=0 global_support=1 cells=7205 digest=c9ff3cb7f1af0b4e
+PAIR_PROBE memory=0 noops=6 mode=0 exact=1/2
+PAIR_PROBE memory=0 noops=200 mode=0 exact=1/2
+PAIR_SELF_ROLLOUT memory=0 history=0 noops=200 whole_exact=0 first_failure=225 steps=226
+PAIR_SELF_ROLLOUT memory=0 history=1 noops=200 whole_exact=1 first_failure=-1 steps=226
+PAIR_BYTES_HASH_FROZEN=1
+PAIR_FIELD memory=1 global_support=1 cells=7633 digest=bf2916bcefb86992
+PAIR_PROBE memory=1 noops=6 mode=0 exact=2/2
+PAIR_PROBE memory=1 noops=200 mode=0 exact=2/2
+PAIR_SELF_ROLLOUT memory=1 history=0 noops=200 whole_exact=1 first_failure=-1 steps=226
+PAIR_SELF_ROLLOUT memory=1 history=1 noops=200 whole_exact=1 first_failure=-1 steps=226
+PAIR_PROBE memory=1 noops=200 mode=1 exact=1/2
+PAIR_PROBE memory=1 noops=200 mode=2 exact=0/2
+PAIR_PROBE memory=1 noops=200 mode=3 exact=1/2
+PAIR_BYTES_HASH_FROZEN=1

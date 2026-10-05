@@ -1,0 +1,227 @@
+{
+  "status": "rejected",
+  "baseline_commit": "cabf09884d1a8f65645e4feefaa473e5412b06c3",
+  "world_steps": 468707,
+  "training": {
+    "seed": 55901,
+    "pieces": 20000,
+    "actual_actions": 100121,
+    "pair_actual_actions": 6400,
+    "cell_limit": 10000000,
+    "cell_bytes": 32,
+    "eta": 0.5
+  },
+  "models": {
+    "0": {
+      "pilot": [
+        {
+          "mode": "0",
+          "seed": "55941",
+          "cells": "1046598",
+          "teacher": "407/11758",
+          "self_prefix": "298/598",
+          "whole_episodes": "0/300",
+          "frozen": "1"
+        },
+        {
+          "mode": "0",
+          "seed": "55942",
+          "cells": "1037990",
+          "teacher": "427/11758",
+          "self_prefix": "297/597",
+          "whole_episodes": "0/300",
+          "frozen": "1"
+        },
+        {
+          "mode": "0",
+          "seed": "55943",
+          "cells": "1042204",
+          "teacher": "388/11758",
+          "self_prefix": "267/567",
+          "whole_episodes": "0/300",
+          "frozen": "1"
+        }
+      ],
+      "old": {
+        "totals": [
+          10363,
+          18363,
+          8000
+        ],
+        "real_steps": 312839
+      },
+      "new": {
+        "totals": [
+          5092,
+          9092,
+          4000
+        ],
+        "real_steps": 155868
+      },
+      "teacher": {
+        "totals": [
+          700,
+          15865,
+          400
+        ],
+        "real_steps": 15865
+      },
+      "play": {
+        "totals": [
+          16499,
+          250661,
+          2948,
+          2948
+        ]
+      },
+      "field_sha256": "c0c8fe279e33c2b8aaf6e3c4f51abcb15c8756abea3f8ac5f1969a41a798a0f8",
+      "field_bytes": 262139560,
+      "cells": 8191860
+    },
+    "1": {
+      "pilot": [
+        {
+          "mode": "1",
+          "seed": "55941",
+          "cells": "1048879",
+          "teacher": "245/11758",
+          "self_prefix": "135/435",
+          "whole_episodes": "0/300",
+          "frozen": "1"
+        },
+        {
+          "mode": "1",
+          "seed": "55942",
+          "cells": "1040131",
+          "teacher": "263/11758",
+          "self_prefix": "135/435",
+          "whole_episodes": "0/300",
+          "frozen": "1"
+        },
+        {
+          "mode": "1",
+          "seed": "55943",
+          "cells": "1044305",
+          "teacher": "240/11758",
+          "self_prefix": "123/423",
+          "whole_episodes": "0/300",
+          "frozen": "1"
+        }
+      ],
+      "old": {
+        "totals": [
+          6216,
+          14216,
+          8000
+        ],
+        "real_steps": 312839
+      },
+      "new": {
+        "totals": [
+          3016,
+          7016,
+          4000
+        ],
+        "real_steps": 155868
+      },
+      "teacher": {
+        "totals": [
+          504,
+          15865,
+          400
+        ],
+        "real_steps": 15865
+      },
+      "play": {
+        "totals": [
+          9140,
+          250661,
+          2948,
+          2948
+        ]
+      },
+      "field_sha256": "aabe0abadac9f85993f9a0b50b7b69d622b15370a8e887ff78d75981995ae2bb",
+      "field_bytes": 263420520,
+      "cells": 8231890
+    },
+    "2": {
+      "pilot": [
+        {
+          "mode": "2",
+          "seed": "55941",
+          "cells": "1050213",
+          "teacher": "115/11758",
+          "self_prefix": "16/316",
+          "whole_episodes": "0/300",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "seed": "55942",
+          "cells": "1041439",
+          "teacher": "117/11758",
+          "self_prefix": "19/319",
+          "whole_episodes": "0/300",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "seed": "55943",
+          "cells": "1045731",
+          "teacher": "137/11758",
+          "self_prefix": "28/328",
+          "whole_episodes": "0/300",
+          "frozen": "1"
+        }
+      ],
+      "old": {
+        "totals": [
+          4518,
+          12518,
+          8000
+        ],
+        "real_steps": 312839
+      },
+      "new": {
+        "totals": [
+          2175,
+          6175,
+          4000
+        ],
+        "real_steps": 155868
+      },
+      "teacher": {
+        "totals": [
+          403,
+          15865,
+          400
+        ],
+        "real_steps": 15865
+      },
+      "play": {
+        "totals": [
+          6546,
+          250661,
+          2948,
+          2948
+        ]
+      },
+      "field_sha256": "d360e010551f8ceaaa5ac75619143ff61ca0c6f043d9e8c170d61151c79a3a02",
+      "field_bytes": 263283048,
+      "cells": 8227594
+    }
+  },
+  "baseline_new": {
+    "indices": [
+      28,
+      29,
+      30,
+      31
+    ],
+    "episodes": 4000,
+    "exact": 155868,
+    "n": 155868,
+    "field_sha256": "2f6e0731eed408c3048d1d256ec3bc3cf404c6f48efe29310cba85ef19becf87"
+  },
+  "joint_cpu_field_sha256": "d360e010551f8ceaaa5ac75619143ff61ca0c6f043d9e8c170d61151c79a3a02"
+}

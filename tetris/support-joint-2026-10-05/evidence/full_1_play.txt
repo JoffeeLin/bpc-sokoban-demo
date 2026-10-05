@@ -1,0 +1,6 @@
+PLAY_SELF memory=1 seed=20261121 pieces=10000 exact=1837/50084 failed_episodes=594/594 first_piece=0 action=4
+PLAY_SELF memory=1 seed=20261122 pieces=10000 exact=1856/50212 failed_episodes=594/594 first_piece=0 action=4
+PLAY_SELF memory=1 seed=20261123 pieces=10000 exact=1783/49948 failed_episodes=585/585 first_piece=0 action=4
+PLAY_SELF memory=1 seed=20261124 pieces=10000 exact=1818/50223 failed_episodes=587/587 first_piece=0 action=4
+PLAY_SELF memory=1 seed=20261125 pieces=10000 exact=1846/50194 failed_episodes=588/588 first_piece=0 action=4
+FIELD_BYTES_HASH_FROZEN=1 cells=8231890 digest=2d09c757d03a5dc2 CPU_SECONDS=30.953

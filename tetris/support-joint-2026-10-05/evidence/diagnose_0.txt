@@ -1,0 +1,6 @@
+RAW_DIAGNOSTIC mode=0 port=0 frames=30/631 changed=2594 changed_wrong=1534 unchanged_wrong=1198
+RAW_DIAGNOSTIC mode=0 port=1 frames=44/708 changed=2968 changed_wrong=1663 unchanged_wrong=1017
+RAW_DIAGNOSTIC mode=0 port=2 frames=41/793 changed=4183 changed_wrong=2181 unchanged_wrong=901
+RAW_DIAGNOSTIC mode=0 port=3 frames=61/565 changed=1900 changed_wrong=1262 unchanged_wrong=793
+RAW_DIAGNOSTIC mode=0 port=4 frames=13/1159 changed=9715 changed_wrong=5332 unchanged_wrong=2725
+DIAGNOSTIC_FIELD_BYTES_RESTORED=1
