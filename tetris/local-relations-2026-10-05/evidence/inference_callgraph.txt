@@ -1,0 +1,6 @@
+SOURCE_LEVEL_FUNCTION_COUNT=104
+ROOT=sf_binary_step
+REACHABLE_FUNCTIONS=add_dir,addr_vertical_relation,bin_to_state,boundary_reach_one_side,eq,generic_boundary_wave,geom_effect_wave,gp_collect,gp_minxy,h64,kclosure,kcompat,kcresp,kgauge,kjointeff,klife,kpairgate,kpairmap,kroute,kspawn,ksplit,lerp01,local_shift,local_vector,pair_id,participation,physical_dirs,primtok,render_raw,ridx,sf_amp,sf_binary_step,sf_clear_relation,sf_compat,sf_downstream,sf_geom_candidate,sf_geom_targets,sf_life,sf_route,sf_spawn,sf_spawn_carrier,sf_spawn_field,sf_split,sf_transport,sffind,sfget,sfprob,state_to_bin,state_unit_dirs,ta,taddrrel,tanext,tboundary,tchan,tdest,teffect,tfeas,tproposal,trel,troute,w3,wavecollide
+FORBIDDEN_REACHED=
+ORACLE_PLAYER_CREDIT_UNREACHABLE=1
+NOTE=Regex-based direct-call audit; corroborated by frozen-field runtime tests. Not a proof of cognitive purity.

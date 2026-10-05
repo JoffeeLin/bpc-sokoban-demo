@@ -1,0 +1,12 @@
+CLEAR_STRESS 10000/10000
+VERTICAL_NONCLEAR 2500/2500
+SEED0 38941/38941 trace=38941 locks=12054 gameovers=1000 first=-1:-1:-1
+SEED1 39554/39554 trace=39554 locks=12125 gameovers=1000 first=-1:-1:-1
+SEED2 38743/38743 trace=38743 locks=12150 gameovers=1000 first=-1:-1:-1
+SEED3 39669/39669 trace=39669 locks=12150 gameovers=1000 first=-1:-1:-1
+SEED4 38875/38875 trace=38875 locks=12040 gameovers=1000 first=-1:-1:-1
+SEED5 38623/38623 trace=38623 locks=12011 gameovers=1000 first=-1:-1:-1
+SEED6 39070/39070 trace=39070 locks=11995 gameovers=1000 first=-1:-1:-1
+SEED7 39364/39364 trace=39364 locks=12110 gameovers=1000 first=-1:-1:-1
+TOTAL 312839/312839
+FROZEN_BYTE_IDENTICAL=1 hash=7f8c891c6fea5713 PASS=1 CPU_SECONDS=35.028

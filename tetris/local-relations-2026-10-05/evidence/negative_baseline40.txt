@@ -1,0 +1,23 @@
+DIFF frame=0 trace=1 lock=1/1 before_mass=4/88 after_mass=4/62 predicted_mass=4/0
+ROW 0 before=200/000 truth=078/000 pred=078/000
+ROW 1 before=200/000 truth=000/000 pred=000/000
+ROW 2 before=200/000 truth=000/000 pred=000/000
+ROW 3 before=200/000 truth=000/000 pred=000/000
+ROW 4 before=000/000 truth=000/000 pred=000/000
+ROW 5 before=000/000 truth=000/000 pred=000/000
+ROW 6 before=000/000 truth=000/000 pred=000/000
+ROW 7 before=000/000 truth=000/000 pred=000/000
+ROW 8 before=000/030 truth=000/000 pred=000/000
+ROW 9 before=000/070 truth=000/000 pred=000/000
+ROW 10 before=000/0fe truth=000/000 pred=000/000
+ROW 11 before=000/0fe truth=000/030 pred=000/000
+ROW 12 before=000/0fe truth=000/070 pred=000/030
+ROW 13 before=000/1ff truth=000/0fe pred=000/070
+ROW 14 before=000/1ff truth=000/0fe pred=000/0fe
+ROW 15 before=000/1f7 truth=000/0fe pred=000/0fe
+ROW 16 before=000/1ff truth=000/1ff pred=000/0fe
+ROW 17 before=000/1ff truth=000/3f7 pred=000/000
+ROW 18 before=000/37f truth=000/37f pred=000/37f
+ROW 19 before=000/37f truth=000/37f pred=000/37f
+AUTOPLAY seed=20261010 pieces=1000 exact=1140/1141 first_piece=252 action=4
+FROZEN_BYTE_IDENTICAL=1 hash=675c85406526b811 PASS=0 CPU_SECONDS=0.223

@@ -1,0 +1,6 @@
+AUTOPLAY seed=20261020 pieces=1000 exact=4370/4370 clear_events=313 lines=367 four=1 gameovers=2
+AUTOPLAY seed=20261021 pieces=1000 exact=4394/4394 clear_events=324 lines=370 four=1 gameovers=2
+AUTOPLAY seed=20261022 pieces=1000 exact=4409/4409 clear_events=296 lines=343 four=6 gameovers=4
+AUTOPLAY seed=20261023 pieces=1000 exact=4412/4412 clear_events=292 lines=342 four=3 gameovers=4
+AUTOPLAY seed=20261024 pieces=1000 exact=4440/4440 clear_events=311 lines=381 four=3 gameovers=1
+FROZEN_BYTE_IDENTICAL=1 hash=7f8c891c6fea5713 PASS=1 CPU_SECONDS=4.074

@@ -1,0 +1,6 @@
+SEED16 39002/39002 trace=39002 locks=12117 gameovers=1000 first=-1:-1:-1
+SEED17 38831/38831 trace=38831 locks=12133 gameovers=1000 first=-1:-1:-1
+SEED18 39056/39056 trace=39056 locks=12088 gameovers=1000 first=-1:-1:-1
+SEED19 38953/38953 trace=38953 locks=12126 gameovers=1000 first=-1:-1:-1
+TOTAL 155842/155842
+FROZEN_BYTE_IDENTICAL=1 hash=7f8c891c6fea5713 PASS=1 CPU_SECONDS=17.705
