@@ -1,0 +1,11 @@
+BPC Binary WorldFit v0.19 | 0/1 screen + self-born temporal trace + anonymous action wave; no action dispatcher
+NORMAL 38941/38941=100.000000% episodes_ok=1000 locks=12054 first_fail=-1:-1
+NORMAL 39554/39554=100.000000% episodes_ok=1000 locks=12125 first_fail=-1:-1
+NORMAL 38743/38743=100.000000% episodes_ok=1000 locks=12150 first_fail=-1:-1
+NORMAL 39669/39669=100.000000% episodes_ok=1000 locks=12150 first_fail=-1:-1
+NORMAL 38875/38875=100.000000% episodes_ok=1000 locks=12040 first_fail=-1:-1
+NORMAL 38623/38623=100.000000% episodes_ok=1000 locks=12011 first_fail=-1:-1
+NORMAL 39070/39070=100.000000% episodes_ok=1000 locks=11995 first_fail=-1:-1
+NORMAL 39364/39364=100.000000% episodes_ok=1000 locks=12110 first_fail=-1:-1
+NORMAL_TOTAL 312839/312839=100.000000%
+ACTION_WAVE_SHIFT 0/200=0.000000% episodes_ok=0 locks=63 first_fail=0:0
