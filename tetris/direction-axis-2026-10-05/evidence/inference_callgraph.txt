@@ -1,0 +1,5 @@
+ROOT=sf_binary_step
+REACHABLE_FUNCTIONS=add_dir,address_projection,bin_to_state,boundary_reach_one_side,eq,generic_boundary_wave,geom_effect_wave,gp_collect,gp_minxy,h64,kclosure,kcompat,kcresp,kdrift,kgauge,kjointeff,klife,kpairgate,kpairmap,kroute,kspawn,ksplit,lerp01,local_shift,local_vector,pair_id,physical_dirs,primtok,render_raw,ridx,sf_amp,sf_binary_step,sf_clear_relation,sf_compat,sf_downstream,sf_drift,sf_geom_candidate,sf_geom_targets,sf_life,sf_route,sf_spawn,sf_spawn_carrier,sf_spawn_field,sf_split,sf_transport_vector,sffind,sfget,sfprob,state_to_bin,state_unit_dirs,ta,taddrrel,tanext,tboundary,tchan,tdest,teffect,tfeas,tproposal,trel,troute,w3,wavecollide
+ORACLE_CREDIT_MID_UNREACHABLE=1
+PLAYER_HEURISTIC_AND_RESIDUAL_RANKING_PRESENT=0
+NOTE=Direct source-call check, not a proof of purity.

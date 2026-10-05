@@ -1,0 +1,6 @@
+PLAY seed=20261025 pieces=10000 exact=48822/48822 clear_events=12 lines=12 four=0 gameovers=519
+PLAY seed=20261026 pieces=10000 exact=48809/48809 clear_events=5 lines=5 four=0 gameovers=528
+PLAY seed=20261027 pieces=10000 exact=48902/48902 clear_events=9 lines=9 four=0 gameovers=525
+PLAY seed=20261028 pieces=10000 exact=48566/48566 clear_events=4 lines=4 four=0 gameovers=530
+PLAY seed=20261029 pieces=10000 exact=48918/48918 clear_events=6 lines=6 four=0 gameovers=532
+FROZEN_BYTE_IDENTICAL=1 hash=eabafd53cdb66fc0 PASS=1 CPU_SECONDS=23.462

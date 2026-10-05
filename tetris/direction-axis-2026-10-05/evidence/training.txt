@@ -1,0 +1,7 @@
+LEARN seed=55876 pieces=20000 actions=297209 residual_events=28 camera_reflect=0
+DIRECTION 0,-1 yes=0 total=28 p=0.033333333
+DIRECTION -1,0 yes=0 total=28 p=0.033333333
+DIRECTION 1,0 yes=0 total=28 p=0.033333333
+DIRECTION 0,1 yes=28 total=28 p=0.966666667
+DRIFT 0.000000000,1.000000000
+INHERITED_CELLS_BYTE_IDENTICAL=1 relations=373 hash=eabafd53cdb66fc0 PASS=1
