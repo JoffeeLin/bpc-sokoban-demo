@@ -1,0 +1,80 @@
+===== v0.2 main regression =====
+BPC Best WorldFit v0.2 | no QGate | always-on Spawn+Clear fixed-point relaxation
+DOWN_REUSE_LINECLEAR total=10000/10000=100.000000% k1=2500/2500 k2=2500/2500 k3=2500/2500 k4=2500/2500
+FORMAL | screen+action only | 8 frozen seeds
+=== seed 0 ===
+integrated n=5000 exact=100.000% lock_events=1415 lock_exact=100.000%
+  left  972/972 = 100.000%
+  right 1063/1063 = 100.000%
+  down  983/983 = 100.000%
+  rot   986/986 = 100.000%
+  drop  996/996 = 100.000%
+rollout episodes=1000 maxsteps=120 compared_steps=38941 exact=38941/38941=100.000% locks=12054 gameovers=1000 full_horizon=0 first_fail=-1:-1 act=-1 lr/lm=0/0 diffA/W/P=0/0/0 rotC=-1.0000 localW=0 actualBlocked=-1
+rollout failures by action: L=0 R=0 D=0 Rot=0 Drop=0
+=== seed 1 ===
+integrated n=5000 exact=100.000% lock_events=1425 lock_exact=100.000%
+  left  976/976 = 100.000%
+  right 1027/1027 = 100.000%
+  down  975/975 = 100.000%
+  rot   1009/1009 = 100.000%
+  drop  1013/1013 = 100.000%
+rollout episodes=1000 maxsteps=120 compared_steps=39554 exact=39554/39554=100.000% locks=12125 gameovers=1000 full_horizon=0 first_fail=-1:-1 act=-1 lr/lm=0/0 diffA/W/P=0/0/0 rotC=-1.0000 localW=0 actualBlocked=-1
+rollout failures by action: L=0 R=0 D=0 Rot=0 Drop=0
+=== seed 2 ===
+integrated n=5000 exact=100.000% lock_events=1420 lock_exact=100.000%
+  left  986/986 = 100.000%
+  right 991/991 = 100.000%
+  down  984/984 = 100.000%
+  rot   1031/1031 = 100.000%
+  drop  1008/1008 = 100.000%
+rollout episodes=1000 maxsteps=120 compared_steps=38743 exact=38743/38743=100.000% locks=12150 gameovers=1000 full_horizon=0 first_fail=-1:-1 act=-1 lr/lm=0/0 diffA/W/P=0/0/0 rotC=-1.0000 localW=0 actualBlocked=-1
+rollout failures by action: L=0 R=0 D=0 Rot=0 Drop=0
+=== seed 3 ===
+integrated n=5000 exact=100.000% lock_events=1457 lock_exact=100.000%
+  left  1063/1063 = 100.000%
+  right 982/982 = 100.000%
+  down  1020/1020 = 100.000%
+  rot   954/954 = 100.000%
+  drop  981/981 = 100.000%
+rollout episodes=1000 maxsteps=120 compared_steps=39669 exact=39669/39669=100.000% locks=12150 gameovers=1000 full_horizon=0 first_fail=-1:-1 act=-1 lr/lm=0/0 diffA/W/P=0/0/0 rotC=-1.0000 localW=0 actualBlocked=-1
+rollout failures by action: L=0 R=0 D=0 Rot=0 Drop=0
+=== seed 4 ===
+integrated n=5000 exact=100.000% lock_events=1427 lock_exact=100.000%
+  left  1004/1004 = 100.000%
+  right 1000/1000 = 100.000%
+  down  983/983 = 100.000%
+  rot   1007/1007 = 100.000%
+  drop  1006/1006 = 100.000%
+rollout episodes=1000 maxsteps=120 compared_steps=38875 exact=38875/38875=100.000% locks=12040 gameovers=1000 full_horizon=0 first_fail=-1:-1 act=-1 lr/lm=0/0 diffA/W/P=0/0/0 rotC=-1.0000 localW=0 actualBlocked=-1
+rollout failures by action: L=0 R=0 D=0 Rot=0 Drop=0
+=== seed 5 ===
+integrated n=5000 exact=100.000% lock_events=1423 lock_exact=100.000%
+  left  980/980 = 100.000%
+  right 1035/1035 = 100.000%
+  down  1004/1004 = 100.000%
+  rot   992/992 = 100.000%
+  drop  989/989 = 100.000%
+rollout episodes=1000 maxsteps=120 compared_steps=38623 exact=38623/38623=100.000% locks=12011 gameovers=1000 full_horizon=0 first_fail=-1:-1 act=-1 lr/lm=0/0 diffA/W/P=0/0/0 rotC=-1.0000 localW=0 actualBlocked=-1
+rollout failures by action: L=0 R=0 D=0 Rot=0 Drop=0
+=== seed 6 ===
+integrated n=5000 exact=100.000% lock_events=1429 lock_exact=100.000%
+  left  972/972 = 100.000%
+  right 1007/1007 = 100.000%
+  down  981/981 = 100.000%
+  rot   1023/1023 = 100.000%
+  drop  1017/1017 = 100.000%
+rollout episodes=1000 maxsteps=120 compared_steps=39070 exact=39070/39070=100.000% locks=11995 gameovers=1000 full_horizon=0 first_fail=-1:-1 act=-1 lr/lm=0/0 diffA/W/P=0/0/0 rotC=-1.0000 localW=0 actualBlocked=-1
+rollout failures by action: L=0 R=0 D=0 Rot=0 Drop=0
+=== seed 7 ===
+integrated n=5000 exact=100.000% lock_events=1469 lock_exact=100.000%
+  left  985/985 = 100.000%
+  right 990/990 = 100.000%
+  down  970/970 = 100.000%
+  rot   1009/1009 = 100.000%
+  drop  1046/1046 = 100.000%
+rollout episodes=1000 maxsteps=120 compared_steps=39364 exact=39364/39364=100.000% locks=12110 gameovers=1000 full_horizon=0 first_fail=-1:-1 act=-1 lr/lm=0/0 diffA/W/P=0/0/0 rotC=-1.0000 localW=0 actualBlocked=-1
+rollout failures by action: L=0 R=0 D=0 Rot=0 Drop=0
+
+===== v0.2 O2/O3 diff =====
+
+===== v0.2 UBSan stderr (partial run before sandbox timeout) =====
