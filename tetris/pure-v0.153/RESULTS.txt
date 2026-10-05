@@ -1,0 +1,13 @@
+Pure-BPC Tetris v0.153 continuous D2 superposition; measure only target voxels
+seed1 swap=0 couplings=388 K=32.48
+meanK=32.481 step8=100/100 step12=100/100 step20=100/100 program8=50/50 program12=50/50 program20=50/50 deep12=50/50 lineclear=50/50 truth_clear_events=953 arbitrary_row_clear=50/50
+ spawn=50/50 gameover=50/50
+ rollout=20000/20000 locks=445 clears=0 spawns=420 gameovers=25
+NORMAL step4=100/100 prog4=50/50
+FIELD_OFF step4=20/100 prog4=0/50
+FIELD_SHIFT step4=3/100 prog4=1/50
+OVERFLOW_OFF step4=78/100 prog4=0/50
+REENTRY_OFF step4=100/100 prog4=4/50
+RELATION_OFF step4=30/100 prog4=0/50
+CHANNEL_SCRAMBLE step4=2/100 prog4=0/50
+MULTILINE k1=50/50 k2=50/50 k3=50/50 k4=50/50 onechild_k2=50/50 onechild_k4=50/50 closureoff_k1=0/50
