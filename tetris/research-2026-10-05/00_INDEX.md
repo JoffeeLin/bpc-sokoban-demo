@@ -83,3 +83,23 @@ Direct shared-field learning and removal of handwritten collision / clear propag
 - **v0.26** pilot: removes lock-triggered downstream scheduling and preserves capability, but computational cost increases substantially; not yet promoted.
 
 **Current stable world-fit frontier = Binary World-Fit v0.25b.**
+
+
+### `autoplay-verification-v0.25b/`
+Independent external autoplayer verification of the frozen Binary World-Fit v0.25b checkpoint.
+
+The external player searches rotations/horizontal placements and deliberately clears lines; its heuristic/search state is never passed to BPC. The exact same selected operations are sent independently to the real environment and frozen BPC world model.
+
+Formal result across five 1000-piece streams:
+- 5,000 placed pieces;
+- 22,199 actions;
+- 1,652 real clear events / 1,880 lines cleared;
+- 9 four-line clears;
+- visible-frame exact = **22,199 / 22,199**;
+- temporal-trace diagnostic exact = **22,199 / 22,199**;
+- BPC divergence = **0**;
+- frozen SharedField byte-identical before/after evaluation.
+
+Controls: FIELD_OFF and ACTION_SHIFT both diverge on the first action. O2/O3 output diff = 0 bytes; UBSan smoke stderr = 0 bytes.
+
+Interpretation: strong evidence that v0.25b fits the tested controlled Tetris dynamics under goal-directed line-clearing trajectories. This does not claim BPC has learned to play; the player is external.
