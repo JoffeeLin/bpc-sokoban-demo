@@ -1,0 +1,81 @@
+===== v160_results.txt =====
+BPC Raw-Visual Full Tetris v0.160 bridge; one image + action -> v0.153 field
+seed1 swap=0 couplings=388 K=32.48
+meanK=32.481 step8=100/100 step12=100/100 step20=100/100 program8=50/50 program12=50/50 program20=50/50 deep12=50/50 lineclear=50/50 truth_clear_events=953 arbitrary_row_clear=50/50
+ spawn=50/50 gameover=50/50
+ rollout=20000/20000 locks=445 clears=0 spawns=420 gameovers=25
+NORMAL step4=100/100 prog4=50/50
+FIELD_OFF step4=20/100 prog4=0/50
+FIELD_SHIFT step4=3/100 prog4=1/50
+OVERFLOW_OFF step4=78/100 prog4=0/50
+REENTRY_OFF step4=100/100 prog4=4/50
+RELATION_OFF step4=30/100 prog4=0/50
+CHANNEL_SCRAMBLE step4=2/100 prog4=0/50
+MULTILINE k1=50/50 k2=50/50 k3=50/50 k4=50/50 onechild_k2=50/50 onechild_k4=50/50 closureoff_k1=0/50
+
+===== v160_2seed_results.txt =====
+BPC Raw-Visual Full Tetris v0.160-2seed bridge
+seed1 swap=0 couplings=388 K=32.48
+seed2 swap=1 couplings=382 K=30.99
+meanK=31.733 step8=200/200 step12=200/200 step20=200/200 program8=100/100 program12=100/100 program20=100/100 deep12=100/100 lineclear=50/100 truth_clear_events=1903 arbitrary_row_clear=50/100
+ spawn=100/100 gameover=100/100
+ rollout=20000/20000 locks=459 clears=0 spawns=433 gameovers=26
+NORMAL step4=200/200 prog4=100/100
+FIELD_OFF step4=38/200 prog4=0/100
+FIELD_SHIFT step4=7/200 prog4=3/100
+OVERFLOW_OFF step4=156/200 prog4=0/100
+REENTRY_OFF step4=200/200 prog4=7/100
+RELATION_OFF step4=48/200 prog4=0/100
+CHANNEL_SCRAMBLE step4=3/200 prog4=0/100
+MULTILINE k1=50/100 k2=50/100 k3=50/100 k4=50/100 onechild_k2=50/100 onechild_k4=50/100 closureoff_k1=0/100
+
+===== v160_s2_192k_results.txt =====
+BPC Raw-Visual Full Tetris v0.160 seed2 192k experience
+seed2 swap=1 couplings=382 K=31.25
+meanK=31.249 step8=100/100 step12=100/100 step20=100/100 program8=50/50 program12=50/50 program20=50/50 deep12=50/50 lineclear=0/50 truth_clear_events=950 arbitrary_row_clear=0/50
+ spawn=50/50 gameover=50/50
+ rollout=20000/20000 locks=437 clears=0 spawns=413 gameovers=24
+NORMAL step4=100/100 prog4=50/50
+FIELD_OFF step4=27/100 prog4=0/50
+FIELD_SHIFT step4=4/100 prog4=0/50
+OVERFLOW_OFF step4=84/100 prog4=0/50
+REENTRY_OFF step4=100/100 prog4=2/50
+RELATION_OFF step4=20/100 prog4=0/50
+CHANNEL_SCRAMBLE step4=0/100 prog4=0/50
+MULTILINE k1=0/50 k2=0/50 k3=0/50 k4=0/50 onechild_k2=0/50 onechild_k4=0/50 closureoff_k1=0/50
+
+===== v160b_smoke_results.txt =====
+BPC Raw-Binary Full Tetris v0.160b-smoke; merged board image + action
+seed1 swap=0 couplings=273 K=35.21
+meanK=35.206 step8=0/30 step12=0/30 step20=0/30 program8=0/20 program12=0/20 program20=0/20 deep12=0/20 lineclear=0/20 truth_clear_events=380 arbitrary_row_clear=0/20
+ spawn=0/20 gameover=0/20
+ rollout=0/1 locks=0 clears=0 spawns=0 gameovers=0
+NORMAL step4=0/30 prog4=0/20
+FIELD_OFF step4=0/30 prog4=0/20
+FIELD_SHIFT step4=0/30 prog4=0/20
+OVERFLOW_OFF step4=0/30 prog4=0/20
+REENTRY_OFF step4=0/30 prog4=0/20
+RELATION_OFF step4=0/30 prog4=0/20
+CHANNEL_SCRAMBLE step4=0/30 prog4=0/20
+MULTILINE k1=0/20 k2=0/20 k3=0/20 k4=0/20 onechild_k2=0/20 onechild_k4=0/20 closureoff_k1=0/20
+
+===== v161_results.txt =====
+BPC Raw-Visual Full Tetris v0.161 rare-event experience birth
+random_train_clear_events=0
+RARE_EXPOSURES=0 lineclear=0/50 arbitrary=0/50 multiline1=0/50
+RARE_EXPOSURES=1 lineclear=50/50 arbitrary=50/50 multiline1=50/50
+RARE_EXPOSURES=2 lineclear=2/50 arbitrary=0/50 multiline1=0/50
+RARE_EXPOSURES=3 lineclear=4/50 arbitrary=0/50 multiline1=0/50
+RARE_EXPOSURES=4 lineclear=1/50 arbitrary=0/50 multiline1=0/50
+seed2 swap=1 couplings=402 K=37.28
+meanK=37.277 step8=100/100 step12=100/100 step20=100/100 program8=50/50 program12=50/50 program20=50/50 deep12=50/50 lineclear=4/50 truth_clear_events=1704 arbitrary_row_clear=0/50
+ spawn=50/50 gameover=50/50
+ rollout=20000/20000 locks=439 clears=0 spawns=415 gameovers=24
+NORMAL step4=100/100 prog4=50/50
+FIELD_OFF step4=25/100 prog4=0/50
+FIELD_SHIFT step4=7/100 prog4=0/50
+OVERFLOW_OFF step4=81/100 prog4=0/50
+REENTRY_OFF step4=100/100 prog4=5/50
+RELATION_OFF step4=22/100 prog4=0/50
+CHANNEL_SCRAMBLE step4=4/100 prog4=0/50
+MULTILINE k1=0/50 k2=0/50 k3=0/50 k4=2/50 onechild_k2=0/50 onechild_k4=1/50 closureoff_k1=0/50
