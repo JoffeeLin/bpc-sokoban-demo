@@ -1,0 +1,12 @@
+BPC Binary WorldFit v0.22 | learned proposal-state interference | no handwritten collision decision | relations=143
+NORMAL 38941/38941=100.000000% epok=1000 locks=12054 first=-1:-1
+NORMAL 39554/39554=100.000000% epok=1000 locks=12125 first=-1:-1
+NORMAL 38743/38743=100.000000% epok=1000 locks=12150 first=-1:-1
+NORMAL 39669/39669=100.000000% epok=1000 locks=12150 first=-1:-1
+NORMAL 38875/38875=100.000000% epok=1000 locks=12040 first=-1:-1
+NORMAL 38623/38623=100.000000% epok=1000 locks=12011 first=-1:-1
+BPC Binary WorldFit v0.22 remainder | learned proposal-state interference | relations=143
+SEED6 39070/39070=100.000000% epok=1000 locks=11995 first=-1:-1
+SEED7 39364/39364=100.000000% epok=1000 locks=12110 first=-1:-1
+COMPAT empty=0.999901 occupied=0.000101 boundary=0.333199
+COMPAT_FORCED_OPEN 194/294=65.986395%
