@@ -57,3 +57,14 @@ The next targets are to remove/merge the remaining duplicated execution vocabula
 5. keep the fully observable rotation world; do not reintroduce a supervised hidden pivot/latent target.
 
 Every deletion must preserve the frozen regression suite before operation learning resumes.
+
+### `binary-worldfit-v0.18-v0.20/`
+Current strict world-fitting frontier after the black/white-screen correction.
+
+- **v0.18**: external state is one 0/1 screen. A constructive alias proves one static binary frame is not always Markov; anonymous temporal trace born from frame change restores 8-seed 312,839/312,839 exact rollout. TRACE_OFF=1.48%, TRACE_SHIFT=0%.
+- **v0.19**: external operation becomes an anonymous carrier wave; the world-model step has no action if/switch dispatcher. 312,839/312,839 remains exact; shifted action wave=0/200.
+- **v0.20**: Geometry / Route / Life / Closure / Spawn / Split learned values are read from one shared probability medium (140 entries). The original separate learned structures are zeroed before inference. 312,839/312,839 remains exact; FIELD_OFF=0/100.
+
+Current boundary: v0.20 unifies storage/readout, but family-specific training observers still exist before export into the shared field. The next target is direct generic residual writeback into this same field.
+
+**Current world-fit frontier = Binary World-Fit v0.20.**
