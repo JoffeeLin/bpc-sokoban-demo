@@ -103,3 +103,14 @@ Formal result across five 1000-piece streams:
 Controls: FIELD_OFF and ACTION_SHIFT both diverge on the first action. O2/O3 output diff = 0 bytes; UBSan smoke stderr = 0 bytes.
 
 Interpretation: strong evidence that v0.25b fits the tested controlled Tetris dynamics under goal-directed line-clearing trajectories. This does not claim BPC has learned to play; the player is external.
+
+
+### `binary-worldfit-v0.39-v0.40b/`
+Latest visible-trajectory scaffold deletion.
+
+- **v0.39**: Spawn/GameOver split final credit comes from ordinary visible lock transitions; frozen 8-seed regression remains 312,839/312,839 exact.
+- **v0.40/v0.40b**: dedicated single-cell compatibility micro curriculum is removed from final credit. Proposal/destination compatibility is learned from ordinary visible gameplay; v0.40b uses product-responsibility credit and freezes at empty=0.999746, occupied=0.000333, boundary=0.000187.
+- **v0.40b formal**: clear stress 10,000/10,000; vertical non-clear 2,500/2,500; seed0..7 = 312,839/312,839; O2/O3 diff 0 bytes; UBSan stderr 0 bytes.
+
+**Current promoted world-fit checkpoint = Binary World-Fit v0.40b.**
+Remaining high-value scaffolds are geometry micro curriculum/observer, transient-vs-persistent internal execution split, separate execution helpers, lock-triggered downstream scheduling, staged training orchestration, and physical lattice/Preview-region substrate assumptions.
