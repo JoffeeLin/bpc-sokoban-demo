@@ -1,0 +1,10 @@
+VISIBLE_COMPAT credited=73351 success=64986 fail=8365 empty=0.999746 occupied=0.000333 boundary=0.000187 seen=73058/3027/5358 pos=64986/0/0
+SLOW_PLAY pass=0 pieces=250 residual_events=68 pair01=1.000000
+SLOW_PLAY pass=1 pieces=250 residual_events=73 pair01=0.100000
+SLOW_PLAY pass=0 pieces=250 residual_events=79 pair01=0.100000
+SLOW_PLAY pass=1 pieces=250 residual_events=62 pair01=0.111111
+VISIBLE_SPLIT locks=2500 spawn=2340 gameover=160 steps=48351 C1[d=0.999573 c=0.000427] C0[d=0.006173 c=0.993827]
+BPC Binary WorldFit v0.41 | always-participating downstream relation waves; carrier-amplitude short-circuit only | relations=219
+CLEAR_STRESS 2000/2000=100.000000% k1=500/500 k2=500/500 k3=500/500 k4=500/500
+VERTICAL_NONCLEAR 500/500=100.000000%
+SEED0 11812/11812=100.000000% epok=300 locks=3606 first=-1:-1
