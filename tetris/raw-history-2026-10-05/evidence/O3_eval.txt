@@ -1,0 +1,3 @@
+SELF memory=1 seed=4898837 mode=0 exact=144/244 bits=72684/73200 failed_episodes=100/100 locks=54 real_steps=3856 first=0:0:4
+TOTAL_SELF exact=144/244 failed_episodes=100
+FIELD_BYTES_HASH_FROZEN=1 cells=8191860 digest=0a83771b788619b0 CPU_SECONDS=1.390

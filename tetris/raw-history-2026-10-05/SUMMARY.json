@@ -1,0 +1,166 @@
+{
+  "status": "rejected_full_game_candidate; causal_history_test_passed",
+  "baseline_commit": "c2f2d3d79a13726ff2f74fb4b28ca8d529beef46",
+  "baseline_directory": "tetris/direction-axis-2026-10-05",
+  "alias": {
+    "actual_seed": 96,
+    "same_recent_frames": 3,
+    "same_noops": 200,
+    "different_next_bits": 4,
+    "next_operation": 1
+  },
+  "causal_training": {
+    "history_tapes": [
+      "0000400222222222222222222",
+      "0040000222222222222222222"
+    ],
+    "repeats_each": 100,
+    "training_noops": 6,
+    "actual_actions": 6400
+  },
+  "causal_validation": {
+    "self_rollout_histories": 2,
+    "steps_each": 226,
+    "memory_exact_steps": 452,
+    "raw_exact_whole_histories": 1,
+    "swapped_memory_exact_final_frames": 0
+  },
+  "ordinary_training": {
+    "seed": 55901,
+    "pieces": 20000,
+    "actual_actions": 100121,
+    "gameovers": 1176,
+    "handwritten_tapes": 23,
+    "anonymous_port_exposures": [
+      20030,
+      18323,
+      14573,
+      27963,
+      19232
+    ]
+  },
+  "full_fields": {
+    "memory": {
+      "bytes": 196604672,
+      "sha256": "a229ffbbee35315bcc5585b60d20bba7be87ad6f6f42bca8e9ff783f60cc2755",
+      "cells": 8191860,
+      "digest": "0a83771b788619b0",
+      "stored": false
+    },
+    "raw": {
+      "bytes": 76868840,
+      "sha256": "a2431cf8a67d934e381c962f0a2bc22457127c0992b7b8e969b20e896c3c5345",
+      "cells": 3202867,
+      "digest": "6d91f065bf0c4231",
+      "stored": false
+    }
+  },
+  "pair_fields": {
+    "pair_memory.bin": {
+      "bytes": 183248,
+      "sha256": "3aa02ab643b1cb355973fbe82e3eaa1eef72195e1d9d5183e118949a90b96e50"
+    },
+    "pair_raw.bin": {
+      "bytes": 172736,
+      "sha256": "73df38cb8622a2e75e275184cf336145f28c8971c89a7ef435b2a5cc5233452f"
+    }
+  },
+  "full_game": {
+    "same_executed_real_steps": 468734,
+    "episode_count": 12000,
+    "random_test_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      24,
+      25,
+      26,
+      27
+    ],
+    "fresh_play_seeds": [
+      20261030,
+      20261031,
+      20261032,
+      20261033,
+      20261034
+    ],
+    "memory": {
+      "checked_prefix_exact": [
+        15616,
+        27616
+      ],
+      "whole_exact_episodes": 0,
+      "play_exact": [
+        16450,
+        250434
+      ],
+      "failed_play_episodes": 2940
+    },
+    "raw": {
+      "checked_prefix_exact": [
+        16157,
+        28157
+      ],
+      "whole_exact_episodes": 0,
+      "play_exact": [
+        21821,
+        250434
+      ],
+      "failed_play_episodes": 2940
+    }
+  },
+  "teacher_forced_diagnostic": {
+    "memory_full_frame_exact": [
+      7328,
+      155895
+    ],
+    "counts_as_self_rollout": false
+  },
+  "baseline_new_test": {
+    "indices": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "exact_steps": 155895,
+    "whole_exact_episodes": 4000,
+    "frozen": true
+  },
+  "engineering": {
+    "strict_c11": true,
+    "O2_O3_full_memory_field_byte_identical": true,
+    "O2_O3_UBSan_outputs_identical": true,
+    "UBSan_stderr_bytes": 0,
+    "frozen_field_check": "hash of all field table memory bytes"
+  },
+  "sources": {
+    "model.h": {
+      "bytes": 8927,
+      "sha256": "bb1a22b1d86dfe3467a60bb802dfd81db38342ea369983185cbc2b66a3827c5b"
+    },
+    "audit.c": {
+      "bytes": 13794,
+      "sha256": "49c3077a57da0b4a23c64463d226d034918c49ce29f5c22c5bd627e11b734031"
+    },
+    "environment.h": {
+      "bytes": 3190,
+      "sha256": "aed6ad5edfa1efad0a29aa4cd7ea673deb4179022a7f71ff64c0d4cf8f823ab4"
+    }
+  },
+  "remaining_assumptions": [
+    "fixed raw display and anonymous ports",
+    "three-frame physical window",
+    "fixed local support hierarchy",
+    "residual whole-medium conditional cache",
+    "XOR port memory law",
+    "persistence fallback and posterior half threshold",
+    "external initial episode and preview input protocol"
+  ],
+  "promotion": false
+}

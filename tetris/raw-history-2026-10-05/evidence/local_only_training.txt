@@ -1,0 +1,2 @@
+LEARN memory=1 seed=55901 pieces=1000 actions=4900 gameovers=51 cells=491476 digest=795d2f38ccef9b61
+SAVED cells=495810 digest=b1d9ae93f31f69bf CPU_SECONDS=0.502

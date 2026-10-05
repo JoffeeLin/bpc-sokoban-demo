@@ -1,0 +1,6 @@
+TEACHER memory=1 seed=4898837 mode=0 exact=1824/38910 bits=11484811/11673000 failed_episodes=1000/1000 locks=12050 real_steps=38910 first=0:0:4
+TEACHER memory=1 seed=5098840 mode=0 exact=1835/39034 bits=11522131/11710200 failed_episodes=1000/1000 locks=12095 real_steps=39034 first=0:1:4
+TEACHER memory=1 seed=5298843 mode=0 exact=1884/38877 bits=11475895/11663100 failed_episodes=1000/1000 locks=12037 real_steps=38877 first=0:1:1
+TEACHER memory=1 seed=5498846 mode=0 exact=1785/39074 bits=11533004/11722200 failed_episodes=1000/1000 locks=12087 real_steps=39074 first=0:1:4
+TOTAL_TEACHER exact=7328/155895 failed_episodes=4000
+FIELD_BYTES_HASH_FROZEN=1 cells=8191860 digest=0a83771b788619b0 CPU_SECONDS=16.857
