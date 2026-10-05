@@ -1,4 +1,0 @@
-C11 -Wall -Wextra -Werror: PASS
-v0.2 O2/O3 output diff: 0 bytes
-v0.2 UBSan stderr: 0 bytes
-threshold 1.00..1.20: 5/5 seeds birth exactly one A0*C1 relation and solve 100%

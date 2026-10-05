@@ -1,7 +1,0 @@
-stage,change,formal_ticks,exact_ticks,accuracy,notes
-v3.3,remove action if/switch after probability maturity,15560,15560,100.0,action-wave shift ablation 0/20
-v3.4,remove five candidate State bank,7729,7729,100.0,one evolving probability field
-v3.6,learn action carrier lifetime,7729,7729,100.0,no one-shot/drop-persist inference variables
-v3.7,derive lifetime supervision from real residual,7729,7729,100.0,no direct DROP-continue training label
-v3.8,remove MOVE/STAY/LOCK outcome slots,7729,7729,100.0,raw Active/World/Action routes
-v3.9,replace pivot-specific rotation code with Active x Latent pair relation,7729,7729,100.0,latent-zero visible rotation=31.88%

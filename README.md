@@ -1,25 +1,16 @@
-# Current unified BPC query-function line
+# BPC Sokoban
 
-The current integrated theory + engineering baseline is:
-
-**[BPC Query-Function Core v0.1](bpc-query-function-core-v0.1/README.md)**
-
-This line integrates voxel-accumulated functions with query-wave participation, Reality Residual trace writeback, consequence-grounded lifecycle, dynamic support topology, causal support focusing, and relation-state re-entry. It preserves both positive and negative evidence from v0.3d through v0.8 and defines the next target as recurrent relation-carrier orbit formation without clocks, phase labels, fixed history depth, or task-specific operators.
-
-> The older Sokoban/Tetris directories remain historical mechanism experiments and reference baselines. The Query-Function Core is the current self-building-function research line.
+Non-neural BPC experiments, frozen controls and demonstrations for Sokoban and related finite-world probes. Source snapshots, protocols, raw evidence and failed baselines remain together for reproduction.
 
 ## Repository map
 
-| Entry | Contents |
+| Repository | Contents |
 | --- | --- |
-| [Query-Function Core](bpc-query-function-core-v0.1/README.md) | Current theory, canonical C sources and frozen results |
-| [Query-residual v0.2](query-residual-loop-v0.2/REPORT.md) / [v0.3d](query-residual-loop-v0.3d/REPORT.md) | Earlier reports and verification; v0.3d source/results are shared with the current core |
-| [Tetris research index](tetris/research-2026-10-05/00_INDEX.md) | World-fitting branches, retained negative evidence and checkpoint boundaries |
-| [Sokoban evidence](artifacts/) | Historical development/frozen results and runtime posters |
+| This repository | Sokoban code, experiment protocols, tests, evidence and release demonstrations |
+| [BPC Tetris](https://github.com/JoffeeLin/bpc-tetris) | Tetris source snapshots, experiments and directory history |
+| [BPC General Intelligence](https://github.com/JoffeeLin/BPC-General-Intelligence) | General theory and query-function research; private repository, permission required |
 
----
-
-# GeneralBPC: Learned World + Relations + Macro Geometry
+The former `tetris/`, `bpc-query-function-core-v0.1/`, `query-residual-loop-v0.2/` and `query-residual-loop-v0.3d/` directories were migrated on 2026-10-05. Their prior public locations and the original combined layout remain available in the [pre-migration archive](https://github.com/JoffeeLin/bpc-sokoban-demo/tree/before-repository-split-20261005). The existing Sokoban release links below remain valid.
 
 ## v0.49: residual-born activity carries a vanished condition
 
@@ -633,7 +624,7 @@ training, evaluation, or runtime. Candidate ranking guided development only;
 the committed frozen tests, causal controls, and deterministic reruns provide
 the evidence.
 
-## Task-agnostic kernel
+## Historical decision-kernel checks
 
 [`bpc_general_kernel.py`](bpc_general_kernel.py) extracts the reusable part:
 variable action count, anonymous feature families, exact probability channels,

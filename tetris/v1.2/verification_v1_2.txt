@@ -1,7 +1,0 @@
-BPC Tetris v1.2 verification
-O2 SHA256: 0ad6c0ed57f20ef23c71e841acae398adbf23941a315905dd298e8c763b3e063
-O3 SHA256: 0ad6c0ed57f20ef23c71e841acae398adbf23941a315905dd298e8c763b3e063
-O2/O3 diff bytes: 0
--Wall -Wextra -Werror: PASS
-UBSan smoke exit: 0
-UBSan stderr bytes: 0

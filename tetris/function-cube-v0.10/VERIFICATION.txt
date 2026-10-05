@@ -1,5 +1,0 @@
-BPC Tetris Function-Cube v0.10 verification
-C11 -Wall -Wextra -Werror: PASS
-O2/O3 diff bytes: 0
-formal output SHA256: 5df50bef2c3cd94b4ff9f569593011ec8a8d7f77b175d5ad28b86555711eaa2e
-UBSan stderr bytes: 0

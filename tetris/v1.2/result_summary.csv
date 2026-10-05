@@ -1,6 +1,0 @@
-experiment,seed_or_group,fall_full_pct,terminal_full_pct,recursive_full_pct,terminal_board_pct,terminal_active_pct,terminal_preview_pct,notes
-v0.8_pure_gravity,3seed,,,,,,,pure gravity recursion h1-h16 = 100% all three seeds
-v1.2_5k_each,3seed_avg,75.083,29.917,11.083,33.250,79.833,98.750,local residual radii 1+2 plus composed relation
-v1.2_5k_each,pair_off_avg,,0.000,0.000,,,,terminal/recursive full collapse to zero
-v1.2_10k_each,seed0,77.500,47.000,16.500,50.670,84.000,99.830,training-scale point
-v1.2_20k_each,seed0,83.830,58.170,24.330,62.000,86.830,99.670,training-scale point

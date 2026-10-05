@@ -1,2 +1,0 @@
-VISIBLE_SPLIT credited=3831 direct=3522 complement=309 C1[d=0.999716 c=0.000284] C0[d=0.003215 c=0.996785]
-TRAINED relations=216 pair01=0.020408 size=16392
