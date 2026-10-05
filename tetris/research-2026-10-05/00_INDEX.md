@@ -114,3 +114,22 @@ Latest visible-trajectory scaffold deletion.
 
 **Current promoted world-fit checkpoint = Binary World-Fit v0.40b.**
 Remaining high-value scaffolds are geometry micro curriculum/observer, transient-vs-persistent internal execution split, separate execution helpers, lock-triggered downstream scheduling, staged training orchestration, and physical lattice/Preview-region substrate assumptions.
+
+
+### `binary-worldfit-v0.27-v0.40/`
+Purity-compression continuation from the black/white world-fit line.
+
+Key promoted results:
+- v0.27 removes function-family namespaces from SharedField addresses.
+- v0.28b learns Action lifetime from ordinary visible trajectories.
+- v0.29 learns route consequences from visible-transition residuals.
+- v0.30b learns Spawn displacement from ordinary visible transitions.
+- v0.38 solves closure credit using whole-world leave-one-coupling-out residuals from ordinary play only; clear stress 10,000/10,000 and 8-seed rollout 312,839/312,839.
+- v0.39 relearns Spawn/GameOver split only from ordinary lock transitions; no dedicated blocked/unblocked Spawn curriculum; full regression remains exact.
+- v0.40 relearns empty/occupied/boundary compatibility only from ordinary visible game transitions by global ON/OFF counterfactual residual credit; no dedicated collision micro-curriculum; full regression remains exact.
+
+Negative results v0.28, v0.31, v0.32b and v0.25/v0.23 predecessors are retained because they identify credit-assignment and temporal-scale failure modes.
+
+**Current stable world-fit frontier = Binary World-Fit v0.40.**
+
+Largest remaining dedicated curriculum: geometry gauge/basis/phase still begins from researcher-designed 1/2/3-voxel micro-experience. Next target is to learn geometry from ordinary 4-cell game transitions only.
