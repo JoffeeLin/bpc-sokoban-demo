@@ -2,6 +2,11 @@
 
 Date: 2026-10-04
 
+The byte-identical source and results are maintained once in the integrated core:
+[C source](../bpc-query-function-core-v0.1/src/bpc_consequence_lifecycle_v03d.c) and
+[frozen results](../bpc-query-function-core-v0.1/results/v03d_RESULTS.csv).
+This directory retains the original report and [verification record](VERIFICATION.txt).
+
 ## Result
 
 This experiment closes a missing loop in voxel-accumulated function theory:

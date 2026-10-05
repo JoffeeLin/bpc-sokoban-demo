@@ -2,6 +2,22 @@
 
 Date: 2026-10-05
 
+## Source archive
+
+Shared source snapshots are stored once in the later v0.27–v0.40 archive. Every removed source block was checked byte for byte against the retained block; the partial v0.33/v0.37 blocks are covered by its complete snapshots.
+
+| Versions | Retained source |
+| --- | --- |
+| v0.27, v0.28, v0.28b, v0.29 | [Source part 1](../binary-worldfit-v0.27-v0.40/SOURCES_part01.txt) |
+| v0.30b, v0.31, v0.32 | [Source part 2](../binary-worldfit-v0.27-v0.40/SOURCES_part02.txt) |
+| v0.32b, v0.33, v0.34 | [Source part 3](../binary-worldfit-v0.27-v0.40/SOURCES_part03.txt) |
+| v0.35, v0.36 | [Source part 4](../binary-worldfit-v0.27-v0.40/SOURCES_part04.txt) |
+| v0.37 | [Source part 5](../binary-worldfit-v0.27-v0.40/SOURCES_part05.txt) |
+| v0.30 original fragment | [Preserved fragment](v0.30_visible_spawn_birth_FRAGMENT.txt) |
+| v0.38a | [Standalone source](v0.38a_visible_spawn_split.c) |
+
+The v0.30 fragment was already truncated in the original source bundle. It is preserved verbatim as historical evidence and is not a complete compilable source. Reports, raw results and verification traces remain in this directory.
+
 ## Goal
 
 Continue the strict world-fitting route:

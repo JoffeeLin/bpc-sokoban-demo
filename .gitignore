@@ -5,3 +5,11 @@ artifacts/**/*.pkl
 artifacts/*.mp4
 artifacts/**/*.mp4
 artifacts/frame_*.png
+
+# Local OS metadata, virtual environments and compilation outputs.
+.DS_Store
+._*
+.venv/
+*.o
+*.obj
+*.dSYM/

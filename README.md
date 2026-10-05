@@ -8,6 +8,15 @@ This line integrates voxel-accumulated functions with query-wave participation, 
 
 > The older Sokoban/Tetris directories remain historical mechanism experiments and reference baselines. The Query-Function Core is the current self-building-function research line.
 
+## Repository map
+
+| Entry | Contents |
+| --- | --- |
+| [Query-Function Core](bpc-query-function-core-v0.1/README.md) | Current theory, canonical C sources and frozen results |
+| [Query-residual v0.2](query-residual-loop-v0.2/REPORT.md) / [v0.3d](query-residual-loop-v0.3d/REPORT.md) | Earlier reports and verification; v0.3d source/results are shared with the current core |
+| [Tetris research index](tetris/research-2026-10-05/00_INDEX.md) | World-fitting branches, retained negative evidence and checkpoint boundaries |
+| [Sokoban evidence](artifacts/) | Historical development/frozen results and runtime posters |
+
 ---
 
 # GeneralBPC: Learned World + Relations + Macro Geometry
