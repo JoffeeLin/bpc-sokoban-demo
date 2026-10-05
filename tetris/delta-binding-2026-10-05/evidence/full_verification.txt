@@ -1,0 +1,2 @@
+QUICK_REPRODUCED: raw history preserved; one-bit omission is redundant
+FULL_REPRODUCED: archived prefix/closure evidence and unchanged game benchmark

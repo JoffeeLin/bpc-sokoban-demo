@@ -1,0 +1,6 @@
+SELF memory=1 seed=7298873 mode=0 exact=1304/2304 bits=685895/691200 failed_episodes=1000/1000 locks=686 real_steps=38352 first=0:3:2
+SELF memory=1 seed=7498876 mode=0 exact=1303/2303 bits=685607/690900 failed_episodes=1000/1000 locks=683 real_steps=39847 first=0:1:4
+SELF memory=1 seed=7698879 mode=0 exact=1231/2231 bits=664117/669300 failed_episodes=1000/1000 locks=669 real_steps=38866 first=0:0:4
+SELF memory=1 seed=7898882 mode=0 exact=1302/2302 bits=685419/690600 failed_episodes=1000/1000 locks=679 real_steps=39155 first=0:1:2
+TOTAL_SELF exact=5140/9140 failed_episodes=4000
+FIELD_BYTES_HASH_FROZEN=1 cells=8191860 digest=0a83771b788619b0 CPU_SECONDS=2.857

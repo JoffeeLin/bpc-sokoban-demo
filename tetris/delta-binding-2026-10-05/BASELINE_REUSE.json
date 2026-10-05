@@ -1,0 +1,18 @@
+[
+  {
+    "id": "priority",
+    "source_commit": "b63bea76b2575ff90f165ca27ee247f76e42730e",
+    "source_field": "support-joint-2026-10-05/full_0.bin",
+    "source_training_log": "support-joint-2026-10-05/evidence/full_0_training.txt",
+    "sha256": "c0c8fe279e33c2b8aaf6e3c4f51abcb15c8756abea3f8ac5f1969a41a798a0f8",
+    "bytes": 262139560
+  },
+  {
+    "id": "next",
+    "source_commit": "b63bea76b2575ff90f165ca27ee247f76e42730e",
+    "source_field": "support-joint-2026-10-05/full_2.bin",
+    "source_training_log": "support-joint-2026-10-05/evidence/full_2_training.txt",
+    "sha256": "d360e010551f8ceaaa5ac75619143ff61ca0c6f043d9e8c170d61151c79a3a02",
+    "bytes": 263283048
+  }
+]

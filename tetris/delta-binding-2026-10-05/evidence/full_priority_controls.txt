@@ -1,0 +1,9 @@
+CONTROL memory=1 seed=20261006 mode=0 exact=131/231 bits=68813/69300 failed_episodes=100/100 locks=68 real_steps=3961 first=0:1:4
+CONTROL memory=1 seed=20261006 mode=1 exact=0/100 bits=29337/30000 failed_episodes=100/100 locks=27 real_steps=3961 first=0:0:3
+CONTROL memory=1 seed=20261006 mode=2 exact=1/101 bits=29828/30300 failed_episodes=100/100 locks=27 real_steps=3961 first=0:0:3
+PAIR_PROBE memory=1 noops=200 mode=0 exact=2/2
+PAIR_PROBE memory=1 noops=200 mode=1 exact=0/2
+PAIR_PROBE memory=1 noops=200 mode=2 exact=0/2
+PAIR_PROBE memory=1 noops=200 mode=3 exact=1/2
+FIELD_OFF memory=1 seed=20261006 mode=0 exact=1/101 bits=29792/30300 failed_episodes=100/100 locks=27 real_steps=3961 first=0:0:3
+FIELD_BYTES_HASH_FROZEN=1 cells=8191860 digest=0a83771b788619b0 CPU_SECONDS=1.672

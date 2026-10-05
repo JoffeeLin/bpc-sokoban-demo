@@ -1,0 +1,16 @@
+{
+  "frozen_at_utc": "2026-10-05T15:54:47.786919+00:00",
+  "phase": 2,
+  "baseline_commit": "b63bea76b2575ff90f165ca27ee247f76e42730e",
+  "cc": "cc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "sources": {
+    "PROTOCOL.md": "aef76515447daaaf5aac9a1733dd6b7c7e71f8659fd2e4849e55c68899afb6d5",
+    "model.h": "4266a15b6270a26e67b68e55b21e403225157c3da46ff80896b7b99a03d6be4f",
+    "audit.c": "49c3077a57da0b4a23c64463d226d034918c49ce29f5c22c5bd627e11b734031",
+    "environment.h": "aed6ad5edfa1efad0a29aa4cd7ea673deb4179022a7f71ff64c0d4cf8f823ab4",
+    "pilot.c": "2fc3adfd8d706046e3ecaed79d702ee1b218cbf4726cc3c685a6b3f8863fa7e9",
+    "diagnose.c": "0102f1095ebe7fdf7e277822367989b817e66e54fdca028659c52be4eaf3cf6b",
+    "reproduce.sh": "9ede68176ff1ccdabbb5850838e6920c458a5e36c2fa281d215f2a7b05e78237",
+    "invariant.c": "62c720378c876c037833cd4b37031408ff0f437eb528c363c4c31f36fa92eed6"
+  }
+}

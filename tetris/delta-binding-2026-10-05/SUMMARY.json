@@ -1,0 +1,1476 @@
+{
+  "status": "rejected",
+  "baseline_commit": "b63bea76b2575ff90f165ca27ee247f76e42730e",
+  "training": {
+    "seed": 55901,
+    "pieces": 20000,
+    "actual_actions": 100121,
+    "pair_actual_actions": 6400,
+    "cell_limit": 10000000,
+    "cell_bytes": 32,
+    "eta": 0.5
+  },
+  "held_out": {
+    "world_indices": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "episodes": 4000,
+    "horizon": 120,
+    "same_actual_world_steps": 156220,
+    "play_seeds": [
+      20261181,
+      20261182,
+      20261183,
+      20261184,
+      20261185
+    ]
+  },
+  "phase1": {
+    "reason": "One-bit omission is invertible because current equals XOR of all port traces. Intact next/delta target encoding is a complement reparameterization.",
+    "pilot": {
+      "next": [
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "0",
+          "seed": "55961",
+          "cells": "1051604",
+          "teacher": "127/11702",
+          "self_prefix": "15/315",
+          "whole_episodes": "0/300",
+          "trace": "761f943b832e5908",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "0",
+          "seed": "55962",
+          "cells": "1046788",
+          "teacher": "132/11702",
+          "self_prefix": "34/334",
+          "whole_episodes": "0/300",
+          "trace": "9c03a842907db33d",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "0",
+          "seed": "55963",
+          "cells": "1051969",
+          "teacher": "120/11702",
+          "self_prefix": "19/319",
+          "whole_episodes": "0/300",
+          "trace": "1540549917e3b4dd",
+          "frozen": "1"
+        }
+      ],
+      "delta": [
+        {
+          "mode": "2",
+          "delta": "1",
+          "bind": "0",
+          "seed": "55961",
+          "cells": "1051604",
+          "teacher": "127/11702",
+          "self_prefix": "15/315",
+          "whole_episodes": "0/300",
+          "trace": "761f943b832e5908",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "1",
+          "bind": "0",
+          "seed": "55962",
+          "cells": "1046788",
+          "teacher": "132/11702",
+          "self_prefix": "34/334",
+          "whole_episodes": "0/300",
+          "trace": "9c03a842907db33d",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "1",
+          "bind": "0",
+          "seed": "55963",
+          "cells": "1051969",
+          "teacher": "120/11702",
+          "self_prefix": "19/319",
+          "whole_episodes": "0/300",
+          "trace": "1540549917e3b4dd",
+          "frozen": "1"
+        }
+      ],
+      "split_next": [
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "1",
+          "seed": "55961",
+          "cells": "1051604",
+          "teacher": "127/11702",
+          "self_prefix": "15/315",
+          "whole_episodes": "0/300",
+          "trace": "761f943b832e5908",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "1",
+          "seed": "55962",
+          "cells": "1046788",
+          "teacher": "132/11702",
+          "self_prefix": "34/334",
+          "whole_episodes": "0/300",
+          "trace": "9c03a842907db33d",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "1",
+          "seed": "55963",
+          "cells": "1051969",
+          "teacher": "120/11702",
+          "self_prefix": "19/319",
+          "whole_episodes": "0/300",
+          "trace": "1540549917e3b4dd",
+          "frozen": "1"
+        }
+      ],
+      "split_delta": [
+        {
+          "mode": "2",
+          "delta": "1",
+          "bind": "1",
+          "seed": "55961",
+          "cells": "1051604",
+          "teacher": "127/11702",
+          "self_prefix": "15/315",
+          "whole_episodes": "0/300",
+          "trace": "761f943b832e5908",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "1",
+          "bind": "1",
+          "seed": "55962",
+          "cells": "1046788",
+          "teacher": "132/11702",
+          "self_prefix": "34/334",
+          "whole_episodes": "0/300",
+          "trace": "9c03a842907db33d",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "1",
+          "bind": "1",
+          "seed": "55963",
+          "cells": "1051969",
+          "teacher": "120/11702",
+          "self_prefix": "19/319",
+          "whole_episodes": "0/300",
+          "trace": "1540549917e3b4dd",
+          "frozen": "1"
+        }
+      ]
+    }
+  },
+  "models": {
+    "priority": {
+      "cells": 8191860,
+      "field_sha256": "c0c8fe279e33c2b8aaf6e3c4f51abcb15c8756abea3f8ac5f1969a41a798a0f8",
+      "field_bytes": 262139560,
+      "self": {
+        "totals": [
+          5140,
+          9140,
+          4000
+        ],
+        "real_steps": 156220,
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "7298873",
+            "mode": "0",
+            "exact": "1304/2304",
+            "bits": "685895/691200",
+            "failed_episodes": "1000/1000",
+            "locks": "686",
+            "real_steps": "38352",
+            "first": "0:3:2"
+          },
+          {
+            "memory": "1",
+            "seed": "7498876",
+            "mode": "0",
+            "exact": "1303/2303",
+            "bits": "685607/690900",
+            "failed_episodes": "1000/1000",
+            "locks": "683",
+            "real_steps": "39847",
+            "first": "0:1:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7698879",
+            "mode": "0",
+            "exact": "1231/2231",
+            "bits": "664117/669300",
+            "failed_episodes": "1000/1000",
+            "locks": "669",
+            "real_steps": "38866",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7898882",
+            "mode": "0",
+            "exact": "1302/2302",
+            "bits": "685419/690600",
+            "failed_episodes": "1000/1000",
+            "locks": "679",
+            "real_steps": "39155",
+            "first": "0:1:2"
+          }
+        ]
+      },
+      "teacher": {
+        "totals": [
+          697,
+          15375,
+          400
+        ],
+        "real_steps": 15375,
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "7298873",
+            "mode": "0",
+            "exact": "169/3828",
+            "bits": "1129782/1148400",
+            "failed_episodes": "100/100",
+            "locks": "1222",
+            "real_steps": "3828",
+            "first": "0:3:2"
+          },
+          {
+            "memory": "1",
+            "seed": "7498876",
+            "mode": "0",
+            "exact": "176/3893",
+            "bits": "1149069/1167900",
+            "failed_episodes": "100/100",
+            "locks": "1204",
+            "real_steps": "3893",
+            "first": "0:1:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7698879",
+            "mode": "0",
+            "exact": "190/3724",
+            "bits": "1099341/1117200",
+            "failed_episodes": "100/100",
+            "locks": "1186",
+            "real_steps": "3724",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7898882",
+            "mode": "0",
+            "exact": "162/3930",
+            "bits": "1159691/1179000",
+            "failed_episodes": "100/100",
+            "locks": "1200",
+            "real_steps": "3930",
+            "first": "0:1:2"
+          }
+        ]
+      },
+      "play": {
+        "totals": [
+          16514,
+          250920,
+          2915,
+          2915
+        ],
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "20261181",
+            "pieces": "10000",
+            "exact": "3480/50342",
+            "failed_episodes": "593/593",
+            "first_piece": "0",
+            "action": "4"
+          },
+          {
+            "memory": "1",
+            "seed": "20261182",
+            "pieces": "10000",
+            "exact": "3212/50137",
+            "failed_episodes": "577/577",
+            "first_piece": "0",
+            "action": "4"
+          },
+          {
+            "memory": "1",
+            "seed": "20261183",
+            "pieces": "10000",
+            "exact": "3290/50261",
+            "failed_episodes": "580/580",
+            "first_piece": "1",
+            "action": "2"
+          },
+          {
+            "memory": "1",
+            "seed": "20261184",
+            "pieces": "10000",
+            "exact": "3276/50177",
+            "failed_episodes": "586/586",
+            "first_piece": "1",
+            "action": "0"
+          },
+          {
+            "memory": "1",
+            "seed": "20261185",
+            "pieces": "10000",
+            "exact": "3256/50003",
+            "failed_episodes": "579/579",
+            "first_piece": "1",
+            "action": "3"
+          }
+        ]
+      },
+      "diagnostic": [
+        {
+          "mode": "0",
+          "port": "0",
+          "frames": "36/731",
+          "changed": "2956",
+          "changed_wrong": "1746",
+          "unchanged_wrong": "1251"
+        },
+        {
+          "mode": "0",
+          "port": "1",
+          "frames": "27/725",
+          "changed": "3048",
+          "changed_wrong": "1790",
+          "unchanged_wrong": "1129"
+        },
+        {
+          "mode": "0",
+          "port": "2",
+          "frames": "45/821",
+          "changed": "4286",
+          "changed_wrong": "2290",
+          "unchanged_wrong": "924"
+        },
+        {
+          "mode": "0",
+          "port": "3",
+          "frames": "43/540",
+          "changed": "1904",
+          "changed_wrong": "1303",
+          "unchanged_wrong": "809"
+        },
+        {
+          "mode": "0",
+          "port": "4",
+          "frames": "24/1156",
+          "changed": "9740",
+          "changed_wrong": "5287",
+          "unchanged_wrong": "2581"
+        }
+      ],
+      "diagnostic_totals": {
+        "frames": 3973,
+        "exact_frames": 175,
+        "changed": 21934,
+        "wrong_changed": 12416,
+        "wrong_unchanged": 6694
+      },
+      "causal": [],
+      "controls": [
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "0",
+          "exact": "131/231",
+          "bits": "68813/69300",
+          "failed_episodes": "100/100",
+          "locks": "68",
+          "real_steps": "3961",
+          "first": "0:1:4"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "1",
+          "exact": "0/100",
+          "bits": "29337/30000",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "2",
+          "exact": "1/101",
+          "bits": "29828/30300",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "0",
+          "exact": "1/101",
+          "bits": "29792/30300",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        }
+      ]
+    },
+    "next": {
+      "cells": 8227594,
+      "field_sha256": "d360e010551f8ceaaa5ac75619143ff61ca0c6f043d9e8c170d61151c79a3a02",
+      "field_bytes": 263283048,
+      "pilot": [
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "0",
+          "seed": "55971",
+          "cells": "1051645",
+          "teacher": "148/11478",
+          "self_prefix": "21/321",
+          "whole_episodes": "0/300",
+          "trace": "43774fb8fdf677e5",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "0",
+          "seed": "55972",
+          "cells": "1049923",
+          "teacher": "142/11478",
+          "self_prefix": "20/320",
+          "whole_episodes": "0/300",
+          "trace": "6b621c6524aa4ce6",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "0",
+          "seed": "55973",
+          "cells": "1046923",
+          "teacher": "127/11478",
+          "self_prefix": "16/316",
+          "whole_episodes": "0/300",
+          "trace": "c2c39b4973dd95b1",
+          "frozen": "1"
+        }
+      ],
+      "self": {
+        "totals": [
+          2320,
+          6320,
+          4000
+        ],
+        "real_steps": 156220,
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "7298873",
+            "mode": "0",
+            "exact": "572/1572",
+            "bits": "466849/471600",
+            "failed_episodes": "1000/1000",
+            "locks": "452",
+            "real_steps": "38352",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7498876",
+            "mode": "0",
+            "exact": "613/1613",
+            "bits": "479169/483900",
+            "failed_episodes": "1000/1000",
+            "locks": "461",
+            "real_steps": "39847",
+            "first": "0:0:2"
+          },
+          {
+            "memory": "1",
+            "seed": "7698879",
+            "mode": "0",
+            "exact": "558/1558",
+            "bits": "462595/467400",
+            "failed_episodes": "1000/1000",
+            "locks": "477",
+            "real_steps": "38866",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7898882",
+            "mode": "0",
+            "exact": "577/1577",
+            "bits": "468396/473100",
+            "failed_episodes": "1000/1000",
+            "locks": "460",
+            "real_steps": "39155",
+            "first": "0:1:2"
+          }
+        ]
+      },
+      "teacher": {
+        "totals": [
+          393,
+          15375,
+          400
+        ],
+        "real_steps": 15375,
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "7298873",
+            "mode": "0",
+            "exact": "94/3828",
+            "bits": "1128302/1148400",
+            "failed_episodes": "100/100",
+            "locks": "1222",
+            "real_steps": "3828",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7498876",
+            "mode": "0",
+            "exact": "101/3893",
+            "bits": "1147650/1167900",
+            "failed_episodes": "100/100",
+            "locks": "1204",
+            "real_steps": "3893",
+            "first": "0:0:2"
+          },
+          {
+            "memory": "1",
+            "seed": "7698879",
+            "mode": "0",
+            "exact": "101/3724",
+            "bits": "1097838/1117200",
+            "failed_episodes": "100/100",
+            "locks": "1186",
+            "real_steps": "3724",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7898882",
+            "mode": "0",
+            "exact": "97/3930",
+            "bits": "1158226/1179000",
+            "failed_episodes": "100/100",
+            "locks": "1200",
+            "real_steps": "3930",
+            "first": "0:1:2"
+          }
+        ]
+      },
+      "play": {
+        "totals": [
+          6538,
+          250920,
+          2915,
+          2915
+        ],
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "20261181",
+            "pieces": "10000",
+            "exact": "1333/50342",
+            "failed_episodes": "593/593",
+            "first_piece": "0",
+            "action": "2"
+          },
+          {
+            "memory": "1",
+            "seed": "20261182",
+            "pieces": "10000",
+            "exact": "1290/50137",
+            "failed_episodes": "577/577",
+            "first_piece": "0",
+            "action": "1"
+          },
+          {
+            "memory": "1",
+            "seed": "20261183",
+            "pieces": "10000",
+            "exact": "1284/50261",
+            "failed_episodes": "580/580",
+            "first_piece": "0",
+            "action": "4"
+          },
+          {
+            "memory": "1",
+            "seed": "20261184",
+            "pieces": "10000",
+            "exact": "1339/50177",
+            "failed_episodes": "586/586",
+            "first_piece": "0",
+            "action": "2"
+          },
+          {
+            "memory": "1",
+            "seed": "20261185",
+            "pieces": "10000",
+            "exact": "1292/50003",
+            "failed_episodes": "579/579",
+            "first_piece": "0",
+            "action": "1"
+          }
+        ]
+      },
+      "diagnostic": [
+        {
+          "mode": "2",
+          "port": "0",
+          "frames": "26/731",
+          "changed": "2956",
+          "changed_wrong": "1895",
+          "unchanged_wrong": "1152"
+        },
+        {
+          "mode": "2",
+          "port": "1",
+          "frames": "22/725",
+          "changed": "3048",
+          "changed_wrong": "1814",
+          "unchanged_wrong": "1066"
+        },
+        {
+          "mode": "2",
+          "port": "2",
+          "frames": "3/821",
+          "changed": "4286",
+          "changed_wrong": "2568",
+          "unchanged_wrong": "1005"
+        },
+        {
+          "mode": "2",
+          "port": "3",
+          "frames": "48/540",
+          "changed": "1904",
+          "changed_wrong": "1334",
+          "unchanged_wrong": "754"
+        },
+        {
+          "mode": "2",
+          "port": "4",
+          "frames": "0/1156",
+          "changed": "9740",
+          "changed_wrong": "6083",
+          "unchanged_wrong": "2863"
+        }
+      ],
+      "diagnostic_totals": {
+        "frames": 3973,
+        "exact_frames": 99,
+        "changed": 21934,
+        "wrong_changed": 13694,
+        "wrong_unchanged": 6840
+      },
+      "causal": [
+        {
+          "memory": "1",
+          "seed": "20261191",
+          "mode": "0",
+          "exact": "47/147",
+          "bits": "43655/44100",
+          "failed_episodes": "100/100",
+          "locks": "42",
+          "real_steps": "3855",
+          "first": "0:1:4"
+        },
+        {
+          "memory": "1",
+          "seed": "20261191",
+          "mode": "0",
+          "exact": "0/100",
+          "bits": "251/30000",
+          "failed_episodes": "100/100",
+          "locks": "25",
+          "real_steps": "3855",
+          "first": "0:0:0"
+        },
+        {
+          "memory": "1",
+          "seed": "20261191",
+          "mode": "0",
+          "exact": "0/100",
+          "bits": "19590/30000",
+          "failed_episodes": "100/100",
+          "locks": "25",
+          "real_steps": "3855",
+          "first": "0:0:0"
+        }
+      ],
+      "controls": [
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "0",
+          "exact": "65/165",
+          "bits": "49013/49500",
+          "failed_episodes": "100/100",
+          "locks": "47",
+          "real_steps": "3961",
+          "first": "0:1:4"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "1",
+          "exact": "1/101",
+          "bits": "29720/30300",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "2",
+          "exact": "1/101",
+          "bits": "29818/30300",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "0",
+          "exact": "1/101",
+          "bits": "29792/30300",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        }
+      ]
+    },
+    "carrier_next": {
+      "cells": 9350669,
+      "field_sha256": "d52db2ccc6d379c1ad72ef6e1a0f8c1b89ed3c6258a998975728774c95b312fd",
+      "field_bytes": 299221448,
+      "pilot": [
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "2",
+          "seed": "55971",
+          "cells": "1181824",
+          "teacher": "31/11478",
+          "self_prefix": "31/331",
+          "whole_episodes": "0/300",
+          "trace": "a9ea5e2480843fe0",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "2",
+          "seed": "55972",
+          "cells": "1181088",
+          "teacher": "6/11478",
+          "self_prefix": "6/306",
+          "whole_episodes": "0/300",
+          "trace": "ec4e4f19b7571a3a",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "0",
+          "bind": "2",
+          "seed": "55973",
+          "cells": "1177599",
+          "teacher": "5/11478",
+          "self_prefix": "5/305",
+          "whole_episodes": "0/300",
+          "trace": "5bb2fc56059eff9c",
+          "frozen": "1"
+        }
+      ],
+      "self": {
+        "totals": [
+          1077,
+          5077,
+          4000
+        ],
+        "real_steps": 156220,
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "7298873",
+            "mode": "0",
+            "exact": "272/1272",
+            "bits": "377087/381600",
+            "failed_episodes": "1000/1000",
+            "locks": "362",
+            "real_steps": "38352",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7498876",
+            "mode": "0",
+            "exact": "268/1268",
+            "bits": "376009/380400",
+            "failed_episodes": "1000/1000",
+            "locks": "350",
+            "real_steps": "39847",
+            "first": "0:0:2"
+          },
+          {
+            "memory": "1",
+            "seed": "7698879",
+            "mode": "0",
+            "exact": "258/1258",
+            "bits": "372907/377400",
+            "failed_episodes": "1000/1000",
+            "locks": "380",
+            "real_steps": "38866",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7898882",
+            "mode": "0",
+            "exact": "279/1279",
+            "bits": "379156/383700",
+            "failed_episodes": "1000/1000",
+            "locks": "375",
+            "real_steps": "39155",
+            "first": "0:1:2"
+          }
+        ]
+      },
+      "teacher": {
+        "totals": [
+          115,
+          15375,
+          400
+        ],
+        "real_steps": 15375,
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "7298873",
+            "mode": "0",
+            "exact": "25/3828",
+            "bits": "1053731/1148400",
+            "failed_episodes": "100/100",
+            "locks": "1222",
+            "real_steps": "3828",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7498876",
+            "mode": "0",
+            "exact": "24/3893",
+            "bits": "1072338/1167900",
+            "failed_episodes": "100/100",
+            "locks": "1204",
+            "real_steps": "3893",
+            "first": "0:0:2"
+          },
+          {
+            "memory": "1",
+            "seed": "7698879",
+            "mode": "0",
+            "exact": "38/3724",
+            "bits": "1027872/1117200",
+            "failed_episodes": "100/100",
+            "locks": "1186",
+            "real_steps": "3724",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7898882",
+            "mode": "0",
+            "exact": "28/3930",
+            "bits": "1084522/1179000",
+            "failed_episodes": "100/100",
+            "locks": "1200",
+            "real_steps": "3930",
+            "first": "0:1:2"
+          }
+        ]
+      },
+      "play": {
+        "totals": [
+          4210,
+          250920,
+          2915,
+          2915
+        ],
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "20261181",
+            "pieces": "10000",
+            "exact": "906/50342",
+            "failed_episodes": "593/593",
+            "first_piece": "0",
+            "action": "2"
+          },
+          {
+            "memory": "1",
+            "seed": "20261182",
+            "pieces": "10000",
+            "exact": "849/50137",
+            "failed_episodes": "577/577",
+            "first_piece": "0",
+            "action": "1"
+          },
+          {
+            "memory": "1",
+            "seed": "20261183",
+            "pieces": "10000",
+            "exact": "799/50261",
+            "failed_episodes": "580/580",
+            "first_piece": "0",
+            "action": "4"
+          },
+          {
+            "memory": "1",
+            "seed": "20261184",
+            "pieces": "10000",
+            "exact": "830/50177",
+            "failed_episodes": "586/586",
+            "first_piece": "0",
+            "action": "2"
+          },
+          {
+            "memory": "1",
+            "seed": "20261185",
+            "pieces": "10000",
+            "exact": "826/50003",
+            "failed_episodes": "579/579",
+            "first_piece": "0",
+            "action": "1"
+          }
+        ]
+      },
+      "diagnostic": [
+        {
+          "mode": "2",
+          "port": "0",
+          "frames": "10/731",
+          "changed": "2956",
+          "changed_wrong": "1405",
+          "unchanged_wrong": "16611"
+        },
+        {
+          "mode": "2",
+          "port": "1",
+          "frames": "2/725",
+          "changed": "3048",
+          "changed_wrong": "1490",
+          "unchanged_wrong": "13876"
+        },
+        {
+          "mode": "2",
+          "port": "2",
+          "frames": "0/821",
+          "changed": "4286",
+          "changed_wrong": "2166",
+          "unchanged_wrong": "19010"
+        },
+        {
+          "mode": "2",
+          "port": "3",
+          "frames": "10/540",
+          "changed": "1904",
+          "changed_wrong": "969",
+          "unchanged_wrong": "10122"
+        },
+        {
+          "mode": "2",
+          "port": "4",
+          "frames": "0/1156",
+          "changed": "9740",
+          "changed_wrong": "5761",
+          "unchanged_wrong": "24406"
+        }
+      ],
+      "diagnostic_totals": {
+        "frames": 3973,
+        "exact_frames": 22,
+        "changed": 21934,
+        "wrong_changed": 11791,
+        "wrong_unchanged": 84025
+      },
+      "causal": [
+        {
+          "memory": "1",
+          "seed": "20261191",
+          "mode": "0",
+          "exact": "32/132",
+          "bits": "39139/39600",
+          "failed_episodes": "100/100",
+          "locks": "32",
+          "real_steps": "3855",
+          "first": "0:0:0"
+        },
+        {
+          "memory": "1",
+          "seed": "20261191",
+          "mode": "0",
+          "exact": "0/100",
+          "bits": "339/30000",
+          "failed_episodes": "100/100",
+          "locks": "25",
+          "real_steps": "3855",
+          "first": "0:0:0"
+        },
+        {
+          "memory": "1",
+          "seed": "20261191",
+          "mode": "0",
+          "exact": "0/100",
+          "bits": "21052/30000",
+          "failed_episodes": "100/100",
+          "locks": "25",
+          "real_steps": "3855",
+          "first": "0:0:0"
+        }
+      ],
+      "controls": [
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "0",
+          "exact": "24/124",
+          "bits": "36767/37200",
+          "failed_episodes": "100/100",
+          "locks": "35",
+          "real_steps": "3961",
+          "first": "0:1:4"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "1",
+          "exact": "1/101",
+          "bits": "29739/30300",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "2",
+          "exact": "0/100",
+          "bits": "29259/30000",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "0",
+          "exact": "1/101",
+          "bits": "29792/30300",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        }
+      ]
+    },
+    "carrier_delta": {
+      "cells": 8133533,
+      "field_sha256": "bbabf0aebced535ceecc85ea30b6e4792313c3321f6ed07c6267d9def0e72eff",
+      "field_bytes": 260273096,
+      "pilot": [
+        {
+          "mode": "2",
+          "delta": "1",
+          "bind": "2",
+          "seed": "55971",
+          "cells": "1025585",
+          "teacher": "395/11478",
+          "self_prefix": "36/336",
+          "whole_episodes": "0/300",
+          "trace": "3b29d186cc22d832",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "1",
+          "bind": "2",
+          "seed": "55972",
+          "cells": "1024533",
+          "teacher": "381/11478",
+          "self_prefix": "22/322",
+          "whole_episodes": "0/300",
+          "trace": "607065fbc32ff6dc",
+          "frozen": "1"
+        },
+        {
+          "mode": "2",
+          "delta": "1",
+          "bind": "2",
+          "seed": "55973",
+          "cells": "1021096",
+          "teacher": "390/11478",
+          "self_prefix": "32/332",
+          "whole_episodes": "0/300",
+          "trace": "fbe4067bbbac8cad",
+          "frozen": "1"
+        }
+      ],
+      "self": {
+        "totals": [
+          1083,
+          5083,
+          4000
+        ],
+        "real_steps": 156220,
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "7298873",
+            "mode": "0",
+            "exact": "272/1272",
+            "bits": "376133/381600",
+            "failed_episodes": "1000/1000",
+            "locks": "362",
+            "real_steps": "38352",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7498876",
+            "mode": "0",
+            "exact": "273/1273",
+            "bits": "376451/381900",
+            "failed_episodes": "1000/1000",
+            "locks": "354",
+            "real_steps": "39847",
+            "first": "0:0:2"
+          },
+          {
+            "memory": "1",
+            "seed": "7698879",
+            "mode": "0",
+            "exact": "261/1261",
+            "bits": "372738/378300",
+            "failed_episodes": "1000/1000",
+            "locks": "382",
+            "real_steps": "38866",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7898882",
+            "mode": "0",
+            "exact": "277/1277",
+            "bits": "377526/383100",
+            "failed_episodes": "1000/1000",
+            "locks": "375",
+            "real_steps": "39155",
+            "first": "0:1:2"
+          }
+        ]
+      },
+      "teacher": {
+        "totals": [
+          214,
+          15375,
+          400
+        ],
+        "real_steps": 15375,
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "7298873",
+            "mode": "0",
+            "exact": "50/3828",
+            "bits": "1126723/1148400",
+            "failed_episodes": "100/100",
+            "locks": "1222",
+            "real_steps": "3828",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7498876",
+            "mode": "0",
+            "exact": "54/3893",
+            "bits": "1145793/1167900",
+            "failed_episodes": "100/100",
+            "locks": "1204",
+            "real_steps": "3893",
+            "first": "0:0:2"
+          },
+          {
+            "memory": "1",
+            "seed": "7698879",
+            "mode": "0",
+            "exact": "58/3724",
+            "bits": "1096264/1117200",
+            "failed_episodes": "100/100",
+            "locks": "1186",
+            "real_steps": "3724",
+            "first": "0:0:4"
+          },
+          {
+            "memory": "1",
+            "seed": "7898882",
+            "mode": "0",
+            "exact": "52/3930",
+            "bits": "1156546/1179000",
+            "failed_episodes": "100/100",
+            "locks": "1200",
+            "real_steps": "3930",
+            "first": "0:1:2"
+          }
+        ]
+      },
+      "play": {
+        "totals": [
+          4376,
+          250920,
+          2915,
+          2915
+        ],
+        "streams": [
+          {
+            "memory": "1",
+            "seed": "20261181",
+            "pieces": "10000",
+            "exact": "941/50342",
+            "failed_episodes": "593/593",
+            "first_piece": "0",
+            "action": "2"
+          },
+          {
+            "memory": "1",
+            "seed": "20261182",
+            "pieces": "10000",
+            "exact": "881/50137",
+            "failed_episodes": "577/577",
+            "first_piece": "0",
+            "action": "1"
+          },
+          {
+            "memory": "1",
+            "seed": "20261183",
+            "pieces": "10000",
+            "exact": "835/50261",
+            "failed_episodes": "580/580",
+            "first_piece": "0",
+            "action": "4"
+          },
+          {
+            "memory": "1",
+            "seed": "20261184",
+            "pieces": "10000",
+            "exact": "859/50177",
+            "failed_episodes": "586/586",
+            "first_piece": "0",
+            "action": "2"
+          },
+          {
+            "memory": "1",
+            "seed": "20261185",
+            "pieces": "10000",
+            "exact": "860/50003",
+            "failed_episodes": "579/579",
+            "first_piece": "0",
+            "action": "1"
+          }
+        ]
+      },
+      "diagnostic": [
+        {
+          "mode": "2",
+          "port": "0",
+          "frames": "29/731",
+          "changed": "2956",
+          "changed_wrong": "2862",
+          "unchanged_wrong": "0"
+        },
+        {
+          "mode": "2",
+          "port": "1",
+          "frames": "7/725",
+          "changed": "3048",
+          "changed_wrong": "3003",
+          "unchanged_wrong": "0"
+        },
+        {
+          "mode": "2",
+          "port": "2",
+          "frames": "0/821",
+          "changed": "4286",
+          "changed_wrong": "4217",
+          "unchanged_wrong": "0"
+        },
+        {
+          "mode": "2",
+          "port": "3",
+          "frames": "9/540",
+          "changed": "1904",
+          "changed_wrong": "1619",
+          "unchanged_wrong": "828"
+        },
+        {
+          "mode": "2",
+          "port": "4",
+          "frames": "1/1156",
+          "changed": "9740",
+          "changed_wrong": "7386",
+          "unchanged_wrong": "2281"
+        }
+      ],
+      "diagnostic_totals": {
+        "frames": 3973,
+        "exact_frames": 46,
+        "changed": 21934,
+        "wrong_changed": 19087,
+        "wrong_unchanged": 3109
+      },
+      "causal": [
+        {
+          "memory": "1",
+          "seed": "20261191",
+          "mode": "0",
+          "exact": "30/130",
+          "bits": "38440/39000",
+          "failed_episodes": "100/100",
+          "locks": "32",
+          "real_steps": "3855",
+          "first": "0:0:0"
+        },
+        {
+          "memory": "1",
+          "seed": "20261191",
+          "mode": "0",
+          "exact": "0/100",
+          "bits": "428/30000",
+          "failed_episodes": "100/100",
+          "locks": "25",
+          "real_steps": "3855",
+          "first": "0:0:0"
+        },
+        {
+          "memory": "1",
+          "seed": "20261191",
+          "mode": "0",
+          "exact": "0/100",
+          "bits": "20249/30000",
+          "failed_episodes": "100/100",
+          "locks": "25",
+          "real_steps": "3855",
+          "first": "0:0:0"
+        }
+      ],
+      "controls": [
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "0",
+          "exact": "25/125",
+          "bits": "36963/37500",
+          "failed_episodes": "100/100",
+          "locks": "35",
+          "real_steps": "3961",
+          "first": "0:1:4"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "1",
+          "exact": "0/100",
+          "bits": "29513/30000",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "2",
+          "exact": "0/100",
+          "bits": "29474/30000",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        },
+        {
+          "memory": "1",
+          "seed": "20261006",
+          "mode": "0",
+          "exact": "1/101",
+          "bits": "29792/30300",
+          "failed_episodes": "100/100",
+          "locks": "27",
+          "real_steps": "3961",
+          "first": "0:0:3"
+        }
+      ]
+    }
+  },
+  "benchmark": {
+    "couplings": 373,
+    "world_indices": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "episodes": 4000,
+    "exact": 156220,
+    "n": 156220,
+    "field_sha256": "2f6e0731eed408c3048d1d256ec3bc3cf404c6f48efe29310cba85ef19becf87"
+  },
+  "cpu_candidate_field_sha256": "bbabf0aebced535ceecc85ea30b6e4792313c3321f6ed07c6267d9def0e72eff"
+}

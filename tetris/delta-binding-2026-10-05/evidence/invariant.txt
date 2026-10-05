@@ -1,0 +1,1 @@
+PORT_XOR_INVARIANT exact=1 bits=1551600 real_steps=3973 external_inputs=1099 episodes=100

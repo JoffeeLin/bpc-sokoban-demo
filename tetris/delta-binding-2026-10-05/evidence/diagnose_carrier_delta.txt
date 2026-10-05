@@ -1,0 +1,9 @@
+RAW_DIAGNOSTIC mode=2 port=0 frames=29/731 changed=2956 changed_wrong=2862 unchanged_wrong=0
+RAW_DIAGNOSTIC mode=2 port=1 frames=7/725 changed=3048 changed_wrong=3003 unchanged_wrong=0
+RAW_DIAGNOSTIC mode=2 port=2 frames=0/821 changed=4286 changed_wrong=4217 unchanged_wrong=0
+RAW_DIAGNOSTIC mode=2 port=3 frames=9/540 changed=1904 changed_wrong=1619 unchanged_wrong=828
+RAW_DIAGNOSTIC mode=2 port=4 frames=1/1156 changed=9740 changed_wrong=7386 unchanged_wrong=2281
+RESIDUAL_NORMAL memory=1 seed=20261191 mode=0 exact=30/130 bits=38440/39000 failed_episodes=100/100 locks=32 real_steps=3855 first=0:0:0
+RESIDUAL_PHASE_REVERSED memory=1 seed=20261191 mode=0 exact=0/100 bits=428/30000 failed_episodes=100/100 locks=25 real_steps=3855 first=0:0:0
+RESIDUAL_ADDRESSES_ROTATED memory=1 seed=20261191 mode=0 exact=0/100 bits=20249/30000 failed_episodes=100/100 locks=25 real_steps=3855 first=0:0:0
+DIAGNOSTIC_FIELD_BYTES_RESTORED=1

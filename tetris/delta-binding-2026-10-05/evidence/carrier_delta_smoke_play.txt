@@ -1,0 +1,2 @@
+PLAY_SELF memory=1 seed=20261181 pieces=1000 exact=83/4981 failed_episodes=60/60 first_piece=0 action=2
+FIELD_BYTES_HASH_FROZEN=1 cells=8133533 digest=28fc265ad48d103d CPU_SECONDS=2.202

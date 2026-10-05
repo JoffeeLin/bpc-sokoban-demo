@@ -1,0 +1,9 @@
+LEARN memory=1 seed=55971 pieces=2000 actions=10079 gameovers=116 cells=1022494 digest=40b5a5a2cd967298
+ANONYMOUS_PORT_EXPOSURES 2131 1811 1400 2809 1928
+RESULT mode=2 delta=1 bind=2 seed=55971 cells=1025585 teacher=395/11478 self_prefix=36/336 whole_episodes=0/300 trace=3b29d186cc22d832 frozen=1
+LEARN memory=1 seed=55972 pieces=2000 actions=10062 gameovers=117 cells=1021397 digest=cd2444f802f10bd2
+ANONYMOUS_PORT_EXPOSURES 2018 1775 1520 2834 1915
+RESULT mode=2 delta=1 bind=2 seed=55972 cells=1024533 teacher=381/11478 self_prefix=22/322 whole_episodes=0/300 trace=607065fbc32ff6dc frozen=1
+LEARN memory=1 seed=55973 pieces=2000 actions=9941 gameovers=116 cells=1018004 digest=1da5f8294bb34fd3
+ANONYMOUS_PORT_EXPOSURES 2009 1907 1333 2762 1930
+RESULT mode=2 delta=1 bind=2 seed=55973 cells=1021096 teacher=390/11478 self_prefix=32/332 whole_episodes=0/300 trace=fbe4067bbbac8cad frozen=1

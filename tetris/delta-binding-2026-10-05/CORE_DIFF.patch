@@ -1,0 +1,98 @@
+--- support-joint-2026-10-05/model.h
++++ delta-binding-2026-10-05/model.h
+@@ -24,6 +24,17 @@
+ #ifndef MODE
+ #define MODE 2
+ #endif
++/* The raw carrier keeps its identity. BIND_CURRENT=1 omits one redundant bit;
++   2 omits the target site's whole local code. Its real XOR change is applied
++   to the current bit. Neighbor codes and the global cache retain identity. */
++#ifndef DELTA
++#define DELTA 1
++#endif
++#ifndef BIND_CURRENT
++#define BIND_CURRENT 2
++#endif
++_Static_assert(DELTA == 0 || DELTA == 1, "unknown target encoding");
++_Static_assert(BIND_CURRENT >= 0 && BIND_CURRENT <= 2, "unknown binding mode");
+ #ifndef MAX_CELLS
+ #define MAX_CELLS 10000000u
+ #endif
+@@ -105,6 +116,8 @@
+     for (int dy = -radius; dy <= radius; dy++) for (int dx = -radius; dx <= radius; dx++) {
+         int px = sx+dx, py = sy+dy;
+         uint64_t q = (px < 0 || px >= RW || py < 0 || py >= RH) ? 512 : codes[py*RW+px];
++        if (BIND_CURRENT && dx == 0 && dy == 0)
++            q = BIND_CURRENT == 2 ? 0 : q & ~UINT64_C(1);
+         x = (x ^ (q+1)) * UINT64_C(0x100000001b3);
+         y = (y ^ (q+513)) * UINT64_C(0x9e3779b185ebca87);
+     }
+@@ -139,7 +152,7 @@
+             uint64_t a,b; support_key(codes,site,act,l,&a,&b); Cell *c=find_cell(f,a,b,0);
+             if(c) return (c->yes+1.0)/(c->total+2.0);
+         }
+-        return (double)m->past[0].q[site];
++        return DELTA ? 0.0 : (double)m->past[0].q[site];
+     }
+     double sum=0; int known=0;
+     for(int l=0;l<LEVELS+GLOBAL_SUPPORT;l++){
+@@ -149,14 +162,18 @@
+         Cell *c=find_cell(f,a,b,0); if(!c)continue; known++;
+         sum += MODE==1 ? (c->yes+1.0)/(c->total+2.0) : c->residual;
+     }
+-    if(MODE==1) return known ? sum/known : (double)m->past[0].q[site];
++    if(MODE==1) return known ? sum/known : (DELTA ? 0.0 : (double)m->past[0].q[site]);
+     double z=sum/sqrt((double)(LEVELS+GLOBAL_SUPPORT));
+     return z>=0 ? 1.0/(1.0+exp(-z)) : exp(z)/(1.0+exp(z));
++}
++static uint8_t raw_readout(double p, uint8_t current) {
++    if (DELTA) return current ^ (uint8_t)(p > 0.5);
++    return p == 0.5 ? current : (uint8_t)(p > 0.5);
+ }
+ static uint8_t predict_site(Field *f, const Medium *m, const uint16_t codes[RN],
+                             int site, int act, uint64_t ga, uint64_t gb) {
+     double p=site_probability(f,m,codes,site,act,ga,gb);
+-    return p==0.5 ? m->past[0].q[site] : (uint8_t)(p>0.5);
++    return raw_readout(p, m->past[0].q[site]);
+ }
+ static void record_cell(Cell *c,uint8_t truth,double error){
+     if(!c)return;
+@@ -169,15 +186,16 @@
+     if((f->used+RN*(LEVELS+1))*10>f->capacity*7)field_grow(f);
+     for(int i=0;i<RN;i++){
+         double p=site_probability(f,m,codes,i,act,ga,gb);
+-        uint8_t bit=p==0.5?m->past[0].q[i]:(uint8_t)(p>0.5);
+-        double e=next->q[i]-p; /* Real consequence only; never self confirmation. */
++        uint8_t bit=raw_readout(p,m->past[0].q[i]);
++        uint8_t truth=next->q[i] ^ (DELTA ? m->past[0].q[i] : 0);
++        double e=truth-p; /* Real consequence only; never self confirmation. */
+         if(GLOBAL_SUPPORT){
+             uint64_t a,b;global_site_key(ga,gb,i,&a,&b);
+-            record_cell(find_cell(f,a,b,bit!=next->q[i]),next->q[i],e);
++            record_cell(find_cell(f,a,b,bit!=next->q[i]),truth,e);
+         }
+         for(int l=0;l<LEVELS;l++){
+             uint64_t a,b;support_key(codes,i,act,l,&a,&b);
+-            record_cell(find_cell(f,a,b,1),next->q[i],e);
++            record_cell(find_cell(f,a,b,1),truth,e);
+         }
+     }
+ }
+@@ -207,7 +225,7 @@
+ }
+ static void field_save(const Field *f, const char *path, int with_memory) {
+     FILE *fp = fopen(path, "wb"); require(fp != NULL, "cannot save field");
+-    uint64_t header[5] = {UINT64_C(0x4250435355505031), f->used, (uint64_t)with_memory, LEVELS+GLOBAL_SUPPORT*16, MODE};
++    uint64_t header[5] = {UINT64_C(0x4250435355505031), f->used, (uint64_t)with_memory, LEVELS+GLOBAL_SUPPORT*16, MODE+DELTA*16+BIND_CURRENT*32};
+     require(fwrite(header, sizeof(header), 1, fp) == 1, "write header failed");
+     for (size_t i = 0; i < f->capacity; i++) if (f->table[i].total)
+         require(fwrite(&f->table[i], sizeof(Cell), 1, fp) == 1, "write cell failed");
+@@ -216,7 +234,7 @@
+ static void field_load(Field *f, const char *path, int *with_memory) {
+     FILE *fp = fopen(path, "rb"); require(fp != NULL, "cannot load field");
+     uint64_t header[5]; require(fread(header, sizeof(header), 1, fp) == 1, "read header failed");
+-    require(header[0] == UINT64_C(0x4250435355505031) && header[3] == LEVELS+GLOBAL_SUPPORT*16 && header[4] == MODE && header[1] <= MAX_CELLS, "field format mismatch");
++    require(header[0] == UINT64_C(0x4250435355505031) && header[3] == LEVELS+GLOBAL_SUPPORT*16 && header[4] == MODE+DELTA*16+BIND_CURRENT*32 && header[1] <= MAX_CELLS, "field format mismatch");
+     size_t cap = 1024; while (cap*7/10 < header[1]+1) cap *= 2;
+     field_init(f, cap); *with_memory = (int)header[2];
+     for (uint64_t k = 0; k < header[1]; k++) {
