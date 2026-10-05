@@ -1,0 +1,2 @@
+0fd3bc144ddfd5e349950e9ee966619bc9d4451bfefe71b2e2a8f8818d86d003  /mnt/data/bpc_best_worldfit/BPC_Binary_WorldFit_v0.70_plain_spatial_closure_core.c
+846d9a100bc1717486a0c4d3f0d4e6c0ea9c07c48f74271790613f98db8e8eb4  /mnt/data/bpc_best_worldfit/v070_field.bin
