@@ -68,3 +68,18 @@ Current strict world-fitting frontier after the black/white-screen correction.
 Current boundary: v0.20 unifies storage/readout, but family-specific training observers still exist before export into the shared field. The next target is direct generic residual writeback into this same field.
 
 **Current world-fit frontier = Binary World-Fit v0.20.**
+
+
+### `binary-worldfit-v0.21-v0.26/`
+Direct shared-field learning and removal of handwritten collision / clear propagation.
+
+- **v0.21** negative: direct Beta writeback in one field failed because tiny smoothed probabilities survived recurrently.
+- **v0.21b** positive: one centered binary amplitude `max(0,2P-1)` restores the full 312,839/312,839 rollout.
+- **v0.22** positive: deletes handwritten occupied/outside collision decisions; proposal × destination-state compatibility is learned in the shared field and reused by movement/rotation/spawn.
+- **v0.23** negative stress: deletes hole propagation but still memorizes closure consequence by exact distance; 1–4 line stress only 3.61%.
+- **v0.24** positive: compresses distance to generic address relations (same / closure below / closure above); 1–4 line stress 10,000/10,000 and 8-seed rollout exact.
+- **v0.25** negative: one-sided boundary wave contaminates closure seeds.
+- **v0.25b** positive/current stable checkpoint: opposite-boundary local waves must interfere; no whole-chain scanner. 1–4 line stress 10,000/10,000, vertical negative 2,500/2,500, 8-seed rollout 312,839/312,839, O2/O3 diff 0, UBSan clean.
+- **v0.26** pilot: removes lock-triggered downstream scheduling and preserves capability, but computational cost increases substantially; not yet promoted.
+
+**Current stable world-fit frontier = Binary World-Fit v0.25b.**
