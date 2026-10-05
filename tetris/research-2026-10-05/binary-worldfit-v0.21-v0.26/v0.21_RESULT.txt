@@ -1,0 +1,11 @@
+BPC Binary WorldFit v0.21 | direct shared-field learning | no family-specific learned parameter stores | relations=140
+NORMAL 0/1000=0.000000% epok=0 locks=308 first=0:0
+NORMAL 0/1000=0.000000% epok=0 locks=292 first=0:0
+NORMAL 0/1000=0.000000% epok=0 locks=300 first=0:0
+NORMAL 0/1000=0.000000% epok=0 locks=319 first=0:0
+NORMAL 0/1000=0.000000% epok=0 locks=285 first=0:0
+NORMAL 0/1000=0.000000% epok=0 locks=297 first=0:0
+NORMAL 0/1000=0.000000% epok=0 locks=297 first=0:0
+NORMAL 0/1000=0.000000% epok=0 locks=279 first=0:0
+NORMAL_TOTAL 0/8000=0.000000%
+FIELD_OFF 0/100=0.000000%
