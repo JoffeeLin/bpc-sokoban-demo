@@ -133,3 +133,14 @@ Negative results v0.28, v0.31, v0.32b and v0.25/v0.23 predecessors are retained 
 **Current stable world-fit frontier = Binary World-Fit v0.40.**
 
 Largest remaining dedicated curriculum: geometry gauge/basis/phase still begins from researcher-designed 1/2/3-voxel micro-experience. Next target is to learn geometry from ordinary 4-cell game transitions only.
+
+
+### `binary-worldfit-v0.41-v0.43/`
+Latest scheduler/geometry scaffold audit.
+
+- **v0.41**: scheduler-free carrier participation is pilot-positive (clear 2,000/2,000; seed0 11,812/11,812) but not fully frozen.
+- **v0.42**: removes the 1/2/3-voxel geometry curriculum; ordinary visible play recovers gauges/basis, but phase ambiguity prevents downstream credit. Negative.
+- **v0.42b**: relation-preserving visible transitions recover translation geometry and compatibility; clear stress returns 2,000/2,000, but rotation chirality remains ambiguous and rollout is ~85%. Partial, not promoted.
+- **v0.43**: two-step same-function reentry cannot resolve 90-degree chirality and collapses. Negative.
+
+**Current promoted checkpoint remains v0.40b.** Next geometry route is local one-hop relation-wave relaxation (Pure-Tetris v0.39 mechanism), not further global gauge/basis/phase patching.
