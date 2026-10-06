@@ -50,3 +50,14 @@ Do not add Tetris rules. Highest-value remaining deletions:
 2. reduce explicit geometry coordinate-relaxation / final lattice-rounding scaffolds;
 3. merge remaining separate inference helpers into one generic propagation/interference operator where possible;
 4. preserve the external reference game only as reality/evaluator, not as part of the BPC kernel.
+
+
+### binary-worldfit-v1.14/
+Gauge-unification candidate.
+
+- deletes the privileged `kgauge` relation family;
+- whole-object displacement becomes the ordinary self-relation mapping `Action × relation(0,0) -> relation(dx,dy)` in the same geometry field;
+- 1,000,000/1,000,000 randomized multimodal equivalence tests pass after key migration;
+- full 8-seed Tetris rerun is deliberately pending because the exact v1.13 frozen field/evaluator artifacts are not present in the current archive.
+
+Status: **mechanism-equivalence positive; not yet promoted over v1.13**.
