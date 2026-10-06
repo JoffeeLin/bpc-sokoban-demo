@@ -1,0 +1,6 @@
+1165df96a5eec43fb199da8494c4e6e007ab09d50c91e154bdc6087a2e22a6bf  /mnt/data/bpc_v131/v1.31_unified_temporal_medium.c
+a93bd69e7c9686752785e45b3f9c084bd94b2c1545151aa6aa41645ba403ed97  /mnt/data/bpc_v131/v1.31a_stream_diverse.c
+e1b677b1da72c96e18b621532b58732022dfb5928bc35edf67f35baa45466856  /mnt/data/bpc_v131/v1.32_temporal_dependence_medium.c
+3fb358acb913fee78dc757c3ed4d184ba164978d23dc6e9956525a2d57154584  /mnt/data/bpc_v131/v1.32b_temporal_logodds_medium.c
+154b4ce1ab21e1155301347470110404ca965c1f7e526f1e66edfcb9510f5b9e  /mnt/data/bpc_v131/v1.33_joint_residual_medium.c
+6ddc4a3fa971648f85d99384bbc4ecc945601adc10ddc684677f161859e3f500  /mnt/data/bpc_v131/REPORT.md
