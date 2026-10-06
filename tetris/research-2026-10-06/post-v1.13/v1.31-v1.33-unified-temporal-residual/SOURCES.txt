@@ -1,0 +1,228 @@
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+
+#define ADDR 16
+#define DTN 5   /* dt slots -2,-1,0,+1,+2 */
+#define CAP 4096
+
+typedef struct { uint64_t key; double yes,total; uint8_t used; } Cell;
+typedef struct { Cell c[CAP]; int n; } Field;
+typedef struct { int addr, dt; double amp; } Wave;
+
+static uint64_t mix(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static uint64_t reltok(int src,int dst,int dt){uint64_t x=(uint64_t)(src&255)|((uint64_t)(dst&255)<<8)|((uint64_t)((dt+2)&7)<<16);return mix(x+0x9e3779b97f4a7c15ULL);}
+static Cell* find(Field*f,uint64_t k,int create){uint32_t j=(uint32_t)(k^(k>>32))&(CAP-1);for(int z=0;z<CAP;z++,j=(j+1)&(CAP-1)){Cell*e=&f->c[j];if(e->used){if(e->key==k)return e;continue;}if(!create)return NULL;e->used=1;e->key=k;f->n++;return e;}return NULL;}
+static double p(const Cell*e){return e?(e->yes+1.0)/(e->total+2.0):0.5;}
+static double amp(const Field*f0,uint64_t k){Field*f=(Field*)f0;Cell*e=find(f,k,0);double a=2.0*p(e)-1.0;if(a<0)a=0;if(a>1)a=1;return a;}
+static void credit(Field*f,uint64_t k,double w,int y){if(w<=0)return;Cell*e=find(f,k,1);e->total+=w;e->yes+=w*(y!=0);}
+
+/* no screen/action/next classes: one generic event stream and one dt relation */
+static void observe_pair(Field*f,const uint8_t now[ADDR],const uint8_t future[ADDR],int dt){
+  for(int s=0;s<ADDR;s++)if(now[s])for(int d=0;d<ADDR;d++)credit(f,reltok(s,d,dt),1.0,future[d]);
+}
+static void predict_dt(const Field*f,const uint8_t now[ADDR],int dt,uint8_t out[ADDR]){
+  for(int d=0;d<ADDR;d++){double miss=1.0;int any=0;for(int s=0;s<ADDR;s++)if(now[s]){any=1;miss*=1.0-amp(f,reltok(s,d,dt));}out[d]=(uint8_t)(any && (1.0-miss>0.5));}
+}
+
+/* synthetic reality: addresses 0..7 are visible-world ports, 8..11 action ports, 12..15 extra visible/history ports.
+   These classes exist only in teacher construction, never in Field/credit/predict. */
+static void teacher_next(const uint8_t z[ADDR],uint8_t n[ADDR]){
+  memset(n,0,ADDR);
+  /* world transitions */
+  for(int i=0;i<8;i++)if(z[i])n[(i+1)&7]=1;
+  /* action demonstration from current world bits */
+  for(int i=0;i<8;i++)if(z[i])n[8+(i&3)]=1;
+  /* history/extra bits */
+  for(int i=12;i<16;i++)if(z[i])n[12+((i-12+1)&3)]=1;
+  /* action consequence feeds back into world */
+  for(int a=8;a<12;a++)if(z[a])n[(a-8)*2]=1;
+}
+static void step(const uint8_t z[ADDR],uint8_t n[ADDR]){teacher_next(z,n);}
+
+static uint64_t rs=0x8d9f2e42f0a51d13ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+
+int main(void){
+  Field f={0};
+  /* one demonstration stream: observe only adjacent events with generic dt=+1. */
+  uint8_t z[ADDR]={0};z[1]=1;z[12]=1;
+  for(int t=0;t<20000;t++){
+    uint8_t n[ADDR];step(z,n);observe_pair(&f,z,n,+1);memcpy(z,n,ADDR);
+    /* occasional exogenous visible perturbation, still same medium */
+    if((ru()%17)==0)z[ru()%8]=1;
+  }
+
+  /* no action learner, no world head: erase action ports, ask same predictor for whole next event */
+  unsigned long long tests=100000,whole_ok=0,action_ok=0,world_ok=0;
+  for(unsigned long long q=0;q<tests;q++){
+    uint8_t cur[ADDR]={0},truth[ADDR],pred[ADDR];
+    int bits=1+(int)(ru()%5);for(int k=0;k<bits;k++){int a=(int)(ru()%8);cur[a]=1;} if(ru()&1)cur[12+(ru()%4)]=1;
+    teacher_next(cur,truth);predict_dt(&f,cur,+1,pred);
+    int wok=!memcmp(truth,pred,8);int aok=!memcmp(truth+8,pred+8,4);int hok=!memcmp(truth+12,pred+12,4);
+    world_ok+=wok;action_ok+=aok;whole_ok+=(wok&&aok&&hok);
+  }
+  printf("UNIFIED_TEMPORAL_MEDIUM relations=%d whole=%llu/%llu world=%llu/%llu action=%llu/%llu\n",f.n,whole_ok,tests,world_ok,tests,action_ok,tests);
+  /* causal control: change only dt. */
+  uint8_t c[ADDR]={0},p0[ADDR],p1[ADDR];c[3]=1;teacher_next(c,p1);predict_dt(&f,c,0,p0);
+  printf("DT_CAUSAL_CONTROL wrong_dt_equal=%d\n",!memcmp(p0,p1,ADDR));
+  return !(whole_ok==tests && action_ok==tests && world_ok==tests && memcmp(p0,p1,ADDR)!=0);
+}
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+
+#define ADDR 16
+#define DTN 5   /* dt slots -2,-1,0,+1,+2 */
+#define CAP 4096
+
+typedef struct { uint64_t key; double yes,total; uint8_t used; } Cell;
+typedef struct { Cell c[CAP]; int n; } Field;
+typedef struct { int addr, dt; double amp; } Wave;
+
+static uint64_t mix(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static uint64_t reltok(int src,int dst,int dt){uint64_t x=(uint64_t)(src&255)|((uint64_t)(dst&255)<<8)|((uint64_t)((dt+2)&7)<<16);return mix(x+0x9e3779b97f4a7c15ULL);}
+static Cell* find(Field*f,uint64_t k,int create){uint32_t j=(uint32_t)(k^(k>>32))&(CAP-1);for(int z=0;z<CAP;z++,j=(j+1)&(CAP-1)){Cell*e=&f->c[j];if(e->used){if(e->key==k)return e;continue;}if(!create)return NULL;e->used=1;e->key=k;f->n++;return e;}return NULL;}
+static double p(const Cell*e){return e?(e->yes+1.0)/(e->total+2.0):0.5;}
+static double amp(const Field*f0,uint64_t k){Field*f=(Field*)f0;Cell*e=find(f,k,0);double a=2.0*p(e)-1.0;if(a<0)a=0;if(a>1)a=1;return a;}
+static void credit(Field*f,uint64_t k,double w,int y){if(w<=0)return;Cell*e=find(f,k,1);e->total+=w;e->yes+=w*(y!=0);}
+
+/* no screen/action/next classes: one generic event stream and one dt relation */
+static void observe_pair(Field*f,const uint8_t now[ADDR],const uint8_t future[ADDR],int dt){
+  for(int s=0;s<ADDR;s++)if(now[s])for(int d=0;d<ADDR;d++)credit(f,reltok(s,d,dt),1.0,future[d]);
+}
+static void predict_dt(const Field*f,const uint8_t now[ADDR],int dt,uint8_t out[ADDR]){
+  for(int d=0;d<ADDR;d++){double miss=1.0;int any=0;for(int s=0;s<ADDR;s++)if(now[s]){any=1;miss*=1.0-amp(f,reltok(s,d,dt));}out[d]=(uint8_t)(any && (1.0-miss>0.5));}
+}
+
+/* synthetic reality: addresses 0..7 are visible-world ports, 8..11 action ports, 12..15 extra visible/history ports.
+   These classes exist only in teacher construction, never in Field/credit/predict. */
+static void teacher_next(const uint8_t z[ADDR],uint8_t n[ADDR]){
+  memset(n,0,ADDR);
+  /* world transitions */
+  for(int i=0;i<8;i++)if(z[i])n[(i+1)&7]=1;
+  /* action demonstration from current world bits */
+  for(int i=0;i<8;i++)if(z[i])n[8+(i&3)]=1;
+  /* history/extra bits */
+  for(int i=12;i<16;i++)if(z[i])n[12+((i-12+1)&3)]=1;
+  /* action consequence feeds back into world */
+  for(int a=8;a<12;a++)if(z[a])n[(a-8)*2]=1;
+}
+static void step(const uint8_t z[ADDR],uint8_t n[ADDR]){teacher_next(z,n);}
+
+static uint64_t rs=0x8d9f2e42f0a51d13ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+
+int main(void){
+  Field f={0};
+  /* one demonstration stream: observe only adjacent events with generic dt=+1. */
+  uint8_t z[ADDR]={0};z[1]=1;z[12]=1;
+  for(int t=0;t<20000;t++){
+    uint8_t n[ADDR];step(z,n);observe_pair(&f,z,n,+1);memcpy(z,n,ADDR);
+    /* occasional exogenous visible perturbation, still same medium */
+    /* exogenous visible events diversify one continuous demonstration stream. */
+    for(int k=0;k<3;k++)if((ru()%5)==0)z[ru()%8]^=1;
+  }
+
+  /* no action learner, no world head: erase action ports, ask same predictor for whole next event */
+  unsigned long long tests=100000,whole_ok=0,action_ok=0,world_ok=0;
+  for(unsigned long long q=0;q<tests;q++){
+    uint8_t cur[ADDR]={0},truth[ADDR],pred[ADDR];
+    int bits=1+(int)(ru()%5);for(int k=0;k<bits;k++){int a=(int)(ru()%8);cur[a]=1;} if(ru()&1)cur[12+(ru()%4)]=1;
+    teacher_next(cur,truth);predict_dt(&f,cur,+1,pred);
+    int wok=!memcmp(truth,pred,8);int aok=!memcmp(truth+8,pred+8,4);int hok=!memcmp(truth+12,pred+12,4);
+    world_ok+=wok;action_ok+=aok;whole_ok+=(wok&&aok&&hok);
+  }
+  printf("UNIFIED_TEMPORAL_MEDIUM relations=%d whole=%llu/%llu world=%llu/%llu action=%llu/%llu\n",f.n,whole_ok,tests,world_ok,tests,action_ok,tests);
+  /* causal control: change only dt. */
+  uint8_t c[ADDR]={0},p0[ADDR],p1[ADDR];c[3]=1;teacher_next(c,p1);predict_dt(&f,c,0,p0);
+  printf("DT_CAUSAL_CONTROL wrong_dt_equal=%d\n",!memcmp(p0,p1,ADDR));
+  return !(whole_ok==tests && action_ok==tests && world_ok==tests && memcmp(p0,p1,ADDR)!=0);
+}
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define ADDR 16
+#define CAP 512
+
+typedef struct{uint64_t key;double s1y1,s1,s0y1,s0;uint8_t used;}Cell;
+typedef struct{Cell c[CAP];int n;}Field;
+static uint64_t rs=0xa9f17d2c31578b41ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t mix(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static uint64_t key(int s,int d,int dt){return mix((uint64_t)(s&255)|((uint64_t)(d&255)<<8)|((uint64_t)((dt+2)&7)<<16));}
+static Cell* find(Field*f,uint64_t k,int create){uint32_t j=(uint32_t)(k^(k>>32))&(CAP-1);for(int z=0;z<CAP;z++,j=(j+1)&(CAP-1)){Cell*e=&f->c[j];if(e->used){if(e->key==k)return e;continue;}if(!create)return NULL;memset(e,0,sizeof(*e));e->used=1;e->key=k;f->n++;return e;}return NULL;}
+/* One generic temporal-dependence observer. No source/target class and no per-edge label assignment. */
+static void observe(Field*f,const uint8_t x[ADDR],const uint8_t y[ADDR],int dt){for(int s=0;s<ADDR;s++)for(int d=0;d<ADDR;d++){Cell*e=find(f,key(s,d,dt),1);if(x[s]){e->s1+=1;e->s1y1+=y[d]!=0;}else{e->s0+=1;e->s0y1+=y[d]!=0;}}}
+static double dep(const Field*f0,int s,int d,int dt){Field*f=(Field*)f0;Cell*e=find(f,key(s,d,dt),0);if(!e||e->s1<1||e->s0<1)return 0;double p1=(e->s1y1+1)/(e->s1+2),p0=(e->s0y1+1)/(e->s0+2);double a=p1-p0;if(a<0)a=0;if(a>1)a=1;return a;}
+static void predict(const Field*f,const uint8_t x[ADDR],int dt,uint8_t y[ADDR]){for(int d=0;d<ADDR;d++){double miss=1;for(int s=0;s<ADDR;s++)if(x[s])miss*=1-dep(f,s,d,dt);y[d]=(uint8_t)(1-miss>0.5);}}
+static int wmap[ADDR]={1,3,5,7,0,2,4,6,2,4,6,0,9,10,11,8};
+static int amap[ADDR]={0,1,2,3,1,2,3,0,3,0,1,2,2,3,0,1};
+static void reality(const uint8_t x[ADDR],uint8_t y[ADDR]){memset(y,0,ADDR);for(int s=0;s<ADDR;s++)if(x[s]){y[wmap[s]]=1;y[8+amap[s]]=1;}}
+int main(void){Field f={0};uint8_t x[ADDR]={0};x[1]=x[12]=1;for(int t=0;t<250000;t++){uint8_t y[ADDR];reality(x,y);observe(&f,x,y,+1);memcpy(x,y,ADDR);/* exogenous events keep one continuous stream information-rich */for(int k=0;k<5;k++)if((ru()%3)==0)x[ru()%ADDR]^=1;}
+unsigned long long n=100000,all=0,world=0,action=0;for(unsigned long long q=0;q<n;q++){uint8_t a[ADDR]={0},truth[ADDR],pred[ADDR];int bits=1+(int)(ru()%6);for(int k=0;k<bits;k++)a[ru()%ADDR]=1;reality(a,truth);predict(&f,a,+1,pred);int wok=!memcmp(truth,pred,8),aok=!memcmp(truth+8,pred+8,4),tail=!memcmp(truth+12,pred+12,4);world+=wok;action+=aok;all+=(wok&&aok&&tail);}printf("TEMPORAL_DEPENDENCE_ONE_MEDIUM relations=%d all=%llu/%llu world=%llu/%llu action=%llu/%llu\n",f.n,all,n,world,n,action,n);
+/* audit learned contrasts for causal vs noncausal pairs */double causal=0,other=0;int nc=0,no=0;for(int s=0;s<ADDR;s++)for(int d=0;d<ADDR;d++){double a=dep(&f,s,d,1);int c=(d==wmap[s]||d==8+amap[s]);if(c){causal+=a;nc++;}else{other+=a;no++;}}printf("mean_causal=%.6f mean_other=%.6f\n",causal/nc,other/no);return !(all==n);}
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define ADDR 16
+#define CAP 512
+
+typedef struct{uint64_t key;double s1y1,s1,s0y1,s0;uint8_t used;}Cell;
+typedef struct{Cell c[CAP];int n;}Field;
+static uint64_t rs=0xa9f17d2c31578b41ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t mix(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static uint64_t key(int s,int d,int dt){return mix((uint64_t)(s&255)|((uint64_t)(d&255)<<8)|((uint64_t)((dt+2)&7)<<16));}
+static Cell* find(Field*f,uint64_t k,int create){uint32_t j=(uint32_t)(k^(k>>32))&(CAP-1);for(int z=0;z<CAP;z++,j=(j+1)&(CAP-1)){Cell*e=&f->c[j];if(e->used){if(e->key==k)return e;continue;}if(!create)return NULL;memset(e,0,sizeof(*e));e->used=1;e->key=k;f->n++;return e;}return NULL;}
+/* One generic temporal-dependence observer. No source/target class and no per-edge label assignment. */
+static void observe(Field*f,const uint8_t x[ADDR],const uint8_t y[ADDR],int dt){for(int s=0;s<ADDR;s++)for(int d=0;d<ADDR;d++){Cell*e=find(f,key(s,d,dt),1);if(x[s]){e->s1+=1;e->s1y1+=y[d]!=0;}else{e->s0+=1;e->s0y1+=y[d]!=0;}}}
+static double dep(const Field*f0,int s,int d,int dt){Field*f=(Field*)f0;Cell*e=find(f,key(s,d,dt),0);if(!e||e->s1<1||e->s0<1)return 0;double p1=(e->s1y1+1)/(e->s1+2),p0=(e->s0y1+1)/(e->s0+2);const double eps=1e-9;if(p1<eps)p1=eps;if(p1>1-eps)p1=1-eps;if(p0<eps)p0=eps;if(p0>1-eps)p0=1-eps;double lod=log(p1/(1-p1))-log(p0/(1-p0));if(lod<=0)return 0;double a=tanh(0.5*lod);if(a<0)a=0;if(a>1)a=1;return a;}
+static void predict(const Field*f,const uint8_t x[ADDR],int dt,uint8_t y[ADDR]){for(int d=0;d<ADDR;d++){double miss=1;for(int s=0;s<ADDR;s++)if(x[s])miss*=1-dep(f,s,d,dt);y[d]=(uint8_t)(1-miss>0.5);}}
+static int wmap[ADDR]={1,3,5,7,0,2,4,6,2,4,6,0,9,10,11,8};
+static int amap[ADDR]={0,1,2,3,1,2,3,0,3,0,1,2,2,3,0,1};
+static void reality(const uint8_t x[ADDR],uint8_t y[ADDR]){memset(y,0,ADDR);for(int s=0;s<ADDR;s++)if(x[s]){y[wmap[s]]=1;y[8+amap[s]]=1;}}
+int main(void){Field f={0};uint8_t x[ADDR]={0};x[1]=x[12]=1;for(int t=0;t<250000;t++){uint8_t y[ADDR];reality(x,y);observe(&f,x,y,+1);memcpy(x,y,ADDR);/* exogenous events keep one continuous stream information-rich */for(int k=0;k<5;k++)if((ru()%3)==0)x[ru()%ADDR]^=1;}
+unsigned long long n=100000,all=0,world=0,action=0;for(unsigned long long q=0;q<n;q++){uint8_t a[ADDR]={0},truth[ADDR],pred[ADDR];int bits=1+(int)(ru()%6);for(int k=0;k<bits;k++)a[ru()%ADDR]=1;reality(a,truth);predict(&f,a,+1,pred);int wok=!memcmp(truth,pred,8),aok=!memcmp(truth+8,pred+8,4),tail=!memcmp(truth+12,pred+12,4);world+=wok;action+=aok;all+=(wok&&aok&&tail);}printf("TEMPORAL_LOGODDS_ONE_MEDIUM relations=%d all=%llu/%llu world=%llu/%llu action=%llu/%llu\n",f.n,all,n,world,n,action,n);
+/* audit learned contrasts for causal vs noncausal pairs */double causal=0,other=0;int nc=0,no=0;for(int s=0;s<ADDR;s++)for(int d=0;d<ADDR;d++){double a=dep(&f,s,d,1);int c=(d==wmap[s]||d==8+amap[s]);if(c){causal+=a;nc++;}else{other+=a;no++;}}printf("mean_causal=%.6f mean_other=%.6f\n",causal/nc,other/no);return !(all==n);}
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define ADDR 16
+#define CAP 512
+
+typedef struct{uint64_t key;double w;uint8_t used;}Cell;
+typedef struct{Cell c[CAP];int n;}Field;
+static uint64_t rs=0x29f5a6c13de84bb7ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t mix(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static uint64_t key(int s,int d,int dt){return mix((uint64_t)(s&255)|((uint64_t)(d&255)<<8)|((uint64_t)((dt+2)&7)<<16));}
+static Cell* find(Field*f,uint64_t k,int create){uint32_t j=(uint32_t)(k^(k>>32))&(CAP-1);for(int z=0;z<CAP;z++,j=(j+1)&(CAP-1)){Cell*e=&f->c[j];if(e->used){if(e->key==k)return e;continue;}if(!create)return NULL;memset(e,0,sizeof(*e));e->used=1;e->key=k;e->w=0.001;f->n++;return e;}return NULL;}
+static double clip(double x){return x<0?0:(x>1?1:x);}
+static double predict_one(Field*f,const uint8_t x[ADDR],int d,int dt){double miss=1.0;for(int s=0;s<ADDR;s++)if(x[s]){Cell*e=find(f,key(s,d,dt),1);miss*=1.0-e->w;}return 1.0-miss;}
+/* One generic residual writer. All active relations jointly predict one future BIT.
+   The same residual flows back by each relation's exact noisy-OR marginal responsibility. */
+static void observe(Field*f,const uint8_t x[ADDR],const uint8_t y[ADDR],int dt,double lr){
+  for(int d=0;d<ADDR;d++){
+    double miss=1.0;for(int s=0;s<ADDR;s++)if(x[s])miss*=1.0-find(f,key(s,d,dt),1)->w;
+    double pred=1.0-miss,err=(double)y[d]-pred;
+    for(int s=0;s<ADDR;s++)if(x[s]){
+      Cell*e=find(f,key(s,d,dt),1);double denom=1.0-e->w;double resp=(denom>1e-12)?miss/denom:0.0;
+      /* small L2 decay is medium regularization, not a source/destination class. */
+      e->w=clip(e->w + lr*err*resp - lr*1e-5*e->w);
+    }
+  }
+}
+static void predict(Field*f,const uint8_t x[ADDR],int dt,uint8_t y[ADDR]){for(int d=0;d<ADDR;d++)y[d]=(uint8_t)(predict_one(f,x,d,dt)>.5);}
+static int wmap[ADDR]={1,3,5,7,0,2,4,6,2,4,6,0,9,10,11,8};
+static int amap[ADDR]={0,1,2,3,1,2,3,0,3,0,1,2,2,3,0,1};
+static void reality(const uint8_t x[ADDR],uint8_t y[ADDR]){memset(y,0,ADDR);for(int s=0;s<ADDR;s++)if(x[s]){y[wmap[s]]=1;y[8+amap[s]]=1;}}
+int main(void){Field f={0};uint8_t x[ADDR]={0};x[1]=x[12]=1;
+  for(int t=0;t<1200000;t++){uint8_t y[ADDR];reality(x,y);observe(&f,x,y,+1,0.08);memcpy(x,y,ADDR);for(int k=0;k<6;k++)if((ru()%3)==0)x[ru()%ADDR]^=1;}
+  unsigned long long n=100000,all=0,world=0,action=0;for(unsigned long long q=0;q<n;q++){uint8_t a[ADDR]={0},truth[ADDR],pred[ADDR];int bits=1+(int)(ru()%6);for(int k=0;k<bits;k++)a[ru()%ADDR]=1;reality(a,truth);predict(&f,a,+1,pred);int wok=!memcmp(truth,pred,8),aok=!memcmp(truth+8,pred+8,4),tail=!memcmp(truth+12,pred+12,4);world+=wok;action+=aok;all+=(wok&&aok&&tail);}printf("JOINT_RESIDUAL_ONE_MEDIUM relations=%d all=%llu/%llu world=%llu/%llu action=%llu/%llu\n",f.n,all,n,world,n,action,n);
+  double causal=0,other=0;int nc=0,no=0;for(int s=0;s<ADDR;s++)for(int d=0;d<ADDR;d++){Cell*e=find(&f,key(s,d,1),0);double w=e?e->w:0;int c=(d==wmap[s]||d==8+amap[s]);if(c){causal+=w;nc++;}else{other+=w;no++;}}printf("mean_causal=%.6f mean_other=%.6f\n",causal/nc,other/no);return !(all==n);}
