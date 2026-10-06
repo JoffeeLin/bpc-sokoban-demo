@@ -1,0 +1,114 @@
+===== v1.25_generic_constraint_relax_equiv_RESULT.txt =====
+GEOMETRY_TO_GENERIC_CONSTRAINT_RELAX 10000/10000 = 100.000000%
+
+===== v1.26_unified_bit_slots_equiv_RESULT.txt =====
+FRAME_TRACE_TO_UNIFIED_BIT_SLOTS 1000000/1000000 = 100.000000%
+
+===== v1.27_action_ports_same_medium_equiv_RESULT.txt =====
+ACTION_STRUCT_TO_BIT_RELATION_PORTS 2000000/2000000 = 100.000000%
+
+===== v1.28_single_input_medium_equiv_RESULT.txt =====
+SCREEN_TRACE_ACTION_TO_ONE_BIT_RELATION_MEDIUM 20000/20000 = 100.000000%
+
+===== v1.29_bidirectional_port_operator_equiv_RESULT.txt =====
+WORLD_ACTION_OUTPUTS_TO_ONE_RELATION_MEDIUM 500000/500000 = 100.000000%
+
+===== v1.30_same_field_world_action_learning_RESULT.txt =====
+ONE_FIELD_WORLD_AND_ACTION unseen_multi_source=100000/100000 = 100.000000%
+Training contained only singleton demonstrations; world bits and action ports used the same Cell, credit(), and predict() equations.
+
+===== v1.31_remove_zero_mean_gauge_equiv_RESULT.txt =====
+FAIL 1 n=7 max=6.6289365885374707e-08
+
+===== v1.31b_remove_zero_mean_gauge_physical_RESULT.txt =====
+ZERO_MEAN_GAUGE_REMOVAL physical_grid=20000/20000 = 100.000000%
+
+===== v1.32_geometry_boundary_gauge_equiv_RESULT.txt =====
+GEOMETRY_NO_GLOBAL_GAUGE_OR_MIN_SELECTOR 20000/20000 = 100.000000%
+
+===== v1.33_relaxation_damping_invariance_RESULT.txt =====
+RELAXATION_DAMPING_NOT_WORLD_RULE 10000/10000 = 100.000000%
+
+===== v1.34_branch_superposition_equiv_RESULT.txt =====
+LERP_BRANCH_TO_WAVE_SUPERPOSITION 10000000/10000000 = 100.000000%
+
+===== v1.35_log_additive_wave_equiv_RESULT.txt =====
+PRODUCT_INTERFERENCE_TO_ADDITIVE_LOG_WAVE physical=1000000/1000000 maxerr=3.3306690738754696e-16
+
+===== v1.36_single_mass_transfer_operator_equiv_RESULT.txt =====
+PROPOSAL_AND_COMPAT_TO_ONE_TRANSFER_OPERATOR physical=2000000/2000000 maxerr=1.1102230246251565e-15
+
+===== v1.37_one_transfer_for_branch_and_interference_equiv_RESULT.txt =====
+BRANCH_AND_INTERFERENCE_TO_ONE_MASS_TRANSFER physical=3000000/3000000 maxerr=7.7715611723760958e-16
+
+===== v1.38_temporal_residual_transfer_equiv_RESULT.txt =====
+TEMPORAL_CHANGE_BRANCH_TO_RESIDUAL_TRANSFER 2000000/2000000 = 100.000000% maxerr=0
+
+===== v1.39_relation_token_to_bit_pair_equiv_RESULT.txt =====
+RELATION_PRIMITIVE_TO_ORDERED_BIT_PAIR domain_unique=16641 queries=2000000/2000000=100.000000%
+
+===== v1.40_beta_counts_to_qewb_scalar_RESULT.txt =====
+BETA_COUNTS_TO_SINGLE_QEWB_SCALAR unseen_multi_source=200000/200000=100.000000% p_range=[0.000000001,0.999999999]
+World pixels and action ports use the same scalar p, the same qewb(), and the same predict().
+
+===== v1.41_zero_born_qewb_amplitude_RESULT.txt =====
+ZERO_BORN_QEWB_AMPLITUDE unseen_multi_source=300000/300000=100.000000% amp_range=[0.000000000,0.999999999]
+
+===== v1.42_minimal_bit_relation_qewb_kernel_RESULT.txt =====
+MINIMAL_BIT_RELATION_QEWB_KERNEL unseen_multi_source=1000000/1000000=100.000000%
+Primitive model state: BIT ports + ordered relation amplitude. World and action destinations use the same field, qewb(), and transfer().
+
+===== v1.43_bidirectional_single_medium_qewb_RESULT.txt =====
+BIDIRECTIONAL_SINGLE_MEDIUM_QEWB unseen_multi_source=1000000/1000000=100.000000%
+Core has no input/output, world/action, or source-class API: every BIT port may be both condition and consequence at the next tick.
+
+===== v1.44_sparse_relation_birth_qewb_RESULT.txt =====
+SPARSE_RELATION_BIRTH_QEWB unseen_multi_source=1000000/1000000=100.000000% resident_relations=48 dense_capacity=576
+
+===== v1.45_one_shot_full_residual_birth_RESULT.txt =====
+ONE_SHOT_FULL_RESIDUAL_BIRTH unseen_multi_source=1000000/1000000=100.000000% demos=24 resident_relations=48
+
+===== v1.46_no_singleton_curriculum_multi_source_stream_RESULT.txt =====
+NO_SINGLETON_CURRICULUM exact=235744/300000=78.581333% relations=576
+ bits2=43015/43015=100.000%
+ bits3=42731/42731=100.000%
+ bits4=43167/43167=100.000%
+ bits5=42479/42710=99.459%
+ bits6=34925/42967=81.283%
+ bits7=20110/42638=47.165%
+ bits8=9317/42772=21.783%
+
+===== v1.47_counterfactual_residual_credit_RESULT.txt =====
+COUNTERFACTUAL_RESIDUAL_CREDIT exact=300000/300000=100.000000% relations=576 true_min=1.000000 false_max=0.000000
+ bits2=42719/42719=100.000%
+ bits3=43192/43192=100.000%
+ bits4=42990/42990=100.000%
+ bits5=42712/42712=100.000%
+ bits6=43072/43072=100.000%
+ bits7=42619/42619=100.000%
+ bits8=42696/42696=100.000%
+
+===== v1.48_full_counterfactual_residual_birth_death_RESULT.txt =====
+FULL_COUNTERFACTUAL_RESIDUAL exact=300000/300000=100.000000% resident=48 true_min=1.000000 false_max=0.000000
+ bits2=43034/43034=100.000%
+ bits3=42667/42667=100.000%
+ bits4=42711/42711=100.000%
+ bits5=42905/42905=100.000%
+ bits6=42911/42911=100.000%
+ bits7=43056/43056=100.000%
+ bits8=42716/42716=100.000%
+
+===== v1.49_one_mass_motion_for_inference_and_learning_RESULT.txt =====
+INFERENCE_AND_LEARNING_TO_ONE_MASS_MOTION 5000000/5000000=100.000000% maxerr=1.1102230246251565e-16
+
+===== v1.50_relation_object_to_collision_address_RESULT.txt =====
+RELATION_OBJECT_TO_COLLISION_ADDRESS exact=300000/300000=100.000000% resident=48 true_min=1.000000 false_max=0.000000
+
+===== v1.51_physical_pair_address_no_token_hash_RESULT.txt =====
+PHYSICAL_PAIR_ADDRESS_NO_TOKEN_HASH exact=300000/300000=100.000000% resident=48
+
+===== v1.52_global_residual_only_qewb_RESULT.txt =====
+GLOBAL_RESIDUAL_ONLY_QEWB exact=300000/300000=100.000000% resident=48 true_min=1.000000 false_max=0.000000
+
+===== v1.53_integrated_one_mass_motion_kernel_RESULT.txt =====
+INTEGRATED_ONE_MASS_MOTION_KERNEL exact=300000/300000=100.000000% resident=48 true_min=1.000000 false_max=0.000000
