@@ -61,3 +61,14 @@ Gauge-unification candidate.
 - full 8-seed Tetris rerun is deliberately pending because the exact v1.13 frozen field/evaluator artifacts are not present in the current archive.
 
 Status: **mechanism-equivalence positive; not yet promoted over v1.13**.
+
+
+### binary-worldfit-v1.14-v1.17/
+Single-field scaffold deletion candidates.
+
+- **v1.14**: whole-object Geometry gauge is folded into the same Action × relation -> relation field using the self relation (0,0); randomized equivalence 1,000,000/1,000,000.
+- **v1.15**: named empty/persistent/process aliases are removed; raw B/T/outside bit tuples are used directly.
+- **v1.16**: persistent global ScopeCache removed; address participation is read directly from SharedField; randomized equivalence 3,000,000/3,000,000, maxerr=0.
+- **v1.17**: persistent global SpawnRelCache removed; Spawn reads mature cross-screen relations directly from SharedField; randomized sparse/dense equivalence 200/200, maxerr=0.
+
+Evidence status: exact/mechanism-equivalence positive. Full Tetris promotion is intentionally pending because the exact v1.13 frozen field/evaluator artifacts were not archived in the current repository snapshot.
