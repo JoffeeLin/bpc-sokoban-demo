@@ -1,0 +1,11 @@
+===== v167_short_result.txt =====
+V167_TETRIS_GLOBAL_RESIDUAL_PILOT train=2500 eval=400 board_exact=0/400=0.000000% bit_accuracy=72.691250% positive_relations=2339 stored=53209 resets=103
+
+===== v168_result.txt =====
+V168_TETRIS_TEMPORAL_COLLISION train=7000 eval=1000 exact=0/1000=0.000000% bit_accuracy=90.719000% stored=68711
+
+===== v169_result.txt =====
+V169_TETRIS_LOCAL_RELATION_COLLISION train=10000 eval=1000 exact=0/1000=0.000000% bit_accuracy=69.744000% stored=488890
+
+===== v170_result.txt =====
+V170_TETRIS_SUPERPOSED_LOCAL_RELATIONS train=10000 eval=1000 exact=0/1000=0.000000% bit_accuracy=86.181500% stored=254032
