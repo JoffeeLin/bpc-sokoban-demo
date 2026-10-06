@@ -1,0 +1,60 @@
+BPC Tetris scaffold deletion v1.71-v1.85
+
+Frozen complete-Tetris baseline remains Binary World-Fit v1.13:
+312839/312839 exact over 8 long-rollout seeds. It is NOT replaced by this batch.
+
+v1.72 DELETE one-hop local-relation source waves
+8 seeds / 10k train / 1k frozen eval:
+89.296500, 91.040500, 87.919500, 89.686000,
+89.651000, 90.338500, 91.146500, 91.771500
+mean=90.106250%
+matched v1.70 8-seed mean=87.293938%; every seed improved.
+stored roughly 72k-76k vs v1.70 roughly 243k-259k.
+
+v1.73/v1.74 DELETE output-role identity and token-like address namespaces
+Representative 4-seed outputs exactly match v1.72.
+
+v1.75 marginal participation responsibility, no local-relation source
+10k train, lr=.06, 8 seeds:
+whole exact/1000 = 526,529,582,526,539,561,600,564
+mean whole exact = 553.375/1000 = 55.3375%
+mean pixel = 99.303125%
+mean stored = 211405.375
+
+30k train, lr=.06, 8 seeds:
+whole exact/1000 = 563,571,623,562,571,592,604,608
+mean whole exact = 586.75/1000 = 58.675%
+mean pixel = 99.3581875%
+mean stored = 226652.5
+
+seed0 100k: 576/1000 whole exact, 99.349000% pixel
+
+seed0 30k action split:
+left 188/268 = 70.149%
+right 165/240 = 68.750%
+down 172/225 = 76.444%
+rotate 38/267 = 14.232%
+noop 75/201 = 37.313%
+changed-state 488/799 = 61.076%
+wrong pixels: 0:563 1:72 2:114 3:99 4:87 5:37 6:24 7:4
+
+Rejected:
+v1.76 local relation + marginal: 536/1000 best tested, stored ~1.51M
+v1.77 pair local relation: 559/1000, rotation 22.846%, stored ~2.29M
+v1.78 relative-only: ~12-13% whole exact, stored 5,035
+v1.79 fixed two-step history: 429/1000 best tested, stored 309,241
+v1.80 process carrier: 510/1000 best tested, stored 218,179
+v1.81 disappearance event identities: 534/1000 best tested, stored 279,584
+v1.82 continuous temporal residual: far below v1.75
+v1.83 all-pair anonymous slots: rejected
+v1.84 temporal-residual collision slots: 527/1000 best tested
+v1.85 previous action literal history: 366/1000 best tested, stored 804,168
+
+Engineering:
+v1.74 strict C11 O2/O3 PASS, output diff 0, UBSan stderr 0
+v1.75 strict C11 O2/O3 PASS, output diff 0, UBSan stderr 0
+v1.74 SHA256 a34f578243692a80c0482e1bc11b73210a7a2adad6ddffa960a2acb13b29da09
+v1.75 SHA256 7c4c9ab0158d2a7bcad250666a2ef675fd089b2a7dd9719812c82ddb0d5ef74b
+
+Evidence boundary:
+These are non-Lock black/white Tetris reintegration diagnostics. They do not test full Lock/Spawn/LineClear/GameOver closure and do not replace v1.13.
