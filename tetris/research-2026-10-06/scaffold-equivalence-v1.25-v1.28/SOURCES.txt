@@ -1,0 +1,195 @@
+===== v1.25_generic_constraint_relax_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define W 10
+#define H 20
+#define N (W*H)
+#define MAXN 64
+#define MAXE 512
+
+typedef struct{int i,j;double dx,dy;} Edge;
+static uint64_t rs=0x452821e638d01377ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+
+static void old_relax(int n,const Edge*e,int ne,double ox[MAXN],double oy[MAXN]){
+  double nx[MAXN],ny[MAXN];
+  for(int pass=0;pass<256;pass++){
+    double maxd=0;
+    for(int i=0;i<n;i++){
+      double sx=0,sy=0,z=0;
+      for(int k=0;k<ne;k++)if(e[k].i==i){int j=e[k].j;sx+=ox[j]-e[k].dx;sy+=oy[j]-e[k].dy;z+=1;}
+      if(z>0){double qx=sx/z,qy=sy/z;nx[i]=0.5*ox[i]+0.5*qx;ny[i]=0.5*oy[i]+0.5*qy;}else{nx[i]=ox[i];ny[i]=oy[i];}
+    }
+    double mx=0,my=0;for(int i=0;i<n;i++){mx+=nx[i];my+=ny[i];}mx/=n;my/=n;
+    for(int i=0;i<n;i++){nx[i]-=mx;ny[i]-=my;double d=fabs(nx[i]-ox[i])+fabs(ny[i]-oy[i]);if(d>maxd)maxd=d;ox[i]=nx[i];oy[i]=ny[i];}
+    if(maxd<1e-8)break;
+  }
+}
+
+/* Generic relation-constraint relaxation: arbitrary payload dimension, directed
+   edge transform, synchronous averaging, damping, and zero-mean gauge. */
+static void relation_constraint_relax(int n,int dim,const Edge*e,int ne,double state[MAXN][2]){
+  double next[MAXN][2];
+  for(int pass=0;pass<256;pass++){
+    double maxd=0;
+    for(int i=0;i<n;i++){
+      double sum[2]={0,0},z=0;
+      for(int k=0;k<ne;k++)if(e[k].i==i){int j=e[k].j;double tr[2]={e[k].dx,e[k].dy};for(int d=0;d<dim;d++)sum[d]+=state[j][d]-tr[d];z+=1;}
+      for(int d=0;d<dim;d++)next[i][d]=(z>0)?0.5*state[i][d]+0.5*(sum[d]/z):state[i][d];
+    }
+    double mean[2]={0,0};for(int i=0;i<n;i++)for(int d=0;d<dim;d++)mean[d]+=next[i][d];for(int d=0;d<dim;d++)mean[d]/=n;
+    for(int i=0;i<n;i++)for(int d=0;d<dim;d++){next[i][d]-=mean[d];double dd=fabs(next[i][d]-state[i][d]);/* old max is L1 per node, handled below */(void)dd;}
+    for(int i=0;i<n;i++){double dd=0;for(int d=0;d<dim;d++)dd+=fabs(next[i][d]-state[i][d]);if(dd>maxd)maxd=dd;for(int d=0;d<dim;d++)state[i][d]=next[i][d];}
+    if(maxd<1e-8)break;
+  }
+}
+
+int main(void){unsigned long long trials=100000,ok=0;for(unsigned long long t=0;t<trials;t++){
+  int n=1+(int)(ru()%40);Edge e[MAXE];int ne=0;
+  /* random directed constraint graph with transforms chosen from local relation space */
+  for(int i=0;i<n;i++)for(int j=0;j<n;j++)if(i!=j&&(ru()%100)<10&&ne<MAXE){e[ne].i=i;e[ne].j=j;e[ne].dx=(int)(ru()%3)-1;e[ne].dy=(int)(ru()%3)-1;ne++;}
+  double ax[MAXN]={0},ay[MAXN]={0},s[MAXN][2]={{0}};old_relax(n,e,ne,ax,ay);relation_constraint_relax(n,2,e,ne,s);
+  int same=1;for(int i=0;i<n;i++)if(ax[i]!=s[i][0]||ay[i]!=s[i][1]){same=0;break;}
+  if(same)ok++;else{double md=0;for(int i=0;i<n;i++){double d=fabs(ax[i]-s[i][0])+fabs(ay[i]-s[i][1]);if(d>md)md=d;}printf("FAIL t=%llu n=%d ne=%d max=%.17g\n",t,n,ne,md);return 1;}
+ }
+printf("GEOMETRY_TO_GENERIC_CONSTRAINT_RELAX %llu/%llu = %.6f%%\n",ok,trials,100.0*(double)ok/trials);return 0;}
+
+===== v1.25_generic_constraint_relax_equiv_10k.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define W 10
+#define H 20
+#define N (W*H)
+#define MAXN 64
+#define MAXE 512
+
+typedef struct{int i,j;double dx,dy;} Edge;
+static uint64_t rs=0x452821e638d01377ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+
+static void old_relax(int n,const Edge*e,int ne,double ox[MAXN],double oy[MAXN]){
+  double nx[MAXN],ny[MAXN];
+  for(int pass=0;pass<256;pass++){
+    double maxd=0;
+    for(int i=0;i<n;i++){
+      double sx=0,sy=0,z=0;
+      for(int k=0;k<ne;k++)if(e[k].i==i){int j=e[k].j;sx+=ox[j]-e[k].dx;sy+=oy[j]-e[k].dy;z+=1;}
+      if(z>0){double qx=sx/z,qy=sy/z;nx[i]=0.5*ox[i]+0.5*qx;ny[i]=0.5*oy[i]+0.5*qy;}else{nx[i]=ox[i];ny[i]=oy[i];}
+    }
+    double mx=0,my=0;for(int i=0;i<n;i++){mx+=nx[i];my+=ny[i];}mx/=n;my/=n;
+    for(int i=0;i<n;i++){nx[i]-=mx;ny[i]-=my;double d=fabs(nx[i]-ox[i])+fabs(ny[i]-oy[i]);if(d>maxd)maxd=d;ox[i]=nx[i];oy[i]=ny[i];}
+    if(maxd<1e-8)break;
+  }
+}
+
+/* Generic relation-constraint relaxation: arbitrary payload dimension, directed
+   edge transform, synchronous averaging, damping, and zero-mean gauge. */
+static void relation_constraint_relax(int n,int dim,const Edge*e,int ne,double state[MAXN][2]){
+  double next[MAXN][2];
+  for(int pass=0;pass<256;pass++){
+    double maxd=0;
+    for(int i=0;i<n;i++){
+      double sum[2]={0,0},z=0;
+      for(int k=0;k<ne;k++)if(e[k].i==i){int j=e[k].j;double tr[2]={e[k].dx,e[k].dy};for(int d=0;d<dim;d++)sum[d]+=state[j][d]-tr[d];z+=1;}
+      for(int d=0;d<dim;d++)next[i][d]=(z>0)?0.5*state[i][d]+0.5*(sum[d]/z):state[i][d];
+    }
+    double mean[2]={0,0};for(int i=0;i<n;i++)for(int d=0;d<dim;d++)mean[d]+=next[i][d];for(int d=0;d<dim;d++)mean[d]/=n;
+    for(int i=0;i<n;i++)for(int d=0;d<dim;d++){next[i][d]-=mean[d];double dd=fabs(next[i][d]-state[i][d]);/* old max is L1 per node, handled below */(void)dd;}
+    for(int i=0;i<n;i++){double dd=0;for(int d=0;d<dim;d++)dd+=fabs(next[i][d]-state[i][d]);if(dd>maxd)maxd=dd;for(int d=0;d<dim;d++)state[i][d]=next[i][d];}
+    if(maxd<1e-8)break;
+  }
+}
+
+int main(void){unsigned long long trials=10000,ok=0;for(unsigned long long t=0;t<trials;t++){
+  int n=1+(int)(ru()%40);Edge e[MAXE];int ne=0;
+  /* random directed constraint graph with transforms chosen from local relation space */
+  for(int i=0;i<n;i++)for(int j=0;j<n;j++)if(i!=j&&(ru()%100)<10&&ne<MAXE){e[ne].i=i;e[ne].j=j;e[ne].dx=(int)(ru()%3)-1;e[ne].dy=(int)(ru()%3)-1;ne++;}
+  double ax[MAXN]={0},ay[MAXN]={0},s[MAXN][2]={{0}};old_relax(n,e,ne,ax,ay);relation_constraint_relax(n,2,e,ne,s);
+  int same=1;for(int i=0;i<n;i++)if(ax[i]!=s[i][0]||ay[i]!=s[i][1]){same=0;break;}
+  if(same)ok++;else{double md=0;for(int i=0;i<n;i++){double d=fabs(ax[i]-s[i][0])+fabs(ay[i]-s[i][1]);if(d>md)md=d;}printf("FAIL t=%llu n=%d ne=%d max=%.17g\n",t,n,ne,md);return 1;}
+ }
+printf("GEOMETRY_TO_GENERIC_CONSTRAINT_RELAX %llu/%llu = %.6f%%\n",ok,trials,100.0*(double)ok/trials);return 0;}
+
+===== v1.26_unified_bit_slots_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#define N 300
+static uint64_t rs=0xbe5466cf34e90c6cULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+
+typedef struct{uint8_t B[N],T[N];} Old;
+typedef struct{uint8_t bit[N][2];} New;
+static void old_reset(Old*s,const uint8_t v[N]){for(int i=0;i<N;i++){s->B[i]=v[i];s->T[i]=v[i]?1:0;}}
+static void new_reset(New*s,const uint8_t v[N]){for(int i=0;i<N;i++){s->bit[i][0]=v[i];s->bit[i][1]=v[i]?1:0;}}
+static void old_external(Old*s,const uint8_t v[N]){for(int i=0;i<N;i++)if(v[i]!=s->B[i])s->T[i]=v[i]?1:0;memcpy(s->B,v,N);}
+static void new_external(New*s,const uint8_t v[N]){for(int i=0;i<N;i++)if(v[i]!=s->bit[i][0])s->bit[i][1]=v[i]?1:0;for(int i=0;i<N;i++)s->bit[i][0]=v[i];}
+static void old_commit(Old*s,const uint8_t B[N],const uint8_t T[N]){memcpy(s->B,B,N);memcpy(s->T,T,N);}
+static void new_commit(New*s,const uint8_t B[N],const uint8_t T[N]){for(int i=0;i<N;i++){s->bit[i][0]=B[i];s->bit[i][1]=T[i];}}
+static int equal(const Old*a,const New*b){for(int i=0;i<N;i++)if(a->B[i]!=b->bit[i][0]||a->T[i]!=b->bit[i][1])return 0;return 1;}
+int main(void){Old a={{0},{0}};New b={{{0}}};uint8_t v[N],B[N],T[N];for(int i=0;i<N;i++)v[i]=(uint8_t)(ru()&1);old_reset(&a,v);new_reset(&b,v);unsigned long long n=1000000,ok=0;for(unsigned long long q=0;q<n;q++){int mode=(int)(ru()%3);if(mode==0){for(int i=0;i<N;i++)v[i]=(uint8_t)((ru()%100)<35);old_external(&a,v);new_external(&b,v);}else if(mode==1){for(int i=0;i<N;i++){B[i]=(uint8_t)((ru()%100)<35);T[i]=(uint8_t)(B[i]&&((ru()%100)<40));}old_commit(&a,B,T);new_commit(&b,B,T);}else{int i=(int)(ru()%N);uint8_t op=(uint8_t)(a.B[i]&&a.T[i]),np=(uint8_t)(b.bit[i][0]&&b.bit[i][1]);uint8_t orr=(uint8_t)(a.B[i]&&!a.T[i]),nrr=(uint8_t)(b.bit[i][0]&&!b.bit[i][1]);if(op!=np||orr!=nrr)return 2;}if(equal(&a,&b))ok++;else{printf("FAIL %llu mode=%d\n",q,mode);return 1;}}printf("FRAME_TRACE_TO_UNIFIED_BIT_SLOTS %llu/%llu = %.6f%%\n",ok,n,100.0*(double)ok/n);return 0;}
+
+===== v1.27_action_ports_same_medium_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define ACTS 5
+#define PORT_BASE 64
+static uint64_t rs=0xc0ac29b7c97c50ddULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static double rd(void){return (double)(ru()>>11)*(1.0/9007199254740992.0);}
+typedef struct{double v[ACTS];} OldActionWave;
+typedef struct{int relx[ACTS];double bit_amp[ACTS];} MediumPorts;
+static void encode(const OldActionWave*a,MediumPorts*m){for(int i=0;i<ACTS;i++){m->relx[i]=PORT_BASE+i;m->bit_amp[i]=a->v[i];}}
+static double old_read(const OldActionWave*a,int action){return a->v[action];}
+static double medium_read(const MediumPorts*m,int action){int rel=PORT_BASE+action;double amp=0;for(int i=0;i<ACTS;i++)if(m->relx[i]==rel)amp+=m->bit_amp[i];return amp;}
+/* generic superposition downstream, independent of how the port was encoded */
+static double consequence(const double action_amp[ACTS],const double effect[ACTS]){double y=0;for(int a=0;a<ACTS;a++)y+=action_amp[a]*effect[a];return y;}
+int main(void){unsigned long long n=2000000,ok=0;for(unsigned long long t=0;t<n;t++){OldActionWave a;for(int i=0;i<ACTS;i++){a.v[i]=((ru()%100)<70)?rd():0;}MediumPorts m;encode(&a,&m);double x[ACTS],y[ACTS],eff[ACTS];for(int i=0;i<ACTS;i++){x[i]=old_read(&a,i);y[i]=medium_read(&m,i);eff[i]=rd();if(x[i]!=y[i]){printf("FAIL read t=%llu a=%d\n",t,i);return 1;}}double p=consequence(x,eff),q=consequence(y,eff);if(p==q)ok++;else{printf("FAIL consequence t=%llu err=%.17g\n",t,fabs(p-q));return 2;}}printf("ACTION_STRUCT_TO_BIT_RELATION_PORTS %llu/%llu = %.6f%%\n",ok,n,100.0*(double)ok/n);return 0;}
+
+===== v1.28_single_input_medium_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#define W 15
+#define H 20
+#define N (W*H)
+#define ACTS 5
+#define CAP (N*2+ACTS)
+#define ACTION_BASE 64
+static uint64_t rs=0x3f84d5b5b5470917ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static double rd(void){return (double)(ru()>>11)*(1.0/9007199254740992.0);}
+typedef struct{uint8_t B[N],T[N];double A[ACTS];} OldInput;
+typedef struct{int x,y,slot;double amp;} Entry;
+typedef struct{Entry e[CAP];int n;} Medium;
+static void put(Medium*m,int x,int y,int slot,double amp){m->e[m->n++]=(Entry){x,y,slot,amp};}
+static void encode(const OldInput*o,Medium*m){memset(m,0,sizeof(*m));for(int y=0;y<H;y++)for(int x=0;x<W;x++){int k=y*W+x;put(m,x,y,0,(double)o->B[k]);put(m,x,y,1,(double)o->T[k]);}for(int a=0;a<ACTS;a++)put(m,ACTION_BASE+a,0,0,o->A[a]);}
+static double read(const Medium*m,int x,int y,int slot){double a=0;for(int i=0;i<m->n;i++)if(m->e[i].x==x&&m->e[i].y==y&&m->e[i].slot==slot)a+=m->e[i].amp;return a;}
+int main(void){unsigned long long n=1000000,ok=0;for(unsigned long long q=0;q<n;q++){OldInput o;for(int i=0;i<N;i++){o.B[i]=(uint8_t)(ru()&1);o.T[i]=(uint8_t)(o.B[i]&&(ru()&1));}for(int a=0;a<ACTS;a++)o.A[a]=((ru()%100)<60)?rd():0;Medium m;encode(&o,&m);int same=1;for(int y=0;y<H&&same;y++)for(int x=0;x<W&&same;x++){int k=y*W+x;if(read(&m,x,y,0)!=(double)o.B[k]||read(&m,x,y,1)!=(double)o.T[k])same=0;}for(int a=0;a<ACTS&&same;a++)if(read(&m,ACTION_BASE+a,0,0)!=o.A[a])same=0;if(same)ok++;else{printf("FAIL %llu\n",q);return 1;}}printf("SCREEN_TRACE_ACTION_TO_ONE_BIT_RELATION_MEDIUM %llu/%llu = %.6f%%\n",ok,n,100.0*(double)ok/n);return 0;}
+
+===== v1.28_single_input_medium_equiv_20k.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#define W 15
+#define H 20
+#define N (W*H)
+#define ACTS 5
+#define CAP (N*2+ACTS)
+#define ACTION_BASE 64
+static uint64_t rs=0x3f84d5b5b5470917ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static double rd(void){return (double)(ru()>>11)*(1.0/9007199254740992.0);}
+typedef struct{uint8_t B[N],T[N];double A[ACTS];} OldInput;
+typedef struct{int x,y,slot;double amp;} Entry;
+typedef struct{Entry e[CAP];int n;} Medium;
+static void put(Medium*m,int x,int y,int slot,double amp){m->e[m->n++]=(Entry){x,y,slot,amp};}
+static void encode(const OldInput*o,Medium*m){memset(m,0,sizeof(*m));for(int y=0;y<H;y++)for(int x=0;x<W;x++){int k=y*W+x;put(m,x,y,0,(double)o->B[k]);put(m,x,y,1,(double)o->T[k]);}for(int a=0;a<ACTS;a++)put(m,ACTION_BASE+a,0,0,o->A[a]);}
+static double read(const Medium*m,int x,int y,int slot){double a=0;for(int i=0;i<m->n;i++)if(m->e[i].x==x&&m->e[i].y==y&&m->e[i].slot==slot)a+=m->e[i].amp;return a;}
+int main(void){unsigned long long n=20000,ok=0;for(unsigned long long q=0;q<n;q++){OldInput o;for(int i=0;i<N;i++){o.B[i]=(uint8_t)(ru()&1);o.T[i]=(uint8_t)(o.B[i]&&(ru()&1));}for(int a=0;a<ACTS;a++)o.A[a]=((ru()%100)<60)?rd():0;Medium m;encode(&o,&m);int same=1;for(int y=0;y<H&&same;y++)for(int x=0;x<W&&same;x++){int k=y*W+x;if(read(&m,x,y,0)!=(double)o.B[k]||read(&m,x,y,1)!=(double)o.T[k])same=0;}for(int a=0;a<ACTS&&same;a++)if(read(&m,ACTION_BASE+a,0,0)!=o.A[a])same=0;if(same)ok++;else{printf("FAIL %llu\n",q);return 1;}}printf("SCREEN_TRACE_ACTION_TO_ONE_BIT_RELATION_MEDIUM %llu/%llu = %.6f%%\n",ok,n,100.0*(double)ok/n);return 0;}
