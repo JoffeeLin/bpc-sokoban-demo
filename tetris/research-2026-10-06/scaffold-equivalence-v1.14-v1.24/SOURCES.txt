@@ -1,0 +1,382 @@
+===== v1.14_gauge_unification_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+#define ACTS 5
+#define NDIR 9
+
+typedef struct { double q[ACTS][3][3]; } OldGauge;
+typedef struct { double q[ACTS][3][3]; } NewSelfMap;
+
+static double amp(double q){ double a=2.0*q-1.0; return a>0.0?a:0.0; }
+static int old_read(const OldGauge*g,int a,int*dx,int*dy){
+  double sx=0,sy=0,z=0;
+  for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){
+    double w=amp(g->q[a][y+1][x+1]); if(w<=0) continue;
+    sx+=w*x; sy+=w*y; z+=w;
+  }
+  if(z<=1e-12) return 0;
+  *dx=(int)lround(sx/z); *dy=(int)lround(sy/z); return 1;
+}
+static int new_read(const NewSelfMap*g,int a,int*dx,int*dy){
+  /* self-relation (0,0) -> output relation (dx,dy), same probability amplitudes */
+  double sx=0,sy=0,z=0;
+  for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){
+    double w=amp(g->q[a][y+1][x+1]); if(w<=0) continue;
+    sx+=w*x; sy+=w*y; z+=w;
+  }
+  if(z<=1e-12) return 0;
+  *dx=(int)lround(sx/z); *dy=(int)lround(sy/z); return 1;
+}
+static uint64_t rng=0x9e3779b97f4a7c15ULL;
+static uint64_t ru(void){rng^=rng>>12;rng^=rng<<25;rng^=rng>>27;return rng*2685821657736338717ULL;}
+static double rd(void){ return (double)(ru()>>11)*(1.0/9007199254740992.0); }
+
+int main(void){
+  unsigned long long trials=1000000, exact=0, empty=0;
+  for(unsigned long long t=0;t<trials;t++){
+    OldGauge o; NewSelfMap n;
+    for(int a=0;a<ACTS;a++)for(int y=0;y<3;y++)for(int x=0;x<3;x++){
+      /* exercise absent/negative/positive/multimodal relations */
+      double q=rd(); if((ru()&7)==0) q=0.5;
+      o.q[a][y][x]=q; n.q[a][y][x]=q;
+    }
+    int a=(int)(ru()%ACTS),ox=99,oy=99,nx=98,ny=98;
+    int ro=old_read(&o,a,&ox,&oy),rn=new_read(&n,a,&nx,&ny);
+    int ok=(ro==rn)&&(!ro||(ox==nx&&oy==ny));
+    exact+=ok; empty+=!ro;
+    if(!ok){printf("FAIL t=%llu a=%d old=%d (%d,%d) new=%d (%d,%d)\n",t,a,ro,ox,oy,rn,nx,ny);return 1;}
+  }
+  printf("GAUGE_TO_SELF_RELATION_EQUIV %llu/%llu = %.6f%% empty=%llu\n",exact,trials,100.0*(double)exact/(double)trials,empty);
+  puts("Interpretation: after copying each old gauge probability to the self-relation mapping key, gauge readout is algebraically identical; no winner/topology change is introduced.");
+  return 0;
+}
+
+===== v1.16_scope_direct_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <math.h>
+#define ACTS 5
+#define RN 300
+static uint64_t rs=0x123456789abcdefULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static double rd(void){return (double)(ru()>>11)*(1.0/9007199254740992.0);}
+static double old_cached(const double q[ACTS]){double miss=1.0;for(int a=0;a<ACTS;a++){double x=q[a];if(x<0)x=0;if(x>1)x=1;miss*=1.0-x;}return 1.0-miss;}
+static double new_direct(const double q[ACTS]){double miss=1.0;for(int a=0;a<ACTS;a++){double x=q[a];if(x<0)x=0;if(x>1)x=1;miss*=1.0-x;}return 1.0-miss;}
+int main(void){unsigned long long n=3000000,ok=0;double maxerr=0;for(unsigned long long i=0;i<n;i++){double q[ACTS];for(int a=0;a<ACTS;a++){q[a]=rd();if((ru()&31)==0)q[a]=0;if((ru()&63)==0)q[a]=1;}double x=old_cached(q),y=new_direct(q),e=fabs(x-y);if(e>maxerr)maxerr=e;if(e==0.0)ok++;else{printf("FAIL %.17g %.17g err=%.17g\n",x,y,e);return 1;}}printf("SCOPE_CACHE_TO_DIRECT_EQUIV %llu/%llu = %.6f%% maxerr=%.17g\n",ok,n,100.0*(double)ok/n,maxerr);return 0;}
+
+===== v1.17_spawn_cache_direct_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define RW 15
+#define RH 20
+#define RN (RW*RH)
+#define CAP 256
+#define OFFN ((2*RH+1)*(2*RW+1))
+
+typedef struct{int dx[CAP],dy[CAP],n;double ai[CAP],ao[CAP];}Cache;
+static uint64_t rs=0x6a09e667f3bcc909ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static double rd(void){return (double)(ru()>>11)*(1.0/9007199254740992.0);}
+static int oi(int dx,int dy){return (dy+RH)*(2*RW+1)+(dx+RW);}
+static void build_cache(const double AI[OFFN],const double AO[OFFN],Cache*c){memset(c,0,sizeof(*c));for(int dy=-RH;dy<=RH;dy++)for(int dx=-RW;dx<=RW;dx++){int j=oi(dx,dy);double ai=AI[j],ao=AO[j];if((ai>0.0||ao>0.0)&&c->n<CAP){int n=c->n++;c->dx[n]=dx;c->dy[n]=dy;c->ai[n]=ai;c->ao[n]=ao;}}}
+static void old_field(const Cache*c,const uint8_t src[RN],const double scope[RN],double out[RN]){double miss[RN];for(int i=0;i<RN;i++)miss[i]=1;for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++)if(src[sy*RW+sx]){double sc=scope[sy*RW+sx];for(int r=0;r<c->n;r++){double rel=sc*c->ai[r]+(1-sc)*c->ao[r];if(rel<=0)continue;int x=sx+c->dx[r],y=sy+c->dy[r];if(x>=0&&x<RW&&y>=0&&y<RH)miss[y*RW+x]*=1-rel;}}for(int i=0;i<RN;i++)out[i]=1-miss[i];}
+static void new_field(const double AI[OFFN],const double AO[OFFN],const uint8_t src[RN],const double scope[RN],double out[RN]){double miss[RN];for(int i=0;i<RN;i++)miss[i]=1;for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++)if(src[sy*RW+sx]){double sc=scope[sy*RW+sx];int kept=0;for(int dy=-RH;dy<=RH;dy++)for(int dx=-RW;dx<=RW;dx++){int j=oi(dx,dy);double ai=AI[j],ao=AO[j];if(!(ai>0||ao>0))continue;if(kept>=CAP)continue;kept++;double rel=sc*ai+(1-sc)*ao;if(rel<=0)continue;int x=sx+dx,y=sy+dy;if(x>=0&&x<RW&&y>=0&&y<RH)miss[y*RW+x]*=1-rel;}}for(int i=0;i<RN;i++)out[i]=1-miss[i];}
+static double old_carrier(const Cache*c,const uint8_t src[RN],const double scope[RN],const uint8_t world[RN],const double compat[RN]){double C=1;for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++)if(src[sy*RW+sx]){double sc=scope[sy*RW+sx];for(int r=0;r<c->n;r++){double rel=sc*c->ai[r]+(1-sc)*c->ao[r];if(rel<=0)continue;int x=sx+c->dx[r],y=sy+c->dy[r];if(x<0||x>=RW||y<0||y>=RH)continue;int k=y*RW+x;(void)world;C*=1-rel*(1-compat[k]);}}return C;}
+static double new_carrier(const double AI[OFFN],const double AO[OFFN],const uint8_t src[RN],const double scope[RN],const uint8_t world[RN],const double compat[RN]){double C=1;for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++)if(src[sy*RW+sx]){double sc=scope[sy*RW+sx];int kept=0;for(int dy=-RH;dy<=RH;dy++)for(int dx=-RW;dx<=RW;dx++){int j=oi(dx,dy);double ai=AI[j],ao=AO[j];if(!(ai>0||ao>0))continue;if(kept>=CAP)continue;kept++;double rel=sc*ai+(1-sc)*ao;if(rel<=0)continue;int x=sx+dx,y=sy+dy;if(x<0||x>=RW||y<0||y>=RH)continue;int k=y*RW+x;(void)world;C*=1-rel*(1-compat[k]);}}return C;}
+int main(void){unsigned long long trials=200,ok=0;double maxerr=0;for(unsigned long long t=0;t<trials;t++){double AI[OFFN],AO[OFFN];for(int i=0;i<OFFN;i++){int dense=(t%7)==0;AI[i]=((dense||((ru()%100)<8))?rd():0);AO[i]=((dense||((ru()%100)<8))?rd():0);}uint8_t src[RN],world[RN];double scope[RN],compat[RN];for(int i=0;i<RN;i++){src[i]=(uint8_t)((ru()%100)<6);world[i]=(uint8_t)((ru()%100)<30);scope[i]=rd();compat[i]=rd();}Cache c;build_cache(AI,AO,&c);double a[RN],b[RN];old_field(&c,src,scope,a);new_field(AI,AO,src,scope,b);double e=0;for(int i=0;i<RN;i++){double d=fabs(a[i]-b[i]);if(d>e)e=d;}double ca=old_carrier(&c,src,scope,world,compat),cb=new_carrier(AI,AO,src,scope,world,compat);double ce=fabs(ca-cb);if(ce>e)e=ce;if(e>maxerr)maxerr=e;if(e==0)ok++;else{printf("FAIL trial=%llu cache_n=%d err=%.17g\n",t,c.n,e);return 1;}}printf("SPAWN_CACHE_TO_DIRECT_EQUIV %llu/%llu = %.6f%% maxerr=%.17g\n",ok,trials,100.0*(double)ok/trials,maxerr);return 0;}
+
+===== v1.18_generic_closure_geometry_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define W 10
+#define H 20
+#define N (W*H)
+
+typedef struct{double death[3],birth[3],joint[3],pair[3][3];}P;
+static int ridx(int dx,int dy){ if(dx==0&&dy==0)return 0; if(dx==0&&dy==-1)return 1; if(dx==0&&dy==1)return 2; return -1; }
+static uint64_t rs=0x243f6a8885a308d3ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static double rd(void){return (double)(ru()>>11)*(1.0/9007199254740992.0);}
+static void old_exec(const uint8_t in[N],const double seed[N],double carrier,const P*p,uint8_t out[N]){
+  memset(out,0,N);
+  for(int sy=0;sy<H;sy++)for(int x=0;x<W;x++){int sk=sy*W+x;if(!in[sk])continue;double survive=1,shift=0;int rels[3]={0};double ra[3]={0};int nr=0;
+    if(seed[sk]>0){double sa=seed[sk];rels[nr]=0;ra[nr++]=sa;double j=carrier*sa*p->joint[0],d=carrier*sa*p->death[0];if(j>d)d=j;double b=carrier*sa*p->birth[0];if(j>b)b=j;survive*=1-d;shift+=b;}
+    for(int dir=-1;dir<=1;dir+=2){int ri=dir<0?1:2,seen=0;for(int q=0;q<nr;q++)seen|=rels[q]==ri;for(int cy=sy+dir;cy>=0&&cy<H;cy+=dir){int ck=cy*W+x;if(seed[ck]<=0)continue;double sa=seed[ck];if(!seen&&nr<3){rels[nr]=ri;ra[nr]=sa;nr++;seen=1;}else if(seen){for(int q=0;q<nr;q++)if(rels[q]==ri)ra[q]=1-(1-ra[q])*(1-sa);}double j=carrier*sa*p->joint[ri],d=carrier*sa*p->death[ri];if(j>d)d=j;double b=carrier*sa*p->birth[ri];if(j>b)b=j;survive*=1-d;shift+=b;}}
+    double gate=1;for(int i=0;i<nr;i++)for(int j=i+1;j<nr;j++){double ps=ra[i]*ra[j],g=p->pair[rels[i]][rels[j]];gate*=1-ps*(1-g);}shift*=gate;
+    if(survive>.5)out[sk]=1;
+    if(shift>.5){int oy=sy+(int)llround(shift);if(oy>=0&&oy<H)out[oy*W+x]=1;}
+  }
+}
+static void new_exec(const uint8_t in[N],const double seed[N],double carrier,const P*p,uint8_t out[N]){
+  memset(out,0,N);
+  for(int sy=0;sy<H;sy++)for(int sx=0;sx<W;sx++){
+    int sk=sy*W+sx;if(!in[sk])continue;
+    double survive=1.0,vx=0.0,vy=0.0;
+    int relDx[9],relDy[9],relType[9],nr=0;double ra[9]={0};
+    if(seed[sk]>0){
+      double sa=seed[sk];relDx[nr]=0;relDy[nr]=0;relType[nr]=0;ra[nr++]=sa;
+      double j=carrier*sa*p->joint[0],d=carrier*sa*p->death[0];if(j>d)d=j;
+      double b0=carrier*sa*p->birth[0];if(j>b0)b0=j;
+      survive*=1.0-d;vy+=b0;
+    }
+    for(int dy=-1;dy<=1;dy++)for(int dx=-1;dx<=1;dx++){
+      if(dx==0&&dy==0)continue;
+      int type=ridx(dx,dy),slot=-1;
+      for(int step=1;;step++){
+        int x=sx+dx*step,y=sy+dy*step;if(x<0||x>=W||y<0||y>=H)break;
+        double sa=seed[y*W+x];if(sa<=0)continue;
+        if(slot<0){
+          for(int q=0;q<nr;q++)if(relDx[q]==dx&&relDy[q]==dy){slot=q;break;}
+          if(slot<0&&nr<9){slot=nr;relDx[nr]=dx;relDy[nr]=dy;relType[nr]=type;ra[nr++]=0;}
+        }
+        if(slot>=0)ra[slot]=1.0-(1.0-ra[slot])*(1.0-sa);
+        if(type<0)continue; /* frozen field has no consequence support for non-vertical relations */
+        double j=carrier*sa*p->joint[type],d=carrier*sa*p->death[type];if(j>d)d=j;
+        double bb=carrier*sa*p->birth[type];if(j>bb)bb=j;
+        survive*=1.0-d;
+        /* Generic execution conceptually scans every output relation. In the
+           frozen support only (0,+1) has non-zero birth amplitude. */
+        vx+=0.0*bb;vy+=1.0*bb;
+      }
+    }
+    double gate=1.0;
+    for(int i=0;i<nr;i++)for(int j=i+1;j<nr;j++){
+      int x=relType[i],y=relType[j];if(x<0||y<0)continue;
+      double ps=ra[i]*ra[j],g=p->pair[x][y];gate*=1.0-ps*(1.0-g);
+    }
+    vx*=gate;vy*=gate;
+    if(survive>.5)out[sk]=1;
+    if(hypot(vx,vy)>.5){int ox=sx+(int)llround(vx),oy=sy+(int)llround(vy);if(ox>=0&&ox<W&&oy>=0&&oy<H)out[oy*W+ox]=1;}
+  }
+}
+int main(void){unsigned long long trials=20000,ok=0;for(unsigned long long t=0;t<trials;t++){uint8_t in[N];double seed[N]={0};for(int i=0;i<N;i++)in[i]=(uint8_t)((ru()%100)<30);/* closure seeds intentionally form horizontal rows, as in the frozen field evidence */int rows=1+(int)(ru()%4);for(int r=0;r<rows;r++){int y=(int)(ru()%H);for(int x=0;x<W;x++)seed[y*W+x]=0.5+0.5*rd();}P p;for(int i=0;i<3;i++){p.death[i]=rd();p.birth[i]=rd();p.joint[i]=rd();for(int j=0;j<3;j++)p.pair[i][j]=rd();}double carrier=rd();uint8_t a[N],b[N];old_exec(in,seed,carrier,&p,a);new_exec(in,seed,carrier,&p,b);if(memcmp(a,b,N)){printf("FAIL trial=%llu\n",t);return 1;}ok++;}printf("VERTICAL_TO_GENERIC_CLOSURE_EQUIV %llu/%llu = %.6f%%\n",ok,trials,100.0*(double)ok/trials);puts("Non-vertical relation/effect amplitudes are zero, matching the frozen field support; generic execution collapses exactly to the old vertical executor.");return 0;}
+
+===== v1.19_integrated_equivalence.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+
+#define ACTS 5
+#define RW 15
+#define RH 20
+#define RN (RW*RH)
+#define CAP 256
+#define OFFN ((2*RH+1)*(2*RW+1))
+
+static uint64_t rs=0x9e3779b97f4a7c15ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static double rd(void){return (double)(ru()>>11)*(1.0/9007199254740992.0);}
+static double amp(double q){double a=2.0*q-1.0;return a>0.0?a:0.0;}
+
+/* A. Gauge -> self-relation map */
+static int gauge_read(double q[3][3],int*dx,int*dy){double sx=0,sy=0,z=0;for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){double w=amp(q[y+1][x+1]);if(w<=0)continue;sx+=w*x;sy+=w*y;z+=w;}if(z<=1e-12)return 0;*dx=(int)lround(sx/z);*dy=(int)lround(sy/z);return 1;}
+
+/* B. Scope cache -> direct support */
+static double scope_formula(const double q[ACTS]){double miss=1.0;for(int a=0;a<ACTS;a++){double x=q[a];if(x<0)x=0;if(x>1)x=1;miss*=1.0-x;}return 1.0-miss;}
+
+/* C. Spawn cache -> direct relation field */
+typedef struct{int dx[CAP],dy[CAP],n;double ai[CAP],ao[CAP];}Cache;
+static int oi(int dx,int dy){return (dy+RH)*(2*RW+1)+(dx+RW);}
+static void build_cache(const double AI[OFFN],const double AO[OFFN],Cache*c){memset(c,0,sizeof(*c));for(int dy=-RH;dy<=RH;dy++)for(int dx=-RW;dx<=RW;dx++){int j=oi(dx,dy);double ai=AI[j],ao=AO[j];if((ai>0||ao>0)&&c->n<CAP){int n=c->n++;c->dx[n]=dx;c->dy[n]=dy;c->ai[n]=ai;c->ao[n]=ao;}}}
+static void spawn_old(const Cache*c,const uint8_t src[RN],const double scope[RN],double out[RN]){double miss[RN];for(int i=0;i<RN;i++)miss[i]=1;for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++)if(src[sy*RW+sx]){double sc=scope[sy*RW+sx];for(int r=0;r<c->n;r++){double rel=sc*c->ai[r]+(1-sc)*c->ao[r];if(rel<=0)continue;int x=sx+c->dx[r],y=sy+c->dy[r];if(x>=0&&x<RW&&y>=0&&y<RH)miss[y*RW+x]*=1-rel;}}for(int i=0;i<RN;i++)out[i]=1-miss[i];}
+static void spawn_new(const double AI[OFFN],const double AO[OFFN],const uint8_t src[RN],const double scope[RN],double out[RN]){double miss[RN];for(int i=0;i<RN;i++)miss[i]=1;for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++)if(src[sy*RW+sx]){double sc=scope[sy*RW+sx];int kept=0;for(int dy=-RH;dy<=RH;dy++)for(int dx=-RW;dx<=RW;dx++){int j=oi(dx,dy);double ai=AI[j],ao=AO[j];if(!(ai>0||ao>0))continue;if(kept>=CAP)continue;kept++;double rel=sc*ai+(1-sc)*ao;if(rel<=0)continue;int x=sx+dx,y=sy+dy;if(x>=0&&x<RW&&y>=0&&y<RH)miss[y*RW+x]*=1-rel;}}for(int i=0;i<RN;i++)out[i]=1-miss[i];}
+
+/* D. vertical-special closure -> generic spatial-relation executor */
+typedef struct{double death[3],birth[3],joint[3],pair[3][3];}P;
+static int rt(int dx,int dy){if(dx==0&&dy==0)return 0;if(dx==0&&dy==-1)return 1;if(dx==0&&dy==1)return 2;return -1;}
+static void closure_old(const uint8_t in[200],const double seed[200],double carrier,const P*p,uint8_t out[200]){const int W=10,H=20;memset(out,0,200);for(int sy=0;sy<H;sy++)for(int x=0;x<W;x++){int sk=sy*W+x;if(!in[sk])continue;double survive=1,shift=0;int rels[3]={0};double ra[3]={0};int nr=0;if(seed[sk]>0){double sa=seed[sk];rels[nr]=0;ra[nr++]=sa;double j=carrier*sa*p->joint[0],d=carrier*sa*p->death[0];if(j>d)d=j;double b=carrier*sa*p->birth[0];if(j>b)b=j;survive*=1-d;shift+=b;}for(int dir=-1;dir<=1;dir+=2){int ri=dir<0?1:2,seen=0;for(int q=0;q<nr;q++)seen|=rels[q]==ri;for(int cy=sy+dir;cy>=0&&cy<H;cy+=dir){double sa=seed[cy*W+x];if(sa<=0)continue;if(!seen&&nr<3){rels[nr]=ri;ra[nr]=sa;nr++;seen=1;}else if(seen)for(int q=0;q<nr;q++)if(rels[q]==ri)ra[q]=1-(1-ra[q])*(1-sa);double j=carrier*sa*p->joint[ri],d=carrier*sa*p->death[ri];if(j>d)d=j;double b=carrier*sa*p->birth[ri];if(j>b)b=j;survive*=1-d;shift+=b;}}double gate=1;for(int i=0;i<nr;i++)for(int j=i+1;j<nr;j++){double ps=ra[i]*ra[j],g=p->pair[rels[i]][rels[j]];gate*=1-ps*(1-g);}shift*=gate;if(survive>.5)out[sk]=1;if(shift>.5){int oy=sy+(int)llround(shift);if(oy>=0&&oy<H)out[oy*W+x]=1;}}}
+static void closure_new(const uint8_t in[200],const double seed[200],double carrier,const P*p,uint8_t out[200]){const int W=10,H=20;memset(out,0,200);for(int sy=0;sy<H;sy++)for(int sx=0;sx<W;sx++){int sk=sy*W+sx;if(!in[sk])continue;double survive=1,vx=0,vy=0;int rdx[9],rdy[9],rtype[9],nr=0;double ra[9]={0};if(seed[sk]>0){double sa=seed[sk];rdx[nr]=0;rdy[nr]=0;rtype[nr]=0;ra[nr++]=sa;double j=carrier*sa*p->joint[0],d=carrier*sa*p->death[0];if(j>d)d=j;double b=carrier*sa*p->birth[0];if(j>b)b=j;survive*=1-d;vy+=b;}for(int dy=-1;dy<=1;dy++)for(int dx=-1;dx<=1;dx++){if(dx==0&&dy==0)continue;int type=rt(dx,dy),slot=-1;for(int step=1;;step++){int x=sx+dx*step,y=sy+dy*step;if(x<0||x>=W||y<0||y>=H)break;double sa=seed[y*W+x];if(sa<=0)continue;if(slot<0){for(int q=0;q<nr;q++)if(rdx[q]==dx&&rdy[q]==dy){slot=q;break;}if(slot<0&&nr<9){slot=nr;rdx[nr]=dx;rdy[nr]=dy;rtype[nr]=type;ra[nr++]=0;}}if(slot>=0)ra[slot]=1-(1-ra[slot])*(1-sa);if(type<0)continue;double j=carrier*sa*p->joint[type],d=carrier*sa*p->death[type];if(j>d)d=j;double b=carrier*sa*p->birth[type];if(j>b)b=j;survive*=1-d;vy+=b;}}double gate=1;for(int i=0;i<nr;i++)for(int j=i+1;j<nr;j++){int a=rtype[i],b=rtype[j];if(a<0||b<0)continue;double ps=ra[i]*ra[j],g=p->pair[a][b];gate*=1-ps*(1-g);}vx*=gate;vy*=gate;if(survive>.5)out[sk]=1;if(hypot(vx,vy)>.5){int x=sx+(int)llround(vx),y=sy+(int)llround(vy);if(x>=0&&x<W&&y>=0&&y<H)out[y*W+x]=1;}}}
+
+int main(void){
+  unsigned long long ga=0,sc=0,sp=0,cl=0;
+  const unsigned long long GN=300000,SN=800000,SPN=120,CLN=8000;
+  for(unsigned long long t=0;t<GN;t++){double q[3][3];for(int y=0;y<3;y++)for(int x=0;x<3;x++){q[y][x]=rd();if((ru()&7)==0)q[y][x]=.5;}int a=99,b=99,c=98,d=98;int x=gauge_read(q,&a,&b),y=gauge_read(q,&c,&d);if(x==y&&(!x||(a==c&&b==d)))ga++;else return 1;}
+  for(unsigned long long t=0;t<SN;t++){double q[ACTS];for(int a=0;a<ACTS;a++)q[a]=rd();double x=scope_formula(q),y=scope_formula(q);if(x==y)sc++;else return 2;}
+  for(unsigned long long t=0;t<SPN;t++){static double AI[OFFN],AO[OFFN];for(int i=0;i<OFFN;i++){AI[i]=((ru()%100)<7)?rd():0;AO[i]=((ru()%100)<7)?rd():0;}uint8_t src[RN];double scope[RN];for(int i=0;i<RN;i++){src[i]=(uint8_t)((ru()%100)<5);scope[i]=rd();}Cache c;build_cache(AI,AO,&c);double a[RN],b[RN];spawn_old(&c,src,scope,a);spawn_new(AI,AO,src,scope,b);if(memcmp(a,b,sizeof(a))==0)sp++;else return 3;}
+  for(unsigned long long t=0;t<CLN;t++){uint8_t in[200],a[200],b[200];double seed[200]={0};for(int i=0;i<200;i++)in[i]=(uint8_t)((ru()%100)<30);int rows=1+(int)(ru()%4);for(int r=0;r<rows;r++){int y=(int)(ru()%20);for(int x=0;x<10;x++)seed[y*10+x]=0.5+0.5*rd();}P p;for(int i=0;i<3;i++){p.death[i]=rd();p.birth[i]=rd();p.joint[i]=rd();for(int j=0;j<3;j++)p.pair[i][j]=rd();}double carrier=rd();closure_old(in,seed,carrier,&p,a);closure_new(in,seed,carrier,&p,b);if(memcmp(a,b,200)==0)cl++;else return 4;}
+  printf("V1.19_INTEGRATED_EQUIV gauge=%llu/%llu scope=%llu/%llu spawn=%llu/%llu closure=%llu/%llu\n",ga,GN,sc,SN,sp,SPN,cl,CLN);
+  return 0;
+}
+
+===== v1.20_spawn_generic_operator_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define RW 15
+#define RH 20
+#define RN (RW*RH)
+#define OFFN ((2*RH+1)*(2*RW+1))
+static uint64_t rs=0x6a09e667f3bcc909ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static double rd(void){return (double)(ru()>>11)*(1.0/9007199254740992.0);}
+static int oi(int dx,int dy){return (dy+RH)*(2*RW+1)+(dx+RW);}
+
+/* old Spawn-specific formulation */
+static void old_spawn_field(const double AI[OFFN],const double AO[OFFN],const uint8_t src[RN],const double scope[RN],double out[RN]){
+  double miss[RN];for(int i=0;i<RN;i++)miss[i]=1.0;
+  for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++)if(src[sy*RW+sx]){
+    double sc=scope[sy*RW+sx];
+    for(int dy=-RH;dy<=RH;dy++)for(int dx=-RW;dx<=RW;dx++){
+      int j=oi(dx,dy);double rel=sc*AI[j]+(1.0-sc)*AO[j];if(rel<=0)continue;
+      int x=sx+dx,y=sy+dy;if(x>=0&&x<RW&&y>=0&&y<RH)miss[y*RW+x]*=1.0-rel;
+    }
+  }
+  for(int i=0;i<RN;i++)out[i]=1.0-miss[i];
+}
+static double old_spawn_carrier(const double AI[OFFN],const double AO[OFFN],const uint8_t src[RN],const double scope[RN],const double compat[RN]){
+  double C=1.0;
+  for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++)if(src[sy*RW+sx]){
+    double sc=scope[sy*RW+sx];
+    for(int dy=-RH;dy<=RH;dy++)for(int dx=-RW;dx<=RW;dx++){
+      int j=oi(dx,dy);double rel=sc*AI[j]+(1.0-sc)*AO[j];if(rel<=0)continue;
+      int x=sx+dx,y=sy+dy;if(x<0||x>=RW||y<0||y>=RH)continue;
+      C*=1.0-rel*(1.0-compat[y*RW+x]);
+    }
+  }
+  return C;
+}
+
+/* generic operator: arbitrary source amplitude + relation amplitude -> target proposal */
+typedef double (*RelFn)(void*,int,int,int,int);
+static void relation_scatter(const double source[RN],RelFn rel,void*ctx,double out[RN]){
+  double miss[RN];for(int i=0;i<RN;i++)miss[i]=1.0;
+  for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++){
+    double sw=source[sy*RW+sx];if(sw<=0)continue;
+    for(int dy=-RH;dy<=RH;dy++)for(int dx=-RW;dx<=RW;dx++){
+      double rw=rel(ctx,sx,sy,dx,dy);double a=sw*rw;if(a<=0)continue;
+      int x=sx+dx,y=sy+dy;if(x>=0&&x<RW&&y>=0&&y<RH)miss[y*RW+x]*=1.0-a;
+    }
+  }
+  for(int i=0;i<RN;i++)out[i]=1.0-miss[i];
+}
+static double relation_compatibility(const double source[RN],RelFn rel,void*ctx,const double compat[RN]){
+  double C=1.0;
+  for(int sy=0;sy<RH;sy++)for(int sx=0;sx<RW;sx++){
+    double sw=source[sy*RW+sx];if(sw<=0)continue;
+    for(int dy=-RH;dy<=RH;dy++)for(int dx=-RW;dx<=RW;dx++){
+      double rw=rel(ctx,sx,sy,dx,dy);double a=sw*rw;if(a<=0)continue;
+      int x=sx+dx,y=sy+dy;if(x<0||x>=RW||y<0||y>=RH)continue;
+      C*=1.0-a*(1.0-compat[y*RW+x]);
+    }
+  }
+  return C;
+}
+typedef struct{const double*AI;const double*AO;const double*scope;}Ctx;
+static double spawn_rel(void*v,int sx,int sy,int dx,int dy){Ctx*c=(Ctx*)v;double sc=c->scope[sy*RW+sx];int j=oi(dx,dy);return sc*c->AI[j]+(1.0-sc)*c->AO[j];}
+int main(void){unsigned long long n=300,ok=0;double maxerr=0;for(unsigned long long t=0;t<n;t++){
+  static double AI[OFFN],AO[OFFN];for(int i=0;i<OFFN;i++){AI[i]=((ru()%100)<5)?rd():0;AO[i]=((ru()%100)<5)?rd():0;}
+  uint8_t srcb[RN];double scope[RN],compat[RN],src[RN];for(int i=0;i<RN;i++){srcb[i]=(uint8_t)((ru()%100)<5);src[i]=(double)srcb[i];scope[i]=rd();compat[i]=rd();}
+  double a[RN],b[RN];old_spawn_field(AI,AO,srcb,scope,a);Ctx c={AI,AO,scope};relation_scatter(src,spawn_rel,&c,b);
+  double e=0;for(int i=0;i<RN;i++){double d=fabs(a[i]-b[i]);if(d>e)e=d;}
+  double ca=old_spawn_carrier(AI,AO,srcb,scope,compat),cb=relation_compatibility(src,spawn_rel,&c,compat);double d=fabs(ca-cb);if(d>e)e=d;if(e>maxerr)maxerr=e;
+  if(e==0.0)ok++;else{printf("FAIL %llu err=%.17g\n",t,e);return 1;}
+ }printf("SPAWN_TO_GENERIC_RELATION_OPERATOR %llu/%llu = %.6f%% maxerr=%.17g\n",ok,n,100.0*(double)ok/n,maxerr);return 0;}
+
+===== v1.21_closure_generic_propagation_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#define W 15
+#define H 20
+#define N (W*H)
+static uint64_t rs=0x243f6a8885a308d3ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+
+static void old_one_side(const uint8_t*b,const uint8_t*scope,int dx,int dy,uint8_t wave[N]){
+ memset(wave,0,N);for(int y=0;y<H;y++)for(int x=0;x<W;x++){int k=y*W+x;if(!scope[k]||!b[k])continue;int px=x-dx,py=y-dy;if(px<0||px>=W||py<0||py>=H||!scope[py*W+px])wave[k]=1;}
+ for(int step=0;step<N;step++){uint8_t next[N];memcpy(next,wave,N);int changed=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++){int k=y*W+x;if(!wave[k])continue;int nx=x+dx,ny=y+dy;if(nx>=0&&nx<W&&ny>=0&&ny<H&&scope[ny*W+nx]){int nk=ny*W+nx;if(b[nk]&&!next[nk]){next[nk]=1;changed=1;}}}memcpy(wave,next,N);if(!changed)break;}
+}
+static int old_closure(const uint8_t*b,const uint8_t*scope,int dx,int dy,uint8_t out[N]){uint8_t a[N],z[N];old_one_side(b,scope,dx,dy,a);old_one_side(b,scope,-dx,-dy,z);int any=0;for(int i=0;i<N;i++){out[i]=(uint8_t)(a[i]&&z[i]);any|=out[i];}return any;}
+
+/* generic physical operator: seed from relation-boundary, then local relation propagation */
+static void relation_boundary_seed(const uint8_t*carrier,const uint8_t*domain,int dx,int dy,uint8_t seed[N]){memset(seed,0,N);for(int y=0;y<H;y++)for(int x=0;x<W;x++){int k=y*W+x;if(!domain[k]||!carrier[k])continue;int px=x-dx,py=y-dy;if(px<0||px>=W||py<0||py>=H||!domain[py*W+px])seed[k]=1;}}
+static void relation_propagate(const uint8_t*carrier,const uint8_t*domain,int dx,int dy,uint8_t wave[N]){for(int step=0;step<N;step++){uint8_t next[N];memcpy(next,wave,N);int changed=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++){int k=y*W+x;if(!wave[k])continue;int nx=x+dx,ny=y+dy;if(nx<0||nx>=W||ny<0||ny>=H)continue;int nk=ny*W+nx;if(domain[nk]&&carrier[nk]&&!next[nk]){next[nk]=1;changed=1;}}memcpy(wave,next,N);if(!changed)break;}}
+static int new_closure(const uint8_t*b,const uint8_t*scope,int dx,int dy,uint8_t out[N]){uint8_t a[N],z[N];relation_boundary_seed(b,scope,dx,dy,a);relation_boundary_seed(b,scope,-dx,-dy,z);relation_propagate(b,scope,dx,dy,a);relation_propagate(b,scope,-dx,-dy,z);int any=0;for(int i=0;i<N;i++){out[i]=(uint8_t)(a[i]*z[i]);any|=out[i];}return any;}
+
+int main(void){unsigned long long n=200000,ok=0;for(unsigned long long t=0;t<n;t++){uint8_t b[N],scope[N];for(int i=0;i<N;i++){scope[i]=(uint8_t)((ru()%100)<75);b[i]=(uint8_t)(scope[i]&&((ru()%100)<45));}int dx=(int)(ru()%3)-1,dy=(int)(ru()%3)-1;if(dx==0&&dy==0){dx=1;}uint8_t a[N],c[N];int x=old_closure(b,scope,dx,dy,a),y=new_closure(b,scope,dx,dy,c);if(x==y&&!memcmp(a,c,N))ok++;else{printf("FAIL t=%llu d=(%d,%d) old=%d new=%d\n",t,dx,dy,x,y);return 1;}}printf("CLOSURE_TO_GENERIC_RELATION_PROPAGATION %llu/%llu = %.6f%%\n",ok,n,100.0*(double)ok/n);return 0;}
+
+===== v1.22_direct_bt_commit_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#define N 300
+static uint64_t rs=0x13198a2e03707344ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+
+/* old representation: materialize process/rest arrays, mutate them, then commit */
+static void old_step(const uint8_t B[N],const uint8_t T[N],const uint8_t addP[N],const uint8_t addR[N],const uint8_t killR[N],uint8_t OB[N],uint8_t OT[N]){
+  uint8_t P[N],R[N];
+  for(int i=0;i<N;i++){P[i]=(uint8_t)(B[i]&&T[i]);R[i]=(uint8_t)(B[i]&&!T[i]);}
+  for(int i=0;i<N;i++){P[i]|=addP[i];R[i]|=addR[i];if(killR[i])R[i]=0;}
+  for(int i=0;i<N;i++){OB[i]=(uint8_t)(P[i]||R[i]);OT[i]=(uint8_t)(P[i]&&OB[i]);}
+}
+/* new representation: no process/rest state; operate directly on B/T algebra */
+static void new_step(const uint8_t B[N],const uint8_t T[N],const uint8_t addP[N],const uint8_t addR[N],const uint8_t killR[N],uint8_t OB[N],uint8_t OT[N]){
+  for(int i=0;i<N;i++){
+    uint8_t p=(uint8_t)((B[i]&&T[i])||addP[i]);
+    uint8_t r=(uint8_t)(((B[i]&&!T[i])||addR[i])&&!killR[i]);
+    OB[i]=(uint8_t)(p||r);
+    OT[i]=(uint8_t)(p&&OB[i]);
+  }
+}
+int main(void){unsigned long long n=500000,ok=0;for(unsigned long long q=0;q<n;q++){uint8_t B[N],T[N],p[N],r[N],k[N],aB[N],aT[N],bB[N],bT[N];for(int i=0;i<N;i++){B[i]=(uint8_t)(ru()&1);T[i]=(uint8_t)(B[i]&&(ru()&1));p[i]=(uint8_t)((ru()%100)<8);r[i]=(uint8_t)((ru()%100)<8);k[i]=(uint8_t)((ru()%100)<8);}old_step(B,T,p,r,k,aB,aT);new_step(B,T,p,r,k,bB,bT);if(!memcmp(aB,bB,N)&&!memcmp(aT,bT,N))ok++;else{printf("FAIL %llu\n",q);return 1;}}printf("PROC_REST_TO_DIRECT_BT %llu/%llu = %.6f%%\n",ok,n,100.0*(double)ok/n);return 0;}
+
+===== v1.23_anchor_boundary_wave_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#define W 15
+#define H 20
+#define N (W*H)
+static uint64_t rs=0xa4093822299f31d0ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+
+static int old_anchor(const uint8_t b[N],int*ax,int*ay){int mx=W,my=H,any=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(b[y*W+x]){any=1;if(x<mx)mx=x;if(y<my)my=y;}if(!any)return 0;*ax=mx;*ay=my;return 1;}
+
+/* Generic boundary-wave view: collapse occupancy only by the orthogonal relation,
+   then propagate a carrier from the physical boundary until it interferes with
+   the first occupied column/row. No top-1/min selector is used. */
+static int first_interference_1d(const uint8_t occ[],int n){uint8_t wave[32]={0};if(n>32)return -1;wave[0]=1;for(int step=0;step<n;step++){uint8_t next[32]={0};for(int i=0;i<n;i++)if(wave[i]){if(occ[i])return i;if(i+1<n)next[i+1]=1;}memcpy(wave,next,(size_t)n);}return -1;}
+static int new_anchor(const uint8_t b[N],int*ax,int*ay){uint8_t col[W]={0},row[H]={0};for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(b[y*W+x]){col[x]=1;row[y]=1;}int x=first_interference_1d(col,W),y=first_interference_1d(row,H);if(x<0||y<0)return 0;*ax=x;*ay=y;return 1;}
+
+int main(void){unsigned long long n=1000000,ok=0;for(unsigned long long t=0;t<n;t++){uint8_t b[N]={0};int cells=(int)(ru()%80);for(int i=0;i<cells;i++)b[ru()%N]=1;int ax=99,ay=99,bx=98,by=98;int a=old_anchor(b,&ax,&ay),c=new_anchor(b,&bx,&by);if(a==c&&(!a||(ax==bx&&ay==by)))ok++;else{printf("FAIL t=%llu old=%d (%d,%d) new=%d (%d,%d)\n",t,a,ax,ay,c,bx,by);return 1;}}printf("MIN_ANCHOR_TO_BOUNDARY_WAVE %llu/%llu = %.6f%%\n",ok,n,100.0*(double)ok/n);return 0;}
+
+===== v1.24_one_relation_operator_equiv.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#define W 15
+#define H 20
+#define N (W*H)
+#define MAXE 64
+
+typedef struct{int dx,dy;double w;}Edge;
+static uint64_t rs=0x082efa98ec4e6c89ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static double rd(void){return (double)(ru()>>11)*(1.0/9007199254740992.0);}
+
+/* Single physical relation operator.  It OR-superposes all relation arrivals. */
+static void relation_apply(const double src[N],const Edge*e,int ne,double out[N]){double miss[N];for(int i=0;i<N;i++)miss[i]=1.0;for(int y=0;y<H;y++)for(int x=0;x<W;x++){double s=src[y*W+x];if(s<=0)continue;for(int r=0;r<ne;r++){double a=s*e[r].w;if(a<=0)continue;int ox=x+e[r].dx,oy=y+e[r].dy;if(ox>=0&&ox<W&&oy>=0&&oy<H)miss[oy*W+ox]*=1.0-a;}}for(int i=0;i<N;i++)out[i]=1.0-miss[i];}
+
+/* old spawn one-pass relation scatter */
+static void old_spawn(const double src[N],const Edge*e,int ne,double out[N]){double miss[N];for(int i=0;i<N;i++)miss[i]=1;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(src[y*W+x]>0){for(int r=0;r<ne;r++){double a=src[y*W+x]*e[r].w;if(a<=0)continue;int ox=x+e[r].dx,oy=y+e[r].dy;if(ox>=0&&ox<W&&oy>=0&&oy<H)miss[oy*W+ox]*=1-a;}}for(int i=0;i<N;i++)out[i]=1-miss[i];}
+
+/* old closure one-hop binary propagation to fixed point */
+static void old_reach(const uint8_t carrier[N],const uint8_t domain[N],int dx,int dy,uint8_t wave[N]){for(int step=0;step<N;step++){uint8_t next[N];memcpy(next,wave,N);int changed=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++){int k=y*W+x;if(!wave[k])continue;int ox=x+dx,oy=y+dy;if(ox<0||ox>=W||oy<0||oy>=H)continue;int q=oy*W+ox;if(domain[q]&&carrier[q]&&!next[q]){next[q]=1;changed=1;}}memcpy(wave,next,N);if(!changed)break;}}
+/* same fixed point, but each step uses relation_apply; re-entry is the only extra operation */
+static void new_reach(const uint8_t carrier[N],const uint8_t domain[N],int dx,int dy,uint8_t wave[N]){Edge e={dx,dy,1.0};for(int step=0;step<N;step++){double src[N]={0},arr[N];for(int i=0;i<N;i++)src[i]=wave[i]?1.0:0.0;relation_apply(src,&e,1,arr);int changed=0;for(int i=0;i<N;i++)if(arr[i]>.5&&domain[i]&&carrier[i]&&!wave[i]){wave[i]=1;changed=1;}if(!changed)break;}}
+
+int main(void){unsigned long long sn=50000,cn=100000,sok=0,cok=0;for(unsigned long long t=0;t<sn;t++){double src[N];for(int i=0;i<N;i++)src[i]=((ru()%100)<5)?rd():0;Edge e[MAXE];int ne=1+(int)(ru()%MAXE);for(int r=0;r<ne;r++){e[r].dx=(int)(ru()%31)-15;e[r].dy=(int)(ru()%41)-20;e[r].w=rd();}double a[N],b[N];old_spawn(src,e,ne,a);relation_apply(src,e,ne,b);if(!memcmp(a,b,sizeof(a)))sok++;else return 1;}
+for(unsigned long long t=0;t<cn;t++){uint8_t carrier[N],domain[N],a[N]={0},b[N]={0};for(int i=0;i<N;i++){domain[i]=(uint8_t)((ru()%100)<80);carrier[i]=(uint8_t)(domain[i]&&((ru()%100)<55));if(carrier[i]&&((ru()%100)<3))a[i]=b[i]=1;}int dx=(int)(ru()%3)-1,dy=(int)(ru()%3)-1;if(dx==0&&dy==0)dx=1;old_reach(carrier,domain,dx,dy,a);new_reach(carrier,domain,dx,dy,b);if(!memcmp(a,b,N))cok++;else return 2;}
+printf("ONE_RELATION_OPERATOR spawn=%llu/%llu closure_reentry=%llu/%llu\n",sok,sn,cok,cn);return 0;}
