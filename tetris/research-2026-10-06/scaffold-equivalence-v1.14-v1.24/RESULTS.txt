@@ -1,0 +1,31 @@
+===== v1.14_gauge_unification_equiv_RESULT.txt =====
+GAUGE_TO_SELF_RELATION_EQUIV 1000000/1000000 = 100.000000% empty=5607
+Interpretation: after copying each old gauge probability to the self-relation mapping key, gauge readout is algebraically identical; no winner/topology change is introduced.
+
+===== v1.16_scope_direct_equiv_RESULT.txt =====
+SCOPE_CACHE_TO_DIRECT_EQUIV 3000000/3000000 = 100.000000% maxerr=0
+
+===== v1.17_spawn_cache_direct_equiv_RESULT.txt =====
+SPAWN_CACHE_TO_DIRECT_EQUIV 200/200 = 100.000000% maxerr=0
+
+===== v1.18_generic_closure_geometry_equiv_RESULT.txt =====
+VERTICAL_TO_GENERIC_CLOSURE_EQUIV 20000/20000 = 100.000000%
+Non-vertical relation/effect amplitudes are zero, matching the frozen field support; generic execution collapses exactly to the old vertical executor.
+
+===== v1.19_integrated_equivalence_RESULT.txt =====
+V1.19_INTEGRATED_EQUIV gauge=300000/300000 scope=800000/800000 spawn=120/120 closure=8000/8000
+
+===== v1.20_spawn_generic_operator_equiv_RESULT.txt =====
+SPAWN_TO_GENERIC_RELATION_OPERATOR 300/300 = 100.000000% maxerr=0
+
+===== v1.21_closure_generic_propagation_equiv_RESULT.txt =====
+CLOSURE_TO_GENERIC_RELATION_PROPAGATION 200000/200000 = 100.000000%
+
+===== v1.22_direct_bt_commit_equiv_RESULT.txt =====
+PROC_REST_TO_DIRECT_BT 500000/500000 = 100.000000%
+
+===== v1.23_anchor_boundary_wave_equiv_RESULT.txt =====
+MIN_ANCHOR_TO_BOUNDARY_WAVE 1000000/1000000 = 100.000000%
+
+===== v1.24_one_relation_operator_equiv_RESULT.txt =====
+ONE_RELATION_OPERATOR spawn=50000/50000 closure_reentry=100000/100000
