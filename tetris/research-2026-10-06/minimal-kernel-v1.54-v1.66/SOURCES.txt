@@ -1,0 +1,610 @@
+===== bpc_minimal_v154_reality_tick.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+
+#define PORTS 24
+#define CAP 1024
+#define MAXDELTA 2048
+
+typedef struct{uint64_t key;double off,on;uint8_t used;}Cell;
+typedef struct{Cell c[CAP];int n;}Field;
+typedef struct{uint8_t bit[PORTS];}Medium;
+typedef struct{int s,d;double dm;}Delta;
+static uint64_t rs=0x154082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t rkey(int s,int d){return((uint64_t)(uint32_t)s<<32)|(uint32_t)d;}
+
+/* The only state-change primitive. */
+static void move_mass(double *off,double *on,double dm){
+    if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}
+    else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}
+}
+static int idx(const Field*f,int s,int d){uint64_t k=rkey(s,d);for(int i=0;i<f->n;i++)if(f->c[i].used&&f->c[i].key==k)return i;return-1;}
+static double amp(const Field*f,int s,int d){int i=idx(f,s,d);return i>=0?f->c[i].on:0.0;}
+static Cell* ensure(Field*f,int s,int d){
+    int i=idx(f,s,d);if(i>=0)return &f->c[i];
+    for(int j=0;j<f->n;j++)if(!f->c[j].used){f->c[j]=(Cell){rkey(s,d),1.0,0.0,1};return &f->c[j];}
+    if(f->n>=CAP)return NULL;
+    f->c[f->n]=(Cell){rkey(s,d),1.0,0.0,1};return &f->c[f->n++];
+}
+static void cleanup(Field*f){for(int i=0;i<f->n;i++)if(f->c[i].used&&f->c[i].on<=0.0)f->c[i].used=0;}
+static double relation_output(const Field*f,const Medium*m,int d){
+    double off=1.0,on=0.0;
+    for(int s=0;s<PORTS;s++)if(m->bit[s]){double a=amp(f,s,d);move_mass(&off,&on,off*a);}
+    return on;
+}
+
+/* v1.54: one reality tick. There is no observe() API and no predict() API.
+   The current medium propagates once, the physical reality arrives, one global
+   residual writes back along all participating ordered relations, and reality
+   then becomes the medium for the next tick. Time exists only through re-entry. */
+static int reality_tick(Field*f,Medium*m,const Medium*reality){
+    double pred[PORTS];Delta ds[MAXDELTA];int nd=0;int exact=1;
+    for(int d=0;d<PORTS;d++){
+        pred[d]=relation_output(f,m,d);
+        int measured=(pred[d]>.5);
+        if(measured!=reality->bit[d])exact=0;
+        double e=(double)reality->bit[d]-pred[d];
+        if(e==0.0)continue;
+        for(int s=0;s<PORTS;s++)if(m->bit[s]&&nd<MAXDELTA)ds[nd++]=(Delta){s,d,e};
+    }
+    for(int i=0;i<nd;i++){
+        int j=idx(f,ds[i].s,ds[i].d);Cell*q=j>=0?&f->c[j]:NULL;
+        if(!q&&ds[i].dm>0)q=ensure(f,ds[i].s,ds[i].d);
+        if(q)move_mass(&q->off,&q->on,ds[i].dm);
+    }
+    cleanup(f);*m=*reality;return exact;
+}
+static int resident(const Field*f){int n=0;for(int i=0;i<f->n;i++)n+=f->c[i].used;return n;}
+static uint64_t field_hash(const Field*f){uint64_t h=1469598103934665603ULL;for(int i=0;i<f->n;i++)if(f->c[i].used){uint64_t q=f->c[i].key;memcpy(&q,&f->c[i].on,sizeof(double)<sizeof(q)?sizeof(double):sizeof(q));h^=f->c[i].key;h*=1099511628211ULL;uint64_t z;memcpy(&z,&f->c[i].on,sizeof(z));h^=z;h*=1099511628211ULL;}return h;}
+static int m1[PORTS],m2[PORTS];
+static void init(void){for(int i=0;i<PORTS;i++){m1[i]=(7*i+5)%PORTS;m2[i]=(11*i+3)%PORTS;}}
+static void physical_reality(const Medium*m,Medium*r){memset(r,0,sizeof(*r));for(int i=0;i<PORTS;i++)if(m->bit[i]){r->bit[m1[i]]=1;r->bit[m2[i]]=1;}}
+static void random_medium(Medium*m,int minbits,int span){memset(m,0,sizeof(*m));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int s=(int)(ru()%PORTS);if(!m->bit[s]){m->bit[s]=1;n++;}}}
+int main(void){
+    init();Field f={0};Medium m={0},r;
+    random_medium(&m,2,7);
+    /* one continuous stream; no epochs and no separate learner call */
+    for(int t=0;t<120000;t++){
+        physical_reality(&m,&r);(void)reality_tick(&f,&m,&r);
+        /* external perturbation is ordinary reality, not a training mode */
+        if((t%3)==2)random_medium(&m,2,7);
+    }
+    uint64_t h0=field_hash(&f);unsigned long long n=300000,ok=0;
+    for(unsigned long long q=0;q<n;q++){
+        random_medium(&m,2,7);physical_reality(&m,&r);
+        ok+=(unsigned long long)reality_tick(&f,&m,&r);
+    }
+    uint64_t h1=field_hash(&f);
+    double true_min=1.0,false_max=0.0;
+    for(int s=0;s<PORTS;s++)for(int d=0;d<PORTS;d++){
+        double a=amp(&f,s,d);int truth=(d==m1[s]||d==m2[s]);
+        if(truth&&a<true_min)true_min=a;
+        if(!truth&&a>false_max)false_max=a;
+    }
+    printf("V154_REALITY_TICK exact=%llu/%llu=%.6f%% resident=%d true_min=%.6f false_max=%.6f field_unchanged=%d\n",ok,n,100.0*(double)ok/n,resident(&f),true_min,false_max,h0==h1);
+    return ok==n&&h0==h1?0:1;
+}
+
+===== bpc_minimal_v155_scalar_relation.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+
+#define PORTS 24
+#define CAP 1024
+#define MAXDELTA 2048
+
+typedef struct{uint64_t key;double mass;}Cell;
+typedef struct{Cell c[CAP];int n;}Field;
+typedef struct{uint8_t bit[PORTS];}Medium;
+typedef struct{int s,d;double dm;}Delta;
+static uint64_t rs=0x155082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t rkey(int s,int d){return((uint64_t)(uint32_t)s<<32)|(uint32_t)d;}
+
+/* Same primitive as v1.54. A relation now stores only its on-mass; off-mass is
+   the complement and is materialized only while the primitive acts. */
+static void move_mass(double *off,double *on,double dm){
+    if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}
+    else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}
+}
+static int idx(const Field*f,int s,int d){uint64_t k=rkey(s,d);for(int i=0;i<f->n;i++)if(f->c[i].key==k)return i;return-1;}
+static double amp(const Field*f,int s,int d){int i=idx(f,s,d);return i>=0?f->c[i].mass:0.0;}
+static Cell* ensure(Field*f,int s,int d){int i=idx(f,s,d);if(i>=0)return &f->c[i];if(f->n>=CAP)return NULL;f->c[f->n]=(Cell){rkey(s,d),0.0};return &f->c[f->n++];}
+static void erase(Field*f,int i){f->c[i]=f->c[f->n-1];f->n--;}
+static void shift_relation(Field*f,int s,int d,double dm){
+    int i=idx(f,s,d);Cell*q=i>=0?&f->c[i]:NULL;
+    if(!q&&dm>0)q=ensure(f,s,d);
+    if(!q)return;
+    double off=1.0-q->mass,on=q->mass;move_mass(&off,&on,dm);q->mass=on;
+    i=idx(f,s,d);if(i>=0&&f->c[i].mass<=0.0)erase(f,i);
+}
+static double relation_output(const Field*f,const Medium*m,int d){double off=1.0,on=0.0;for(int s=0;s<PORTS;s++)if(m->bit[s]){double a=amp(f,s,d);move_mass(&off,&on,off*a);}return on;}
+static int reality_tick(Field*f,Medium*m,const Medium*reality){
+    double pred[PORTS];Delta ds[MAXDELTA];int nd=0,exact=1;
+    for(int d=0;d<PORTS;d++){
+        pred[d]=relation_output(f,m,d);if((pred[d]>.5)!=reality->bit[d])exact=0;
+        double e=(double)reality->bit[d]-pred[d];if(e==0.0)continue;
+        for(int s=0;s<PORTS;s++)if(m->bit[s]&&nd<MAXDELTA)ds[nd++]=(Delta){s,d,e};
+    }
+    for(int i=0;i<nd;i++)shift_relation(f,ds[i].s,ds[i].d,ds[i].dm);
+    *m=*reality;return exact;
+}
+static uint64_t field_hash(const Field*f){uint64_t h=1469598103934665603ULL;for(int i=0;i<f->n;i++){h^=f->c[i].key;h*=1099511628211ULL;uint64_t z;memcpy(&z,&f->c[i].mass,sizeof(z));h^=z;h*=1099511628211ULL;}return h;}
+static int m1[PORTS],m2[PORTS];
+static void init(void){for(int i=0;i<PORTS;i++){m1[i]=(7*i+5)%PORTS;m2[i]=(11*i+3)%PORTS;}}
+static void physical_reality(const Medium*m,Medium*r){memset(r,0,sizeof(*r));for(int i=0;i<PORTS;i++)if(m->bit[i]){r->bit[m1[i]]=1;r->bit[m2[i]]=1;}}
+static void random_medium(Medium*m,int minbits,int span){memset(m,0,sizeof(*m));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int s=(int)(ru()%PORTS);if(!m->bit[s]){m->bit[s]=1;n++;}}}
+int main(void){
+    init();Field f={0};Medium m={0},r;random_medium(&m,2,7);
+    for(int t=0;t<120000;t++){physical_reality(&m,&r);(void)reality_tick(&f,&m,&r);if((t%3)==2)random_medium(&m,2,7);}
+    uint64_t h0=field_hash(&f);unsigned long long n=300000,ok=0;
+    for(unsigned long long q=0;q<n;q++){random_medium(&m,2,7);physical_reality(&m,&r);ok+=(unsigned long long)reality_tick(&f,&m,&r);}
+    uint64_t h1=field_hash(&f);double true_min=1.0,false_max=0.0;
+    for(int s=0;s<PORTS;s++)for(int d=0;d<PORTS;d++){double a=amp(&f,s,d);int truth=(d==m1[s]||d==m2[s]);if(truth&&a<true_min)true_min=a;if(!truth&&a>false_max)false_max=a;}
+    printf("V155_SCALAR_RELATION exact=%llu/%llu=%.6f%% resident=%d true_min=%.6f false_max=%.6f field_unchanged=%d cell_bytes=%zu\n",ok,n,100.0*(double)ok/n,f.n,true_min,false_max,h0==h1,sizeof(Cell));
+    return ok==n&&h0==h1?0:1;
+}
+
+===== bpc_minimal_v156_continuous_output.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+
+#define PORTS 24
+#define CAP 1024
+#define MAXDELTA 2048
+
+typedef struct{uint64_t key;double mass;}Cell;
+typedef struct{Cell c[CAP];int n;}Field;
+typedef struct{double a[PORTS];}WaveMedium;
+typedef struct{uint8_t bit[PORTS];}Reality;
+typedef struct{int s,d;double dm;}Delta;
+static uint64_t rs=0x156082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t rkey(int s,int d){return((uint64_t)(uint32_t)s<<32)|(uint32_t)d;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static int idx(const Field*f,int s,int d){uint64_t k=rkey(s,d);for(int i=0;i<f->n;i++)if(f->c[i].key==k)return i;return-1;}
+static double amp(const Field*f,int s,int d){int i=idx(f,s,d);return i>=0?f->c[i].mass:0.0;}
+static Cell* ensure(Field*f,int s,int d){int i=idx(f,s,d);if(i>=0)return &f->c[i];if(f->n>=CAP)return NULL;f->c[f->n]=(Cell){rkey(s,d),0.0};return &f->c[f->n++];}
+static void erase(Field*f,int i){f->c[i]=f->c[f->n-1];f->n--;}
+static void shift_relation(Field*f,int s,int d,double dm){int i=idx(f,s,d);Cell*q=i>=0?&f->c[i]:NULL;if(!q&&dm>0)q=ensure(f,s,d);if(!q)return;double off=1.0-q->mass,on=q->mass;move_mass(&off,&on,dm);q->mass=on;i=idx(f,s,d);if(i>=0&&f->c[i].mass<=0.0)erase(f,i);}
+static double output_amp(const Field*f,const WaveMedium*m,int d){double off=1.0,on=0.0;for(int s=0;s<PORTS;s++)if(m->a[s]>0.0){double a=m->a[s]*amp(f,s,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+/* Core emits continuous amplitudes. Reality measurement is external. */
+static void propagate(const Field*f,const WaveMedium*now,WaveMedium*pred){for(int d=0;d<PORTS;d++)pred->a[d]=output_amp(f,now,d);}
+static void external_measure(const WaveMedium*w,Reality*r){for(int i=0;i<PORTS;i++)r->bit[i]=(uint8_t)(w->a[i]>.5);}
+static int reality_tick(Field*f,WaveMedium*medium,const Reality*reality){WaveMedium pred;propagate(f,medium,&pred);Reality measured;external_measure(&pred,&measured);int exact=!memcmp(measured.bit,reality->bit,PORTS);Delta ds[MAXDELTA];int nd=0;for(int d=0;d<PORTS;d++){double e=(double)reality->bit[d]-pred.a[d];if(e==0.0)continue;for(int s=0;s<PORTS;s++)if(medium->a[s]>0.0&&nd<MAXDELTA)ds[nd++]=(Delta){s,d,e*medium->a[s]};}for(int i=0;i<nd;i++)shift_relation(f,ds[i].s,ds[i].d,ds[i].dm);for(int i=0;i<PORTS;i++)medium->a[i]=(double)reality->bit[i];return exact;}
+static uint64_t field_hash(const Field*f){uint64_t h=1469598103934665603ULL;for(int i=0;i<f->n;i++){h^=f->c[i].key;h*=1099511628211ULL;uint64_t z;memcpy(&z,&f->c[i].mass,sizeof(z));h^=z;h*=1099511628211ULL;}return h;}
+static int m1[PORTS],m2[PORTS];
+static void init(void){for(int i=0;i<PORTS;i++){m1[i]=(7*i+5)%PORTS;m2[i]=(11*i+3)%PORTS;}}
+static void physical_reality(const WaveMedium*m,Reality*r){memset(r,0,sizeof(*r));for(int i=0;i<PORTS;i++)if(m->a[i]>.5){r->bit[m1[i]]=1;r->bit[m2[i]]=1;}}
+static void random_medium(WaveMedium*m,int minbits,int span){memset(m,0,sizeof(*m));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int s=(int)(ru()%PORTS);if(m->a[s]==0.0){m->a[s]=1.0;n++;}}}
+int main(void){init();Field f={0};WaveMedium m;Reality r;random_medium(&m,2,7);for(int t=0;t<120000;t++){physical_reality(&m,&r);(void)reality_tick(&f,&m,&r);if((t%3)==2)random_medium(&m,2,7);}uint64_t h0=field_hash(&f);unsigned long long n=300000,ok=0;double max_phys_err=0.0;for(unsigned long long q=0;q<n;q++){random_medium(&m,2,7);physical_reality(&m,&r);WaveMedium p;propagate(&f,&m,&p);for(int i=0;i<PORTS;i++){double e=fabs(p.a[i]-(double)r.bit[i]);if(e>max_phys_err)max_phys_err=e;}ok+=(unsigned long long)reality_tick(&f,&m,&r);}uint64_t h1=field_hash(&f);printf("V156_CONTINUOUS_CORE measured_exact=%llu/%llu=%.6f%% resident=%d field_unchanged=%d max_continuous_error=%.3g\n",ok,n,100.0*(double)ok/n,f.n,h0==h1,max_phys_err);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v157_reality_reentry_mass.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+
+#define PORTS 24
+#define CAP 1024
+#define MAXDELTA 2048
+
+typedef struct{uint64_t key;double mass;}Cell;
+typedef struct{Cell c[CAP];int n;}Field;
+typedef struct{double a[PORTS];}WaveMedium;
+typedef struct{uint8_t bit[PORTS];}Reality;
+typedef struct{int s,d;double dm;}Delta;
+static uint64_t rs=0x156082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t rkey(int s,int d){return((uint64_t)(uint32_t)s<<32)|(uint32_t)d;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static int idx(const Field*f,int s,int d){uint64_t k=rkey(s,d);for(int i=0;i<f->n;i++)if(f->c[i].key==k)return i;return-1;}
+static double amp(const Field*f,int s,int d){int i=idx(f,s,d);return i>=0?f->c[i].mass:0.0;}
+static Cell* ensure(Field*f,int s,int d){int i=idx(f,s,d);if(i>=0)return &f->c[i];if(f->n>=CAP)return NULL;f->c[f->n]=(Cell){rkey(s,d),0.0};return &f->c[f->n++];}
+static void erase(Field*f,int i){f->c[i]=f->c[f->n-1];f->n--;}
+static void shift_relation(Field*f,int s,int d,double dm){int i=idx(f,s,d);Cell*q=i>=0?&f->c[i]:NULL;if(!q&&dm>0)q=ensure(f,s,d);if(!q)return;double off=1.0-q->mass,on=q->mass;move_mass(&off,&on,dm);q->mass=on;i=idx(f,s,d);if(i>=0&&f->c[i].mass<=0.0)erase(f,i);}
+static double output_amp(const Field*f,const WaveMedium*m,int d){double off=1.0,on=0.0;for(int s=0;s<PORTS;s++)if(m->a[s]>0.0){double a=m->a[s]*amp(f,s,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+/* Core emits continuous amplitudes. Reality measurement is external. */
+static void propagate(const Field*f,const WaveMedium*now,WaveMedium*pred){for(int d=0;d<PORTS;d++)pred->a[d]=output_amp(f,now,d);}
+static void external_measure(const WaveMedium*w,Reality*r){for(int i=0;i<PORTS;i++)r->bit[i]=(uint8_t)(w->a[i]>.5);}
+static int reality_tick(Field*f,WaveMedium*medium,const Reality*reality){WaveMedium pred;propagate(f,medium,&pred);Reality measured;external_measure(&pred,&measured);int exact=!memcmp(measured.bit,reality->bit,PORTS);Delta ds[MAXDELTA];int nd=0;for(int d=0;d<PORTS;d++){double e=(double)reality->bit[d]-pred.a[d];if(e==0.0)continue;for(int s=0;s<PORTS;s++)if(medium->a[s]>0.0&&nd<MAXDELTA)ds[nd++]=(Delta){s,d,e*medium->a[s]};}for(int i=0;i<nd;i++)shift_relation(f,ds[i].s,ds[i].d,ds[i].dm);for(int i=0;i<PORTS;i++){
+        double off=1.0-medium->a[i],on=medium->a[i];
+        move_mass(&off,&on,(double)reality->bit[i]-on);
+        medium->a[i]=on;
+    }
+    return exact;
+}
+static uint64_t field_hash(const Field*f){uint64_t h=1469598103934665603ULL;for(int i=0;i<f->n;i++){h^=f->c[i].key;h*=1099511628211ULL;uint64_t z;memcpy(&z,&f->c[i].mass,sizeof(z));h^=z;h*=1099511628211ULL;}return h;}
+static int m1[PORTS],m2[PORTS];
+static void init(void){for(int i=0;i<PORTS;i++){m1[i]=(7*i+5)%PORTS;m2[i]=(11*i+3)%PORTS;}}
+static void physical_reality(const WaveMedium*m,Reality*r){memset(r,0,sizeof(*r));for(int i=0;i<PORTS;i++)if(m->a[i]>.5){r->bit[m1[i]]=1;r->bit[m2[i]]=1;}}
+static void random_medium(WaveMedium*m,int minbits,int span){memset(m,0,sizeof(*m));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int s=(int)(ru()%PORTS);if(m->a[s]==0.0){m->a[s]=1.0;n++;}}}
+int main(void){init();Field f={0};WaveMedium m;Reality r;random_medium(&m,2,7);for(int t=0;t<120000;t++){physical_reality(&m,&r);(void)reality_tick(&f,&m,&r);if((t%3)==2)random_medium(&m,2,7);}uint64_t h0=field_hash(&f);unsigned long long n=300000,ok=0;double max_phys_err=0.0;for(unsigned long long q=0;q<n;q++){random_medium(&m,2,7);physical_reality(&m,&r);WaveMedium p;propagate(&f,&m,&p);for(int i=0;i<PORTS;i++){double e=fabs(p.a[i]-(double)r.bit[i]);if(e>max_phys_err)max_phys_err=e;}ok+=(unsigned long long)reality_tick(&f,&m,&r);}uint64_t h1=field_hash(&f);printf("V157_REALITY_REENTRY_MASS measured_exact=%llu/%llu=%.6f%% resident=%d field_unchanged=%d max_continuous_error=%.3g\n",ok,n,100.0*(double)ok/n,f.n,h0==h1,max_phys_err);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v158_global_residual.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+
+#define PORTS 24
+#define CAP 1024
+
+typedef struct{uint64_t key;double mass;}Cell;
+typedef struct{Cell c[CAP];int n;}Field;
+typedef struct{double a[PORTS];}WaveMedium;
+typedef struct{uint8_t bit[PORTS];}Reality;
+static uint64_t rs=0x156082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t rkey(int s,int d){return((uint64_t)(uint32_t)s<<32)|(uint32_t)d;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static int idx(const Field*f,int s,int d){uint64_t k=rkey(s,d);for(int i=0;i<f->n;i++)if(f->c[i].key==k)return i;return-1;}
+static double amp(const Field*f,int s,int d){int i=idx(f,s,d);return i>=0?f->c[i].mass:0.0;}
+static Cell* ensure(Field*f,int s,int d){int i=idx(f,s,d);if(i>=0)return &f->c[i];if(f->n>=CAP)return NULL;f->c[f->n]=(Cell){rkey(s,d),0.0};return &f->c[f->n++];}
+static void erase(Field*f,int i){f->c[i]=f->c[f->n-1];f->n--;}
+static void shift_relation(Field*f,int s,int d,double dm){int i=idx(f,s,d);Cell*q=i>=0?&f->c[i]:NULL;if(!q&&dm>0)q=ensure(f,s,d);if(!q)return;double off=1.0-q->mass,on=q->mass;move_mass(&off,&on,dm);q->mass=on;i=idx(f,s,d);if(i>=0&&f->c[i].mass<=0.0)erase(f,i);}
+static double output_amp(const Field*f,const WaveMedium*m,int d){double off=1.0,on=0.0;for(int s=0;s<PORTS;s++)if(m->a[s]>0.0){double a=m->a[s]*amp(f,s,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+/* Core emits continuous amplitudes. Reality measurement is external. */
+static void propagate(const Field*f,const WaveMedium*now,WaveMedium*pred){for(int d=0;d<PORTS;d++)pred->a[d]=output_amp(f,now,d);}
+static void external_measure(const WaveMedium*w,Reality*r){for(int i=0;i<PORTS;i++)r->bit[i]=(uint8_t)(w->a[i]>.5);}
+static int reality_tick(Field*f,WaveMedium*medium,const Reality*reality){
+    WaveMedium pred;propagate(f,medium,&pred);Reality measured;external_measure(&pred,&measured);
+    int exact=!memcmp(measured.bit,reality->bit,PORTS);double residual[PORTS];
+    for(int d=0;d<PORTS;d++)residual[d]=(double)reality->bit[d]-pred.a[d];
+    /* One residual vector; every relation that physically participated reads it. */
+    for(int s=0;s<PORTS;s++)if(medium->a[s]>0.0)
+        for(int d=0;d<PORTS;d++)if(residual[d]!=0.0)
+            shift_relation(f,s,d,residual[d]*medium->a[s]);
+    for(int i=0;i<PORTS;i++){
+        double off=1.0-medium->a[i],on=medium->a[i];
+        move_mass(&off,&on,(double)reality->bit[i]-on);
+        medium->a[i]=on;
+    }
+    return exact;
+}
+static uint64_t field_hash(const Field*f){uint64_t h=1469598103934665603ULL;for(int i=0;i<f->n;i++){h^=f->c[i].key;h*=1099511628211ULL;uint64_t z;memcpy(&z,&f->c[i].mass,sizeof(z));h^=z;h*=1099511628211ULL;}return h;}
+static int m1[PORTS],m2[PORTS];
+static void init(void){for(int i=0;i<PORTS;i++){m1[i]=(7*i+5)%PORTS;m2[i]=(11*i+3)%PORTS;}}
+static void physical_reality(const WaveMedium*m,Reality*r){memset(r,0,sizeof(*r));for(int i=0;i<PORTS;i++)if(m->a[i]>.5){r->bit[m1[i]]=1;r->bit[m2[i]]=1;}}
+static void random_medium(WaveMedium*m,int minbits,int span){memset(m,0,sizeof(*m));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int s=(int)(ru()%PORTS);if(m->a[s]==0.0){m->a[s]=1.0;n++;}}}
+int main(void){init();Field f={0};WaveMedium m;Reality r;random_medium(&m,2,7);for(int t=0;t<120000;t++){physical_reality(&m,&r);(void)reality_tick(&f,&m,&r);if((t%3)==2)random_medium(&m,2,7);}uint64_t h0=field_hash(&f);unsigned long long n=300000,ok=0;double max_phys_err=0.0;for(unsigned long long q=0;q<n;q++){random_medium(&m,2,7);physical_reality(&m,&r);WaveMedium p;propagate(&f,&m,&p);for(int i=0;i<PORTS;i++){double e=fabs(p.a[i]-(double)r.bit[i]);if(e>max_phys_err)max_phys_err=e;}ok+=(unsigned long long)reality_tick(&f,&m,&r);}uint64_t h1=field_hash(&f);printf("V158_GLOBAL_RESIDUAL_ONLY measured_exact=%llu/%llu=%.6f%% resident=%d field_unchanged=%d max_continuous_error=%.3g\n",ok,n,100.0*(double)ok/n,f.n,h0==h1,max_phys_err);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v159_one_medium_type.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+
+#define PORTS 24
+#define CAP 1024
+
+typedef struct{uint64_t key;double mass;}Cell;
+typedef struct{Cell c[CAP];int n;}Field;
+typedef struct{double a[PORTS];}Medium;
+static uint64_t rs=0x159082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t rkey(int s,int d){return((uint64_t)(uint32_t)s<<32)|(uint32_t)d;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static int idx(const Field*f,int s,int d){uint64_t k=rkey(s,d);for(int i=0;i<f->n;i++)if(f->c[i].key==k)return i;return-1;}
+static double amp(const Field*f,int s,int d){int i=idx(f,s,d);return i>=0?f->c[i].mass:0.0;}
+static Cell* ensure(Field*f,int s,int d){int i=idx(f,s,d);if(i>=0)return &f->c[i];if(f->n>=CAP)return NULL;f->c[f->n]=(Cell){rkey(s,d),0.0};return &f->c[f->n++];}
+static void erase(Field*f,int i){f->c[i]=f->c[f->n-1];f->n--;}
+static void shift_relation(Field*f,int s,int d,double dm){int i=idx(f,s,d);Cell*q=i>=0?&f->c[i]:NULL;if(!q&&dm>0)q=ensure(f,s,d);if(!q)return;double off=1.0-q->mass,on=q->mass;move_mass(&off,&on,dm);q->mass=on;i=idx(f,s,d);if(i>=0&&f->c[i].mass<=0.0)erase(f,i);}
+static double output_amp(const Field*f,const Medium*m,int d){double off=1.0,on=0.0;for(int s=0;s<PORTS;s++)if(m->a[s]>0.0){double a=m->a[s]*amp(f,s,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+static void propagate(const Field*f,const Medium*now,Medium*next){for(int d=0;d<PORTS;d++)next->a[d]=output_amp(f,now,d);}
+static int external_binary_equal(const Medium*a,const Medium*b){for(int i=0;i<PORTS;i++)if((a->a[i]>.5)!=(b->a[i]>.5))return 0;return 1;}
+/* No Reality type. Physical reality is just another medium arriving at the tick. */
+static int reality_tick(Field*f,Medium*medium,const Medium*reality){
+    Medium pred;propagate(f,medium,&pred);int exact=external_binary_equal(&pred,reality);double residual[PORTS];
+    for(int d=0;d<PORTS;d++)residual[d]=reality->a[d]-pred.a[d];
+    for(int s=0;s<PORTS;s++)if(medium->a[s]>0.0)for(int d=0;d<PORTS;d++)if(residual[d]!=0.0)shift_relation(f,s,d,residual[d]*medium->a[s]);
+    for(int i=0;i<PORTS;i++){double off=1.0-medium->a[i],on=medium->a[i];move_mass(&off,&on,reality->a[i]-on);medium->a[i]=on;}
+    return exact;
+}
+static uint64_t field_hash(const Field*f){uint64_t h=1469598103934665603ULL;for(int i=0;i<f->n;i++){h^=f->c[i].key;h*=1099511628211ULL;uint64_t z;memcpy(&z,&f->c[i].mass,sizeof(z));h^=z;h*=1099511628211ULL;}return h;}
+static int m1[PORTS],m2[PORTS];
+static void init(void){for(int i=0;i<PORTS;i++){m1[i]=(7*i+5)%PORTS;m2[i]=(11*i+3)%PORTS;}}
+static void physical_reality(const Medium*m,Medium*r){memset(r,0,sizeof(*r));for(int i=0;i<PORTS;i++)if(m->a[i]>.5){r->a[m1[i]]=1.0;r->a[m2[i]]=1.0;}}
+static void random_medium(Medium*m,int minbits,int span){memset(m,0,sizeof(*m));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int s=(int)(ru()%PORTS);if(m->a[s]==0.0){m->a[s]=1.0;n++;}}}
+int main(void){init();Field f={0};Medium m,r;random_medium(&m,2,7);for(int t=0;t<120000;t++){physical_reality(&m,&r);(void)reality_tick(&f,&m,&r);if((t%3)==2)random_medium(&m,2,7);}uint64_t h0=field_hash(&f);unsigned long long n=300000,ok=0;double maxerr=0.0;for(unsigned long long q=0;q<n;q++){random_medium(&m,2,7);physical_reality(&m,&r);Medium p;propagate(&f,&m,&p);for(int i=0;i<PORTS;i++){double e=fabs(p.a[i]-r.a[i]);if(e>maxerr)maxerr=e;}ok+=(unsigned long long)reality_tick(&f,&m,&r);}uint64_t h1=field_hash(&f);printf("V159_ONE_MEDIUM_TYPE measured_exact=%llu/%llu=%.6f%% resident=%d field_unchanged=%d max_amp_error=%.3g\n",ok,n,100.0*(double)ok/n,f.n,h0==h1,maxerr);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v160_dynamic_topology.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct{uint64_t key;double mass;}Cell;
+typedef struct{Cell *c;int n,cap;}Field;
+typedef struct{double *a;int n;}Medium;
+static uint64_t rs=0x160082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t rkey(int s,int d){return((uint64_t)(uint32_t)s<<32)|(uint32_t)d;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void field_init(Field*f,int cap){f->c=(Cell*)calloc((size_t)cap,sizeof(Cell));f->n=0;f->cap=cap;}
+static void field_free(Field*f){free(f->c);memset(f,0,sizeof(*f));}
+static int idx(const Field*f,int s,int d){uint64_t k=rkey(s,d);for(int i=0;i<f->n;i++)if(f->c[i].key==k)return i;return-1;}
+static double amp(const Field*f,int s,int d){int i=idx(f,s,d);return i>=0?f->c[i].mass:0.0;}
+static Cell* ensure(Field*f,int s,int d){int i=idx(f,s,d);if(i>=0)return &f->c[i];if(f->n>=f->cap)return NULL;f->c[f->n]=(Cell){rkey(s,d),0.0};return &f->c[f->n++];}
+static void erase(Field*f,int i){f->c[i]=f->c[f->n-1];f->n--;}
+static void shift_relation(Field*f,int s,int d,double dm){int i=idx(f,s,d);Cell*q=i>=0?&f->c[i]:NULL;if(!q&&dm>0)q=ensure(f,s,d);if(!q)return;double off=1.0-q->mass,on=q->mass;move_mass(&off,&on,dm);q->mass=on;i=idx(f,s,d);if(i>=0&&f->c[i].mass<=0.0)erase(f,i);}
+static void medium_init(Medium*m,int n){m->a=(double*)calloc((size_t)n,sizeof(double));m->n=n;}
+static void medium_free(Medium*m){free(m->a);m->a=NULL;m->n=0;}
+static double output_amp(const Field*f,const Medium*m,int d){double off=1.0,on=0.0;for(int s=0;s<m->n;s++)if(m->a[s]>0.0){double a=m->a[s]*amp(f,s,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+static void propagate(const Field*f,const Medium*now,Medium*next){if(now->n!=next->n)return;for(int d=0;d<now->n;d++)next->a[d]=output_amp(f,now,d);}
+static void reality_tick(Field*f,Medium*medium,const Medium*reality){if(medium->n!=reality->n)return;Medium pred;medium_init(&pred,medium->n);propagate(f,medium,&pred);double *res=(double*)calloc((size_t)medium->n,sizeof(double));for(int d=0;d<medium->n;d++)res[d]=reality->a[d]-pred.a[d];for(int s=0;s<medium->n;s++)if(medium->a[s]>0.0)for(int d=0;d<medium->n;d++)if(res[d]!=0.0)shift_relation(f,s,d,res[d]*medium->a[s]);for(int i=0;i<medium->n;i++){double off=1.0-medium->a[i],on=medium->a[i];move_mass(&off,&on,reality->a[i]-on);medium->a[i]=on;}free(res);medium_free(&pred);}
+
+/* Everything below is an external physical test world; kernel above has no port count. */
+#define TEST_PORTS 24
+static int m1[TEST_PORTS],m2[TEST_PORTS];
+static void init_world(void){for(int i=0;i<TEST_PORTS;i++){m1[i]=(7*i+5)%TEST_PORTS;m2[i]=(11*i+3)%TEST_PORTS;}}
+static void physical_reality(const Medium*m,Medium*r){memset(r->a,0,(size_t)r->n*sizeof(double));for(int i=0;i<m->n;i++)if(m->a[i]>.5){r->a[m1[i]]=1.0;r->a[m2[i]]=1.0;}}
+static void random_medium(Medium*m,int minbits,int span){memset(m->a,0,(size_t)m->n*sizeof(double));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int s=(int)(ru()%(uint64_t)m->n);if(m->a[s]==0.0){m->a[s]=1.0;n++;}}}
+static int measured_equal(const Medium*a,const Medium*b){for(int i=0;i<a->n;i++)if((a->a[i]>.5)!=(b->a[i]>.5))return 0;return 1;}
+static uint64_t field_hash(const Field*f){uint64_t h=1469598103934665603ULL;for(int i=0;i<f->n;i++){h^=f->c[i].key;h*=1099511628211ULL;uint64_t z;memcpy(&z,&f->c[i].mass,sizeof(z));h^=z;h*=1099511628211ULL;}return h;}
+int main(void){init_world();Field f;field_init(&f,1024);Medium m,r,p;medium_init(&m,TEST_PORTS);medium_init(&r,TEST_PORTS);medium_init(&p,TEST_PORTS);random_medium(&m,2,7);for(int t=0;t<120000;t++){physical_reality(&m,&r);reality_tick(&f,&m,&r);if((t%3)==2)random_medium(&m,2,7);}uint64_t h0=field_hash(&f);unsigned long long n=300000,ok=0;double maxerr=0;for(unsigned long long q=0;q<n;q++){random_medium(&m,2,7);physical_reality(&m,&r);propagate(&f,&m,&p);ok+=(unsigned long long)measured_equal(&p,&r);for(int i=0;i<TEST_PORTS;i++){double e=fabs(p.a[i]-r.a[i]);if(e>maxerr)maxerr=e;}reality_tick(&f,&m,&r);}uint64_t h1=field_hash(&f);printf("V160_DYNAMIC_TOPOLOGY exact=%llu/%llu=%.6f%% resident=%d field_unchanged=%d max_amp_error=%.3g kernel_ports_runtime=%d\n",ok,n,100.0*(double)ok/n,f.n,h0==h1,maxerr,m.n);medium_free(&m);medium_free(&r);medium_free(&p);field_free(&f);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v161_unbounded_sparse.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct{uint64_t key;double mass;}Cell;
+typedef struct{Cell *c;int n,cap;}Field;
+typedef struct{double *a;int n;}Medium;
+static uint64_t rs=0x160082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t rkey(int s,int d){return((uint64_t)(uint32_t)s<<32)|(uint32_t)d;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void field_init(Field*f){memset(f,0,sizeof(*f));}
+static void field_free(Field*f){free(f->c);memset(f,0,sizeof(*f));}
+static int idx(const Field*f,int s,int d){uint64_t k=rkey(s,d);for(int i=0;i<f->n;i++)if(f->c[i].key==k)return i;return-1;}
+static double amp(const Field*f,int s,int d){int i=idx(f,s,d);return i>=0?f->c[i].mass:0.0;}
+static Cell* ensure(Field*f,int s,int d){
+    int i=idx(f,s,d);if(i>=0)return &f->c[i];
+    if(f->n>=f->cap){int nc=f->cap?f->cap*2:16;Cell*p=(Cell*)realloc(f->c,(size_t)nc*sizeof(Cell));if(!p)return NULL;f->c=p;f->cap=nc;}
+    f->c[f->n]=(Cell){rkey(s,d),0.0};return &f->c[f->n++];
+}
+static void erase(Field*f,int i){f->c[i]=f->c[f->n-1];f->n--;}
+static void shift_relation(Field*f,int s,int d,double dm){int i=idx(f,s,d);Cell*q=i>=0?&f->c[i]:NULL;if(!q&&dm>0)q=ensure(f,s,d);if(!q)return;double off=1.0-q->mass,on=q->mass;move_mass(&off,&on,dm);q->mass=on;i=idx(f,s,d);if(i>=0&&f->c[i].mass<=0.0)erase(f,i);}
+static void medium_init(Medium*m,int n){m->a=(double*)calloc((size_t)n,sizeof(double));m->n=n;}
+static void medium_free(Medium*m){free(m->a);m->a=NULL;m->n=0;}
+static double output_amp(const Field*f,const Medium*m,int d){double off=1.0,on=0.0;for(int s=0;s<m->n;s++)if(m->a[s]>0.0){double a=m->a[s]*amp(f,s,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+static void propagate(const Field*f,const Medium*now,Medium*next){if(now->n!=next->n)return;for(int d=0;d<now->n;d++)next->a[d]=output_amp(f,now,d);}
+static void reality_tick(Field*f,Medium*medium,const Medium*reality){if(medium->n!=reality->n)return;Medium pred;medium_init(&pred,medium->n);propagate(f,medium,&pred);double *res=(double*)calloc((size_t)medium->n,sizeof(double));for(int d=0;d<medium->n;d++)res[d]=reality->a[d]-pred.a[d];for(int s=0;s<medium->n;s++)if(medium->a[s]>0.0)for(int d=0;d<medium->n;d++)if(res[d]!=0.0)shift_relation(f,s,d,res[d]*medium->a[s]);for(int i=0;i<medium->n;i++){double off=1.0-medium->a[i],on=medium->a[i];move_mass(&off,&on,reality->a[i]-on);medium->a[i]=on;}free(res);medium_free(&pred);}
+
+/* Everything below is an external physical test world; kernel above has no port count. */
+#define TEST_PORTS 24
+static int m1[TEST_PORTS],m2[TEST_PORTS];
+static void init_world(void){for(int i=0;i<TEST_PORTS;i++){m1[i]=(7*i+5)%TEST_PORTS;m2[i]=(11*i+3)%TEST_PORTS;}}
+static void physical_reality(const Medium*m,Medium*r){memset(r->a,0,(size_t)r->n*sizeof(double));for(int i=0;i<m->n;i++)if(m->a[i]>.5){r->a[m1[i]]=1.0;r->a[m2[i]]=1.0;}}
+static void random_medium(Medium*m,int minbits,int span){memset(m->a,0,(size_t)m->n*sizeof(double));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int s=(int)(ru()%(uint64_t)m->n);if(m->a[s]==0.0){m->a[s]=1.0;n++;}}}
+static int measured_equal(const Medium*a,const Medium*b){for(int i=0;i<a->n;i++)if((a->a[i]>.5)!=(b->a[i]>.5))return 0;return 1;}
+static uint64_t field_hash(const Field*f){uint64_t h=1469598103934665603ULL;for(int i=0;i<f->n;i++){h^=f->c[i].key;h*=1099511628211ULL;uint64_t z;memcpy(&z,&f->c[i].mass,sizeof(z));h^=z;h*=1099511628211ULL;}return h;}
+int main(void){init_world();Field f;field_init(&f);Medium m,r,p;medium_init(&m,TEST_PORTS);medium_init(&r,TEST_PORTS);medium_init(&p,TEST_PORTS);random_medium(&m,2,7);for(int t=0;t<120000;t++){physical_reality(&m,&r);reality_tick(&f,&m,&r);if((t%3)==2)random_medium(&m,2,7);}uint64_t h0=field_hash(&f);unsigned long long n=300000,ok=0;double maxerr=0;for(unsigned long long q=0;q<n;q++){random_medium(&m,2,7);physical_reality(&m,&r);propagate(&f,&m,&p);ok+=(unsigned long long)measured_equal(&p,&r);for(int i=0;i<TEST_PORTS;i++){double e=fabs(p.a[i]-r.a[i]);if(e>maxerr)maxerr=e;}reality_tick(&f,&m,&r);}uint64_t h1=field_hash(&f);printf("V161_UNBOUNDED_SPARSE_BIRTH exact=%llu/%llu=%.6f%% resident=%d field_unchanged=%d max_amp_error=%.3g kernel_ports_runtime=%d storage_capacity=%d\n",ok,n,100.0*(double)ok/n,f.n,h0==h1,maxerr,m.n,f.cap);medium_free(&m);medium_free(&r);medium_free(&p);field_free(&f);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v162_one_mass_store.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct{uint64_t addr;double mass;}Cell;
+typedef struct{Cell *c;int n,cap;}Store;
+static uint64_t rs=0x162082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+/* Cantor-style physical address composition. Node and relation addresses are
+   generated by the same pairing law; there is no token-kind bit. */
+static uint64_t pair_addr(uint64_t a,uint64_t b){uint64_t s=a+b;return (s*(s+1ULL))/2ULL+b+1ULL;}
+static uint64_t node_addr(int p){return pair_addr((uint64_t)(p+1),0ULL);}
+static uint64_t relation_addr(int s,int d){return pair_addr(node_addr(s),node_addr(d));}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void store_init(Store*s){memset(s,0,sizeof(*s));}
+static void store_free(Store*s){free(s->c);memset(s,0,sizeof(*s));}
+static int find_addr(const Store*s,uint64_t a){for(int i=0;i<s->n;i++)if(s->c[i].addr==a)return i;return-1;}
+static double get_mass(const Store*s,uint64_t a){int i=find_addr(s,a);return i>=0?s->c[i].mass:0.0;}
+static Cell* ensure_addr(Store*s,uint64_t a){int i=find_addr(s,a);if(i>=0)return &s->c[i];if(s->n>=s->cap){int nc=s->cap?s->cap*2:32;Cell*p=(Cell*)realloc(s->c,(size_t)nc*sizeof(Cell));if(!p)return NULL;s->c=p;s->cap=nc;}s->c[s->n]=(Cell){a,0.0};return &s->c[s->n++];}
+static void erase(Store*s,int i){s->c[i]=s->c[s->n-1];s->n--;}
+static void shift_addr(Store*s,uint64_t a,double dm){int i=find_addr(s,a);Cell*q=i>=0?&s->c[i]:NULL;if(!q&&dm>0)q=ensure_addr(s,a);if(!q)return;double off=1.0-q->mass,on=q->mass;move_mass(&off,&on,dm);q->mass=on;i=find_addr(s,a);if(i>=0&&s->c[i].mass<=0.0)erase(s,i);}
+static double node_mass(const Store*s,int p){return get_mass(s,node_addr(p));}
+static double rel_mass(const Store*s,int a,int b){return get_mass(s,relation_addr(a,b));}
+static double predict_port(const Store*s,int ports,int d){double off=1.0,on=0.0;for(int p=0;p<ports;p++){double src=node_mass(s,p);if(src<=0.0)continue;double a=src*rel_mass(s,p,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+/* Current BIT masses and relation masses live in the same Store. Reality is an
+   external amplitude vector only at the physical boundary. */
+static void reality_tick(Store*s,int ports,const double reality[]){double *pred=(double*)calloc((size_t)ports,sizeof(double));double *res=(double*)calloc((size_t)ports,sizeof(double));for(int d=0;d<ports;d++){pred[d]=predict_port(s,ports,d);res[d]=reality[d]-pred[d];}for(int a=0;a<ports;a++){double src=node_mass(s,a);if(src<=0.0)continue;for(int d=0;d<ports;d++)if(res[d]!=0.0)shift_addr(s,relation_addr(a,d),res[d]*src);}for(int p=0;p<ports;p++)shift_addr(s,node_addr(p),reality[p]-node_mass(s,p));free(res);free(pred);}
+static void set_nodes(Store*s,int ports,const double x[]){for(int p=0;p<ports;p++)shift_addr(s,node_addr(p),x[p]-node_mass(s,p));}
+static void read_prediction(const Store*s,int ports,double out[]){for(int d=0;d<ports;d++)out[d]=predict_port(s,ports,d);}
+static int relation_resident(const Store*s,int ports){int n=0;for(int a=0;a<ports;a++)for(int d=0;d<ports;d++)if(rel_mass(s,a,d)>0.0)n++;return n;}
+static uint64_t relation_hash(const Store*s,int ports){uint64_t h=1469598103934665603ULL;for(int a=0;a<ports;a++)for(int d=0;d<ports;d++){double m=rel_mass(s,a,d);if(m<=0.0)continue;uint64_t k=relation_addr(a,d),z;memcpy(&z,&m,sizeof(z));h^=k;h*=1099511628211ULL;h^=z;h*=1099511628211ULL;}return h;}
+
+#define TEST_PORTS 24
+static int m1[TEST_PORTS],m2[TEST_PORTS];
+static void init_world(void){for(int i=0;i<TEST_PORTS;i++){m1[i]=(7*i+5)%TEST_PORTS;m2[i]=(11*i+3)%TEST_PORTS;}}
+static void random_bits(double x[],int ports,int minbits,int span){memset(x,0,(size_t)ports*sizeof(double));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int p=(int)(ru()%(uint64_t)ports);if(x[p]==0.0){x[p]=1.0;n++;}}}
+static void physical_reality(const double now[],double next[]){memset(next,0,TEST_PORTS*sizeof(double));for(int i=0;i<TEST_PORTS;i++)if(now[i]>.5){next[m1[i]]=1.0;next[m2[i]]=1.0;}}
+static int measured_equal(const double a[],const double b[],int n){for(int i=0;i<n;i++)if((a[i]>.5)!=(b[i]>.5))return 0;return 1;}
+int main(void){init_world();Store s;store_init(&s);double now[TEST_PORTS],truth[TEST_PORTS],pred[TEST_PORTS];random_bits(now,TEST_PORTS,2,7);set_nodes(&s,TEST_PORTS,now);for(int t=0;t<120000;t++){for(int i=0;i<TEST_PORTS;i++)now[i]=node_mass(&s,i);physical_reality(now,truth);reality_tick(&s,TEST_PORTS,truth);if((t%3)==2){random_bits(now,TEST_PORTS,2,7);set_nodes(&s,TEST_PORTS,now);}}uint64_t h0=relation_hash(&s,TEST_PORTS);unsigned long long n=300000,ok=0;double maxerr=0;for(unsigned long long q=0;q<n;q++){random_bits(now,TEST_PORTS,2,7);set_nodes(&s,TEST_PORTS,now);physical_reality(now,truth);read_prediction(&s,TEST_PORTS,pred);ok+=(unsigned long long)measured_equal(pred,truth,TEST_PORTS);for(int i=0;i<TEST_PORTS;i++){double e=fabs(pred[i]-truth[i]);if(e>maxerr)maxerr=e;}reality_tick(&s,TEST_PORTS,truth);}uint64_t h1=relation_hash(&s,TEST_PORTS);printf("V162_ONE_MASS_STORE exact=%llu/%llu=%.6f%% relations=%d total_cells=%d field_unchanged=%d max_amp_error=%.3g\n",ok,n,100.0*(double)ok/n,relation_resident(&s,TEST_PORTS),s.n,h0==h1,maxerr);store_free(&s);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v163_no_participation_gates.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct{uint64_t addr;double mass;}Cell;
+typedef struct{Cell *c;int n,cap;}Store;
+static uint64_t rs=0x162082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+/* Cantor-style physical address composition. Node and relation addresses are
+   generated by the same pairing law; there is no token-kind bit. */
+static uint64_t pair_addr(uint64_t a,uint64_t b){uint64_t s=a+b;return (s*(s+1ULL))/2ULL+b+1ULL;}
+static uint64_t node_addr(int p){return pair_addr((uint64_t)(p+1),0ULL);}
+static uint64_t relation_addr(int s,int d){return pair_addr(node_addr(s),node_addr(d));}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void store_init(Store*s){memset(s,0,sizeof(*s));}
+static void store_free(Store*s){free(s->c);memset(s,0,sizeof(*s));}
+static int find_addr(const Store*s,uint64_t a){for(int i=0;i<s->n;i++)if(s->c[i].addr==a)return i;return-1;}
+static double get_mass(const Store*s,uint64_t a){int i=find_addr(s,a);return i>=0?s->c[i].mass:0.0;}
+static Cell* ensure_addr(Store*s,uint64_t a){int i=find_addr(s,a);if(i>=0)return &s->c[i];if(s->n>=s->cap){int nc=s->cap?s->cap*2:32;Cell*p=(Cell*)realloc(s->c,(size_t)nc*sizeof(Cell));if(!p)return NULL;s->c=p;s->cap=nc;}s->c[s->n]=(Cell){a,0.0};return &s->c[s->n++];}
+static void erase(Store*s,int i){s->c[i]=s->c[s->n-1];s->n--;}
+static void shift_addr(Store*s,uint64_t a,double dm){int i=find_addr(s,a);Cell*q=i>=0?&s->c[i]:NULL;if(!q&&dm>0)q=ensure_addr(s,a);if(!q)return;double off=1.0-q->mass,on=q->mass;move_mass(&off,&on,dm);q->mass=on;i=find_addr(s,a);if(i>=0&&s->c[i].mass<=0.0)erase(s,i);}
+static double node_mass(const Store*s,int p){return get_mass(s,node_addr(p));}
+static double rel_mass(const Store*s,int a,int b){return get_mass(s,relation_addr(a,b));}
+static double predict_port(const Store*s,int ports,int d){double off=1.0,on=0.0;for(int p=0;p<ports;p++){double src=node_mass(s,p);double a=src*rel_mass(s,p,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+/* Current BIT masses and relation masses live in the same Store. Reality is an
+   external amplitude vector only at the physical boundary. */
+static void reality_tick(Store*s,int ports,const double reality[]){double *pred=(double*)calloc((size_t)ports,sizeof(double));double *res=(double*)calloc((size_t)ports,sizeof(double));for(int d=0;d<ports;d++){pred[d]=predict_port(s,ports,d);res[d]=reality[d]-pred[d];}for(int a=0;a<ports;a++){double src=node_mass(s,a);for(int d=0;d<ports;d++)shift_addr(s,relation_addr(a,d),res[d]*src);}for(int p=0;p<ports;p++)shift_addr(s,node_addr(p),reality[p]-node_mass(s,p));free(res);free(pred);}
+static void set_nodes(Store*s,int ports,const double x[]){for(int p=0;p<ports;p++)shift_addr(s,node_addr(p),x[p]-node_mass(s,p));}
+static void read_prediction(const Store*s,int ports,double out[]){for(int d=0;d<ports;d++)out[d]=predict_port(s,ports,d);}
+static int relation_resident(const Store*s,int ports){int n=0;for(int a=0;a<ports;a++)for(int d=0;d<ports;d++)if(rel_mass(s,a,d)>0.0)n++;return n;}
+static uint64_t relation_hash(const Store*s,int ports){uint64_t h=1469598103934665603ULL;for(int a=0;a<ports;a++)for(int d=0;d<ports;d++){double m=rel_mass(s,a,d);if(m<=0.0)continue;uint64_t k=relation_addr(a,d),z;memcpy(&z,&m,sizeof(z));h^=k;h*=1099511628211ULL;h^=z;h*=1099511628211ULL;}return h;}
+
+#define TEST_PORTS 24
+static int m1[TEST_PORTS],m2[TEST_PORTS];
+static void init_world(void){for(int i=0;i<TEST_PORTS;i++){m1[i]=(7*i+5)%TEST_PORTS;m2[i]=(11*i+3)%TEST_PORTS;}}
+static void random_bits(double x[],int ports,int minbits,int span){memset(x,0,(size_t)ports*sizeof(double));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int p=(int)(ru()%(uint64_t)ports);if(x[p]==0.0){x[p]=1.0;n++;}}}
+static void physical_reality(const double now[],double next[]){memset(next,0,TEST_PORTS*sizeof(double));for(int i=0;i<TEST_PORTS;i++)if(now[i]>.5){next[m1[i]]=1.0;next[m2[i]]=1.0;}}
+static int measured_equal(const double a[],const double b[],int n){for(int i=0;i<n;i++)if((a[i]>.5)!=(b[i]>.5))return 0;return 1;}
+int main(void){init_world();Store s;store_init(&s);double now[TEST_PORTS],truth[TEST_PORTS],pred[TEST_PORTS];random_bits(now,TEST_PORTS,2,7);set_nodes(&s,TEST_PORTS,now);for(int t=0;t<120000;t++){for(int i=0;i<TEST_PORTS;i++)now[i]=node_mass(&s,i);physical_reality(now,truth);reality_tick(&s,TEST_PORTS,truth);if((t%3)==2){random_bits(now,TEST_PORTS,2,7);set_nodes(&s,TEST_PORTS,now);}}uint64_t h0=relation_hash(&s,TEST_PORTS);unsigned long long n=300000,ok=0;double maxerr=0;for(unsigned long long q=0;q<n;q++){random_bits(now,TEST_PORTS,2,7);set_nodes(&s,TEST_PORTS,now);physical_reality(now,truth);read_prediction(&s,TEST_PORTS,pred);ok+=(unsigned long long)measured_equal(pred,truth,TEST_PORTS);for(int i=0;i<TEST_PORTS;i++){double e=fabs(pred[i]-truth[i]);if(e>maxerr)maxerr=e;}reality_tick(&s,TEST_PORTS,truth);}uint64_t h1=relation_hash(&s,TEST_PORTS);printf("V163_NO_PARTICIPATION_GATES exact=%llu/%llu=%.6f%% relations=%d total_cells=%d field_unchanged=%d max_amp_error=%.3g\n",ok,n,100.0*(double)ok/n,relation_resident(&s,TEST_PORTS),s.n,h0==h1,maxerr);store_free(&s);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v164_birth_by_mass.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct{uint64_t addr;double mass;}Cell;
+typedef struct{Cell *c;int n,cap;}Store;
+static uint64_t rs=0x162082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+/* Cantor-style physical address composition. Node and relation addresses are
+   generated by the same pairing law; there is no token-kind bit. */
+static uint64_t pair_addr(uint64_t a,uint64_t b){uint64_t s=a+b;return (s*(s+1ULL))/2ULL+b+1ULL;}
+static uint64_t node_addr(int p){return pair_addr((uint64_t)(p+1),0ULL);}
+static uint64_t relation_addr(int s,int d){return pair_addr(node_addr(s),node_addr(d));}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void store_init(Store*s){memset(s,0,sizeof(*s));}
+static void store_free(Store*s){free(s->c);memset(s,0,sizeof(*s));}
+static int find_addr(const Store*s,uint64_t a){for(int i=0;i<s->n;i++)if(s->c[i].addr==a)return i;return-1;}
+static double get_mass(const Store*s,uint64_t a){int i=find_addr(s,a);return i>=0?s->c[i].mass:0.0;}
+static Cell* ensure_addr(Store*s,uint64_t a){int i=find_addr(s,a);if(i>=0)return &s->c[i];if(s->n>=s->cap){int nc=s->cap?s->cap*2:32;Cell*p=(Cell*)realloc(s->c,(size_t)nc*sizeof(Cell));if(!p)return NULL;s->c=p;s->cap=nc;}s->c[s->n]=(Cell){a,0.0};return &s->c[s->n++];}
+static void erase(Store*s,int i){s->c[i]=s->c[s->n-1];s->n--;}
+static void shift_addr(Store*s,uint64_t a,double dm){
+    int i=find_addr(s,a);double old=i>=0?s->c[i].mass:0.0;
+    double off=1.0-old,on=old;move_mass(&off,&on,dm);
+    if(i<0){if(on<=0.0)return;Cell*q=ensure_addr(s,a);if(!q)return;q->mass=on;return;}
+    s->c[i].mass=on;if(on<=0.0)erase(s,i);
+}
+static double node_mass(const Store*s,int p){return get_mass(s,node_addr(p));}
+static double rel_mass(const Store*s,int a,int b){return get_mass(s,relation_addr(a,b));}
+static double predict_port(const Store*s,int ports,int d){double off=1.0,on=0.0;for(int p=0;p<ports;p++){double src=node_mass(s,p);double a=src*rel_mass(s,p,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+/* Current BIT masses and relation masses live in the same Store. Reality is an
+   external amplitude vector only at the physical boundary. */
+static void reality_tick(Store*s,int ports,const double reality[]){double *pred=(double*)calloc((size_t)ports,sizeof(double));double *res=(double*)calloc((size_t)ports,sizeof(double));for(int d=0;d<ports;d++){pred[d]=predict_port(s,ports,d);res[d]=reality[d]-pred[d];}for(int a=0;a<ports;a++){double src=node_mass(s,a);for(int d=0;d<ports;d++)shift_addr(s,relation_addr(a,d),res[d]*src);}for(int p=0;p<ports;p++)shift_addr(s,node_addr(p),reality[p]-node_mass(s,p));free(res);free(pred);}
+static void set_nodes(Store*s,int ports,const double x[]){for(int p=0;p<ports;p++)shift_addr(s,node_addr(p),x[p]-node_mass(s,p));}
+static void read_prediction(const Store*s,int ports,double out[]){for(int d=0;d<ports;d++)out[d]=predict_port(s,ports,d);}
+static int relation_resident(const Store*s,int ports){int n=0;for(int a=0;a<ports;a++)for(int d=0;d<ports;d++)if(rel_mass(s,a,d)>0.0)n++;return n;}
+static uint64_t relation_hash(const Store*s,int ports){uint64_t h=1469598103934665603ULL;for(int a=0;a<ports;a++)for(int d=0;d<ports;d++){double m=rel_mass(s,a,d);if(m<=0.0)continue;uint64_t k=relation_addr(a,d),z;memcpy(&z,&m,sizeof(z));h^=k;h*=1099511628211ULL;h^=z;h*=1099511628211ULL;}return h;}
+
+#define TEST_PORTS 24
+static int m1[TEST_PORTS],m2[TEST_PORTS];
+static void init_world(void){for(int i=0;i<TEST_PORTS;i++){m1[i]=(7*i+5)%TEST_PORTS;m2[i]=(11*i+3)%TEST_PORTS;}}
+static void random_bits(double x[],int ports,int minbits,int span){memset(x,0,(size_t)ports*sizeof(double));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int p=(int)(ru()%(uint64_t)ports);if(x[p]==0.0){x[p]=1.0;n++;}}}
+static void physical_reality(const double now[],double next[]){memset(next,0,TEST_PORTS*sizeof(double));for(int i=0;i<TEST_PORTS;i++)if(now[i]>.5){next[m1[i]]=1.0;next[m2[i]]=1.0;}}
+static int measured_equal(const double a[],const double b[],int n){for(int i=0;i<n;i++)if((a[i]>.5)!=(b[i]>.5))return 0;return 1;}
+int main(void){init_world();Store s;store_init(&s);double now[TEST_PORTS],truth[TEST_PORTS],pred[TEST_PORTS];random_bits(now,TEST_PORTS,2,7);set_nodes(&s,TEST_PORTS,now);for(int t=0;t<120000;t++){for(int i=0;i<TEST_PORTS;i++)now[i]=node_mass(&s,i);physical_reality(now,truth);reality_tick(&s,TEST_PORTS,truth);if((t%3)==2){random_bits(now,TEST_PORTS,2,7);set_nodes(&s,TEST_PORTS,now);}}uint64_t h0=relation_hash(&s,TEST_PORTS);unsigned long long n=300000,ok=0;double maxerr=0;for(unsigned long long q=0;q<n;q++){random_bits(now,TEST_PORTS,2,7);set_nodes(&s,TEST_PORTS,now);physical_reality(now,truth);read_prediction(&s,TEST_PORTS,pred);ok+=(unsigned long long)measured_equal(pred,truth,TEST_PORTS);for(int i=0;i<TEST_PORTS;i++){double e=fabs(pred[i]-truth[i]);if(e>maxerr)maxerr=e;}reality_tick(&s,TEST_PORTS,truth);}uint64_t h1=relation_hash(&s,TEST_PORTS);printf("V164_BIRTH_BY_MASS_ONLY exact=%llu/%llu=%.6f%% relations=%d total_cells=%d field_unchanged=%d max_amp_error=%.3g\n",ok,n,100.0*(double)ok/n,relation_resident(&s,TEST_PORTS),s.n,h0==h1,maxerr);store_free(&s);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v165b_zero_mass_hash.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct{uint64_t addr;double mass;uint8_t occupied;}Cell;
+typedef struct{Cell *tab;size_t cap,count;}Store;
+static uint64_t rs=0x165b82efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t pair_addr(uint64_t a,uint64_t b){uint64_t s=a+b;return (s*(s+1ULL))/2ULL+b+1ULL;}
+static uint64_t node_addr(int p){return pair_addr((uint64_t)(p+1),0ULL);}
+static uint64_t relation_addr(int s,int d){return pair_addr(node_addr(s),node_addr(d));}
+static uint64_t mix64(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void store_init(Store*s){memset(s,0,sizeof(*s));}
+static void store_free(Store*s){free(s->tab);memset(s,0,sizeof(*s));}
+static int store_alloc(Store*s,size_t cap){Cell*t=(Cell*)calloc(cap,sizeof(Cell));if(!t)return 0;free(s->tab);s->tab=t;s->cap=cap;s->count=0;return 1;}
+static size_t slot_for(const Store*s,uint64_t a){return (size_t)mix64(a)&(s->cap-1u);}
+static Cell* find_cell(Store*s,uint64_t a){if(!s->cap)return NULL;size_t j=slot_for(s,a);for(size_t n=0;n<s->cap;n++,j=(j+1u)&(s->cap-1u)){Cell*c=&s->tab[j];if(!c->occupied)return NULL;if(c->addr==a)return c;}return NULL;}
+static const Cell* find_cell_const(const Store*s,uint64_t a){return find_cell((Store*)s,a);}
+static int rehash(Store*s,size_t nc){Cell*old=s->tab;size_t oc=s->cap;Cell*nt=(Cell*)calloc(nc,sizeof(Cell));if(!nt)return 0;s->tab=nt;s->cap=nc;s->count=0;for(size_t i=0;i<oc;i++)if(old[i].occupied){size_t j=slot_for(s,old[i].addr);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=old[i];s->count++;}free(old);return 1;}
+static Cell* ensure_addr(Store*s,uint64_t a){if(!s->cap&& !store_alloc(s,32))return NULL;Cell*c=find_cell(s,a);if(c)return c;if((s->count+1u)*10u>s->cap*7u){if(!rehash(s,s->cap*2u))return NULL;}size_t j=slot_for(s,a);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=(Cell){a,0.0,1};s->count++;return &s->tab[j];}
+static double get_mass(const Store*s,uint64_t a){const Cell*c=find_cell_const(s,a);return c?c->mass:0.0;}
+static void shift_addr(Store*s,uint64_t a,double dm){double old=get_mass(s,a),off=1.0-old,on=old;move_mass(&off,&on,dm);if(old==0.0&&on==0.0)return;Cell*c=ensure_addr(s,a);if(c)c->mass=on;}
+static double node_mass(const Store*s,int p){return get_mass(s,node_addr(p));}
+static double rel_mass(const Store*s,int a,int b){return get_mass(s,relation_addr(a,b));}
+static double predict_port(const Store*s,int ports,int d){double off=1.0,on=0.0;for(int p=0;p<ports;p++){double src=node_mass(s,p),a=src*rel_mass(s,p,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+static void reality_tick(Store*s,int ports,const double reality[]){double *pred=(double*)calloc((size_t)ports,sizeof(double)),*res=(double*)calloc((size_t)ports,sizeof(double));for(int d=0;d<ports;d++){pred[d]=predict_port(s,ports,d);res[d]=reality[d]-pred[d];}for(int a=0;a<ports;a++){double src=node_mass(s,a);for(int d=0;d<ports;d++)shift_addr(s,relation_addr(a,d),res[d]*src);}for(int p=0;p<ports;p++)shift_addr(s,node_addr(p),reality[p]-node_mass(s,p));free(res);free(pred);}
+static void set_nodes(Store*s,int ports,const double x[]){for(int p=0;p<ports;p++)shift_addr(s,node_addr(p),x[p]-node_mass(s,p));}
+static void read_prediction(const Store*s,int ports,double out[]){for(int d=0;d<ports;d++)out[d]=predict_port(s,ports,d);}
+static int positive_relations(const Store*s,int ports){int n=0;for(int a=0;a<ports;a++)for(int d=0;d<ports;d++)if(rel_mass(s,a,d)>0.0)n++;return n;}
+static uint64_t relation_hash(const Store*s,int ports){uint64_t h=1469598103934665603ULL;for(int a=0;a<ports;a++)for(int d=0;d<ports;d++){double m=rel_mass(s,a,d);if(m<=0.0)continue;uint64_t k=relation_addr(a,d),z;memcpy(&z,&m,sizeof(z));h^=k;h*=1099511628211ULL;h^=z;h*=1099511628211ULL;}return h;}
+#define TEST_PORTS 24
+static int m1[TEST_PORTS],m2[TEST_PORTS];
+static void init_world(void){for(int i=0;i<TEST_PORTS;i++){m1[i]=(7*i+5)%TEST_PORTS;m2[i]=(11*i+3)%TEST_PORTS;}}
+static void random_bits(double x[],int minbits,int span){memset(x,0,TEST_PORTS*sizeof(double));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int p=(int)(ru()%TEST_PORTS);if(x[p]==0.0){x[p]=1.0;n++;}}}
+static void physical_reality(const double now[],double next[]){memset(next,0,TEST_PORTS*sizeof(double));for(int i=0;i<TEST_PORTS;i++)if(now[i]>.5){next[m1[i]]=1.0;next[m2[i]]=1.0;}}
+static int measured_equal(const double a[],const double b[]){for(int i=0;i<TEST_PORTS;i++)if((a[i]>.5)!=(b[i]>.5))return 0;return 1;}
+int main(void){init_world();Store s;store_init(&s);double now[TEST_PORTS],truth[TEST_PORTS],pred[TEST_PORTS];random_bits(now,2,7);set_nodes(&s,TEST_PORTS,now);for(int t=0;t<120000;t++){for(int i=0;i<TEST_PORTS;i++)now[i]=node_mass(&s,i);physical_reality(now,truth);reality_tick(&s,TEST_PORTS,truth);if((t%3)==2){random_bits(now,2,7);set_nodes(&s,TEST_PORTS,now);}}uint64_t h0=relation_hash(&s,TEST_PORTS);unsigned long long n=300000,ok=0;double maxerr=0;for(unsigned long long q=0;q<n;q++){random_bits(now,2,7);set_nodes(&s,TEST_PORTS,now);physical_reality(now,truth);read_prediction(&s,TEST_PORTS,pred);ok+=(unsigned long long)measured_equal(pred,truth);for(int i=0;i<TEST_PORTS;i++){double e=fabs(pred[i]-truth[i]);if(e>maxerr)maxerr=e;}reality_tick(&s,TEST_PORTS,truth);}uint64_t h1=relation_hash(&s,TEST_PORTS);printf("V165B_ZERO_MASS_DEATH exact=%llu/%llu=%.6f%% positive_relations=%d stored_cells=%zu field_unchanged=%d max_amp_error=%.3g\n",ok,n,100.0*(double)ok/n,positive_relations(&s,TEST_PORTS),s.count,h0==h1,maxerr);store_free(&s);return ok==n&&h0==h1?0:1;}
+
+===== bpc_minimal_v166_external_addresses.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct{uint64_t addr;double mass;uint8_t occupied;}Cell;
+typedef struct{Cell *tab;size_t cap,count;}Store;
+typedef struct{const uint64_t *port_addr;int n;}Topology;
+static uint64_t rs=0x166082efa98ec4e6ULL;
+static uint64_t ru(void){rs^=rs>>12;rs^=rs<<25;rs^=rs>>27;return rs*2685821657736338717ULL;}
+static uint64_t pair_addr(uint64_t a,uint64_t b){uint64_t s=a+b;return (s*(s+1ULL))/2ULL+b+1ULL;}
+static uint64_t relation_addr(const Topology*t,int s,int d){return pair_addr(t->port_addr[s],t->port_addr[d]);}
+static uint64_t mix64(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void store_init(Store*s){memset(s,0,sizeof(*s));}
+static void store_free(Store*s){free(s->tab);memset(s,0,sizeof(*s));}
+static int store_alloc(Store*s,size_t cap){Cell*t=(Cell*)calloc(cap,sizeof(Cell));if(!t)return 0;free(s->tab);s->tab=t;s->cap=cap;s->count=0;return 1;}
+static size_t slot_for(const Store*s,uint64_t a){return (size_t)mix64(a)&(s->cap-1u);}
+static Cell* find_cell(Store*s,uint64_t a){if(!s->cap)return NULL;size_t j=slot_for(s,a);for(size_t n=0;n<s->cap;n++,j=(j+1u)&(s->cap-1u)){Cell*c=&s->tab[j];if(!c->occupied)return NULL;if(c->addr==a)return c;}return NULL;}
+static const Cell* find_cell_const(const Store*s,uint64_t a){return find_cell((Store*)s,a);}
+static int rehash(Store*s,size_t nc){Cell*old=s->tab;size_t oc=s->cap;Cell*nt=(Cell*)calloc(nc,sizeof(Cell));if(!nt)return 0;s->tab=nt;s->cap=nc;s->count=0;for(size_t i=0;i<oc;i++)if(old[i].occupied){size_t j=slot_for(s,old[i].addr);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=old[i];s->count++;}free(old);return 1;}
+static Cell* ensure_addr(Store*s,uint64_t a){if(!s->cap&&!store_alloc(s,32))return NULL;Cell*c=find_cell(s,a);if(c)return c;if((s->count+1u)*10u>s->cap*7u){if(!rehash(s,s->cap*2u))return NULL;}size_t j=slot_for(s,a);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=(Cell){a,0.0,1};s->count++;return &s->tab[j];}
+static double get_mass(const Store*s,uint64_t a){const Cell*c=find_cell_const(s,a);return c?c->mass:0.0;}
+static void shift_addr(Store*s,uint64_t a,double dm){double old=get_mass(s,a),off=1.0-old,on=old;move_mass(&off,&on,dm);if(old==0.0&&on==0.0)return;Cell*c=ensure_addr(s,a);if(c)c->mass=on;}
+static double node_mass(const Store*s,const Topology*t,int p){return get_mass(s,t->port_addr[p]);}
+static double rel_mass(const Store*s,const Topology*t,int a,int b){return get_mass(s,relation_addr(t,a,b));}
+static double predict_port(const Store*s,const Topology*t,int d){double off=1.0,on=0.0;for(int p=0;p<t->n;p++){double src=node_mass(s,t,p),a=src*rel_mass(s,t,p,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+static void reality_tick(Store*s,const Topology*t,const double reality[]){double *pred=(double*)calloc((size_t)t->n,sizeof(double)),*res=(double*)calloc((size_t)t->n,sizeof(double));for(int d=0;d<t->n;d++){pred[d]=predict_port(s,t,d);res[d]=reality[d]-pred[d];}for(int a=0;a<t->n;a++){double src=node_mass(s,t,a);for(int d=0;d<t->n;d++)shift_addr(s,relation_addr(t,a,d),res[d]*src);}for(int p=0;p<t->n;p++)shift_addr(s,t->port_addr[p],reality[p]-node_mass(s,t,p));free(res);free(pred);}
+static void set_nodes(Store*s,const Topology*t,const double x[]){for(int p=0;p<t->n;p++)shift_addr(s,t->port_addr[p],x[p]-node_mass(s,t,p));}
+static void read_prediction(const Store*s,const Topology*t,double out[]){for(int d=0;d<t->n;d++)out[d]=predict_port(s,t,d);}
+static int positive_relations(const Store*s,const Topology*t){int n=0;for(int a=0;a<t->n;a++)for(int d=0;d<t->n;d++)if(rel_mass(s,t,a,d)>0.0)n++;return n;}
+#define P 24
+static int m1[P],m2[P];
+static void init_world(void){for(int i=0;i<P;i++){m1[i]=(7*i+5)%P;m2[i]=(11*i+3)%P;}}
+static void random_bits(double x[],int minbits,int span){memset(x,0,P*sizeof(double));int bits=minbits+(int)(ru()%(uint64_t)span),n=0;while(n<bits){int p=(int)(ru()%P);if(x[p]==0.0){x[p]=1.0;n++;}}}
+static void physical_reality(const double now[],double next[]){memset(next,0,P*sizeof(double));for(int i=0;i<P;i++)if(now[i]>.5){next[m1[i]]=1.0;next[m2[i]]=1.0;}}
+static int measured_equal(const double a[],const double b[]){for(int i=0;i<P;i++)if((a[i]>.5)!=(b[i]>.5))return 0;return 1;}
+static void make_random_addresses(uint64_t addr[P],uint64_t salt){for(int i=0;i<P;i++)addr[i]=pair_addr((uint64_t)(i+1),salt+17ULL);for(int i=P-1;i>0;i--){int j=(int)(ru()%(uint64_t)(i+1));uint64_t q=addr[i];addr[i]=addr[j];addr[j]=q;}}
+int main(void){init_world();unsigned long long total=0,ok=0;for(int trial=0;trial<3;trial++){uint64_t pa[P];make_random_addresses(pa,(uint64_t)(101+trial*31));Topology t={pa,P};Store s;store_init(&s);double now[P],truth[P],pred[P];random_bits(now,2,7);set_nodes(&s,&t,now);for(int e=0;e<70000;e++){for(int i=0;i<P;i++)now[i]=node_mass(&s,&t,i);physical_reality(now,truth);reality_tick(&s,&t,truth);if((e%3)==2){random_bits(now,2,7);set_nodes(&s,&t,now);}}for(int q=0;q<100000;q++){random_bits(now,2,7);set_nodes(&s,&t,now);physical_reality(now,truth);read_prediction(&s,&t,pred);ok+=(unsigned long long)measured_equal(pred,truth);total++;reality_tick(&s,&t,truth);}printf(" trial%d relations=%d stored=%zu\n",trial,positive_relations(&s,&t),s.count);store_free(&s);}printf("V166_EXTERNAL_PHYSICAL_ADDRESSES exact=%llu/%llu=%.6f%%\n",ok,total,100.0*(double)ok/total);return ok==total?0:1;}
