@@ -1,0 +1,4 @@
+WORLD_ACTION_OUTPUTS_TO_ONE_RELATION_MEDIUM 500000/500000 = 100.000000%
+
+ONE_FIELD_WORLD_AND_ACTION unseen_multi_source=100000/100000 = 100.000000%
+Training contained only singleton demonstrations; world bits and action ports used the same Cell, credit(), and predict() equations.
