@@ -72,3 +72,15 @@ Single-field scaffold deletion candidates.
 - **v1.17**: persistent global SpawnRelCache removed; Spawn reads mature cross-screen relations directly from SharedField; randomized sparse/dense equivalence 200/200, maxerr=0.
 
 Evidence status: exact/mechanism-equivalence positive. Full Tetris promotion is intentionally pending because the exact v1.13 frozen field/evaluator artifacts were not archived in the current repository snapshot.
+
+
+### binary-worldfit-v1.18/
+Generic Closure relation/effect candidate.
+
+- removes the remaining same-column / fixed-downward consequence assumption from the Closure executor;
+- source-to-closure relations are generic local relation rays;
+- birth consequences are generic local effect relations;
+- the existing vertical/down Tetris behavior is only the currently mature SharedField support;
+- randomized multi-line equivalence audit: 20,000/20,000 exact after preserving independent closure instances along a shared relation ray.
+
+Evidence status: mechanism-equivalence positive; full frozen Tetris promotion remains pending restoration of the exact frozen field/evaluator artifact pair.
