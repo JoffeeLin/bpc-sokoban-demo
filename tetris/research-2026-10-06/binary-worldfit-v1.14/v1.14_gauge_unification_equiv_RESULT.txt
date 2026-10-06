@@ -1,0 +1,2 @@
+GAUGE_TO_SELF_RELATION_EQUIV 1000000/1000000 = 100.000000% empty=5607
+Interpretation: after copying each old gauge probability to the self-relation mapping key, gauge readout is algebraically identical; no winner/topology change is introduced.
