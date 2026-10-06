@@ -1,0 +1,12 @@
+===== v1.25 100k original =====
+execution-window timeout; no mismatch observed before timeout
+===== v1.25 10k identical equations =====
+GEOMETRY_TO_GENERIC_CONSTRAINT_RELAX 10000/10000 = 100.000000%
+===== v1.26 =====
+FRAME_TRACE_TO_UNIFIED_BIT_SLOTS 1000000/1000000 = 100.000000%
+===== v1.27 =====
+ACTION_STRUCT_TO_BIT_RELATION_PORTS 2000000/2000000 = 100.000000%
+===== v1.28 1M original =====
+execution-window timeout caused by naive linear medium lookup
+===== v1.28 20k identical equations =====
+SCREEN_TRACE_ACTION_TO_ONE_BIT_RELATION_MEDIUM 20000/20000 = 100.000000%
