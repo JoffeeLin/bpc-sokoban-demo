@@ -1,0 +1,248 @@
+===== bpc_tetris_v167_short.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+/* ---------------- Pure candidate kernel: no Tetris vocabulary ---------------- */
+typedef struct{uint64_t addr;double mass;uint8_t occupied;}Cell;
+typedef struct{Cell *tab;size_t cap,count;}Store;
+typedef struct{const uint64_t *port_addr;int n;}Topology;
+static uint64_t pair_addr(uint64_t a,uint64_t b){uint64_t s=a+b;return (s*(s+1ULL))/2ULL+b+1ULL;}
+static uint64_t relation_addr(const Topology*t,int s,int d){return pair_addr(t->port_addr[s],t->port_addr[d]);}
+static uint64_t mix64(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void store_init(Store*s){memset(s,0,sizeof(*s));}
+static void store_free(Store*s){free(s->tab);memset(s,0,sizeof(*s));}
+static int store_alloc(Store*s,size_t cap){Cell*t=(Cell*)calloc(cap,sizeof(Cell));if(!t)return 0;free(s->tab);s->tab=t;s->cap=cap;s->count=0;return 1;}
+static size_t slot_for(const Store*s,uint64_t a){return (size_t)mix64(a)&(s->cap-1u);}
+static Cell* find_cell(Store*s,uint64_t a){if(!s->cap)return NULL;size_t j=slot_for(s,a);for(size_t n=0;n<s->cap;n++,j=(j+1u)&(s->cap-1u)){Cell*c=&s->tab[j];if(!c->occupied)return NULL;if(c->addr==a)return c;}return NULL;}
+static const Cell* find_cell_const(const Store*s,uint64_t a){return find_cell((Store*)s,a);}
+static int rehash(Store*s,size_t nc){Cell*old=s->tab;size_t oc=s->cap;Cell*nt=(Cell*)calloc(nc,sizeof(Cell));if(!nt)return 0;s->tab=nt;s->cap=nc;s->count=0;for(size_t i=0;i<oc;i++)if(old[i].occupied){size_t j=slot_for(s,old[i].addr);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=old[i];s->count++;}free(old);return 1;}
+static Cell* ensure_addr(Store*s,uint64_t a){if(!s->cap&&!store_alloc(s,1024))return NULL;Cell*c=find_cell(s,a);if(c)return c;if((s->count+1u)*10u>s->cap*7u){if(!rehash(s,s->cap*2u))return NULL;}size_t j=slot_for(s,a);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=(Cell){a,0.0,1};s->count++;return &s->tab[j];}
+static double get_mass(const Store*s,uint64_t a){const Cell*c=find_cell_const(s,a);return c?c->mass:0.0;}
+static void shift_addr(Store*s,uint64_t a,double dm){double old=get_mass(s,a),off=1.0-old,on=old;move_mass(&off,&on,dm);if(old==0.0&&on==0.0)return;Cell*c=ensure_addr(s,a);if(c)c->mass=on;}
+static double node_mass(const Store*s,const Topology*t,int p){return get_mass(s,t->port_addr[p]);}
+static double rel_mass(const Store*s,const Topology*t,int a,int b){return get_mass(s,relation_addr(t,a,b));}
+static double predict_port(const Store*s,const Topology*t,int d){double off=1.0,on=0.0;for(int p=0;p<t->n;p++){double src=node_mass(s,t,p),a=src*rel_mass(s,t,p,d);if(a<0)a=0;if(a>1)a=1;move_mass(&off,&on,off*a);}return on;}
+static void predict_all(const Store*s,const Topology*t,double out[]){for(int d=0;d<t->n;d++)out[d]=predict_port(s,t,d);}
+static void reality_tick(Store*s,const Topology*t,const double reality[]){double *pred=(double*)calloc((size_t)t->n,sizeof(double)),*res=(double*)calloc((size_t)t->n,sizeof(double));predict_all(s,t,pred);for(int d=0;d<t->n;d++)res[d]=reality[d]-pred[d];for(int a=0;a<t->n;a++){double src=node_mass(s,t,a);for(int d=0;d<t->n;d++)shift_addr(s,relation_addr(t,a,d),res[d]*src);}for(int p=0;p<t->n;p++)shift_addr(s,t->port_addr[p],reality[p]-node_mass(s,t,p));free(res);free(pred);}
+static void set_nodes(Store*s,const Topology*t,const double x[]){for(int p=0;p<t->n;p++)shift_addr(s,t->port_addr[p],x[p]-node_mass(s,t,p));}
+static int positive_relations(const Store*s,const Topology*t){int n=0;for(int a=0;a<t->n;a++)for(int d=0;d<t->n;d++)if(rel_mass(s,t,a,d)>0.0)n++;return n;}
+
+/* ---------------- External Tetris reality: never visible to kernel ---------------- */
+#define W 10
+#define H 20
+#define N (W*H)
+#define ACTIONS 4
+#define PORTS (N+N+ACTIONS)
+enum{A_LEFT=0,A_RIGHT=1,A_DOWN=2,A_ROT=3};
+typedef struct{uint8_t active[N],world[N];}State;
+typedef struct{uint64_t s;}RNG;
+static uint32_t ru(RNG*r){r->s^=r->s>>12;r->s^=r->s<<25;r->s^=r->s>>27;return(uint32_t)((r->s*2685821657736338717ULL)>>32);}
+static int ri(RNG*r,int n){return n?(int)(ru(r)%(uint32_t)n):0;}
+static const uint16_t BASE[7]={0x00F0,0x0660,0x0270,0x0360,0x0630,0x0710,0x0740};
+static void local_rotate_bits(uint8_t p[16]){uint8_t q[16]={0};for(int y=0;y<4;y++)for(int x=0;x<4;x++)if(p[y*4+x]){int dx=x-1,dy=y-1,nx=1-dy,ny=1+dx;if(nx>=0&&nx<4&&ny>=0&&ny<4)q[ny*4+nx]=1;}memcpy(p,q,16);}
+static void visible_rotate(const uint8_t*a,const uint8_t*w,uint8_t*out){int minx=W,miny=H,maxx=-1,maxy=-1,n=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(a[y*W+x]){if(x<minx)minx=x;if(x>maxx)maxx=x;if(y<miny)miny=y;if(y>maxy)maxy=y;n++;}if(!n){memset(out,0,N);return;}int bh=maxy-miny+1;uint8_t q[N]={0};int blocked=0;for(int y=miny;y<=maxy;y++)for(int x=minx;x<=maxx;x++)if(a[y*W+x]){int rx=x-minx,ry=y-miny,tx=minx+(bh-1-ry),ty=miny+rx;if(tx<0||tx>=W||ty<0||ty>=H||w[ty*W+tx]){blocked=1;continue;}q[ty*W+tx]=1;}if(blocked)memcpy(out,a,N);else memcpy(out,q,N);}
+static int move_piece(State*s,int dx,int dy){int blocked=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(s->active[y*W+x]){int tx=x+dx,ty=y+dy;if(tx<0||tx>=W||ty<0||ty>=H||s->world[ty*W+tx])blocked=1;}if(blocked)return 0;uint8_t q[N]={0};for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(s->active[y*W+x])q[(y+dy)*W+x+dx]=1;memcpy(s->active,q,N);return 1;}
+static int reality_step(State*s,int a){if(a==A_LEFT){(void)move_piece(s,-1,0);return 1;}if(a==A_RIGHT){(void)move_piece(s,1,0);return 1;}if(a==A_ROT){uint8_t q[N];visible_rotate(s->active,s->world,q);memcpy(s->active,q,N);return 1;}if(a==A_DOWN){return move_piece(s,0,1);}return 0;}
+static int init_episode(RNG*r,State*s){memset(s,0,sizeof(*s));uint8_t p[16]={0};uint16_t z=BASE[ri(r,7)];for(int i=0;i<16;i++)p[i]=(uint8_t)((z>>i)&1u);int rr=ri(r,4);for(int k=0;k<rr;k++)local_rotate_bits(p);int x0=2+ri(r,5),y0=1;for(int sy=0;sy<4;sy++)for(int sx=0;sx<4;sx++)if(p[sy*4+sx]){int x=x0+sx-1,y=y0+sy-1;if(x>=0&&x<W&&y>=0&&y<H)s->active[y*W+x]=1;}for(int k=0;k<28;k++){int x=ri(r,W),y=6+ri(r,H-6);if(!s->active[y*W+x])s->world[y*W+x]=1;}for(int i=0;i<N;i++)if(s->active[i]&&s->world[i])return 0;return 1;}
+static void render(const State*s,uint8_t b[N]){for(int i=0;i<N;i++)b[i]=(uint8_t)(s->active[i]|s->world[i]);}
+static void make_event(const uint8_t prev[N],const uint8_t cur[N],int action,double x[PORTS]){memset(x,0,PORTS*sizeof(double));for(int i=0;i<N;i++){x[i]=(double)prev[i];x[N+i]=(double)cur[i];}x[2*N+action]=1.0;}
+static void make_target(const uint8_t cur[N],const uint8_t next[N],double y[PORTS]){memset(y,0,PORTS*sizeof(double));for(int i=0;i<N;i++){y[i]=(double)cur[i];y[N+i]=(double)next[i];}}
+static int board_exact(const double pred[PORTS],const uint8_t next[N]){for(int i=0;i<N;i++)if((pred[N+i]>.5)!=next[i])return 0;return 1;}
+static double board_bit_accuracy(const double pred[PORTS],const uint8_t next[N]){int ok=0;for(int i=0;i<N;i++)ok+=((pred[N+i]>.5)==next[i]);return (double)ok/(double)N;}
+
+int main(void){
+    uint64_t pa[PORTS];for(int i=0;i<PORTS;i++)pa[i]=pair_addr((uint64_t)(i+1),17ULL);Topology topo={pa,PORTS};Store st;store_init(&st);RNG r={0x167123456789ULL};
+    State s;uint8_t prev[N],cur[N],next[N];double in[PORTS],target[PORTS];int accepted=0,resets=0;
+    while(accepted<2500){if(!init_episode(&r,&s)){continue;}render(&s,cur);memcpy(prev,cur,N);for(int t=0;t<80&&accepted<2500;t++){int a=ri(&r,ACTIONS);State q=s;if(!reality_step(&q,a)){resets++;break;}render(&q,next);make_event(prev,cur,a,in);make_target(cur,next,target);set_nodes(&st,&topo,in);reality_tick(&st,&topo,target);memcpy(prev,cur,N);memcpy(cur,next,N);s=q;accepted++;}}
+    unsigned long long eval=0,whole=0;double bitacc=0.0;RNG e={0x167ABCDEFULL};double pred[PORTS];
+    while(eval<400){if(!init_episode(&e,&s))continue;render(&s,cur);memcpy(prev,cur,N);for(int t=0;t<60&&eval<400;t++){int a=ri(&e,ACTIONS);State q=s;if(!reality_step(&q,a))break;render(&q,next);make_event(prev,cur,a,in);set_nodes(&st,&topo,in);predict_all(&st,&topo,pred);whole+=(unsigned long long)board_exact(pred,next);bitacc+=board_bit_accuracy(pred,next);eval++;memcpy(prev,cur,N);memcpy(cur,next,N);s=q;}}
+    printf("V167_TETRIS_GLOBAL_RESIDUAL_PILOT train=%d eval=%llu board_exact=%llu/%llu=%.6f%% bit_accuracy=%.6f%% positive_relations=%d stored=%zu resets=%d\n",accepted,eval,whole,eval,100.0*(double)whole/(double)eval,100.0*bitacc/(double)eval,positive_relations(&st,&topo),st.count,resets);store_free(&st);return 0;
+}
+
+===== bpc_tetris_v168_temporal_collision.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+/* Generic sparse relation mass. A source can be any physical collision address. */
+typedef struct{uint64_t addr;double mass;uint8_t occupied;}Cell;
+typedef struct{Cell *tab;size_t cap,count;}Store;
+static uint64_t pair_addr(uint64_t a,uint64_t b){uint64_t s=a+b;return (s*(s+1ULL))/2ULL+b+1ULL;}
+static uint64_t mix64(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void store_init(Store*s){memset(s,0,sizeof(*s));}
+static void store_free(Store*s){free(s->tab);memset(s,0,sizeof(*s));}
+static int store_alloc(Store*s,size_t cap){Cell*t=(Cell*)calloc(cap,sizeof(Cell));if(!t)return 0;free(s->tab);s->tab=t;s->cap=cap;s->count=0;return 1;}
+static size_t slot_for(const Store*s,uint64_t a){return (size_t)mix64(a)&(s->cap-1u);}
+static Cell* find_cell(Store*s,uint64_t a){if(!s->cap)return NULL;size_t j=slot_for(s,a);for(size_t n=0;n<s->cap;n++,j=(j+1u)&(s->cap-1u)){Cell*c=&s->tab[j];if(!c->occupied)return NULL;if(c->addr==a)return c;}return NULL;}
+static int rehash(Store*s,size_t nc){Cell*old=s->tab;size_t oc=s->cap;Cell*nt=(Cell*)calloc(nc,sizeof(Cell));if(!nt)return 0;s->tab=nt;s->cap=nc;s->count=0;for(size_t i=0;i<oc;i++)if(old[i].occupied){size_t j=slot_for(s,old[i].addr);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=old[i];s->count++;}free(old);return 1;}
+static Cell* ensure(Store*s,uint64_t a){if(!s->cap&&!store_alloc(s,4096))return NULL;Cell*c=find_cell(s,a);if(c)return c;if((s->count+1u)*10u>s->cap*7u){if(!rehash(s,s->cap*2u))return NULL;}size_t j=slot_for(s,a);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=(Cell){a,0.0,1};s->count++;return &s->tab[j];}
+static double get(const Store*s0,uint64_t a){Store*s=(Store*)s0;Cell*c=find_cell(s,a);return c?c->mass:0.0;}
+static void shift(Store*s,uint64_t a,double dm){double old=get(s,a),off=1-old,on=old;move_mass(&off,&on,dm);if(old==0&&on==0)return;Cell*c=ensure(s,a);if(c)c->mass=on;}
+static uint64_t rel_addr(uint64_t source,uint64_t dest){return pair_addr(source,dest);}
+static double predict_dest(const Store*s,const uint64_t src[],int ns,uint64_t dest){double off=1,on=0;for(int i=0;i<ns;i++){double a=get(s,rel_addr(src[i],dest));move_mass(&off,&on,off*a);}return on;}
+static void residual_tick(Store*s,const uint64_t src[],int ns,const uint64_t dst[],const uint8_t truth[],int nd){double *pred=(double*)calloc((size_t)nd,sizeof(double));for(int d=0;d<nd;d++)pred[d]=predict_dest(s,src,ns,dst[d]);for(int i=0;i<ns;i++)for(int d=0;d<nd;d++){double e=(double)truth[d]-pred[d];shift(s,rel_addr(src[i],dst[d]),e);}free(pred);}
+
+/* External Tetris reality */
+#define W 10
+#define H 20
+#define N (W*H)
+#define ACTIONS 4
+enum{A_LEFT=0,A_RIGHT=1,A_DOWN=2,A_ROT=3};
+typedef struct{uint8_t active[N],world[N];}State;
+typedef struct{uint64_t s;}RNG;
+static uint32_t ru(RNG*r){r->s^=r->s>>12;r->s^=r->s<<25;r->s^=r->s>>27;return(uint32_t)((r->s*2685821657736338717ULL)>>32);}
+static int ri(RNG*r,int n){return n?(int)(ru(r)%(uint32_t)n):0;}
+static const uint16_t BASE[7]={0x00F0,0x0660,0x0270,0x0360,0x0630,0x0710,0x0740};
+static void local_rotate_bits(uint8_t p[16]){uint8_t q[16]={0};for(int y=0;y<4;y++)for(int x=0;x<4;x++)if(p[y*4+x]){int dx=x-1,dy=y-1,nx=1-dy,ny=1+dx;if(nx>=0&&nx<4&&ny>=0&&ny<4)q[ny*4+nx]=1;}memcpy(p,q,16);}
+static void visible_rotate(const uint8_t*a,const uint8_t*w,uint8_t*out){int minx=W,miny=H,maxx=-1,maxy=-1,n=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(a[y*W+x]){if(x<minx)minx=x;if(x>maxx)maxx=x;if(y<miny)miny=y;if(y>maxy)maxy=y;n++;}if(!n){memset(out,0,N);return;}int bh=maxy-miny+1;uint8_t q[N]={0};int blocked=0;for(int y=miny;y<=maxy;y++)for(int x=minx;x<=maxx;x++)if(a[y*W+x]){int rx=x-minx,ry=y-miny,tx=minx+(bh-1-ry),ty=miny+rx;if(tx<0||tx>=W||ty<0||ty>=H||w[ty*W+tx]){blocked=1;continue;}q[ty*W+tx]=1;}if(blocked)memcpy(out,a,N);else memcpy(out,q,N);}
+static int move_piece(State*s,int dx,int dy){int blocked=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(s->active[y*W+x]){int tx=x+dx,ty=y+dy;if(tx<0||tx>=W||ty<0||ty>=H||s->world[ty*W+tx])blocked=1;}if(blocked)return 0;uint8_t q[N]={0};for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(s->active[y*W+x])q[(y+dy)*W+x+dx]=1;memcpy(s->active,q,N);return 1;}
+static int reality_step(State*s,int a){if(a==A_LEFT){(void)move_piece(s,-1,0);return 1;}if(a==A_RIGHT){(void)move_piece(s,1,0);return 1;}if(a==A_ROT){uint8_t q[N];visible_rotate(s->active,s->world,q);memcpy(s->active,q,N);return 1;}if(a==A_DOWN)return move_piece(s,0,1);return 0;}
+static int init_episode(RNG*r,State*s){memset(s,0,sizeof(*s));uint8_t p[16]={0};uint16_t z=BASE[ri(r,7)];for(int i=0;i<16;i++)p[i]=(uint8_t)((z>>i)&1u);int rr=ri(r,4);for(int k=0;k<rr;k++)local_rotate_bits(p);int x0=2+ri(r,5),y0=1;for(int sy=0;sy<4;sy++)for(int sx=0;sx<4;sx++)if(p[sy*4+sx]){int x=x0+sx-1,y=y0+sy-1;if(x>=0&&x<W&&y>=0&&y<H)s->active[y*W+x]=1;}for(int k=0;k<28;k++){int x=ri(r,W),y=6+ri(r,H-6);if(!s->active[y*W+x])s->world[y*W+x]=1;}for(int i=0;i<N;i++)if(s->active[i]&&s->world[i])return 0;return 1;}
+static void render(const State*s,uint8_t b[N]){for(int i=0;i<N;i++)b[i]=(uint8_t)(s->active[i]|s->world[i]);}
+/* A source is an anonymous simultaneous collision of current visible BIT,
+   previous BIT state, and the external operation-port BIT. */
+static uint64_t pixel_addr(int i){return pair_addr((uint64_t)(i+1),0);}
+static uint64_t bit_state_addr(int b){return pair_addr((uint64_t)(b+1),3);}
+static uint64_t action_addr(int a){return pair_addr((uint64_t)(a+1),7);}
+static uint64_t collision_source(int i,int prevbit,int a){return pair_addr(pair_addr(pixel_addr(i),bit_state_addr(prevbit)),action_addr(a));}
+static uint64_t dest_addr(int i){return pair_addr(pixel_addr(i),11);}
+static int build_sources(const uint8_t prev[N],const uint8_t cur[N],int action,uint64_t src[N]){int ns=0;for(int i=0;i<N;i++)if(cur[i])src[ns++]=collision_source(i,prev[i]?1:0,action);return ns;}
+static int exact_board(const Store*s,const uint64_t src[],int ns,const uint8_t truth[N]){for(int d=0;d<N;d++)if((predict_dest(s,src,ns,dest_addr(d))>.5)!=truth[d])return 0;return 1;}
+static double bit_accuracy(const Store*s,const uint64_t src[],int ns,const uint8_t truth[N]){int ok=0;for(int d=0;d<N;d++)ok+=((predict_dest(s,src,ns,dest_addr(d))>.5)==truth[d]);return(double)ok/N;}
+int main(void){Store st;store_init(&st);uint64_t dst[N];for(int i=0;i<N;i++)dst[i]=dest_addr(i);RNG r={0x168A55ULL};State s;uint8_t prev[N],cur[N],next[N];uint64_t src[N];int trained=0;while(trained<7000){if(!init_episode(&r,&s))continue;render(&s,cur);memcpy(prev,cur,N);for(int t=0;t<80&&trained<7000;t++){int a=ri(&r,ACTIONS);State q=s;if(!reality_step(&q,a))break;render(&q,next);int ns=build_sources(prev,cur,a,src);residual_tick(&st,src,ns,dst,next,N);memcpy(prev,cur,N);memcpy(cur,next,N);s=q;trained++;}}
+RNG e={0x168B66ULL};unsigned long long n=0,exact=0;double bitacc=0;while(n<1000){if(!init_episode(&e,&s))continue;render(&s,cur);memcpy(prev,cur,N);for(int t=0;t<60&&n<1000;t++){int a=ri(&e,ACTIONS);State q=s;if(!reality_step(&q,a))break;render(&q,next);int ns=build_sources(prev,cur,a,src);exact+=(unsigned long long)exact_board(&st,src,ns,next);bitacc+=bit_accuracy(&st,src,ns,next);n++;memcpy(prev,cur,N);memcpy(cur,next,N);s=q;}}
+printf("V168_TETRIS_TEMPORAL_COLLISION train=%d eval=%llu exact=%llu/%llu=%.6f%% bit_accuracy=%.6f%% stored=%zu\n",trained,n,exact,n,100.0*(double)exact/n,100.0*bitacc/n,st.count);store_free(&st);return 0;}
+
+===== bpc_tetris_v169_local_relation_collision.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+/* Generic sparse relation mass. A source can be any physical collision address. */
+typedef struct{uint64_t addr;double mass;uint8_t occupied;}Cell;
+typedef struct{Cell *tab;size_t cap,count;}Store;
+static uint64_t pair_addr(uint64_t a,uint64_t b){uint64_t s=a+b;return (s*(s+1ULL))/2ULL+b+1ULL;}
+static uint64_t mix64(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void store_init(Store*s){memset(s,0,sizeof(*s));}
+static void store_free(Store*s){free(s->tab);memset(s,0,sizeof(*s));}
+static int store_alloc(Store*s,size_t cap){Cell*t=(Cell*)calloc(cap,sizeof(Cell));if(!t)return 0;free(s->tab);s->tab=t;s->cap=cap;s->count=0;return 1;}
+static size_t slot_for(const Store*s,uint64_t a){return (size_t)mix64(a)&(s->cap-1u);}
+static Cell* find_cell(Store*s,uint64_t a){if(!s->cap)return NULL;size_t j=slot_for(s,a);for(size_t n=0;n<s->cap;n++,j=(j+1u)&(s->cap-1u)){Cell*c=&s->tab[j];if(!c->occupied)return NULL;if(c->addr==a)return c;}return NULL;}
+static int rehash(Store*s,size_t nc){Cell*old=s->tab;size_t oc=s->cap;Cell*nt=(Cell*)calloc(nc,sizeof(Cell));if(!nt)return 0;s->tab=nt;s->cap=nc;s->count=0;for(size_t i=0;i<oc;i++)if(old[i].occupied){size_t j=slot_for(s,old[i].addr);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=old[i];s->count++;}free(old);return 1;}
+static Cell* ensure(Store*s,uint64_t a){if(!s->cap&&!store_alloc(s,4096))return NULL;Cell*c=find_cell(s,a);if(c)return c;if((s->count+1u)*10u>s->cap*7u){if(!rehash(s,s->cap*2u))return NULL;}size_t j=slot_for(s,a);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=(Cell){a,0.0,1};s->count++;return &s->tab[j];}
+static double get(const Store*s0,uint64_t a){Store*s=(Store*)s0;Cell*c=find_cell(s,a);return c?c->mass:0.0;}
+static void shift(Store*s,uint64_t a,double dm){double old=get(s,a),off=1-old,on=old;move_mass(&off,&on,dm);if(old==0&&on==0)return;Cell*c=ensure(s,a);if(c)c->mass=on;}
+static uint64_t rel_addr(uint64_t source,uint64_t dest){return pair_addr(source,dest);}
+static double predict_dest(const Store*s,const uint64_t src[],int ns,uint64_t dest){double off=1,on=0;for(int i=0;i<ns;i++){double a=get(s,rel_addr(src[i],dest));move_mass(&off,&on,off*a);}return on;}
+static void residual_tick(Store*s,const uint64_t src[],int ns,const uint64_t dst[],const uint8_t truth[],int nd){double *pred=(double*)calloc((size_t)nd,sizeof(double));for(int d=0;d<nd;d++)pred[d]=predict_dest(s,src,ns,dst[d]);for(int i=0;i<ns;i++)for(int d=0;d<nd;d++){double e=(double)truth[d]-pred[d];shift(s,rel_addr(src[i],dst[d]),e);}free(pred);}
+
+/* External Tetris reality */
+#define W 10
+#define H 20
+#define N (W*H)
+#define ACTIONS 4
+enum{A_LEFT=0,A_RIGHT=1,A_DOWN=2,A_ROT=3};
+typedef struct{uint8_t active[N],world[N];}State;
+typedef struct{uint64_t s;}RNG;
+static uint32_t ru(RNG*r){r->s^=r->s>>12;r->s^=r->s<<25;r->s^=r->s>>27;return(uint32_t)((r->s*2685821657736338717ULL)>>32);}
+static int ri(RNG*r,int n){return n?(int)(ru(r)%(uint32_t)n):0;}
+static const uint16_t BASE[7]={0x00F0,0x0660,0x0270,0x0360,0x0630,0x0710,0x0740};
+static void local_rotate_bits(uint8_t p[16]){uint8_t q[16]={0};for(int y=0;y<4;y++)for(int x=0;x<4;x++)if(p[y*4+x]){int dx=x-1,dy=y-1,nx=1-dy,ny=1+dx;if(nx>=0&&nx<4&&ny>=0&&ny<4)q[ny*4+nx]=1;}memcpy(p,q,16);}
+static void visible_rotate(const uint8_t*a,const uint8_t*w,uint8_t*out){int minx=W,miny=H,maxx=-1,maxy=-1,n=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(a[y*W+x]){if(x<minx)minx=x;if(x>maxx)maxx=x;if(y<miny)miny=y;if(y>maxy)maxy=y;n++;}if(!n){memset(out,0,N);return;}int bh=maxy-miny+1;uint8_t q[N]={0};int blocked=0;for(int y=miny;y<=maxy;y++)for(int x=minx;x<=maxx;x++)if(a[y*W+x]){int rx=x-minx,ry=y-miny,tx=minx+(bh-1-ry),ty=miny+rx;if(tx<0||tx>=W||ty<0||ty>=H||w[ty*W+tx]){blocked=1;continue;}q[ty*W+tx]=1;}if(blocked)memcpy(out,a,N);else memcpy(out,q,N);}
+static int move_piece(State*s,int dx,int dy){int blocked=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(s->active[y*W+x]){int tx=x+dx,ty=y+dy;if(tx<0||tx>=W||ty<0||ty>=H||s->world[ty*W+tx])blocked=1;}if(blocked)return 0;uint8_t q[N]={0};for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(s->active[y*W+x])q[(y+dy)*W+x+dx]=1;memcpy(s->active,q,N);return 1;}
+static int reality_step(State*s,int a){if(a==A_LEFT){(void)move_piece(s,-1,0);return 1;}if(a==A_RIGHT){(void)move_piece(s,1,0);return 1;}if(a==A_ROT){uint8_t q[N];visible_rotate(s->active,s->world,q);memcpy(s->active,q,N);return 1;}if(a==A_DOWN)return move_piece(s,0,1);return 0;}
+static int init_episode(RNG*r,State*s){memset(s,0,sizeof(*s));uint8_t p[16]={0};uint16_t z=BASE[ri(r,7)];for(int i=0;i<16;i++)p[i]=(uint8_t)((z>>i)&1u);int rr=ri(r,4);for(int k=0;k<rr;k++)local_rotate_bits(p);int x0=2+ri(r,5),y0=1;for(int sy=0;sy<4;sy++)for(int sx=0;sx<4;sx++)if(p[sy*4+sx]){int x=x0+sx-1,y=y0+sy-1;if(x>=0&&x<W&&y>=0&&y<H)s->active[y*W+x]=1;}for(int k=0;k<28;k++){int x=ri(r,W),y=6+ri(r,H-6);if(!s->active[y*W+x])s->world[y*W+x]=1;}for(int i=0;i<N;i++)if(s->active[i]&&s->world[i])return 0;return 1;}
+static void render(const State*s,uint8_t b[N]){for(int i=0;i<N;i++)b[i]=(uint8_t)(s->active[i]|s->world[i]);}
+/* A source is an anonymous simultaneous collision of current visible BIT,
+   previous BIT state, and the external operation-port BIT. */
+static uint64_t pixel_addr(int i){return pair_addr((uint64_t)(i+1),0);}
+static uint64_t bit_state_addr(int b){return pair_addr((uint64_t)(b+1),3);}
+static uint64_t action_addr(int a){return pair_addr((uint64_t)(a+1),7);}
+static uint64_t local_context_addr(const uint8_t cur[N],int i){
+    int x=i%W,y=i/W;uint64_t h=pair_addr(19,23);
+    for(int dy=-1;dy<=1;dy++)for(int dx=-1;dx<=1;dx++){if(dx==0&&dy==0)continue;int nx=x+dx,ny=y+dy;int occ=(nx>=0&&nx<W&&ny>=0&&ny<H)?cur[ny*W+nx]:0;uint64_t rel=pair_addr((uint64_t)(dx+2),(uint64_t)(dy+2));uint64_t bit=pair_addr((uint64_t)(occ+1),29);h=pair_addr(h,pair_addr(rel,bit));}
+    return h;
+}
+static uint64_t collision_source(const uint8_t cur[N],int i,int prevbit,int a){uint64_t t=pair_addr(pair_addr(pixel_addr(i),bit_state_addr(prevbit)),action_addr(a));return pair_addr(t,local_context_addr(cur,i));}
+static uint64_t dest_addr(int i){return pair_addr(pixel_addr(i),11);}
+static int build_sources(const uint8_t prev[N],const uint8_t cur[N],int action,uint64_t src[N]){int ns=0;for(int i=0;i<N;i++)if(cur[i])src[ns++]=collision_source(cur,i,prev[i]?1:0,action);return ns;}
+static int exact_board(const Store*s,const uint64_t src[],int ns,const uint8_t truth[N]){for(int d=0;d<N;d++)if((predict_dest(s,src,ns,dest_addr(d))>.5)!=truth[d])return 0;return 1;}
+static double bit_accuracy(const Store*s,const uint64_t src[],int ns,const uint8_t truth[N]){int ok=0;for(int d=0;d<N;d++)ok+=((predict_dest(s,src,ns,dest_addr(d))>.5)==truth[d]);return(double)ok/N;}
+int main(void){Store st;store_init(&st);uint64_t dst[N];for(int i=0;i<N;i++)dst[i]=dest_addr(i);RNG r={0x168A55ULL};State s;uint8_t prev[N],cur[N],next[N];uint64_t src[N];int trained=0;while(trained<10000){if(!init_episode(&r,&s))continue;render(&s,cur);memcpy(prev,cur,N);for(int t=0;t<80&&trained<10000;t++){int a=ri(&r,ACTIONS);State q=s;if(!reality_step(&q,a))break;render(&q,next);int ns=build_sources(prev,cur,a,src);residual_tick(&st,src,ns,dst,next,N);memcpy(prev,cur,N);memcpy(cur,next,N);s=q;trained++;}}
+RNG e={0x168B66ULL};unsigned long long n=0,exact=0;double bitacc=0;while(n<1000){if(!init_episode(&e,&s))continue;render(&s,cur);memcpy(prev,cur,N);for(int t=0;t<60&&n<1000;t++){int a=ri(&e,ACTIONS);State q=s;if(!reality_step(&q,a))break;render(&q,next);int ns=build_sources(prev,cur,a,src);exact+=(unsigned long long)exact_board(&st,src,ns,next);bitacc+=bit_accuracy(&st,src,ns,next);n++;memcpy(prev,cur,N);memcpy(cur,next,N);s=q;}}
+printf("V169_TETRIS_LOCAL_RELATION_COLLISION train=%d eval=%llu exact=%llu/%llu=%.6f%% bit_accuracy=%.6f%% stored=%zu\n",trained,n,exact,n,100.0*(double)exact/n,100.0*bitacc/n,st.count);store_free(&st);return 0;}
+
+===== bpc_tetris_v170_superposed_local_relations.c =====
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+/* Generic sparse relation mass. A source can be any physical collision address. */
+typedef struct{uint64_t addr;double mass;uint8_t occupied;}Cell;
+typedef struct{Cell *tab;size_t cap,count;}Store;
+static uint64_t pair_addr(uint64_t a,uint64_t b){uint64_t s=a+b;return (s*(s+1ULL))/2ULL+b+1ULL;}
+static uint64_t mix64(uint64_t x){x^=x>>33;x*=0xff51afd7ed558ccdULL;x^=x>>33;x*=0xc4ceb9fe1a85ec53ULL;x^=x>>33;return x;}
+static void move_mass(double *off,double *on,double dm){if(dm>0){if(dm>*off)dm=*off;*off-=dm;*on+=dm;}else if(dm<0){double q=-dm;if(q>*on)q=*on;*on-=q;*off+=q;}}
+static void store_init(Store*s){memset(s,0,sizeof(*s));}
+static void store_free(Store*s){free(s->tab);memset(s,0,sizeof(*s));}
+static int store_alloc(Store*s,size_t cap){Cell*t=(Cell*)calloc(cap,sizeof(Cell));if(!t)return 0;free(s->tab);s->tab=t;s->cap=cap;s->count=0;return 1;}
+static size_t slot_for(const Store*s,uint64_t a){return (size_t)mix64(a)&(s->cap-1u);}
+static Cell* find_cell(Store*s,uint64_t a){if(!s->cap)return NULL;size_t j=slot_for(s,a);for(size_t n=0;n<s->cap;n++,j=(j+1u)&(s->cap-1u)){Cell*c=&s->tab[j];if(!c->occupied)return NULL;if(c->addr==a)return c;}return NULL;}
+static int rehash(Store*s,size_t nc){Cell*old=s->tab;size_t oc=s->cap;Cell*nt=(Cell*)calloc(nc,sizeof(Cell));if(!nt)return 0;s->tab=nt;s->cap=nc;s->count=0;for(size_t i=0;i<oc;i++)if(old[i].occupied){size_t j=slot_for(s,old[i].addr);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=old[i];s->count++;}free(old);return 1;}
+static Cell* ensure(Store*s,uint64_t a){if(!s->cap&&!store_alloc(s,4096))return NULL;Cell*c=find_cell(s,a);if(c)return c;if((s->count+1u)*10u>s->cap*7u){if(!rehash(s,s->cap*2u))return NULL;}size_t j=slot_for(s,a);while(s->tab[j].occupied)j=(j+1u)&(s->cap-1u);s->tab[j]=(Cell){a,0.0,1};s->count++;return &s->tab[j];}
+static double get(const Store*s0,uint64_t a){Store*s=(Store*)s0;Cell*c=find_cell(s,a);return c?c->mass:0.0;}
+static void shift(Store*s,uint64_t a,double dm){double old=get(s,a),off=1-old,on=old;move_mass(&off,&on,dm);if(old==0&&on==0)return;Cell*c=ensure(s,a);if(c)c->mass=on;}
+static uint64_t rel_addr(uint64_t source,uint64_t dest){return pair_addr(source,dest);}
+static double predict_dest(const Store*s,const uint64_t src[],int ns,uint64_t dest){double off=1,on=0;for(int i=0;i<ns;i++){double a=get(s,rel_addr(src[i],dest));move_mass(&off,&on,off*a);}return on;}
+static void residual_tick(Store*s,const uint64_t src[],int ns,const uint64_t dst[],const uint8_t truth[],int nd){double *pred=(double*)calloc((size_t)nd,sizeof(double));for(int d=0;d<nd;d++)pred[d]=predict_dest(s,src,ns,dst[d]);for(int i=0;i<ns;i++)for(int d=0;d<nd;d++){double e=(double)truth[d]-pred[d];shift(s,rel_addr(src[i],dst[d]),e);}free(pred);}
+
+/* External Tetris reality */
+#define W 10
+#define H 20
+#define N (W*H)
+#define ACTIONS 4
+enum{A_LEFT=0,A_RIGHT=1,A_DOWN=2,A_ROT=3};
+typedef struct{uint8_t active[N],world[N];}State;
+typedef struct{uint64_t s;}RNG;
+static uint32_t ru(RNG*r){r->s^=r->s>>12;r->s^=r->s<<25;r->s^=r->s>>27;return(uint32_t)((r->s*2685821657736338717ULL)>>32);}
+static int ri(RNG*r,int n){return n?(int)(ru(r)%(uint32_t)n):0;}
+static const uint16_t BASE[7]={0x00F0,0x0660,0x0270,0x0360,0x0630,0x0710,0x0740};
+static void local_rotate_bits(uint8_t p[16]){uint8_t q[16]={0};for(int y=0;y<4;y++)for(int x=0;x<4;x++)if(p[y*4+x]){int dx=x-1,dy=y-1,nx=1-dy,ny=1+dx;if(nx>=0&&nx<4&&ny>=0&&ny<4)q[ny*4+nx]=1;}memcpy(p,q,16);}
+static void visible_rotate(const uint8_t*a,const uint8_t*w,uint8_t*out){int minx=W,miny=H,maxx=-1,maxy=-1,n=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(a[y*W+x]){if(x<minx)minx=x;if(x>maxx)maxx=x;if(y<miny)miny=y;if(y>maxy)maxy=y;n++;}if(!n){memset(out,0,N);return;}int bh=maxy-miny+1;uint8_t q[N]={0};int blocked=0;for(int y=miny;y<=maxy;y++)for(int x=minx;x<=maxx;x++)if(a[y*W+x]){int rx=x-minx,ry=y-miny,tx=minx+(bh-1-ry),ty=miny+rx;if(tx<0||tx>=W||ty<0||ty>=H||w[ty*W+tx]){blocked=1;continue;}q[ty*W+tx]=1;}if(blocked)memcpy(out,a,N);else memcpy(out,q,N);}
+static int move_piece(State*s,int dx,int dy){int blocked=0;for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(s->active[y*W+x]){int tx=x+dx,ty=y+dy;if(tx<0||tx>=W||ty<0||ty>=H||s->world[ty*W+tx])blocked=1;}if(blocked)return 0;uint8_t q[N]={0};for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(s->active[y*W+x])q[(y+dy)*W+x+dx]=1;memcpy(s->active,q,N);return 1;}
+static int reality_step(State*s,int a){if(a==A_LEFT){(void)move_piece(s,-1,0);return 1;}if(a==A_RIGHT){(void)move_piece(s,1,0);return 1;}if(a==A_ROT){uint8_t q[N];visible_rotate(s->active,s->world,q);memcpy(s->active,q,N);return 1;}if(a==A_DOWN)return move_piece(s,0,1);return 0;}
+static int init_episode(RNG*r,State*s){memset(s,0,sizeof(*s));uint8_t p[16]={0};uint16_t z=BASE[ri(r,7)];for(int i=0;i<16;i++)p[i]=(uint8_t)((z>>i)&1u);int rr=ri(r,4);for(int k=0;k<rr;k++)local_rotate_bits(p);int x0=2+ri(r,5),y0=1;for(int sy=0;sy<4;sy++)for(int sx=0;sx<4;sx++)if(p[sy*4+sx]){int x=x0+sx-1,y=y0+sy-1;if(x>=0&&x<W&&y>=0&&y<H)s->active[y*W+x]=1;}for(int k=0;k<28;k++){int x=ri(r,W),y=6+ri(r,H-6);if(!s->active[y*W+x])s->world[y*W+x]=1;}for(int i=0;i<N;i++)if(s->active[i]&&s->world[i])return 0;return 1;}
+static void render(const State*s,uint8_t b[N]){for(int i=0;i<N;i++)b[i]=(uint8_t)(s->active[i]|s->world[i]);}
+/* A source is an anonymous simultaneous collision of current visible BIT,
+   previous BIT state, and the external operation-port BIT. */
+static uint64_t pixel_addr(int i){return pair_addr((uint64_t)(i+1),0);}
+static uint64_t bit_state_addr(int b){return pair_addr((uint64_t)(b+1),3);}
+static uint64_t action_addr(int a){return pair_addr((uint64_t)(a+1),7);}
+static uint64_t temporal_action_source(int i,int prevbit,int a){return pair_addr(pair_addr(pixel_addr(i),bit_state_addr(prevbit)),action_addr(a));}
+static uint64_t relative_relation_addr(int dx,int dy){return pair_addr((uint64_t)(dx+2),(uint64_t)(dy+2));}
+static uint64_t dest_addr(int i){return pair_addr(pixel_addr(i),11);}
+static int build_sources(const uint8_t prev[N],const uint8_t cur[N],int action,uint64_t src[N*9]){
+    int ns=0;
+    for(int i=0;i<N;i++)if(cur[i]){
+        uint64_t base=temporal_action_source(i,prev[i]?1:0,action);src[ns++]=base;int x=i%W,y=i/W;
+        for(int dy=-1;dy<=1;dy++)for(int dx=-1;dx<=1;dx++){if(dx==0&&dy==0)continue;int nx=x+dx,ny=y+dy;if(nx>=0&&nx<W&&ny>=0&&ny<H&&cur[ny*W+nx])src[ns++]=pair_addr(base,relative_relation_addr(dx,dy));}
+    }
+    return ns;
+}
+static int exact_board(const Store*s,const uint64_t src[],int ns,const uint8_t truth[N]){for(int d=0;d<N;d++)if((predict_dest(s,src,ns,dest_addr(d))>.5)!=truth[d])return 0;return 1;}
+static double bit_accuracy(const Store*s,const uint64_t src[],int ns,const uint8_t truth[N]){int ok=0;for(int d=0;d<N;d++)ok+=((predict_dest(s,src,ns,dest_addr(d))>.5)==truth[d]);return(double)ok/N;}
+int main(void){Store st;store_init(&st);uint64_t dst[N];for(int i=0;i<N;i++)dst[i]=dest_addr(i);RNG r={0x168A55ULL};State s;uint8_t prev[N],cur[N],next[N];uint64_t src[N*9];int trained=0;while(trained<10000){if(!init_episode(&r,&s))continue;render(&s,cur);memcpy(prev,cur,N);for(int t=0;t<80&&trained<10000;t++){int a=ri(&r,ACTIONS);State q=s;if(!reality_step(&q,a))break;render(&q,next);int ns=build_sources(prev,cur,a,src);residual_tick(&st,src,ns,dst,next,N);memcpy(prev,cur,N);memcpy(cur,next,N);s=q;trained++;}}
+RNG e={0x168B66ULL};unsigned long long n=0,exact=0;double bitacc=0;while(n<1000){if(!init_episode(&e,&s))continue;render(&s,cur);memcpy(prev,cur,N);for(int t=0;t<60&&n<1000;t++){int a=ri(&e,ACTIONS);State q=s;if(!reality_step(&q,a))break;render(&q,next);int ns=build_sources(prev,cur,a,src);exact+=(unsigned long long)exact_board(&st,src,ns,next);bitacc+=bit_accuracy(&st,src,ns,next);n++;memcpy(prev,cur,N);memcpy(cur,next,N);s=q;}}
+printf("V170_TETRIS_SUPERPOSED_LOCAL_RELATIONS train=%d eval=%llu exact=%llu/%llu=%.6f%% bit_accuracy=%.6f%% stored=%zu\n",trained,n,exact,n,100.0*(double)exact/n,100.0*bitacc/n,st.count);store_free(&st);return 0;}
