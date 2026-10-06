@@ -1,0 +1,10 @@
+BPC Binary WorldFit v1.13 | raw B/T/outside compatibility bits; no destination-state enumeration | relations=1151
+SEED0 38941/38941=100.000000% epok=1000 locks=12054 first=-1:-1
+SEED1 39554/39554=100.000000% epok=1000 locks=12125 first=-1:-1
+SEED2 38743/38743=100.000000% epok=1000 locks=12150 first=-1:-1
+SEED3 39669/39669=100.000000% epok=1000 locks=12150 first=-1:-1
+SEED4 38875/38875=100.000000% epok=1000 locks=12040 first=-1:-1
+SEED5 38623/38623=100.000000% epok=1000 locks=12011 first=-1:-1
+SEED6 39070/39070=100.000000% epok=1000 locks=11995 first=-1:-1
+SEED7 39364/39364=100.000000% epok=1000 locks=12110 first=-1:-1
+TOTAL 312839/312839=100.000000%
