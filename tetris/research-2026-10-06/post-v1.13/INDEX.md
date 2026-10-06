@@ -101,5 +101,16 @@ Path: `tetris-reintegration-v1.67-v1.70/`
 
 Evidence class: diagnostic reintegration; not promoted as a full Tetris checkpoint. The recovered report concludes that positive-only consequence relations are insufficient and points to generic bidirectional mass transfer under the same global residual.
 
+## 8. Tetris Scaffold Deletion v1.71-v1.85
+Path: `tetris-scaffold-deletion-v1.71-v1.85/`
+
+Key results:
+- v1.72 removes explicit one-hop local-relation source waves and improves the 8-seed mean from 87.293938% to 90.106250% pixel accuracy while cutting stored relations to roughly 72k-76k.
+- v1.73-v1.74 remove dedicated output-role identity and token-like address namespaces with no measured regression.
+- v1.75 replaces equal residual credit with exact noisy-OR marginal participation writeback. At 10k training transitions, 8 seeds average 99.303125% pixel accuracy and 553.375/1000 whole-board exact; at 30k they average 99.358188% and 586.75/1000 exact.
+- v1.76-v1.85 test local-relation restoration, relation-pair collisions, relative-only compression, deeper literal history, process carriers and temporal/action re-entry. None beats v1.75 without unacceptable K growth or capability loss.
+
+Evidence class: diagnostic pure-reintegration research. The dominant remaining failure is compact process / relation-of-relation state, especially rotation and no-op/collision disambiguation. These experiments use the non-Lock black/white transition slice and do not replace v1.13.
+
 ## Current archive boundary
-The latest currently recoverable post-v1.13 artifact is v1.70. No later artifact was found in the 2026-10-06 Library window searched during this restoration.
+The latest archived post-v1.13 research batch is v1.85. The promoted complete-Tetris checkpoint remains v1.13 until a purer branch restores full multi-seed whole-board and long-rollout exactness.
