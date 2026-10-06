@@ -1,0 +1,47 @@
+===== v154_result.txt =====
+V154_REALITY_TICK exact=300000/300000=100.000000% resident=48 true_min=1.000000 false_max=0.000000 field_unchanged=1
+
+===== v155_result.txt =====
+V155_SCALAR_RELATION exact=300000/300000=100.000000% resident=48 true_min=1.000000 false_max=0.000000 field_unchanged=1 cell_bytes=16
+
+===== v156_result.txt =====
+V156_CONTINUOUS_CORE measured_exact=300000/300000=100.000000% resident=48 field_unchanged=1 max_continuous_error=0
+
+===== v157_result.txt =====
+V157_REALITY_REENTRY_MASS measured_exact=300000/300000=100.000000% resident=48 field_unchanged=1 max_continuous_error=0
+
+===== v158_result.txt =====
+V158_GLOBAL_RESIDUAL_ONLY measured_exact=300000/300000=100.000000% resident=48 field_unchanged=1 max_continuous_error=0
+
+===== v159_result.txt =====
+V159_ONE_MEDIUM_TYPE measured_exact=300000/300000=100.000000% resident=48 field_unchanged=1 max_amp_error=0
+
+===== v160_result.txt =====
+V160_DYNAMIC_TOPOLOGY exact=300000/300000=100.000000% resident=48 field_unchanged=1 max_amp_error=0 kernel_ports_runtime=24
+
+===== v161_result.txt =====
+V161_UNBOUNDED_SPARSE_BIRTH exact=300000/300000=100.000000% resident=48 field_unchanged=1 max_amp_error=0 kernel_ports_runtime=24 storage_capacity=256
+
+===== v162_result.txt =====
+V162_ONE_MASS_STORE exact=300000/300000=100.000000% relations=48 total_cells=52 field_unchanged=1 max_amp_error=0
+
+===== v163_result.txt =====
+V163_NO_PARTICIPATION_GATES exact=300000/300000=100.000000% relations=48 total_cells=52 field_unchanged=1 max_amp_error=0
+
+===== v164_result.txt =====
+V164_BIRTH_BY_MASS_ONLY exact=300000/300000=100.000000% relations=48 total_cells=52 field_unchanged=1 max_amp_error=0
+
+===== v165b_result.txt =====
+V165B_ZERO_MASS_DEATH exact=300000/300000=100.000000% positive_relations=48 stored_cells=370 field_unchanged=1 max_amp_error=0
+
+===== v166_result.txt =====
+ trial0 relations=48 stored=348
+ trial1 relations=48 stored=282
+ trial2 relations=48 stored=411
+V166_EXTERNAL_PHYSICAL_ADDRESSES exact=300000/300000=100.000000%
+
+===== v1.66 engineering =====
+O2/O3 diff bytes: 0
+UBSan stderr bytes: 0
+584de639229f0e6fddcf7ce95ec65a0e2976d87fbb0b646399bbffc0ae6f6768  /mnt/data/bpc_minimal_v154/bpc_minimal_v166_external_addresses.c
+ffdd3cdb8ded6d8f4e7e7e352cc9752a6f08d8f2d01f18148e929dba030f3960  /mnt/data/bpc_minimal_v154/v166_result.txt
