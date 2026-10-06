@@ -1,0 +1,2 @@
+VERTICAL_TO_GENERIC_CLOSURE_EQUIV 20000/20000 = 100.000000%
+Non-vertical relation/effect amplitudes are zero, matching the frozen field support; generic execution collapses exactly to the old vertical executor.
